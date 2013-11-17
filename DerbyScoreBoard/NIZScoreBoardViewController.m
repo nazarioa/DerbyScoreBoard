@@ -40,7 +40,7 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 @property (weak, nonatomic) IBOutlet UILabel *homeTOCountLabel;
 @property (weak, nonatomic) IBOutlet UITextField *homeJamScoreTextField;
 @property (weak, nonatomic) IBOutlet UITextField *homeTotalScoreTextField;
-@property (weak, nonatomic) IBOutlet UIPickerView *homeJammerPicker;
+@property (strong, nonatomic) IBOutlet UIPickerView *homeJammerPicker;
 
 //----Visitor Team Side
 @property (weak, nonatomic) NSString *visitorTeamName;
@@ -94,10 +94,12 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 //@property (strong, nonatomic) NIZDerbyJam *jam3;
 
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.visitorJammerPicker = [[UIPickerView alloc] init];
+    self.homeJammerPicker = [[UIPickerView alloc] init];
     
     self.gameClock    = [[NIZGameClock alloc] initWithCounterLimitTo:1800 named:@"GameClock"];
     self.jamClock     = [[NIZGameClock alloc] initWithCounterLimitTo:120 named:@"JamClock"];
@@ -118,8 +120,9 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     self.visitorTeamLabel.text = self.visitorTeamName;
     
     //creating team roster
-    //NSArray * homeTeam = @[@"Maria Mayem", @"Susie Queue", @"Bust her Possy", @"Princes Bea"];
-    //NSArray * visitorTeam = @[@"Rob-ert", @"Menaice Mike", @"Kernal Panic", @"Buba-fet"];
+    //TODO - We need to make this a proper data object
+    //NSArray * homeTeamRoster = @[@"Maria Mayem", @"Susie Queue", @"Bust her Possy", @"Princes Bea", @"Lady Killa", @"Wounder Woman"];
+    //NSArray * visitorTeamRoster = @[@"Rob-ert", @"Menaice Mike", @"Kernal Panic", @"Buba-fet", @"Neo", @"Mister Mind"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -239,5 +242,33 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     NSLog(@" didTimeChange for the clock: %@ it's time is: %@ ", clockName, newTime);
 }
 
+
+#pragma mark - UI Picker Deleagte Functions
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    NSLog(@"numberOfComponentsInPickerView");
+    if ([pickerView isEqual:self.visitorJammerPicker] || [pickerView isEqual:self.homeJammerPicker]){
+        return 1;
+    }
+    return 0;
+}
+
+- (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    NSLog(@"pickerView:numberOfRowsInComponent:");
+    if ([pickerView isEqual:self.visitorJammerPicker] || [pickerView isEqual:self.homeJammerPicker]){
+        return 6;
+        // TODO this needs to put out the number of players for each team
+    }
+    return 0;
+}
+
+- (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    NSLog((@"pickerView:titleForRow:forComponent:"));
+    if ([pickerView isEqual:self.homeJammerPicker]){
+        return [NSString stringWithFormat:@"Home Jammer %ld", (long)row + 1];
+    }else if ([pickerView isEqual:self.visitorJammerPicker]){
+        return [NSString stringWithFormat:@"Visitor Jammer %ld", (long)row + 1];
+    }
+    return nil;
+}
 
 @end
