@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EB139F2817AEFE880017BBFF /* NIZDerbyBout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB139F2717AEFE880017BBFF /* NIZDerbyBout.m */; };
+		EB17D14717B024C6006E620E /* NIZSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB17D14617B024C6006E620E /* NIZSettingsViewController.m */; };
+		EB8CFA7F17BDD6330054BF4F /* NIZGameClock.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8CFA7E17BDD6330054BF4F /* NIZGameClock.m */; };
+		EBAF913017AE3D2200D76CBA /* -1.png in Resources */ = {isa = PBXBuildFile; fileRef = EBAF912C17AE3D2200D76CBA /* -1.png */; };
+		EBAF913117AE3D2200D76CBA /* -1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBAF912D17AE3D2200D76CBA /* -1@2x.png */; };
+		EBAF913217AE3D2200D76CBA /* +1.png in Resources */ = {isa = PBXBuildFile; fileRef = EBAF912E17AE3D2200D76CBA /* +1.png */; };
+		EBAF913317AE3D2200D76CBA /* +1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBAF912F17AE3D2200D76CBA /* +1@2x.png */; };
+		EBAF913617AE410400D76CBA /* NIZDerbyJam.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF913517AE410400D76CBA /* NIZDerbyJam.m */; };
+		EBAF913A17AE4AB200D76CBA /* NIZDerbyTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF913917AE4AB200D76CBA /* NIZDerbyTeam.m */; };
+		EBCC4EFA1822257B00099B74 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBCC4EF91822257B00099B74 /* Images.xcassets */; };
+		EBD7AF4E17B178C3008D9995 /* NIZMainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD7AF4D17B178C3008D9995 /* NIZMainTabBarViewController.m */; };
+		EBF6758217ADC8250013010B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF6758117ADC8250013010B /* UIKit.framework */; };
+		EBF6758417ADC8250013010B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF6758317ADC8250013010B /* Foundation.framework */; };
+		EBF6758617ADC8250013010B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF6758517ADC8250013010B /* CoreGraphics.framework */; };
+		EBF6758C17ADC8260013010B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EBF6758A17ADC8260013010B /* InfoPlist.strings */; };
+		EBF6758E17ADC8260013010B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF6758D17ADC8260013010B /* main.m */; };
+		EBF6759217ADC8260013010B /* NIZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF6759117ADC8260013010B /* NIZAppDelegate.m */; };
+		EBF6759417ADC8260013010B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF6759317ADC8260013010B /* Default.png */; };
+		EBF6759617ADC8260013010B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF6759517ADC8260013010B /* Default@2x.png */; };
+		EBF6759817ADC8260013010B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF6759717ADC8260013010B /* Default-568h@2x.png */; };
+		EBF6759B17ADC8260013010B /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF6759917ADC8260013010B /* MainStoryboard.storyboard */; };
+		EBF6759E17ADC8270013010B /* NIZScoreBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF6759D17ADC8270013010B /* NIZScoreBoardViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EB139F2617AEFE880017BBFF /* NIZDerbyBout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZDerbyBout.h; sourceTree = "<group>"; };
+		EB139F2717AEFE880017BBFF /* NIZDerbyBout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZDerbyBout.m; sourceTree = "<group>"; };
+		EB17D14517B024C6006E620E /* NIZSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZSettingsViewController.h; sourceTree = "<group>"; };
+		EB17D14617B024C6006E620E /* NIZSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZSettingsViewController.m; sourceTree = "<group>"; };
+		EB8CFA7D17BDD6330054BF4F /* NIZGameClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZGameClock.h; sourceTree = "<group>"; };
+		EB8CFA7E17BDD6330054BF4F /* NIZGameClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZGameClock.m; sourceTree = "<group>"; };
+		EBAF912C17AE3D2200D76CBA /* -1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "-1.png"; sourceTree = "<group>"; };
+		EBAF912D17AE3D2200D76CBA /* -1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "-1@2x.png"; sourceTree = "<group>"; };
+		EBAF912E17AE3D2200D76CBA /* +1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+1.png"; sourceTree = "<group>"; };
+		EBAF912F17AE3D2200D76CBA /* +1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+1@2x.png"; sourceTree = "<group>"; };
+		EBAF913417AE410400D76CBA /* NIZDerbyJam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZDerbyJam.h; sourceTree = "<group>"; };
+		EBAF913517AE410400D76CBA /* NIZDerbyJam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZDerbyJam.m; sourceTree = "<group>"; };
+		EBAF913817AE4AB200D76CBA /* NIZDerbyTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZDerbyTeam.h; sourceTree = "<group>"; };
+		EBAF913917AE4AB200D76CBA /* NIZDerbyTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZDerbyTeam.m; sourceTree = "<group>"; };
+		EBCC4EF91822257B00099B74 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EBD7AF4C17B178C3008D9995 /* NIZMainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZMainTabBarViewController.h; sourceTree = "<group>"; };
+		EBD7AF4D17B178C3008D9995 /* NIZMainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZMainTabBarViewController.m; sourceTree = "<group>"; };
+		EBF6757E17ADC8250013010B /* DerbyScoreBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DerbyScoreBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBF6758117ADC8250013010B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EBF6758317ADC8250013010B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EBF6758517ADC8250013010B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EBF6758917ADC8260013010B /* DerbyScoreBoard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DerbyScoreBoard-Info.plist"; sourceTree = "<group>"; };
+		EBF6758B17ADC8260013010B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EBF6758D17ADC8260013010B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EBF6758F17ADC8260013010B /* DerbyScoreBoard-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DerbyScoreBoard-Prefix.pch"; sourceTree = "<group>"; };
+		EBF6759017ADC8260013010B /* NIZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIZAppDelegate.h; sourceTree = "<group>"; };
+		EBF6759117ADC8260013010B /* NIZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIZAppDelegate.m; sourceTree = "<group>"; };
+		EBF6759317ADC8260013010B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		EBF6759517ADC8260013010B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		EBF6759717ADC8260013010B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		EBF6759A17ADC8260013010B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		EBF6759C17ADC8270013010B /* NIZScoreBoardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIZScoreBoardViewController.h; sourceTree = "<group>"; };
+		EBF6759D17ADC8270013010B /* NIZScoreBoardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIZScoreBoardViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EBF6757B17ADC8250013010B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBF6758217ADC8250013010B /* UIKit.framework in Frameworks */,
+				EBF6758417ADC8250013010B /* Foundation.framework in Frameworks */,
+				EBF6758617ADC8250013010B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EB0A806117BC46900078CD28 /* M-Clock */ = {
+			isa = PBXGroup;
+			children = (
+				EB8CFA7D17BDD6330054BF4F /* NIZGameClock.h */,
+				EB8CFA7E17BDD6330054BF4F /* NIZGameClock.m */,
+			);
+			name = "M-Clock";
+			sourceTree = "<group>";
+		};
+		EB139F2917AEFF5D0017BBFF /* M-Derby */ = {
+			isa = PBXGroup;
+			children = (
+				EB139F2617AEFE880017BBFF /* NIZDerbyBout.h */,
+				EB139F2717AEFE880017BBFF /* NIZDerbyBout.m */,
+			);
+			name = "M-Derby";
+			sourceTree = "<group>";
+		};
+		EB139F2A17AEFF790017BBFF /* C-Scoreboard */ = {
+			isa = PBXGroup;
+			children = (
+				EBF6759C17ADC8270013010B /* NIZScoreBoardViewController.h */,
+				EBF6759D17ADC8270013010B /* NIZScoreBoardViewController.m */,
+			);
+			name = "C-Scoreboard";
+			sourceTree = "<group>";
+		};
+		EB139F2B17AEFF920017BBFF /* C-App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				EBF6759017ADC8260013010B /* NIZAppDelegate.h */,
+				EBF6759117ADC8260013010B /* NIZAppDelegate.m */,
+			);
+			name = "C-App Delegate";
+			sourceTree = "<group>";
+		};
+		EB17D14417B0248C006E620E /* C-Settings.old */ = {
+			isa = PBXGroup;
+			children = (
+				EB17D14517B024C6006E620E /* NIZSettingsViewController.h */,
+				EB17D14617B024C6006E620E /* NIZSettingsViewController.m */,
+			);
+			name = "C-Settings.old";
+			sourceTree = "<group>";
+		};
+		EBAF912B17AE3D0300D76CBA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EBAF912C17AE3D2200D76CBA /* -1.png */,
+				EBAF912D17AE3D2200D76CBA /* -1@2x.png */,
+				EBAF912E17AE3D2200D76CBA /* +1.png */,
+				EBAF912F17AE3D2200D76CBA /* +1@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		EBAF913717AE464700D76CBA /* M-Jam */ = {
+			isa = PBXGroup;
+			children = (
+				EBAF913417AE410400D76CBA /* NIZDerbyJam.h */,
+				EBAF913517AE410400D76CBA /* NIZDerbyJam.m */,
+			);
+			name = "M-Jam";
+			sourceTree = "<group>";
+		};
+		EBAF913B17AE4AB800D76CBA /* M-Team */ = {
+			isa = PBXGroup;
+			children = (
+				EBAF913817AE4AB200D76CBA /* NIZDerbyTeam.h */,
+				EBAF913917AE4AB200D76CBA /* NIZDerbyTeam.m */,
+			);
+			name = "M-Team";
+			sourceTree = "<group>";
+		};
+		EBD7AF4817B17529008D9995 /* C-MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EBD7AF4C17B178C3008D9995 /* NIZMainTabBarViewController.h */,
+				EBD7AF4D17B178C3008D9995 /* NIZMainTabBarViewController.m */,
+			);
+			name = "C-MainScreen";
+			sourceTree = "<group>";
+		};
+		EBF6757517ADC8250013010B = {
+			isa = PBXGroup;
+			children = (
+				EBF6758717ADC8250013010B /* DerbyScoreBoard */,
+				EBF6758017ADC8250013010B /* Frameworks */,
+				EBF6757F17ADC8250013010B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EBF6757F17ADC8250013010B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBF6757E17ADC8250013010B /* DerbyScoreBoard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EBF6758017ADC8250013010B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EBF6758117ADC8250013010B /* UIKit.framework */,
+				EBF6758317ADC8250013010B /* Foundation.framework */,
+				EBF6758517ADC8250013010B /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EBF6758717ADC8250013010B /* DerbyScoreBoard */ = {
+			isa = PBXGroup;
+			children = (
+				EBF6759917ADC8260013010B /* MainStoryboard.storyboard */,
+				EBD7AF4817B17529008D9995 /* C-MainScreen */,
+				EB17D14417B0248C006E620E /* C-Settings.old */,
+				EB139F2B17AEFF920017BBFF /* C-App Delegate */,
+				EB139F2A17AEFF790017BBFF /* C-Scoreboard */,
+				EB139F2917AEFF5D0017BBFF /* M-Derby */,
+				EB0A806117BC46900078CD28 /* M-Clock */,
+				EBAF913B17AE4AB800D76CBA /* M-Team */,
+				EBAF913717AE464700D76CBA /* M-Jam */,
+				EBCC4EF91822257B00099B74 /* Images.xcassets */,
+				EBF6758817ADC8260013010B /* Supporting Files */,
+			);
+			path = DerbyScoreBoard;
+			sourceTree = "<group>";
+		};
+		EBF6758817ADC8260013010B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EBAF912B17AE3D0300D76CBA /* Images */,
+				EBF6758917ADC8260013010B /* DerbyScoreBoard-Info.plist */,
+				EBF6758A17ADC8260013010B /* InfoPlist.strings */,
+				EBF6758D17ADC8260013010B /* main.m */,
+				EBF6758F17ADC8260013010B /* DerbyScoreBoard-Prefix.pch */,
+				EBF6759317ADC8260013010B /* Default.png */,
+				EBF6759517ADC8260013010B /* Default@2x.png */,
+				EBF6759717ADC8260013010B /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EBF6757D17ADC8250013010B /* DerbyScoreBoard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBF675A117ADC8270013010B /* Build configuration list for PBXNativeTarget "DerbyScoreBoard" */;
+			buildPhases = (
+				EBF6757A17ADC8250013010B /* Sources */,
+				EBF6757B17ADC8250013010B /* Frameworks */,
+				EBF6757C17ADC8250013010B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DerbyScoreBoard;
+			productName = DerbyScoreBoard;
+			productReference = EBF6757E17ADC8250013010B /* DerbyScoreBoard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EBF6757617ADC8250013010B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = NIZ;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Nazario A. Ayala";
+				TargetAttributes = {
+					EBF6757D17ADC8250013010B = {
+						DevelopmentTeam = VSWD46ZU7R;
+					};
+				};
+			};
+			buildConfigurationList = EBF6757917ADC8250013010B /* Build configuration list for PBXProject "DerbyScoreBoard" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EBF6757517ADC8250013010B;
+			productRefGroup = EBF6757F17ADC8250013010B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EBF6757D17ADC8250013010B /* DerbyScoreBoard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EBF6757C17ADC8250013010B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBF6758C17ADC8260013010B /* InfoPlist.strings in Resources */,
+				EBCC4EFA1822257B00099B74 /* Images.xcassets in Resources */,
+				EBF6759417ADC8260013010B /* Default.png in Resources */,
+				EBF6759617ADC8260013010B /* Default@2x.png in Resources */,
+				EBF6759817ADC8260013010B /* Default-568h@2x.png in Resources */,
+				EBF6759B17ADC8260013010B /* MainStoryboard.storyboard in Resources */,
+				EBAF913017AE3D2200D76CBA /* -1.png in Resources */,
+				EBAF913117AE3D2200D76CBA /* -1@2x.png in Resources */,
+				EBAF913217AE3D2200D76CBA /* +1.png in Resources */,
+				EBAF913317AE3D2200D76CBA /* +1@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EBF6757A17ADC8250013010B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBF6758E17ADC8260013010B /* main.m in Sources */,
+				EBF6759217ADC8260013010B /* NIZAppDelegate.m in Sources */,
+				EBF6759E17ADC8270013010B /* NIZScoreBoardViewController.m in Sources */,
+				EBAF913617AE410400D76CBA /* NIZDerbyJam.m in Sources */,
+				EBAF913A17AE4AB200D76CBA /* NIZDerbyTeam.m in Sources */,
+				EB139F2817AEFE880017BBFF /* NIZDerbyBout.m in Sources */,
+				EB17D14717B024C6006E620E /* NIZSettingsViewController.m in Sources */,
+				EBD7AF4E17B178C3008D9995 /* NIZMainTabBarViewController.m in Sources */,
+				EB8CFA7F17BDD6330054BF4F /* NIZGameClock.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EBF6758A17ADC8260013010B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBF6758B17ADC8260013010B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		EBF6759917ADC8260013010B /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBF6759A17ADC8260013010B /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EBF6759F17ADC8270013010B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		EBF675A017ADC8270013010B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EBF675A217ADC8270013010B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DerbyScoreBoard/DerbyScoreBoard-Prefix.pch";
+				INFOPLIST_FILE = "DerbyScoreBoard/DerbyScoreBoard-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		EBF675A317ADC8270013010B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DerbyScoreBoard/DerbyScoreBoard-Prefix.pch";
+				INFOPLIST_FILE = "DerbyScoreBoard/DerbyScoreBoard-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EBF6757917ADC8250013010B /* Build configuration list for PBXProject "DerbyScoreBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBF6759F17ADC8270013010B /* Debug */,
+				EBF675A017ADC8270013010B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBF675A117ADC8270013010B /* Build configuration list for PBXNativeTarget "DerbyScoreBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBF675A217ADC8270013010B /* Debug */,
+				EBF675A317ADC8270013010B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EBF6757617ADC8250013010B /* Project object */;
+}
