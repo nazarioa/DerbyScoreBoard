@@ -242,11 +242,13 @@
                     <connections>
                         <outlet property="boutClockLabel" destination="sLf-ol-Mgr" id="yhn-VO-NOl"/>
                         <outlet property="homeJamScoreTextField" destination="i4u-Gv-3VM" id="YXh-xf-csj"/>
+                        <outlet property="homeJammerPicker" destination="CTF-5q-x8I" id="44x-ih-6tX"/>
                         <outlet property="homeTOCountLabel" destination="nPU-6h-LHX" id="PE0-r1-GUX"/>
                         <outlet property="homeTeamLabel" destination="yFf-f1-LTr" id="D7T-11-qIA"/>
                         <outlet property="homeTotalScoreTextField" destination="07W-IC-7os" id="AOG-CE-4u0"/>
                         <outlet property="jamClockLabel" destination="10o-Wj-neH" id="tiw-LE-AEC"/>
                         <outlet property="visitorJamScoreTextField" destination="9iF-Vh-k0U" id="1f8-9N-GL5"/>
+                        <outlet property="visitorJammerPicker" destination="Eh4-EE-vav" id="Lj7-ul-iuj"/>
                         <outlet property="visitorTOCountLabel" destination="Pyn-ur-Fft" id="Jvf-ym-jGN"/>
                         <outlet property="visitorTeamLabel" destination="2kx-sb-uvI" id="Zb9-X2-VsZ"/>
                         <outlet property="visitorTotalScoreTextField" destination="8Cm-yW-DTA" id="bcJ-7H-mlR"/>
@@ -254,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3398" y="-757"/>
+            <point key="canvasLocation" x="1826" y="-1005"/>
         </scene>
         <!--Settings View Controller - Bout-->
         <scene sceneID="D85-Uk-sFE">
@@ -272,7 +274,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view opaque="NO" contentMode="scaleToFill" id="yYF-sn-Chs">
-                                <rect key="frame" x="384.00000974466928" y="58" width="383.99999025533072" height="897"/>
+                                <rect key="frame" x="384.00001154149004" y="58" width="383.99998845850996" height="897"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="ggR-jv-Y1n">
@@ -296,7 +298,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="SDy-wx-CG8">
-                                        <rect key="frame" x="20" y="144" width="343.99999079075207" height="646"/>
+                                        <rect key="frame" x="20" y="144" width="343.9999890926577" height="646"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
@@ -387,7 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0iR-iA-au4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1520" y="-885"/>
+            <point key="canvasLocation" x="3116" y="-1081"/>
         </scene>
     </scenes>
     <resources>

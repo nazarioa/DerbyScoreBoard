@@ -12,26 +12,19 @@
 #import "NIZGameClock.h"
 
 //allows access to the most recent jam
-NIZDerbyJam *currentJam;
+NIZDerbyJam *currentJam; //? Why is this outside?
 
-@interface NIZScoreBoardViewController ()
+@interface NIZScoreBoardViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
 //--LABELS and TEXTFIELDS
-@property (weak, nonatomic) IBOutlet UILabel *homeTeamLabel;
-@property (weak, nonatomic) IBOutlet UILabel *visitorTeamLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *jamClockLabel;
 @property (weak, nonatomic) IBOutlet UILabel *boutClockLabel;
-@property (weak, nonatomic) IBOutlet UILabel *visitorTOCountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *homeTOCountLabel;
 
-@property (weak, nonatomic) IBOutlet UITextField *homeJamScoreTextField;
-@property (weak, nonatomic) IBOutlet UITextField *visitorJamScoreTextField;
-@property (weak, nonatomic) IBOutlet UITextField *homeTotalScoreTextField;
-@property (weak, nonatomic) IBOutlet UITextField *visitorTotalScoreTextField;
+//----Jam Stuff
+@property (strong, nonatomic) NIZDerbyJam *jam1;
+//@property (strong, nonatomic) NIZDerbyJam *jam2;
+//@property (strong, nonatomic) NIZDerbyJam *jam3;
 
-
-//--DATA STUFF
 
 //---Game Stuff
 @property (strong, nonatomic) NIZDerbyBout *game;
@@ -39,18 +32,25 @@ NIZDerbyJam *currentJam;
 @property (strong, nonatomic) NIZGameClock *jamClock;
 @property (strong, nonatomic) NIZGameClock *preJamClock;
 
-//----Home Team
+//----Home Team Side
 @property (weak, nonatomic) NSString *homeTeamName;
 @property (nonatomic) NSInteger homeTeamTotalScore;
 
-//----Visitor Team
+@property (weak, nonatomic) IBOutlet UILabel *homeTeamLabel;
+@property (weak, nonatomic) IBOutlet UILabel *homeTOCountLabel;
+@property (weak, nonatomic) IBOutlet UITextField *homeJamScoreTextField;
+@property (weak, nonatomic) IBOutlet UITextField *homeTotalScoreTextField;
+@property (weak, nonatomic) IBOutlet UIPickerView *homeJammerPicker;
+
+//----Visitor Team Side
 @property (weak, nonatomic) NSString *visitorTeamName;
 @property (nonatomic) NSInteger visitorTeamTotalScore;
 
-//----Jam Stuff
-@property (strong, nonatomic) NIZDerbyJam *jam1;
-//@property (strong, nonatomic) NIZDerbyJam *jam2;
-//@property (strong, nonatomic) NIZDerbyJam *jam3;
+@property (weak, nonatomic) IBOutlet UILabel *visitorTeamLabel;
+@property (weak, nonatomic) IBOutlet UILabel *visitorTOCountLabel;
+@property (weak, nonatomic) IBOutlet UITextField *visitorJamScoreTextField;
+@property (weak, nonatomic) IBOutlet UITextField *visitorTotalScoreTextField;
+@property (weak, nonatomic) IBOutlet UIPickerView *visitorJammerPicker;
 
 @end
 
