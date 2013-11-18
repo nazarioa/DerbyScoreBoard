@@ -10,106 +10,120 @@
 
 
 @interface NIZGameClock()
-@property NSInteger counterLimit;
-@property NSInteger clockDisplayCount;
+
+{
+    //QUESTION: Instance variables go here?
+    NSString *clockName;
+    NSTimer *timer;
+    int secondsLeft;
+    int hours, minutes, seconds;
+    BOOL isRunning;
+}
+
+// @properties go here.
+// They just declare the _existance_ of methods for variables.
+// QUESTION. Where are these variables defined?
+@property (strong, nonatomic) NSString * clockName;
+@property (strong, nonatomic) NSTimer * timer;
+@property NSInteger timerDuration;
+@property int secondsLeft;
+@property int hours, minutes, seconds;
 @property BOOL isRunning;
-@property NSString * clockName;
+
 @end
 
 
 @implementation NIZGameClock
 
-@synthesize delegate;
 
-@synthesize clockName = _clockName;
-@synthesize counterLimit = _counterLimit;
-@synthesize clockDisplayCount = _clockDisplayCount;
-@synthesize isRunning = _isRunning;
-double timerInterval = 1.00;
-double timerElapsed = 0.0;
-NSDate *timerStarted;
-NSTimer *timer;
+// QUESTION: What sort of variables go here?
 
+//@synthesize delegate;
+//@synthesize clockName;
+//@synthesize clockDisplayCount = _clockDisplayCount;
+//@synthesize isRunning = _isRunning;
+//double timerInterval = 1.00;
+//double timerElapsed = 0.0;
+//NSDate *timerStarted;
+//NSTimer *timer;
 //NSInteger clockDisplayCount;
 
+
 -(id)init{
-    NSLog(@"Init");
+    NSLog(@"init");
     self = [self initWithCounterLimitTo: 10 named:(NSString *) nil];
     return self;
 }
 
--(id)initWithCounterLimitTo:(NSInteger)count named:(NSString *) clockName{
+-(id)initWithCounterLimitTo:(NSInteger)count named:(NSString *) name{
     NSLog(@"initWithCounterLimitTo");
     self = [super init];
     if(self){
         NSLog(@"initWithCounterLimitTo: %ld", (long)count);
-        
-        _counterLimit = count;
-        _clockDisplayCount = count;
-        _clockName = clockName;
-        [self resetClockTo: count];
-        self.isRunning = NO;
+        _clockName = name;
+        _timerDuration = _secondsLeft = count;
+        _isRunning = NO;
     }
     
     return self;
 }
 
--(void) startClock{
-    //NSLog(@"startClock");
-    timer = [NSTimer scheduledTimerWithTimeInterval:(timerInterval - timerElapsed) target:self selector:@selector(fired) userInfo:nil repeats:NO];
-    timerStarted = [NSDate date];
-    self.isRunning = YES;
+-(void)countdownTimer{
+    NSLog(@"countdownTimer");
+    self.hours = self.minutes = self.seconds = 0;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
+    //timer = [NSTimer scheduledTimerWithTimeInterval:(timerInterval - timerElapsed) target:self selector:@selector(fired) userInfo:nil repeats:NO];
+    //timerStarted = [NSDate date];
+    
 }
 
--(void) fired{
-    //NSLog(@"fired %ld", (long)[self clockDisplayCount]);
-    [timer invalidate];
-    timer = nil;
-    timerElapsed = 0.0;
-    [self startClock];
-    [self timeChange: [NSDate date]];
+- (void)updateCounter:(NSTimer *)theTimer {
+    //NSLog(@"Clock name: (%@) time left (%i)", self.clockName, self.secondsLeft);
     
-    //Clock Stuff here.
-    _clockDisplayCount --;
-    
-    if(_clockDisplayCount == 0){
-        [self reachLimit];
-        [self stopClock];
-        [self resetClockTo:_counterLimit];
+    if(self.secondsLeft > 0 ){
+        self.secondsLeft--;
+        self.hours = self.secondsLeft / 3600;
+        self.minutes = (self.secondsLeft % 3600) / 60;
+        self.seconds = (self.secondsLeft % 3600) % 60;
+        self.isRunning = YES;
+        NSLog(@"Clock name: (%@) time left (%i) -- (%02d:%02d:%02d)", self.clockName, self.secondsLeft, self.hours, self.minutes, self.seconds);
+        
+    }else{
+        [self expired];
+        [self pauseClock];
+        //[self resetClockTo:_counterLimit];
     }
+}
+
+-(void) expired{
+    NSLog(@"expired");
+    self.isRunning = NO;
+}
+
+-(bool) isExpired{
+    return self.isRunning;
 }
 
 -(void) pauseClock{
     NSLog(@"pauseClock");
-    [timer invalidate];
-    timer = nil;
-    timerElapsed = [[NSDate date] timeIntervalSinceDate: timerStarted];
-    self.isRunning = NO;
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 -(void) stopClock{
     [self pauseClock];
 }
 
-
--(void) resetClockTo: (NSInteger) count{
-    NSLog(@"resetClockTo %ld", (long)count);
-    if(count < self.counterLimit){
-        self. clockDisplayCount = count;
-    }else{
-        self.clockDisplayCount = self.counterLimit;
-    }
-}
-
 -(void) resetClock{
-    //NSLog(@"resetClock");
-    [self resetClockTo: self.counterLimit];
+    [self resetClockTo: self.timerDuration];
 }
 
--(BOOL) clockIsRunning{
-    return self.isRunning;
+-(void) resetClockTo: (NSInteger) newSecondsLeft{
+    self.secondsLeft = newSecondsLeft;
 }
 
+
+/*
 -(void) timeChange: (NSDate *) newTime{
     NSLog(@"timeChange -- Clock Name: %@", [self clockName]);
     [self.delegate didTimeChange:newTime named:[self clockName]];
@@ -119,6 +133,14 @@ NSTimer *timer;
     NSLog(@"reachLimit");
     [self.delegate didReachLimitOf: [self clockName]];
 }
+*/
 
+
+@synthesize clockName = _clockName;
+@synthesize timer = _timer;
+@synthesize secondsLeft = _secondsLeft;
+@synthesize hours = _hours, minutes = _minutes, seconds = _seconds;
+@synthesize isRunning = _isRunning;
+@synthesize timerDuration = _timerDuration;
 
 @end

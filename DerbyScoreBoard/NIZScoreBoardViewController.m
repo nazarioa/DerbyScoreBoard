@@ -105,22 +105,27 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     self.jamClock     = [[NIZGameClock alloc] initWithCounterLimitTo:120 named:@"JamClock"];
     self.preJamClock  = [[NIZGameClock alloc] initWithCounterLimitTo:20 named:@"preJamClock"];
     
+    NSLog(@"Seoncds left test %i", [self.gameClock secondsLeft]);
+    NSLog(@"Seoncds left test %i", [self.jamClock secondsLeft]);
+    
     NSLog(@"Setting team names");
     self.homeTeamName = @"The Banchee";
     self.visitorTeamName = @"Jack Asses";
     
-    
+    //TODO: create a jam object
+    /*
     self.jam1 = [[NIZDerbyJam alloc] initHomeJammer:@"marsiPanner" visitorJammer:@"bubba-fist"];
     currentJam = self.jam1;
     NSLog(@"current jam %@",currentJam);
     NSLog(@"jam1 %@",self.jam1);
+     */
 
     
     self.homeTeamLabel.text = self.homeTeamName;
     self.visitorTeamLabel.text = self.visitorTeamName;
     
     //creating team roster
-    //TODO - We need to make this a proper data object
+    //TODO: - We need to make this a proper data object
     //NSArray * homeTeamRoster = @[@"Maria Mayem", @"Susie Queue", @"Bust her Possy", @"Princes Bea", @"Lady Killa", @"Wounder Woman"];
     //NSArray * visitorTeamRoster = @[@"Rob-ert", @"Menaice Mike", @"Kernal Panic", @"Buba-fet", @"Neo", @"Mister Mind"];
 }
@@ -134,6 +139,7 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 
 #pragma mark - clock buttons
 - (IBAction)boutClockButton:(UIButton *)sender {
+    /*
     NSLog(@"Official Clock");
     if([self.gameClock clockIsRunning] == YES){
         NSLog(@"Official Clock: Stop Clock");
@@ -142,9 +148,11 @@ NIZDerbyJam *currentJam; //? Why is this outside?
         NSLog(@"Official Clock: Start Clock");
         [self.gameClock startClock];
     }
+     */
 }
 
 - (IBAction)jamClockButton:(UIButton *)sender {
+    /*
     NSLog(@"Jam Clock Stop / Start -- Starting a new jam");
     
     if([self.jamClock clockIsRunning] == YES){
@@ -174,6 +182,7 @@ NIZDerbyJam *currentJam; //? Why is this outside?
             [self.gameClock startClock];
         }
     }
+*/
 }
 
 
@@ -270,5 +279,22 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     }
     return nil;
 }
+
+#pragma test
+- (IBAction)c1test:(id)sender {
+    [self.gameClock countdownTimer];
+}
+- (IBAction)c2test:(id)sender {
+    [self.jamClock countdownTimer];
+}
+
+- (IBAction)p1test:(id)sender {
+    [self.gameClock pauseClock];
+}
+
+- (IBAction)p2test:(id)sender {
+[self.jamClock pauseClock];
+}
+
 
 @end

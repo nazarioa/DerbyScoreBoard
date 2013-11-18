@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NIZGameClock.h"
 
-@interface NIZScoreBoardViewController : UIViewController <GameClockDelegate>
+@interface NIZScoreBoardViewController : UIViewController //<GameClockDelegate>
 
 {
     NIZGameClock *gameClock;
@@ -17,7 +17,6 @@
     NIZGameClock *preJamClock;
 }
 
-//-(void)didTimeChange:(NSDate *)newTime named:(NSString *)clockName;
 
 
 @end
