@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "NIZGameClock.h"
+#import "NIZConstants.h"
 
-@interface NIZScoreBoardViewController : UIViewController //<GameClockDelegate>
+@interface NIZScoreBoardViewController : UIViewController //<NIZGameClockDelegate>
 
 {
     NIZGameClock *gameClock;
     NIZGameClock *jamClock;
     NIZGameClock *preJamClock;
+    
 }
 
 

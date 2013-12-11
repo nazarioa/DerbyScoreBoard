@@ -8,15 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol GameClockDelegate <NSObject>
-
-//@required
-//-(void) didTimeChange: (NSDate *) newTime named:(NSString *) clockName;
-//-(void) didReachLimitOf:(NSString *) clockName;
+/*
+@protocol NIZGameClockDelegate
+@required
+-(void) NIZclockUpdate: (NSString *) time;
 @end
+*/
+
 
 @interface NIZGameClock : NSObject{
     //QUESTION: What are the properties of what goes here? Why would you put something here VS somewhere else.
+    //id<NIZGameClockDelegate> delegate;
 }
 
 -(id) initWithCounterLimitTo: (NSInteger) count named:(NSString *) clockName;
@@ -36,9 +38,5 @@
 //test line
 -(int) secondsLeft;
 
-
-//This line makes a link back to the object(delegate) that will execute on behalf of this object -- the delegate must implement the did * do code;
-//id means that it can be any object the <stuff> means it must conform to the protocall stuff.
-//@property (nonatomic, assign) id<GameClockDelegate> delegate;
 
 @end
