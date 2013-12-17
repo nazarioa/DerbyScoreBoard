@@ -8,18 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-/*
-@protocol NIZGameClockDelegate
+//@class NIZGameClock;
+//This line baiscly says that this class exists at compline if I were to pass itself in but since in timeDidChange: I am suing NS String. I dont need it.
+
+
+@protocol NIZClockDelegate <NSObject>
 @required
--(void) NIZclockUpdate: (NSString *) time;
+- (void) clock: (NSString *) clockName hourIs: (NSNumber *) hours minutesIs:(NSNumber *) minutes secondsIs: (NSNumber *) seconds;
+- (void) clockRechedZero: (NSString *) clockName;
 @end
-*/
 
 
-@interface NIZGameClock : NSObject{
-    //QUESTION: What are the properties of what goes here? Why would you put something here VS somewhere else.
-    //id<NIZGameClockDelegate> delegate;
-}
+@interface NIZGameClock : NSObject{}
+
+//Properties
+@property (weak, nonatomic) id <NIZClockDelegate> delegate;
 
 -(id) initWithCounterLimitTo: (NSInteger) count named:(NSString *) clockName;
 -(id) init;
