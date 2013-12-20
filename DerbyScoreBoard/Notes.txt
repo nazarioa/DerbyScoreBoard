@@ -1,0 +1,4 @@
+
+== Notes ==
+
+* dispatch_queue_t - Look at this as a possible solution to "timer lag upon UI interaction." Provided by Ken S.
