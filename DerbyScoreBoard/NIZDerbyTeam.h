@@ -11,7 +11,9 @@
 @interface NIZDerbyTeam : NSObject
 
 @property (strong, nonatomic) NSString * teamName;
-// team Logo
-// team Roster?
+@property (strong, nonatomic) NSURL * teamLogo;
+
+-(void) addPlayer: (NSString *) name;
+-(void) removePlayer: (int) position;
 
 @end

@@ -8,10 +8,20 @@
 
 #import "NIZDerbyTeam.h"
 
+//---------
+
 @interface NIZDerbyTeam()
+
+@property (strong, nonatomic) NSMutableArray * teamPlayers;
 
 @end
 
+//----------
+
 @implementation NIZDerbyTeam
+
+@synthesize teamName = _teamName;
+@synthesize teamPlayers = _teamPlayers;
+@synthesize teamLogo = _teamLogo;
 
 @end
