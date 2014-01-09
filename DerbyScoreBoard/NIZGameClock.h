@@ -14,7 +14,7 @@
 
 @protocol NIZClockDelegate <NSObject>
 @required
-- (void) clock: (NSString *) clockName hourIs: (NSNumber *) hours minutesIs:(NSNumber *) minutes secondsIs: (NSNumber *) seconds;
+- (void) timeHasChangedFor: (NSString *) clockName hourNowIs: (NSNumber *) hours minuteNowIs:(NSNumber *) minutes secondNowIs: (NSNumber *) seconds;
 - (void) clockRechedZero: (NSString *) clockName;
 @end
 
@@ -24,6 +24,7 @@
 //Properties
 @property (weak, nonatomic) id <NIZClockDelegate> delegate;
 
+-(id) initWithCounterLimitTo:(NSInteger)count named:(NSString *) name delegateIs:(id) delegateName;
 -(id) initWithCounterLimitTo: (NSInteger) count named:(NSString *) clockName;
 -(id) init;
 
