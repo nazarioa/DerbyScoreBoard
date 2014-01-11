@@ -100,7 +100,7 @@
     self.hours = self.secondsLeft / 3600;
     self.minutes = (self.secondsLeft % 3600) / 60;
     self.seconds = (self.secondsLeft % 3600) % 60;
-    if( [self.delegate respondsToSelector:@selector(clock:hourIs:minuteIs:secondIs:)] ){
+    if( [self.delegate respondsToSelector:@selector(timeHasChangedFor:hourNowIs:minuteNowIs:secondNowIs:)] ){
         [self.delegate timeHasChangedFor:self.clockName hourNowIs: [NSNumber numberWithInt: self.hours] minuteNowIs:[NSNumber numberWithInt:self.minutes] secondNowIs: [NSNumber numberWithInt:self.seconds]];
         NSLog(@"Clock: %@ %02d:%02d:%02d", self.clockName, self.hours, self.minutes, self.seconds);
     }else{
