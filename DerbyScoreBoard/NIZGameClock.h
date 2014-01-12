@@ -15,7 +15,7 @@
 @protocol NIZClockDelegate <NSObject>
 @required
 - (void) timeHasChangedFor: (NSString *) clockName hourNowIs: (NSNumber *) hours minuteNowIs:(NSNumber *) minutes secondNowIs: (NSNumber *) seconds;
-- (void) clockRechedZero: (NSString *) clockName;
+- (void) clockReachedZero: (NSString *) clockName;
 @end
 
 

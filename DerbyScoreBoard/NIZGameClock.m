@@ -91,7 +91,7 @@
     }else{
         [self stopClock];
         if( [self.delegate respondsToSelector:@selector(clockRechedZero:)]){
-            [self.delegate clockRechedZero:self.clockName];
+            [self.delegate clockReachedZero:self.clockName];
         }
     }
 }
