@@ -35,7 +35,7 @@
 
 @implementation NIZGameClock
 
-@synthesize delegate;
+@synthesize delegate = _delegate;
 @synthesize clockName = _clockName;
 @synthesize timer = _timer;
 @synthesize secondsLeft = _secondsLeft;

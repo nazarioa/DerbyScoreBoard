@@ -24,7 +24,7 @@
 //Properties
 @property (weak, nonatomic) id <NIZClockDelegate> delegate;
 
--(id) initWithCounterLimitTo:(NSInteger)count named:(NSString *) name delegateIs:(id) delegateName;
+-(id) initWithCounterLimitTo: (NSInteger)count named:(NSString *) name delegateIs:(id) delegateName;
 -(id) initWithCounterLimitTo: (NSInteger) count named:(NSString *) clockName;
 -(id) init;
 
