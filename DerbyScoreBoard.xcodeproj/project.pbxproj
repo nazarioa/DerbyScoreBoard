@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		EB139F2817AEFE880017BBFF /* NIZDerbyBout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB139F2717AEFE880017BBFF /* NIZDerbyBout.m */; };
-		EB14344C184B43AF00240412 /* NIZConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = EB14344B184B43AF00240412 /* NIZConstants.m */; };
 		EB17D14717B024C6006E620E /* NIZSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB17D14617B024C6006E620E /* NIZSettingsViewController.m */; };
 		EB8CFA7F17BDD6330054BF4F /* NIZGameClock.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8CFA7E17BDD6330054BF4F /* NIZGameClock.m */; };
 		EBAF913017AE3D2200D76CBA /* -1.png in Resources */ = {isa = PBXBuildFile; fileRef = EBAF912C17AE3D2200D76CBA /* -1.png */; };
@@ -36,7 +35,6 @@
 		EB139F2617AEFE880017BBFF /* NIZDerbyBout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZDerbyBout.h; sourceTree = "<group>"; };
 		EB139F2717AEFE880017BBFF /* NIZDerbyBout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZDerbyBout.m; sourceTree = "<group>"; };
 		EB14344A184B43AF00240412 /* NIZConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZConstants.h; sourceTree = "<group>"; };
-		EB14344B184B43AF00240412 /* NIZConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZConstants.m; sourceTree = "<group>"; };
 		EB17D14517B024C6006E620E /* NIZSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZSettingsViewController.h; sourceTree = "<group>"; };
 		EB17D14617B024C6006E620E /* NIZSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZSettingsViewController.m; sourceTree = "<group>"; };
 		EB8CFA7D17BDD6330054BF4F /* NIZGameClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZGameClock.h; sourceTree = "<group>"; };
@@ -224,7 +222,6 @@
 				EBF6759517ADC8260013010B /* Default@2x.png */,
 				EBF6759717ADC8260013010B /* Default-568h@2x.png */,
 				EB14344A184B43AF00240412 /* NIZConstants.h */,
-				EB14344B184B43AF00240412 /* NIZConstants.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -315,7 +312,6 @@
 				EB17D14717B024C6006E620E /* NIZSettingsViewController.m in Sources */,
 				EBD7AF4E17B178C3008D9995 /* NIZMainTabBarViewController.m in Sources */,
 				EB8CFA7F17BDD6330054BF4F /* NIZGameClock.m in Sources */,
-				EB14344C184B43AF00240412 /* NIZConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

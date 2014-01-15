@@ -8,10 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NIZConstants : NSObject
-
-
-FOUNDATION_EXPORT NSString *const BOUTCLOCKTITLE;
-FOUNDATION_EXPORT NSString *const JAMCLOCKTITLE;
-
-@end
+NSString *const BOUTCLOCKTITLE = @"FirstConstant";
+NSString *const JAMCLOCKTITLE = @"SecondConstant";
+UIColor * pauseColor = UIColor alloc]

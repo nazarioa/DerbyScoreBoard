@@ -102,11 +102,20 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 //@property (strong, nonatomic) NIZDerbyJam *jam2;
 //@property (strong, nonatomic) NIZDerbyJam *jam3;
 
-#pragma mark -
 
+#pragma mark -
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+    //tapGesture.numberOfTapsRequired = 2;
+    //[self.view addGestureRecognizer:tapGesture];
+    //Because I am learning the tap gesture stuff I modifed the function below from the original above. The goal is to see
+    //where / when the script gets called.
+    
+    UITapGestureRecognizer *jamBtnTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleJamDoubleTapGesture:)];
+    jamBtnTapGesture.numberOfTapsRequired = 2;
+    [self.jamTimeOutBtn addGestureRecognizer:jamBtnTapGesture];
     
     NSLog(@"== Setting Jam Objects ==");
     //TODO: Create a jam object
@@ -115,8 +124,6 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     
     NSLog(@"== Setting Clock Objects ==");
     [self primeClocks];
-    
-    
     
     NSLog(@"== Setting Team Objects ==");
     self.homeTeamName           = @"The Banchee";
@@ -129,7 +136,7 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     //TODO: We need to make this a proper data object
     self.homeTeamRoster = [[NSArray alloc] initWithObjects:@"Maria Mayem", @"Susie Queue", @"Princes Bea", @"Wounder Woman", nil];
     self.visitorTeamRoster = [[NSArray alloc] initWithObjects:@"Rob-ert", @"Menaice Mike", @"Kernal Panic", @"Buba-fet", @"Neo", @"Mister Mind", nil];
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -138,31 +145,22 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     // Dispose of any resources that can be recreated.
 }
 
-- (void)preJamClockStop {
-    NSLog(@"PreJam Clock: Stop Clock");
-    [self.preJamClock stopClock];
-}
-
 - (void)primeClocks
 {
-    self.gameClock    = [[NIZGameClock alloc] initWithCounterLimitTo:1800 named:@"GameClock"];
-    self.jamClock     = [[NIZGameClock alloc] initWithCounterLimitTo:120 named:@"JamClock"];
-    self.preJamClock  = [[NIZGameClock alloc] initWithCounterLimitTo:20 named:@"preJamClock"];
-    
-    //self.gameClock.delle
-    [self.gameClock setDelegate:self];
-    [self.jamClock setDelegate:self];
-    [self.preJamClock setDelegate:self];
+    self.gameClock    = [[NIZGameClock alloc] initWithCounterLimitTo:1800 named:@"GameClock" delegateIs:self];
+    self.jamClock     = [[NIZGameClock alloc] initWithCounterLimitTo:120 named:@"JamClock" delegateIs:self];
+    self.preJamClock  = [[NIZGameClock alloc] initWithCounterLimitTo:20 named:@"preJamClock" delegateIs:self];
     
     [self.officialTimeOutBtn setTitle:@"Start Game Clock" forState: UIControlStateNormal];
     [self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
+    self.jamTimeOutBtn.backgroundColor = [UIColor colorWithRed:92/255.0f green:188/255.0f blue:97/255.0f alpha:1.0f]; //GREEN
 }
 
 
 #pragma mark - boutClock
 - (IBAction)boutClockBtnTouched:(UIButton *)sender {
     if([self.gameClock isRunning] == YES){
-        [self boutClockStop];
+        [self boutClockPaused];
         [self jamClockStop];
         [self preJamClockStop];
     }else{
@@ -170,36 +168,36 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     }
 }
 
-- (void)boutClockStop {
-    NSLog(@"Official Clock: Stop Clock");
+- (void)boutClockPaused {
+    NSLog(@"Official Clock: Paused Clock");
     [self.officialTimeOutBtn setTitle:@"Start Game Clock" forState: UIControlStateNormal];
-    //self.officialTimeOutBtn.backgroundColor = [UIColor redColor];
+    self.officialTimeOutBtn.backgroundColor = [UIColor grayColor];
     [self.jamClock stopClock];
-    [self.gameClock stopClock];
     [self.preJamClock stopClock];
+    [self.gameClock pauseClock];
 }
 
 - (void)boutClockStart {
     NSLog(@"Official Clock: Start Clock");
-    [self.officialTimeOutBtn setTitle:@"Stop Game Clock" forState: UIControlStateNormal];
+    [self.officialTimeOutBtn setTitle:@"Pause Game Clock" forState: UIControlStateNormal];
+    self.officialTimeOutBtn.backgroundColor = [UIColor colorWithRed:188/255.0f green:94/255.0f blue:94/255.0f alpha:1.0f]; //RED
     [self.gameClock countdownTimer];
 }
 
+
 #pragma mark - jamClock
-- (IBAction)jamClockBtnTouched:(UIButton *)sender {
-    if([self.jamClock isRunning] == YES){
-        [self jamClockStop];
-    }else{
-        [self jamClockStart];
-    }
-}
-
-
+//- (IBAction)jamClockBtnTouched:(UIButton *)sender {
+//    if([self.jamClock isRunning] == YES){
+//        [self jamClockPause];
+//    }else{
+//        [self jamClockStart];
+//    }
+//}
 
 - (void)jamClockStart {
     NSLog(@"jamClockButton: Started Jam");
     [self.jamTimeOutBtn setTitle:@"Stop Jam" forState: UIControlStateNormal];
-    //self.jamTimeOutBtn.backgroundColor = [UIColor redColor];
+    self.jamTimeOutBtn.backgroundColor = [UIColor grayColor];
     [self.preJamClock stopClock];
     [self.jamClock countdownTimer];
     if([self.gameClock isRunning] == NO){
@@ -210,7 +208,7 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 - (void)jamClockStop {
     NSLog(@"jamClockButton: Stopped Jam");
     [self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
-    self.jamTimeOutBtn.backgroundColor = [UIColor grayColor];
+    self.jamTimeOutBtn.backgroundColor = [UIColor colorWithRed:92/255.0f green:188/255.0f blue:97/255.0f alpha:1.0f]; //GREEN
     [self.jamClock stopClock];
     [self.preJamClock countdownTimer];
     
@@ -227,6 +225,24 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     self.visitorTotalScoreTextField.text = [[NSString alloc] initWithFormat:@"%i", newVisitorScore];
     currentJam.visitorJamScore = 0;
     self.visitorJamScoreTextField.text = @"0";
+}
+
+- (void)jamClockPause {
+    NSLog(@"jamClockButton: Stopped Jam");
+    [self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
+    self.jamTimeOutBtn.backgroundColor = [UIColor colorWithRed:188/255.0f green:179/255.0f blue:94/255.0f alpha:1.0f]; //YELOW
+    [self.jamClock pauseClock];
+}
+
+#pragma mark - PreJamClock
+- (void)preJamClockStop {
+    NSLog(@"PreJam Clock: Stop Clock");
+    [self.preJamClock stopClock];
+}
+
+- (void)preJamClockStart {
+    NSLog(@"PreJam Clock: Stop Clock");
+    [self.preJamClock startClock];
 }
 
 
@@ -275,7 +291,7 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 
 
 #pragma mark - Game Clock Delegate functions
--(void) clock:(NSString *)clockName hourIs:(NSNumber *)hours minutesIs:(NSNumber *)minutes secondsIs:(NSNumber *)seconds{
+-(void) timeHasChangedFor:(NSString *)clockName hourNowIs:(NSNumber *)hours minuteNowIs:(NSNumber *)minutes secondNowIs:(NSNumber *)seconds{
     if([clockName isEqual: @"GameClock"]){
         self.boutClockLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d", [hours integerValue], [minutes integerValue], [seconds integerValue]];
     }else if ([clockName isEqual: @"JamClock" ]){
@@ -285,6 +301,35 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     }
 }
 
+-(void) clockReachedZero:(NSString *)clockName{
+    NSLog(@"clockReachedZero:");
+    if([clockName isEqual: @"GameClock"]){
+        NSLog(@"end of game clock");
+    }else if ([clockName isEqual: @"JamClock" ]){
+        NSLog(@"end of jam clock");
+        [self.preJamClock resetClock];
+        [self.preJamClock startClock];
+    }else if([clockName isEqual: @"preJamClock" ]){
+        NSLog(@"end of pre jam clock");
+        [self.jamClock stopClock];
+        [self.jamClock startClock];
+    }
+}
+
+
+#pragma mark - Tap gestures
+- (void)handleJamDoubleTapGesture:(UITapGestureRecognizer *)sender
+{
+    if (sender.state == UIGestureRecognizerStateEnded){
+        if([self.jamClock isRunning] == YES){
+            [self jamClockStop];
+            [self preJamClockStart];
+        }else{
+            [self jamClockStart];
+            [self preJamClockStop];
+        }
+    }
+}
 
 #pragma mark - UI Picker Deleagte Functions
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -296,19 +341,6 @@ NIZDerbyJam *currentJam; //? Why is this outside?
         return 1;
     }
 }
-
--(void) clockRechedZero:(NSString *)clockName{
-    if([clockName isEqual: @"GameClock"]){
-        NSLog(@"end of game clock");
-    }else if ([clockName isEqual: @"JamClock" ]){
-        NSLog(@"end of jam clock");
-    }else if([clockName isEqual: @"preJamClock" ]){
-        NSLog(@"end of pre jam clock");
-    }
-}
-
-
-#pragma -
 
 - (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     if([self.homeJammerPicker isEqual:pickerView]){
@@ -329,8 +361,5 @@ NIZDerbyJam *currentJam; //? Why is this outside?
         return @"Null";
     }
 }
-
-
-#pragma mark - test
 
 @end
