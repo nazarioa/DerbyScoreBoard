@@ -205,13 +205,7 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     }
 }
 
-- (void)jamClockStop {
-    NSLog(@"jamClockButton: Stopped Jam");
-    [self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
-    self.jamTimeOutBtn.backgroundColor = [UIColor colorWithRed:92/255.0f green:188/255.0f blue:97/255.0f alpha:1.0f]; //GREEN
-    [self.jamClock stopClock];
-    [self.preJamClock countdownTimer];
-    
+- (void)calculateJamTotals {
     //add score to running total for home team
     NSInteger newHomeScore = currentJam.homeJamScore + self.homeTeamTotalScore;
     self.homeTeamTotalScore = newHomeScore;
@@ -225,6 +219,16 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     self.visitorTotalScoreTextField.text = [[NSString alloc] initWithFormat:@"%i", newVisitorScore];
     currentJam.visitorJamScore = 0;
     self.visitorJamScoreTextField.text = @"0";
+}
+
+- (void)jamClockStop {
+    NSLog(@"jamClockButton: Stopped Jam");
+    [self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
+    self.jamTimeOutBtn.backgroundColor = [UIColor colorWithRed:92/255.0f green:188/255.0f blue:97/255.0f alpha:1.0f]; //GREEN
+    [self.jamClock stopClock];
+    [self.preJamClock countdownTimer];
+    
+    [self calculateJamTotals];
 }
 
 - (void)jamClockPause {
@@ -309,6 +313,7 @@ NIZDerbyJam *currentJam; //? Why is this outside?
         NSLog(@"end of jam clock");
         [self.preJamClock resetClock];
         [self.preJamClock startClock];
+        [self calculateJamTotals];
     }else if([clockName isEqual: @"preJamClock" ]){
         NSLog(@"end of pre jam clock");
         [self.jamClock stopClock];
