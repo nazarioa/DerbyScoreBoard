@@ -10,6 +10,7 @@
 #import "NIZDerbyBout.h"
 #import "NIZDerbyJam.h"
 #import "NIZGameClock.h"
+#import "NIZDerbyTeam.h"
 
 //allows access to the most recent jam
 NIZDerbyJam *currentJam; //? Why is this outside?
@@ -195,7 +196,6 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 //}
 
 - (void)jamClockStart {
-    NSLog(@"jamClockButton: Started Jam");
     [self.jamTimeOutBtn setTitle:@"Stop Jam" forState: UIControlStateNormal];
     self.jamTimeOutBtn.backgroundColor = [UIColor grayColor];
     [self.preJamClock stopClock];
@@ -222,7 +222,6 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 }
 
 - (void)jamClockStop {
-    NSLog(@"jamClockButton: Stopped Jam");
     [self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
     self.jamTimeOutBtn.backgroundColor = [UIColor colorWithRed:92/255.0f green:188/255.0f blue:97/255.0f alpha:1.0f]; //GREEN
     [self.jamClock stopClock];
@@ -306,16 +305,15 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 }
 
 -(void) clockReachedZero:(NSString *)clockName{
-    NSLog(@"clockReachedZero:");
     if([clockName isEqual: @"GameClock"]){
-        NSLog(@"end of game clock");
+        NSLog(@"-- end of game clock --");
     }else if ([clockName isEqual: @"JamClock" ]){
-        NSLog(@"end of jam clock");
+        NSLog(@" -- end of jam clock --");
         [self.preJamClock resetClock];
         [self.preJamClock startClock];
         [self calculateJamTotals];
     }else if([clockName isEqual: @"preJamClock" ]){
-        NSLog(@"end of pre jam clock");
+        NSLog(@"-- end of pre jam clock --");
         [self.jamClock stopClock];
         [self.jamClock startClock];
     }
