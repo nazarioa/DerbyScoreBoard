@@ -117,7 +117,7 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     self.visitorTeamLabel.text  = [self.visitorTeam teamName];
     
     ////SCRATCH PAPER
-    
+    //TODO
     NIZPlayer * homeP1 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa1" derbyNumber:@"no1" firstName:nil lastName:nil];
     NIZPlayer * homeP2 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa2" derbyNumber:@"no2" firstName:nil lastName:nil];
     NIZPlayer * homeP3 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa3" derbyNumber:@"no3" firstName:nil lastName:nil];
@@ -273,27 +273,27 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 
 #pragma mark - Home inputs
 - (IBAction)homeJamScoreInput:(id)sender {
-    NSLog(@"Home Jam Score Input");
+    NSLog(@"  Home Jam Score Input");
 }
 
 - (IBAction)homeTotalScoreInput:(id)sender {
-    NSLog(@"Home Total Score Input");
+    NSLog(@"  Home Total Score Input");
 }
 
 - (IBAction)homeScoreDownButton:(UIButton *)sender {
-    NSLog(@"Home Score Down");
+    NSLog(@"  Home Score Down");
     [currentJam subtractOneFromHome];
     self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam homeJamScore]];
 }
 
 - (IBAction)homeScoreUpButton:(UIButton *)sender {
-    NSLog(@"Home Score Up");
+    NSLog(@"  Home Score Up");
     [currentJam addOneToHome];
     self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam homeJamScore]];
 }
 
 
-#pragma mark - Game Clock Delegate functions
+#pragma mark - NIZClockDelegate:Game Clock Delegate functions
 -(void) timeHasChangedFor:(NSString *)clockName hourNowIs:(NSNumber *)hours minuteNowIs:(NSNumber *)minutes secondNowIs:(NSNumber *)seconds{
     if([clockName isEqual: @"GameClock"]){
         self.boutClockLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d", [hours integerValue], [minutes integerValue], [seconds integerValue]];
@@ -364,5 +364,15 @@ NIZDerbyJam *currentJam; //? Why is this outside?
         return @"Null";
     }
 }
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    NSLog(@"textFieldShouldReturn %@", textField);
+    [textField resignFirstResponder];
+    return YES;
+}
+
+//TODO: constant color
+//const UIColor * blarb = [[UIColor alloc] initWithRed:188/255.0f green:179/255.0f blue:94/255.0f alpha:1.0f];
 
 @end
