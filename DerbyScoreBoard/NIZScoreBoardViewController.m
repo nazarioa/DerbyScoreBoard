@@ -11,13 +11,22 @@
 #import "NIZDerbyJam.h"
 #import "NIZGameClock.h"
 #import "NIZDerbyTeam.h"
+#import "NIZPlayer.h"
 
 //allows access to the most recent jam
 NIZDerbyJam *currentJam; //? Why is this outside?
 
 @interface NIZScoreBoardViewController ()
 
-//--LABELS and TEXTFIELDS
+@property (strong, nonatomic) NIZDerbyBout *game;
+@property (strong, nonatomic) NIZGameClock *gameClock;
+@property (strong, nonatomic) NIZGameClock *jamClock;
+@property (strong, nonatomic) NIZGameClock *preJamClock;
+
+@property (strong, nonatomic) NIZDerbyJam *jam1;
+//@property (strong, nonatomic) NIZDerbyJam *jam2;
+//@property (strong, nonatomic) NIZDerbyJam *jam3;
+
 @property (weak, nonatomic) IBOutlet UILabel *jamClockLabel;
 @property (weak, nonatomic) IBOutlet UILabel *boutClockLabel;
 @property (weak, nonatomic) IBOutlet UILabel *preJamClockLabel;
@@ -25,83 +34,57 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 @property (weak, nonatomic) IBOutlet UIButton *jamTimeOutBtn;
 
 
-//----Jam Stuff
-@property (strong, nonatomic) NIZDerbyJam *jam1;
-//@property (strong, nonatomic) NIZDerbyJam *jam2;
-//@property (strong, nonatomic) NIZDerbyJam *jam3;
-
-
-//---Game Stuff
-@property (strong, nonatomic) NIZDerbyBout *game;
-@property (strong, nonatomic) NIZGameClock *gameClock;
-@property (strong, nonatomic) NIZGameClock *jamClock;
-@property (strong, nonatomic) NIZGameClock *preJamClock;
-
-//----Home Team Side
-@property (weak, nonatomic) NSString *homeTeamName;
+@property (strong, nonatomic) NIZDerbyTeam *homeTeam;
 @property (nonatomic) NSInteger homeTeamTotalScore;
-
 @property (weak, nonatomic) IBOutlet UILabel *homeTeamLabel;
 @property (weak, nonatomic) IBOutlet UILabel *homeTOCountLabel;
 @property (weak, nonatomic) IBOutlet UITextField *homeJamScoreTextField;
 @property (weak, nonatomic) IBOutlet UITextField *homeTotalScoreTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *homeJammerPicker;
-@property (strong, nonatomic) NSArray *homeTeamRoster;
 
-//----Visitor Team Side
-@property (weak, nonatomic) NSString *visitorTeamName;
+
+@property (strong, nonatomic) NIZDerbyTeam *visitorTeam;
 @property (nonatomic) NSInteger visitorTeamTotalScore;
-
 @property (weak, nonatomic) IBOutlet UILabel *visitorTeamLabel;
 @property (weak, nonatomic) IBOutlet UILabel *visitorTOCountLabel;
 @property (weak, nonatomic) IBOutlet UITextField *visitorJamScoreTextField;
 @property (weak, nonatomic) IBOutlet UITextField *visitorTotalScoreTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *visitorJammerPicker;
-@property (strong, nonatomic) NSArray *visitorTeamRoster;
 
 @end
 
 
 @implementation NIZScoreBoardViewController
 
-@synthesize homeTeamLabel;
-@synthesize visitorTeamLabel;
-
-@synthesize jamClockLabel;
-@synthesize boutClockLabel;
-@synthesize visitorTOCountLabel;
-@synthesize homeTOCountLabel;
-
-@synthesize homeJamScoreTextField;
-@synthesize visitorJamScoreTextField;
-@synthesize homeTotalScoreTextField;
-@synthesize visitorTotalScoreTextField;
-
-
-//--DATA STUFF
-
-//---Game Stuff
 @synthesize game;
 @synthesize gameClock;
 @synthesize jamClock;
 @synthesize preJamClock;
 
-//----Home Team
-@synthesize homeTeamName;
-@synthesize homeTeamTotalScore;
-@synthesize homeJammerPicker;
-@synthesize homeTeamRoster;
-
-//----Visitor Team
-@synthesize visitorTeamName;
-@synthesize visitorTeamTotalScore;
-@synthesize visitorJammerPicker;
-@synthesize visitorTeamRoster;
-
-//----Jam Stuff
 @synthesize jam1;
 //@property (strong, nonatomic) NIZDerbyJam *jam2;
 //@property (strong, nonatomic) NIZDerbyJam *jam3;
+
+@synthesize jamClockLabel;
+@synthesize boutClockLabel;
+
+
+@synthesize homeTeam;
+@synthesize homeTeamTotalScore;
+@synthesize homeJammerPicker;
+@synthesize homeTeamLabel;
+@synthesize homeTOCountLabel;
+@synthesize homeJamScoreTextField;
+@synthesize homeTotalScoreTextField;
+
+
+@synthesize visitorTeam;
+@synthesize visitorTeamTotalScore;
+@synthesize visitorJammerPicker;
+@synthesize visitorTeamLabel;
+@synthesize visitorTOCountLabel;
+@synthesize visitorJamScoreTextField;
+@synthesize visitorTotalScoreTextField;
 
 
 #pragma mark -
@@ -127,16 +110,33 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     [self primeClocks];
     
     NSLog(@"== Setting Team Objects ==");
-    self.homeTeamName           = @"The Banchee";
-    self.homeTeamLabel.text     = self.homeTeamName;
+    self.homeTeam = [[NIZDerbyTeam alloc] initWithTeamName:@"The Banchee 2"];
+    self.visitorTeam = [[NIZDerbyTeam alloc] initWithTeamName:@"Jac Asses Duce"];
     
-    self.visitorTeamName        = @"Jack Asses";
-    self.visitorTeamLabel.text  = self.visitorTeamName;
+    self.homeTeamLabel.text     = [self.homeTeam teamName];
+    self.visitorTeamLabel.text  = [self.visitorTeam teamName];
     
-    //creating team roster
-    //TODO: We need to make this a proper data object
-    self.homeTeamRoster = [[NSArray alloc] initWithObjects:@"Maria Mayem", @"Susie Queue", @"Princes Bea", @"Wounder Woman", nil];
-    self.visitorTeamRoster = [[NSArray alloc] initWithObjects:@"Rob-ert", @"Menaice Mike", @"Kernal Panic", @"Buba-fet", @"Neo", @"Mister Mind", nil];
+    ////SCRATCH PAPER
+    
+    NIZPlayer * homeP1 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa1" derbyNumber:@"no1" firstName:nil lastName:nil];
+    NIZPlayer * homeP2 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa2" derbyNumber:@"no2" firstName:nil lastName:nil];
+    NIZPlayer * homeP3 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa3" derbyNumber:@"no3" firstName:nil lastName:nil];
+    NIZPlayer * homeP4 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa4" derbyNumber:@"no4" firstName:nil lastName:nil];
+    NIZPlayer * homeP5 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa5" derbyNumber:@"no5" firstName:nil lastName:nil];
+    
+    NIZPlayer * visitorP1 = [[NIZPlayer alloc] initWithDerbyName:@"V Playa1" derbyNumber:@"no1" firstName:nil lastName:nil];
+    NIZPlayer * visitorP2 = [[NIZPlayer alloc] initWithDerbyName:@"V Playa2" derbyNumber:@"no2" firstName:nil lastName:nil];
+    NIZPlayer * visitorP3 = [[NIZPlayer alloc] initWithDerbyName:@"V Playa3" derbyNumber:@"no3" firstName:nil lastName:nil];
+    
+    [self.homeTeam addPlayer:homeP1];
+    [self.homeTeam addPlayer:homeP2];
+    [self.homeTeam addPlayer:homeP3];
+    [self.homeTeam addPlayer:homeP4];
+    [self.homeTeam addPlayer:homeP5];
+    
+    [self.visitorTeam addPlayer:visitorP1];
+    [self.visitorTeam addPlayer:visitorP2];
+    [self.visitorTeam addPlayer:visitorP3];
     
 }
 
@@ -251,21 +251,21 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 
 #pragma mark - Visitor inputs
 - (IBAction)visitorJamScoreInput:(id)sender {
-    NSLog(@"Visitor Jam Score Input");
+    NSLog(@"  Visitor Jam Score Input");
 }
 
 - (IBAction)visitorTotalScoreInput:(id)sender {
-    NSLog(@"Visitor Total Score Input");
+    NSLog(@"  Visitor Total Score Input");
 }
 
 - (IBAction)visitorScoreDownButton:(UIButton *)sender {
-    NSLog(@"Visitor Score Down");
+    NSLog(@"  Visitor Score Down");
     [currentJam subtractOneFromVisitor];
     self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam visitorJamScore]];
 }
 
 - (IBAction)visitorScoreUpButton:(UIButton *)sender {
-    NSLog(@"Visitor Score Up");
+    NSLog(@"  Visitor Score Up");
     [currentJam addOneToVisitor];
     self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam visitorJamScore]];
 }
@@ -347,9 +347,9 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 
 - (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     if([self.homeJammerPicker isEqual:pickerView]){
-        return self.homeTeamRoster.count;
+        return [self.homeTeam rosterCount];
     }else if([pickerView isEqual:self.visitorJammerPicker]){
-        return self.visitorTeamRoster.count;
+        return [self.visitorTeam rosterCount];
     }else{
         return 1;
     }
@@ -357,9 +357,9 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 
 - (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     if([self.homeJammerPicker isEqual:pickerView]){
-        return [self.homeTeamRoster objectAtIndex:row];
+        return [NSString stringWithFormat:@"%@ - %@", [self.homeTeam playerDerbyNumberAtPosition:row], [self.homeTeam playerDerbyNameAtPosition:row]];
     }else if([pickerView isEqual:self.visitorJammerPicker]){
-        return [self.visitorTeamRoster objectAtIndex:row];
+        return [NSString stringWithFormat:@"%@ - %@", [self.visitorTeam playerDerbyNumberAtPosition:row], [self.visitorTeam playerDerbyNameAtPosition:row]];
     }else{
         return @"Null";
     }
