@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NIZGameClock.h"
 
-@interface NIZScoreBoardViewController : UIViewController <NIZClockDelegate>
+@interface NIZScoreBoardViewController : UIViewController <NIZClockDelegate, UITextFieldDelegate>
 
 {
     NIZGameClock *gameClock;
