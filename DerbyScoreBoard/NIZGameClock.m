@@ -45,7 +45,7 @@
 
 -(id)init{
     NSLog(@"init");
-    self = [self initWithCounterLimitTo: 10 named:(NSString *) nil];
+    self = [self initWithCounterLimitTo: 10 named: nil];
     return self;
 }
 
@@ -77,13 +77,15 @@
 }
 
 -(void)countdownTimer{
-    NSLog(@"countdownTimer");
-    self.hours = self.minutes = self.seconds = 0;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
-    self.isRunning = YES;
+    //TODO: 7.14 -- aka start painting
+        NSLog(@"countdownTimer");
+        self.hours = self.minutes = self.seconds = 0;
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
+        self.isRunning = YES;
 }
 
 - (void)updateCounter:(NSTimer *)theTimer {
+    //TODO: 7.14 -- aka paint
     if(self.secondsLeft > 0 ){
         self.secondsLeft--;
         [self updateDisplay];
@@ -116,6 +118,7 @@
 }
 
 -(void) pauseClock{
+    //TODO: 7.14 -- stop painting
     if( [self isRunning] == YES ){
         [self.timer invalidate];
         self.timer = nil;
