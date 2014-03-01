@@ -8,7 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol NIZJamDelegate <NSObject>
+@optional
+-(void) homeTeamJamScoreDidChange: (NSInteger) newScore;
+-(void) homeTeamScoreDidChange: (NSInteger) newScore;
+-(void) visitorTeamJamScoreDidChange: (NSInteger) newScore;
+-(void) visitorTeamScoreDidChange: (NSInteger) newScore;
+@end
+
 @interface NIZDerbyJam : NSObject
+
+@property (weak, nonatomic) id <NIZJamDelegate> delegate;
+@property NSInteger homeJamScore;
+@property NSInteger visitorJamScore;
 
 -(id) initHomeJammer: (NSString *) home visitorJammer: (NSString *) visitor;
 
@@ -17,9 +29,6 @@
 
 -(void) setHomeJammerName: (NSString *) name;
 -(void) setVisitorJammerName: (NSString *) name;
-
--(NSInteger) homeJamScore;
--(NSInteger) visitorJamScore;
 
 -(NSString *) homeJammerName;
 -(NSString *) visitorJammerName;

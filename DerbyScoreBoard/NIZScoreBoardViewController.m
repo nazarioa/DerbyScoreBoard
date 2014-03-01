@@ -35,7 +35,7 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 
 
 @property (strong, nonatomic) NIZDerbyTeam *homeTeam;
-@property (nonatomic) NSInteger homeTeamTotalScore;
+@property NSInteger homeTeamTotalScore;
 @property (weak, nonatomic) IBOutlet UILabel *homeTeamLabel;
 @property (weak, nonatomic) IBOutlet UILabel *homeTOCountLabel;
 @property (weak, nonatomic) IBOutlet UITextField *homeJamScoreTextField;
@@ -44,7 +44,7 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 
 
 @property (strong, nonatomic) NIZDerbyTeam *visitorTeam;
-@property (nonatomic) NSInteger visitorTeamTotalScore;
+@property NSInteger visitorTeamTotalScore;
 @property (weak, nonatomic) IBOutlet UILabel *visitorTeamLabel;
 @property (weak, nonatomic) IBOutlet UILabel *visitorTOCountLabel;
 @property (weak, nonatomic) IBOutlet UITextField *visitorJamScoreTextField;
@@ -208,14 +208,14 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 
 - (void)calculateJamTotals {
     //add score to running total for home team
-    NSInteger newHomeScore = currentJam.homeJamScore + self.homeTeamTotalScore;
+    NSInteger newHomeScore = [currentJam homeJamScore ] + self.homeTeamTotalScore;
     self.homeTeamTotalScore = newHomeScore;
     self.homeTotalScoreTextField.text = [[NSString alloc] initWithFormat:@"%i", newHomeScore];
     currentJam.homeJamScore = 0;
     self.homeJamScoreTextField.text = @"0";
     
     //add score to running total for visitor team
-    NSInteger newVisitorScore = currentJam.visitorJamScore + self.visitorTeamTotalScore;
+    NSInteger newVisitorScore = [currentJam visitorJamScore] + self.visitorTeamTotalScore;
     self.visitorTeamTotalScore = newVisitorScore;
     self.visitorTotalScoreTextField.text = [[NSString alloc] initWithFormat:@"%i", newVisitorScore];
     currentJam.visitorJamScore = 0;
@@ -250,7 +250,8 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 }
 
 
-#pragma mark - Visitor inputs
+#pragma mark -  Main inputs
+// the following functions may not be needed since the delegate to the textfield handels tapping and stuff.
 - (IBAction)visitorJamScoreInput:(id)sender {
     NSLog(@"  Visitor Jam Score Input");
 }
@@ -259,20 +260,6 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
     NSLog(@"  Visitor Total Score Input");
 }
 
-- (IBAction)visitorScoreDownButton:(UIButton *)sender {
-    NSLog(@"  Visitor Score Down");
-    [currentJam subtractOneFromVisitor];
-    self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam visitorJamScore]];
-}
-
-- (IBAction)visitorScoreUpButton:(UIButton *)sender {
-    NSLog(@"  Visitor Score Up");
-    [currentJam addOneToVisitor];
-    self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam visitorJamScore]];
-}
-
-
-#pragma mark - Home inputs
 - (IBAction)homeJamScoreInput:(id)sender {
     NSLog(@"  Home Jam Score Input");
 }
@@ -319,17 +306,34 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 
 -(void) clockReachedZero:(NSString *)clockName{
     if([clockName isEqual: @"GameClock"]){
-        NSLog(@"-- end of game clock --");
+        NSLog(@"Game clock end");
     }else if ([clockName isEqual: @"JamClock" ]){
-        NSLog(@" -- end of jam clock --");
+        NSLog(@"Jam clock end");
         [self.preJamClock resetClock];
         [self.preJamClock startClock];
         [self calculateJamTotals];
     }else if([clockName isEqual: @"preJamClock" ]){
-        NSLog(@"-- end of pre jam clock --");
+        NSLog(@"Pre jam clock end");
         [self.jamClock stopClock];
         [self.jamClock startClock];
     }
+}
+
+#pragma mark - NIZDerbyJamDelegate
+-(void) homeTeamScoreDidChange:(NSInteger)newScore{
+    
+}
+
+-(void) visitorTeamScoreDidChange:(NSInteger)newScore{
+    
+}
+
+-(void) homeTeamJamScoreDidChange:(NSInteger)newScore{
+    
+}
+
+-(void) visitorTeamJamScoreDidChange:(NSInteger)newScore{
+    
 }
 
 
@@ -379,11 +383,59 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 }
 
 #pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle: NSNumberFormatterNoStyle];
+    NSInteger tempScore = (int)[f numberFromString: textField.text];
+    
+    if ([textField isEqual:homeTotalScoreTextField]){
+        NSLog(@"    homeTotalScoreTextField : textFieldDidEndEditing %@", textField);
+        self.homeTeamTotalScore = tempScore;
+        
+    }else if ([textField isEqual:visitorTotalScoreTextField]){
+        NSLog(@"    visitorTotalScoreTextField : textFieldDidEndEditing %@", textField);
+        self.visitorTeamTotalScore = tempScore;
+    }
+}
+
+
+/*
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    NSLog(@"textFieldShouldReturn %@", textField);
+    / * if([textField isEqual:homeJamScoreTextField]){
+        NSLog(@"    homeJamScoreTextField : textFieldShouldReturn %@", textField);
+        
+        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle: NSNumberFormatterNoStyle];
+        NSInteger tempNewHomeJamScore = [f numberFromString: textField.text];
+        
+        [currentJam setHomeJamScore: tempNewHomeJamScore];
+        self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%d", [currentJam homeJamScore]];
+    }else if([textField isEqual:visitorJamScoreTextField]){
+        NSLog(@"visitorJamScoreTextField : textFieldShouldReturn %@", textField);
+    }else* /
+    if ([textField isEqual:homeTotalScoreTextField]){
+        NSLog(@"homeTotalScoreTextField : textFieldShouldReturn %@\n---------", textField);
+        //
+        
+        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle: NSNumberFormatterNoStyle];
+        NSInteger tempNewJamScore = [f numberFromString: textField.text];
+        
+        [currentJam subtractOneFrom:@"Visitor"];
+        self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam visitorJamScore]];
+        
+    }else if ([textField isEqual:visitorTotalScoreTextField]){
+        NSLog(@"visitorTotalScoreTextField : textFieldShouldReturn %@\n---------", textField);
+    }
+    
     [textField resignFirstResponder];
     return YES;
 }
+
+*/
+
+
 
 //TODO: constant color
 //const UIColor * blarb = [[UIColor alloc] initWithRed:188/255.0f green:179/255.0f blue:94/255.0f alpha:1.0f];

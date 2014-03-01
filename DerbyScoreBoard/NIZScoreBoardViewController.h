@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "NIZGameClock.h"
+#import "NIZDerbyJam.h"
 
-@interface NIZScoreBoardViewController : UIViewController <NIZClockDelegate, UITextFieldDelegate>
+@interface NIZScoreBoardViewController : UIViewController <NIZClockDelegate, NIZJamDelegate>
 
 {
     NIZGameClock *gameClock;

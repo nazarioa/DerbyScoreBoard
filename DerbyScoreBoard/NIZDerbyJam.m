@@ -9,14 +9,19 @@
 #import "NIZDerbyJam.h"
 
 @interface NIZDerbyJam()
-@property (nonatomic) NSInteger homeJamScore;
-@property (nonatomic) NSInteger visitorJamScore;
-@property (strong, nonatomic) NSString * homeJammerName;
-@property (strong, nonatomic) NSString * visitorJammerName;
+
+@property (nonatomic, strong) NSString * homeJammerName;
+@property (nonatomic, strong) NSString * visitorJammerName;
 @end
 
 
 @implementation NIZDerbyJam
+
+@synthesize delegate = _delegate;
+@synthesize homeJammerName = _homeJammerName;
+@synthesize visitorJammerName = _visitorJammerName;
+@synthesize homeJamScore = _homeJamScore;
+@synthesize visitorJamScore = _visitorJamScore;
 
 
 - (id)initHomeJammer: (NSString *) home visitorJammer: (NSString *) visitor{
