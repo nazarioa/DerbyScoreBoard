@@ -145,6 +145,4 @@
     return self.isRunning;
 }
 
-
-
 @end

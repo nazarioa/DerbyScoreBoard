@@ -14,7 +14,7 @@
 #import "NIZPlayer.h"
 
 //allows access to the most recent jam
-NIZDerbyJam *currentJam; //? Why is this outside?
+NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a Class level?
 
 @interface NIZScoreBoardViewController ()
 
@@ -25,7 +25,7 @@ NIZDerbyJam *currentJam; //? Why is this outside?
 
 @property (strong, nonatomic) NIZDerbyJam *jam1;
 //@property (strong, nonatomic) NIZDerbyJam *jam2;
-//@property (strong, nonatomic) NIZDerbyJam *jam3;
+//@property (strong, nonatomic) NIZDerbyJam *jam3; //eventaully I need to make this into some kidn of storage for this data type
 
 @property (weak, nonatomic) IBOutlet UILabel *jamClockLabel;
 @property (weak, nonatomic) IBOutlet UILabel *boutClockLabel;
@@ -117,7 +117,8 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     self.visitorTeamLabel.text  = [self.visitorTeam teamName];
     
     ////SCRATCH PAPER
-    //TODO
+    //TODO: Eventually these objects will be part of a collection that will be created in another view.
+    //For now they shall hang here.
     NIZPlayer * homeP1 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa1" derbyNumber:@"no1" firstName:nil lastName:nil];
     NIZPlayer * homeP2 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa2" derbyNumber:@"no2" firstName:nil lastName:nil];
     NIZPlayer * homeP3 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa3" derbyNumber:@"no3" firstName:nil lastName:nil];
