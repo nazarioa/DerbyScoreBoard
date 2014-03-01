@@ -280,15 +280,27 @@ NIZDerbyJam *currentJam; //? Why is this outside?
     NSLog(@"  Home Total Score Input");
 }
 
+- (IBAction)visitorScoreDownButton:(UIButton *)sender {
+    NSLog(@"  Visitor Score Down");
+    [currentJam subtractOneFrom:@"Visitor"];
+    self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam visitorJamScore]];
+}
+
+- (IBAction)visitorScoreUpButton:(UIButton *)sender {
+    NSLog(@"  Visitor Score Up");
+    [currentJam addOneTo:@"Visitor"];
+    self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam visitorJamScore]];
+}
+
 - (IBAction)homeScoreDownButton:(UIButton *)sender {
     NSLog(@"  Home Score Down");
-    [currentJam subtractOneFromHome];
+    [currentJam subtractOneFrom:@"Home"];
     self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam homeJamScore]];
 }
 
 - (IBAction)homeScoreUpButton:(UIButton *)sender {
     NSLog(@"  Home Score Up");
-    [currentJam addOneToHome];
+    [currentJam addOneTo:@"Home"];
     self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam homeJamScore]];
 }
 

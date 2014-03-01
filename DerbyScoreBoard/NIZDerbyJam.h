@@ -12,14 +12,8 @@
 
 -(id) initHomeJammer: (NSString *) home visitorJammer: (NSString *) visitor;
 
--(void) setHomeJamScore:(NSInteger) score;
--(void) setVisitorJamScore:(NSInteger) score;
-
--(void) addOneToHome;
--(void) addOneToVisitor;
-
--(void) subtractOneFromHome;
--(void) subtractOneFromVisitor;
+-(void) addOneTo:(NSString *) team;
+-(void) subtractOneFrom:(NSString *) team;
 
 -(void) setHomeJammerName: (NSString *) name;
 -(void) setVisitorJammerName: (NSString *) name;

@@ -30,44 +30,52 @@
     return self;
 }
 
-@synthesize homeJammerName = _homeJammerName;
-@synthesize visitorJammerName = _visitorJammerName;
-@synthesize homeJamScore = _homeJamScore;
-@synthesize visitorJamScore = _visitorJamScore;
 
--(void) setHomeJamScore:(NSInteger) score{
-    _homeJamScore = score;
-}
-
--(void) setVisitorJamScore:(NSInteger) score{
-    _visitorJamScore = score;
-}
-
--(void) addOneToHome{
-    _homeJamScore = _homeJamScore+1;
-}
-
--(void) addOneToVisitor{
-    _visitorJamScore = _visitorJamScore+1;
-}
-
--(void) subtractOneFromHome{
-    if(_homeJamScore > 0){
-        _homeJamScore = _homeJamScore-1;
-    }
-}
--(void) subtractOneFromVisitor{
-    if(_visitorJamScore > 0){
-        _visitorJamScore = _visitorJamScore-1;
+//TODO: these could be more concise.
+-(void) addOneTo:(NSString *) team{
+    if([team isEqualToString:@"Visitor"]){
+        self.visitorJamScore = self.visitorJamScore+1;
+        if(self.delegate){
+            [self.delegate visitorTeamJamScoreDidChange: self.visitorJamScore];
+        }
+    }else if([team isEqualToString:@"Home"]){
+        self.homeJamScore = self.homeJamScore+1;
+        if(self.delegate){
+            [self.delegate homeTeamJamScoreDidChange: self.homeJamScore];
+        }
     }
 }
 
--(NSInteger) homeJamScore{
-    return _homeJamScore;
-}
--(NSInteger) visitorJamScore{
-    return _visitorJamScore;
+-(void) subtractOneFrom:(NSString *) team{
+    if([team isEqualToString:@"Visitor"]){
+        self.visitorJamScore = self.visitorJamScore-1;
+        if(self.delegate){
+            [self.delegate visitorTeamJamScoreDidChange: self.visitorJamScore];
+        }
+    }else if([team isEqualToString:@"Home"]){
+        self.homeJamScore = self.homeJamScore-1;
+        if(self.delegate){
+            [self.delegate homeTeamJamScoreDidChange: self.homeJamScore];
+        }
+    }
 }
 
+
+//-(void) setHomeJamScore:(NSInteger)homeJamScore{
+//    
+//}
+//
+//-(void) setVisitorJamScore:(NSInteger)visitorJamScore{
+//    
+//    
+//}
+//
+//-(NSInteger) homeJamScore{
+//    return self.homeJamScore;
+//}
+//
+//-(NSInteger) visitorJamScore{
+//    return self.visitorJamScore;
+//}
 
 @end
