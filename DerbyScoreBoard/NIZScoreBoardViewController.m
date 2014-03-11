@@ -384,56 +384,33 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 
 #pragma mark - UITextFieldDelegate
 
-- (void)textFieldDidEndEditing:(UITextField *)textField{
+- (void)textInputTotalScores:(UITextField *)textField {
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle: NSNumberFormatterNoStyle];
-    NSInteger tempScore = (int)[f numberFromString: textField.text];
+    NSNumber * tempScore = [f numberFromString: textField.text];
     
     if ([textField isEqual:homeTotalScoreTextField]){
         NSLog(@"    homeTotalScoreTextField : textFieldDidEndEditing %@", textField);
-        self.homeTeamTotalScore = tempScore;
+        self.homeTeamTotalScore = [tempScore integerValue];
         
     }else if ([textField isEqual:visitorTotalScoreTextField]){
         NSLog(@"    visitorTotalScoreTextField : textFieldDidEndEditing %@", textField);
-        self.visitorTeamTotalScore = tempScore;
+        self.visitorTeamTotalScore = [tempScore integerValue];
     }
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    [self textInputTotalScores:textField];
+}
 
-/*
+
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    / * if([textField isEqual:homeJamScoreTextField]){
-        NSLog(@"    homeJamScoreTextField : textFieldShouldReturn %@", textField);
-        
-        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle: NSNumberFormatterNoStyle];
-        NSInteger tempNewHomeJamScore = [f numberFromString: textField.text];
-        
-        [currentJam setHomeJamScore: tempNewHomeJamScore];
-        self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%d", [currentJam homeJamScore]];
-    }else if([textField isEqual:visitorJamScoreTextField]){
-        NSLog(@"visitorJamScoreTextField : textFieldShouldReturn %@", textField);
-    }else* /
-    if ([textField isEqual:homeTotalScoreTextField]){
-        NSLog(@"homeTotalScoreTextField : textFieldShouldReturn %@\n---------", textField);
-        //
-        
-        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle: NSNumberFormatterNoStyle];
-        NSInteger tempNewJamScore = [f numberFromString: textField.text];
-        
-        [currentJam subtractOneFrom:@"Visitor"];
-        self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam visitorJamScore]];
-        
-    }else if ([textField isEqual:visitorTotalScoreTextField]){
-        NSLog(@"visitorTotalScoreTextField : textFieldShouldReturn %@\n---------", textField);
-    }
+    [self textInputTotalScores:textField];
     
     [textField resignFirstResponder];
     return YES;
 }
-
-*/
 
 
 
