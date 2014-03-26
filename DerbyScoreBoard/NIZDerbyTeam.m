@@ -8,15 +8,13 @@
 
 #import "NIZDerbyTeam.h"
 
-//---------
+
 
 @interface NIZDerbyTeam()
-
 @property (strong, nonatomic) NSMutableArray * teamRoster;
-
 @end
 
-//----------
+
 
 @implementation NIZDerbyTeam
 
