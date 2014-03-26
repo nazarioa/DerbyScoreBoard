@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Nazario A. Ayala. All rights reserved.
 //
 
+#import "NIZAppDelegate.h"
 #import "NIZScoreBoardViewController.h"
 #import "NIZDerbyBout.h"
 #import "NIZDerbyJam.h"
-#import "NIZGameClock.h"
 #import "NIZDerbyTeam.h"
 #import "NIZPlayer.h"
 
@@ -23,9 +23,10 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 @property (strong, nonatomic) NIZGameClock *jamClock;
 @property (strong, nonatomic) NIZGameClock *preJamClock;
 
+@property (weak, nonatomic) NSMutableArray *jamLog;
 @property (strong, nonatomic) NIZDerbyJam *jam1;
 //@property (strong, nonatomic) NIZDerbyJam *jam2;
-//@property (strong, nonatomic) NIZDerbyJam *jam3; //eventaully I need to make this into some kidn of storage for this data type
+//@property (strong, nonatomic) NIZDerbyJam *jam3; //eventaully I need to make this into some kind of storage for this data type
 
 @property (weak, nonatomic) IBOutlet UILabel *jamClockLabel;
 @property (weak, nonatomic) IBOutlet UILabel *boutClockLabel;
@@ -50,6 +51,8 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 @property (weak, nonatomic) IBOutlet UITextField *visitorJamScoreTextField;
 @property (weak, nonatomic) IBOutlet UITextField *visitorTotalScoreTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *visitorJammerPicker;
+
+@property (weak, nonatomic) NIZAppDelegate * appDelegate;
 
 @end
 
@@ -86,6 +89,8 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 @synthesize visitorJamScoreTextField;
 @synthesize visitorTotalScoreTextField;
 
+@synthesize appDelegate;
+
 
 #pragma mark -
 - (void)viewDidLoad
@@ -101,20 +106,46 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
     jamBtnTapGesture.numberOfTapsRequired = 2;
     [self.jamTimeOutBtn addGestureRecognizer:jamBtnTapGesture];
     
-    NSLog(@"== Setting Jam Objects ==");
+    
+    self.appDelegate = (NIZAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [self updateConfiguration];
+    NSLog(@"NIZScoreBoardViewController: %@", self);
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+-(void) updateConfiguration{
+    NSLog(@"UPDATE CONFIGURATION");
+//    NSLog(@"== Setting Jam Objects ==");
     //TODO: Create a jam object
     self.jam1 = [[NIZDerbyJam alloc] initHomeJammer:@"marsiPanner" visitorJammer:@"bubba-fist"];
     currentJam = self.jam1;
     
-    NSLog(@"== Setting Clock Objects ==");
+//    NSLog(@"== Setting Clock Objects ==");
     [self primeClocks];
     
-    NSLog(@"== Setting Team Objects ==");
-    self.homeTeam = [[NIZDerbyTeam alloc] initWithTeamName:@"The Banchee 2"];
-    self.visitorTeam = [[NIZDerbyTeam alloc] initWithTeamName:@"Jac Asses Duce"];
+    //self.homeTeam = self.appDelegate.homeTeam;
+    //self.visitorTeam = self.appDelegate.visitorTeam;
+    if(self.homeTeam == nil)
+        self.homeTeam = [[NIZDerbyTeam alloc] initWithTeamName:@"Home"];
+    if(self.visitorTeam == nil)
+        self.visitorTeam = [[NIZDerbyTeam alloc] initWithTeamName:@"Visitor"];
     
+//    NSLog(@"==Other config==");
     self.homeTeamLabel.text     = [self.homeTeam teamName];
     self.visitorTeamLabel.text  = [self.visitorTeam teamName];
+    
+    self.homeJamScoreTextField.text     = @"0";
+    self.visitorJamScoreTextField.text  = @"0";
+    self.homeTotalScoreTextField.text   = @"0";
+    self.visitorTotalScoreTextField.text= @"0";
     
     ////SCRATCH PAPER
     //TODO: Eventually these objects will be part of a collection that will be created in another view.
@@ -138,13 +169,6 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
     [self.visitorTeam addPlayer:visitorP1];
     [self.visitorTeam addPlayer:visitorP2];
     [self.visitorTeam addPlayer:visitorP3];
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)primeClocks
@@ -171,7 +195,7 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 }
 
 - (void)boutClockPaused {
-    NSLog(@"Official Clock: Paused Clock");
+//    NSLog(@"Official Clock: Paused Clock");
     [self.officialTimeOutBtn setTitle:@"Start Game Clock" forState: UIControlStateNormal];
     self.officialTimeOutBtn.backgroundColor = [UIColor grayColor];
     [self.jamClock stopClock];
@@ -180,7 +204,7 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 }
 
 - (void)boutClockStart {
-    NSLog(@"Official Clock: Start Clock");
+//    NSLog(@"Official Clock: Start Clock");
     [self.officialTimeOutBtn setTitle:@"Pause Game Clock" forState: UIControlStateNormal];
     self.officialTimeOutBtn.backgroundColor = [UIColor colorWithRed:188/255.0f green:94/255.0f blue:94/255.0f alpha:1.0f]; //RED
     [self.gameClock countdownTimer];
@@ -210,14 +234,14 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
     //add score to running total for home team
     NSInteger newHomeScore = [currentJam homeJamScore ] + self.homeTeamTotalScore;
     self.homeTeamTotalScore = newHomeScore;
-    self.homeTotalScoreTextField.text = [[NSString alloc] initWithFormat:@"%i", newHomeScore];
+    self.homeTotalScoreTextField.text = [[NSString alloc] initWithFormat:@"%li", (long)newHomeScore];
     currentJam.homeJamScore = 0;
     self.homeJamScoreTextField.text = @"0";
     
     //add score to running total for visitor team
     NSInteger newVisitorScore = [currentJam visitorJamScore] + self.visitorTeamTotalScore;
     self.visitorTeamTotalScore = newVisitorScore;
-    self.visitorTotalScoreTextField.text = [[NSString alloc] initWithFormat:@"%i", newVisitorScore];
+    self.visitorTotalScoreTextField.text = [[NSString alloc] initWithFormat:@"%li", (long)newVisitorScore];
     currentJam.visitorJamScore = 0;
     self.visitorJamScoreTextField.text = @"0";
 }
@@ -271,25 +295,25 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 - (IBAction)visitorScoreDownButton:(UIButton *)sender {
     NSLog(@"  Visitor Score Down");
     [currentJam subtractOneFrom:@"Visitor"];
-    self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam visitorJamScore]];
+    self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%li", (long)[currentJam visitorJamScore]];
 }
 
 - (IBAction)visitorScoreUpButton:(UIButton *)sender {
     NSLog(@"  Visitor Score Up");
     [currentJam addOneTo:@"Visitor"];
-    self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam visitorJamScore]];
+    self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%li", (long)[currentJam visitorJamScore]];
 }
 
 - (IBAction)homeScoreDownButton:(UIButton *)sender {
     NSLog(@"  Home Score Down");
     [currentJam subtractOneFrom:@"Home"];
-    self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam homeJamScore]];
+    self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%li", (long)[currentJam homeJamScore]];
 }
 
 - (IBAction)homeScoreUpButton:(UIButton *)sender {
     NSLog(@"  Home Score Up");
     [currentJam addOneTo:@"Home"];
-    self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%i", [currentJam homeJamScore]];
+    self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%li", (long)[currentJam homeJamScore]];
 }
 
 
@@ -412,6 +436,39 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
     return YES;
 }
 
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"toConfigureSegue" ]){
+        NIZConfigureViewController *configureScoreBoard = (NIZConfigureViewController *) segue.destinationViewController;
+        [configureScoreBoard setDelegate:self];
+    }
+}
+
+-(void) setTeamNameTo:(NSString *)name forTeam:(NSString *)team{
+    if(self.appDelegate != nil){
+        if([team isEqualToString:@"home"]){
+            //self.appDelegate.homeTeam.teamName = name;
+            self.homeTeam.teamName = name;
+            NSLog(@"     homeTeam3 name: %@", name);
+        }else if([team isEqualToString:@"visitor"]){
+            //self.appDelegate.visitorTeam.teamName = name;
+            self.visitorTeam.teamName = name;
+            NSLog(@"     visitorTeam3 name: %@", name);
+        }
+    }
+}
+
+-(NSString *) getTeamNameFor:(NSString *)team{
+    NSString * temp;
+    
+    if([team isEqualToString:@"home"]){
+        temp = self.homeTeam.teamName;
+    }else if([team isEqualToString:@"visitor"]){
+        temp = self.visitorTeam.teamName;
+    }
+    
+    return temp;
+}
 
 
 //TODO: constant color

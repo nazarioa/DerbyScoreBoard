@@ -9,14 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "NIZGameClock.h"
 #import "NIZDerbyJam.h"
+#import "NIZConfigureViewController.h"
 
-@interface NIZScoreBoardViewController : UIViewController <NIZClockDelegate, NIZJamDelegate>
+@interface NIZScoreBoardViewController : UIViewController <NIZClockDelegate, NIZJamDelegate, NIZDerbyGameProtocol>
 
 {
     NIZGameClock *gameClock;
     NIZGameClock *jamClock;
     NIZGameClock *preJamClock;
-    
 }
+
+
+-(void) updateConfiguration;
+-(void) setHomeTeamName: (NSString *) home visitorTeamName: (NSString *) visitor;
+-(void) setTeamNameTo: (NSString *) name forTeam:(NSString *) team;
+-(NSString *) getTeamNameFor: (NSString *) team;
 
 @end
