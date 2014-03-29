@@ -103,8 +103,8 @@
 		EB139F2A17AEFF790017BBFF /* C-Scoreboard */ = {
 			isa = PBXGroup;
 			children = (
-				EBF6759C17ADC8270013010B /* NIZScoreBoardViewController.h */,
 				EBF6759D17ADC8270013010B /* NIZScoreBoardViewController.m */,
+				EBF6759C17ADC8270013010B /* NIZScoreBoardViewController.h */,
 			);
 			name = "C-Scoreboard";
 			sourceTree = "<group>";
@@ -159,8 +159,8 @@
 		EBAF913B17AE4AB800D76CBA /* M-Team */ = {
 			isa = PBXGroup;
 			children = (
-				EBAF913817AE4AB200D76CBA /* NIZDerbyTeam.h */,
 				EBAF913917AE4AB200D76CBA /* NIZDerbyTeam.m */,
+				EBAF913817AE4AB200D76CBA /* NIZDerbyTeam.h */,
 			);
 			name = "M-Team";
 			sourceTree = "<group>";
