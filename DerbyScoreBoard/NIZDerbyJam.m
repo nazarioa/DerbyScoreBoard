@@ -69,22 +69,4 @@
     }
 }
 
-
-//-(void) setHomeJamScore:(NSInteger)homeJamScore{
-//    
-//}
-//
-//-(void) setVisitorJamScore:(NSInteger)visitorJamScore{
-//    
-//    
-//}
-//
-//-(NSInteger) homeJamScore{
-//    return self.homeJamScore;
-//}
-//
-//-(NSInteger) visitorJamScore{
-//    return self.visitorJamScore;
-//}
-
 @end
