@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NIZDerbyTeam.h"
 //#import "NIZScoreBoardViewController.h"
 
 @class NIZScoreBoardViewController;
 
 @protocol NIZDerbyGameProtocol <NSObject>
 -(void) updateConfiguration;
--(void) setTeamNameTo: (NSString *) name forTeam:(NSString *) team;
--(NSString *) getTeamNameFor: (NSString *) team;
+-(NIZDerbyTeam *) getTeam: (NSString *) team;
 @end
 
 
