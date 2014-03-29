@@ -53,14 +53,18 @@
 
 -(void) subtractOneFrom:(NSString *) team{
     if([team isEqualToString:@"Visitor"]){
-        self.visitorJamScore = self.visitorJamScore-1;
-        if(self.delegate){
-            [self.delegate visitorTeamJamScoreDidChange: self.visitorJamScore];
+        if(self.visitorJamScore > 0){
+            self.visitorJamScore = self.visitorJamScore-1;
+            if(self.delegate){
+                [self.delegate visitorTeamJamScoreDidChange: self.visitorJamScore];
+            }
         }
     }else if([team isEqualToString:@"Home"]){
-        self.homeJamScore = self.homeJamScore-1;
-        if(self.delegate){
-            [self.delegate homeTeamJamScoreDidChange: self.homeJamScore];
+        if(self.visitorJamScore > 0){
+            self.homeJamScore = self.homeJamScore-1;
+            if(self.delegate){
+                [self.delegate homeTeamJamScoreDidChange: self.homeJamScore];
+            }
         }
     }
 }
