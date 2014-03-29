@@ -103,10 +103,9 @@
     self.minutes = (self.secondsLeft % 3600) / 60;
     self.seconds = (self.secondsLeft % 3600) % 60;
     if( [self.delegate respondsToSelector:@selector(timeHasChangedFor:hourNowIs:minuteNowIs:secondNowIs:)] ){
-        [self.delegate timeHasChangedFor:self.clockName hourNowIs: [NSNumber numberWithInt: self.hours] minuteNowIs:[NSNumber numberWithInt:self.minutes] secondNowIs: [NSNumber numberWithInt:self.seconds]];
-        // NSLog(@"Clock: %@ %02d:%02d:%02d", self.clockName, self.hours, self.minutes, self.seconds);
+        [self.delegate timeHasChangedFor: self.clockName hourNowIs: [NSNumber numberWithInt: self.hours] minuteNowIs:[NSNumber numberWithInt: self.minutes] secondNowIs: [NSNumber numberWithInt: self.seconds]];
     }else{
-        NSLog(@"DELEGATE NOT FOUND -- Clock: %@ %02d:%02d:%02d", self.clockName, self.hours, self.minutes, self.seconds);
+        NSLog(@"DELEGATE NOT FOUND -- Clock: %@ %02d:%02d:%02d", self.clockName, (int)self.hours, (int)self.minutes, (int)self.seconds);
     }
 }
 
@@ -131,7 +130,7 @@
 }
 
 -(void) resetClockTo: (NSInteger) newSecondsLeft{
-    NSLog(@"resetClockTo: %i ", newSecondsLeft);
+    NSLog(@"resetClockTo: %i ", (int)newSecondsLeft);
     self.secondsLeft = newSecondsLeft;
     [self updateDisplay];
 }

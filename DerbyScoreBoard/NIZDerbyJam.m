@@ -22,6 +22,7 @@
 @synthesize visitorJammerName = _visitorJammerName;
 @synthesize homeJamScore = _homeJamScore;
 @synthesize visitorJamScore = _visitorJamScore;
+@synthesize leadJammerStatus = _leadJammerStatus;
 
 
 - (id)initHomeJammer: (NSString *) home visitorJammer: (NSString *) visitor{

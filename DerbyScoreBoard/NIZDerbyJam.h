@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum{
+    NONE,
+    HOME,
+    VISITOR
+}leadJammer;
+
+
 @protocol NIZJamDelegate <NSObject>
 @optional
 -(void) homeTeamJamScoreDidChange: (NSInteger) newScore;
@@ -21,6 +28,7 @@
 @property (weak, nonatomic) id <NIZJamDelegate> delegate;
 @property NSInteger homeJamScore;
 @property NSInteger visitorJamScore;
+@property (nonatomic) leadJammer leadJammerStatus;
 
 -(id) initHomeJammer: (NSString *) home visitorJammer: (NSString *) visitor;
 

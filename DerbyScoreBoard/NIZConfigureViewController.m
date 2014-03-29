@@ -38,7 +38,6 @@
     [super viewDidLoad];
     
     if([self.delegate getTeam:@"Home"] != nil){
-        NSLog(@"    home is not nil");
         self.homeTeam = [self.delegate getTeam:@"Home"];
         self.visitorTeam = [self.delegate getTeam:@"Visitor"];
     }

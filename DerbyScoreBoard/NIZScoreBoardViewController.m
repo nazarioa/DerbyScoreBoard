@@ -15,6 +15,12 @@
 
 //allows access to the most recent jam
 NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a Class level?
+UIColor * blueColor;
+UIColor * btnGreyColor;
+UIColor * btnGreenColor;
+UIColor * btnRedColor;
+UIColor * btnYellowColor;
+UIColor * labelGreyColor;
 
 @interface NIZScoreBoardViewController ()
 
@@ -42,6 +48,7 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 @property (weak, nonatomic) IBOutlet UITextField *homeJamScoreTextField;
 @property (weak, nonatomic) IBOutlet UITextField *homeTotalScoreTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *homeJammerPicker;
+@property (weak, nonatomic) IBOutlet UIButton *homeLeadJammerBtn;
 
 
 @property (strong, nonatomic) NIZDerbyTeam *visitorTeam;
@@ -51,6 +58,7 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 @property (weak, nonatomic) IBOutlet UITextField *visitorJamScoreTextField;
 @property (weak, nonatomic) IBOutlet UITextField *visitorTotalScoreTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *visitorJammerPicker;
+@property (weak, nonatomic) IBOutlet UIButton *visitorLeadJammerBtn;
 
 @property (weak, nonatomic) NIZAppDelegate * appDelegate;
 
@@ -96,6 +104,8 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setupColors];
+    
     //UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
     //tapGesture.numberOfTapsRequired = 2;
     //[self.view addGestureRecognizer:tapGesture];
@@ -112,6 +122,14 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
     [self updateConfiguration];
     NSLog(@"NIZScoreBoardViewController: %@", self);
     
+}
+
+-(void) setupColors{
+    blueColor     = [[UIColor alloc] initWithRed:8/255.0f green:107/255.0f blue:255/255.0f alpha:1.0f]; //blue
+    btnGreyColor  = [[UIColor alloc] initWithRed:0.36 green:0.36 blue:0.36 alpha:1.0]; //grey
+    btnGreenColor = [[UIColor alloc] initWithRed:92/255.0f green:188/255.0f blue:97/255.0f alpha:1.0f]; //green
+    btnRedColor   = [[UIColor alloc] initWithRed:188/255.0f green:94/255.0f blue:94/255.0f alpha:1.0f]; //red
+    btnYellowColor= [[UIColor alloc] initWithRed:188/255.0f green:179/255.0f blue:94/255.0f alpha:1.0f]; //yeleow
 }
 
 - (void)didReceiveMemoryWarning
@@ -187,7 +205,7 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
     
     [self.officialTimeOutBtn setTitle:@"Start Game Clock" forState: UIControlStateNormal];
     [self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
-    self.jamTimeOutBtn.backgroundColor = [UIColor colorWithRed:92/255.0f green:188/255.0f blue:97/255.0f alpha:1.0f]; //GREEN
+    self.jamTimeOutBtn.backgroundColor = btnGreenColor;
 }
 
 
@@ -205,7 +223,7 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 - (void)boutClockPaused {
 //    NSLog(@"Official Clock: Paused Clock");
     [self.officialTimeOutBtn setTitle:@"Start Game Clock" forState: UIControlStateNormal];
-    self.officialTimeOutBtn.backgroundColor = [UIColor grayColor];
+    self.officialTimeOutBtn.backgroundColor = btnGreyColor;
     [self.jamClock stopClock];
     [self.preJamClock stopClock];
     [self.gameClock pauseClock];
@@ -214,7 +232,7 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 - (void)boutClockStart {
 //    NSLog(@"Official Clock: Start Clock");
     [self.officialTimeOutBtn setTitle:@"Pause Game Clock" forState: UIControlStateNormal];
-    self.officialTimeOutBtn.backgroundColor = [UIColor colorWithRed:188/255.0f green:94/255.0f blue:94/255.0f alpha:1.0f]; //RED
+    self.officialTimeOutBtn.backgroundColor = btnRedColor;
     [self.gameClock countdownTimer];
 }
 
@@ -222,7 +240,7 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 #pragma mark - jamClock
 - (void)jamClockStart {
     [self.jamTimeOutBtn setTitle:@"Stop Jam" forState: UIControlStateNormal];
-    self.jamTimeOutBtn.backgroundColor = [UIColor grayColor];
+    self.jamTimeOutBtn.backgroundColor = btnGreyColor;
     [self.preJamClock stopClock];
     [self.jamClock countdownTimer];
     if([self.gameClock isRunning] == NO){
@@ -248,7 +266,7 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 
 - (void)jamClockStop {
     [self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
-    self.jamTimeOutBtn.backgroundColor = [UIColor colorWithRed:92/255.0f green:188/255.0f blue:97/255.0f alpha:1.0f]; //GREEN
+    self.jamTimeOutBtn.backgroundColor = btnGreenColor; //GREEN
     [self.jamClock stopClock];
     [self.preJamClock countdownTimer];
     
@@ -258,7 +276,7 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 - (void)jamClockPause {
     NSLog(@"jamClockButton: Stopped Jam");
     [self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
-    self.jamTimeOutBtn.backgroundColor = [UIColor colorWithRed:188/255.0f green:179/255.0f blue:94/255.0f alpha:1.0f]; //YELOW
+    self.jamTimeOutBtn.backgroundColor = btnYellowColor; //YELOW
     [self.jamClock pauseClock];
 }
 
@@ -316,15 +334,47 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
     self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%li", (long)[currentJam homeJamScore]];
 }
 
+- (IBAction)homeLeadJammerBtnTouched:(id)sender {
+    if([currentJam leadJammerStatus] != HOME){
+        [currentJam setLeadJammerStatus:HOME];
+        self.homeLeadJammerBtn.backgroundColor = blueColor;
+        self.visitorLeadJammerBtn.backgroundColor = btnGreyColor;
+    }else if([currentJam leadJammerStatus] == HOME){
+        [self resetLeadJammerStatus];
+    }
+}
+
+//TODO -- I think that the above and below functions can be reduced.
+
+- (IBAction)visitorLeadJammerBtnTouched:(id)sender {
+    if([currentJam leadJammerStatus] != VISITOR){
+        [currentJam setLeadJammerStatus:VISITOR];
+        self.visitorLeadJammerBtn.backgroundColor = blueColor;
+        self.homeLeadJammerBtn.backgroundColor = btnGreyColor;
+    }else if([currentJam leadJammerStatus] == VISITOR){
+        [self resetLeadJammerStatus];
+    }
+}
+
+- (void)resetLeadJammerStatus {
+    [currentJam setLeadJammerStatus:NONE];
+    self.homeLeadJammerBtn.backgroundColor = btnGreyColor;
+    self.visitorLeadJammerBtn.backgroundColor = btnGreyColor;
+}
 
 #pragma mark - NIZClockDelegate:Game Clock Delegate functions
 -(void) timeHasChangedFor:(NSString *)clockName hourNowIs:(NSNumber *)hours minuteNowIs:(NSNumber *)minutes secondNowIs:(NSNumber *)seconds{
     if([clockName isEqual: @"GameClock"]){
-        self.boutClockLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d", [hours integerValue], [minutes integerValue], [seconds integerValue]];
+        self.boutClockLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d", (int)[hours integerValue], (int)[minutes integerValue], (int)[seconds integerValue]];
     }else if ([clockName isEqual: @"JamClock" ]){
-        self.jamClockLabel.text = [NSString stringWithFormat:@"%02d:%02d", [minutes integerValue], [seconds integerValue]];
+        self.jamClockLabel.text = [NSString stringWithFormat:@"%02d:%02d", (int)[minutes integerValue], (int)[seconds integerValue]];
     }else if([clockName isEqual: @"preJamClock" ]){
-        self.preJamClockLabel.text = [NSString stringWithFormat:@"%02d", [seconds integerValue]];
+        self.preJamClockLabel.text = [NSString stringWithFormat:@"%02d", (int)[seconds integerValue]];
+        if([seconds integerValue] < 6){
+            self.preJamClockLabel.textColor = [UIColor redColor];
+        }else{
+            self.preJamClockLabel.textColor = [UIColor whiteColor];
+        }
     }
 }
 
@@ -336,6 +386,7 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
         [self.preJamClock resetClock];
         [self.preJamClock startClock];
         [self calculateJamTotals];
+        [self resetLeadJammerStatus];
     }else if([clockName isEqual: @"preJamClock" ]){
         NSLog(@"Pre jam clock end");
         [self.jamClock stopClock];
@@ -368,6 +419,7 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
         if([self.jamClock isRunning] == YES){
             [self jamClockStop];
             [self preJamClockStart];
+            [self resetLeadJammerStatus];
         }else{
             [self jamClockStart];
             [self preJamClockStop];
@@ -453,8 +505,5 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
     return resultTeam;
 }
 
-
-//TODO: constant color
-//const UIColor * blarb = [[UIColor alloc] initWithRed:188/255.0f green:179/255.0f blue:94/255.0f alpha:1.0f];
 
 @end
