@@ -131,8 +131,6 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 //    NSLog(@"== Setting Clock Objects ==");
     [self primeClocks];
     
-    //self.homeTeam = self.appDelegate.homeTeam;
-    //self.visitorTeam = self.appDelegate.visitorTeam;
     if(self.homeTeam == nil)
         self.homeTeam = [[NIZDerbyTeam alloc] initWithTeamName:@"Home"];
     if(self.visitorTeam == nil)
@@ -173,9 +171,19 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 
 - (void)primeClocks
 {
-    self.gameClock    = [[NIZGameClock alloc] initWithCounterLimitTo:1800 named:@"GameClock" delegateIs:self];
-    self.jamClock     = [[NIZGameClock alloc] initWithCounterLimitTo:120 named:@"JamClock" delegateIs:self];
-    self.preJamClock  = [[NIZGameClock alloc] initWithCounterLimitTo:20 named:@"preJamClock" delegateIs:self];
+    if(self.gameClock == nil){
+        self.gameClock    = [[NIZGameClock alloc] initWithCounterLimitTo:1800 named:@"GameClock" delegateIs:self];
+        self.jamClock     = [[NIZGameClock alloc] initWithCounterLimitTo:120 named:@"JamClock" delegateIs:self];
+        self.preJamClock  = [[NIZGameClock alloc] initWithCounterLimitTo:20 named:@"preJamClock" delegateIs:self];
+    }else{
+        [self.gameClock pauseClock];
+        [self.jamClock pauseClock];
+        [self.preJamClock pauseClock];
+        
+        [self.gameClock resetClock];
+        [self.jamClock resetClock];
+        [self.preJamClock resetClock];
+    }
     
     [self.officialTimeOutBtn setTitle:@"Start Game Clock" forState: UIControlStateNormal];
     [self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
@@ -212,14 +220,6 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
 
 
 #pragma mark - jamClock
-//- (IBAction)jamClockBtnTouched:(UIButton *)sender {
-//    if([self.jamClock isRunning] == YES){
-//        [self jamClockPause];
-//    }else{
-//        [self jamClockStart];
-//    }
-//}
-
 - (void)jamClockStart {
     [self.jamTimeOutBtn setTitle:@"Stop Jam" forState: UIControlStateNormal];
     self.jamTimeOutBtn.backgroundColor = [UIColor grayColor];
@@ -427,15 +427,12 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
     [self textInputTotalScores:textField];
 }
 
-
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self textInputTotalScores:textField];
     
     [textField resignFirstResponder];
     return YES;
 }
-
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"toConfigureSegue" ]){
@@ -444,30 +441,16 @@ NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a 
     }
 }
 
--(void) setTeamNameTo:(NSString *)name forTeam:(NSString *)team{
-    if(self.appDelegate != nil){
-        if([team isEqualToString:@"home"]){
-            //self.appDelegate.homeTeam.teamName = name;
-            self.homeTeam.teamName = name;
-            NSLog(@"     homeTeam3 name: %@", name);
-        }else if([team isEqualToString:@"visitor"]){
-            //self.appDelegate.visitorTeam.teamName = name;
-            self.visitorTeam.teamName = name;
-            NSLog(@"     visitorTeam3 name: %@", name);
-        }
-    }
-}
-
--(NSString *) getTeamNameFor:(NSString *)team{
-    NSString * temp;
+-(NIZDerbyTeam *) getTeam:(NSString *)team{
+    NIZDerbyTeam * resultTeam;
     
-    if([team isEqualToString:@"home"]){
-        temp = self.homeTeam.teamName;
-    }else if([team isEqualToString:@"visitor"]){
-        temp = self.visitorTeam.teamName;
+    if([team isEqualToString:@"Home"]){
+        resultTeam = self.homeTeam;
+    }else if([team isEqualToString:@"Visitor"]){
+        resultTeam =  self.visitorTeam;
     }
     
-    return temp;
+    return resultTeam;
 }
 
 

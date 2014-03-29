@@ -21,8 +21,6 @@
 
 
 -(void) updateConfiguration;
--(void) setHomeTeamName: (NSString *) home visitorTeamName: (NSString *) visitor;
--(void) setTeamNameTo: (NSString *) name forTeam:(NSString *) team;
--(NSString *) getTeamNameFor: (NSString *) team;
+-(NIZDerbyTeam *) getTeam: (NSString *) team;
 
 @end
