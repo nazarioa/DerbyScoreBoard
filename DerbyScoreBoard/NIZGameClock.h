@@ -41,7 +41,7 @@
 -(void) resetClock;
 
 //test line
--(int) secondsLeft;
+-(NSInteger) secondsLeft;
 
 
 @end

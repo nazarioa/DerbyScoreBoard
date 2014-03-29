@@ -21,7 +21,7 @@
 -(void) addPlayer: (NIZPlayer *) player;
 -(void) removePlayer: (NIZPlayer *) player;
 -(NSInteger) rosterCount;
--(NSString *) playerDerbyNameAtPosition: (int) position;
--(NSString *) playerDerbyNumberAtPosition: (int) position;
+-(NSString *) playerDerbyNameAtPosition: (NSInteger) position;
+-(NSString *) playerDerbyNumberAtPosition: (NSInteger) position;
 
 @end

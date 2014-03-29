@@ -65,12 +65,12 @@
     return self.teamRoster.count;
 }
 
--(NSString *) playerDerbyNameAtPosition: (int) position{
+-(NSString *) playerDerbyNameAtPosition: (NSInteger) position{
     NIZPlayer * temp = [self.teamRoster objectAtIndex:position];
     return [temp derbyName];
 }
 
--(NSString *) playerDerbyNumberAtPosition: (int) position{
+-(NSString *) playerDerbyNumberAtPosition: (NSInteger) position{
     NIZPlayer * temp = [self.teamRoster objectAtIndex:position];
     return [temp derbyNumber];
 }

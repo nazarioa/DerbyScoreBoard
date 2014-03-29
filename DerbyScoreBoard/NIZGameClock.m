@@ -26,8 +26,8 @@
 @property (strong, nonatomic) NSString * clockName;
 @property (strong, nonatomic) NSTimer * timer;
 @property NSInteger timerDuration;
-@property int secondsLeft;
-@property int hours, minutes, seconds;
+@property NSInteger secondsLeft;
+@property NSInteger hours, minutes, seconds;
 @property BOOL isRunning;
 
 @end
