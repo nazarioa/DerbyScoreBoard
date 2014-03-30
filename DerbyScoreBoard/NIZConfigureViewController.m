@@ -40,10 +40,10 @@
     if([self.delegate getTeam:@"Home"] != nil){
         self.homeTeam = [self.delegate getTeam:@"Home"];
         self.visitorTeam = [self.delegate getTeam:@"Visitor"];
+        
+        self.inputHomeTeamName.text = self.homeTeam.teamName;
+        self.inputVisitorTeamName.text = self.visitorTeam.teamName;
     }
-    
-    self.inputHomeTeamName.text = self.homeTeam.teamName;
-    self.inputVisitorTeamName.text = self.visitorTeam.teamName;
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,6 +70,9 @@
         return 1;
     }
     return 0;
+}
+- (IBAction)resetClocks:(id)sender {
+    [self.delegate resetClocks];
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

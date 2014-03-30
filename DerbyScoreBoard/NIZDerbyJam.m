@@ -61,7 +61,7 @@
             }
         }
     }else if([team isEqualToString:@"Home"]){
-        if(self.visitorJamScore > 0){
+        if(self.homeJamScore > 0){
             self.homeJamScore = self.homeJamScore-1;
             if(self.delegate){
                 [self.delegate homeTeamJamScoreDidChange: self.homeJamScore];

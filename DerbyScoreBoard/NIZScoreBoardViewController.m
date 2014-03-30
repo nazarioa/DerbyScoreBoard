@@ -115,13 +115,22 @@ UIColor * labelGreyColor;
     UITapGestureRecognizer *jamBtnTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleJamDoubleTapGesture:)];
     jamBtnTapGesture.numberOfTapsRequired = 2;
     [self.jamTimeOutBtn addGestureRecognizer:jamBtnTapGesture];
+
     
+    //self.inputHomeTeamName.text = self.homeTeam.teamName;
+    //self.inputVisitorTeamName.text = self.visitorTeam.teamName;
     
-    self.appDelegate = (NIZAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     [self updateConfiguration];
     NSLog(@"NIZScoreBoardViewController: %@", self);
     
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    if(self.homeTeam == nil || self.visitorTeam == nil){
+        [self performSegueWithIdentifier: @"toConfigureSegue" sender: self];
+        
+    }
 }
 
 -(void) setupColors{
@@ -142,7 +151,7 @@ UIColor * labelGreyColor;
 -(void) updateConfiguration{
     NSLog(@"UPDATE CONFIGURATION");
 //    NSLog(@"== Setting Jam Objects ==");
-    //TODO: Create a jam object
+    //TODO: FIX Create a jam object
     self.jam1 = [[NIZDerbyJam alloc] initHomeJammer:@"marsiPanner" visitorJammer:@"bubba-fist"];
     currentJam = self.jam1;
     
@@ -206,6 +215,10 @@ UIColor * labelGreyColor;
     [self.officialTimeOutBtn setTitle:@"Start Game Clock" forState: UIControlStateNormal];
     [self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
     self.jamTimeOutBtn.backgroundColor = btnGreenColor;
+}
+
+-(void)resetClocks{
+    [self primeClocks];
 }
 
 
@@ -368,7 +381,7 @@ UIColor * labelGreyColor;
         self.boutClockLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d", (int)[hours integerValue], (int)[minutes integerValue], (int)[seconds integerValue]];
     }else if ([clockName isEqual: @"JamClock" ]){
         self.jamClockLabel.text = [NSString stringWithFormat:@"%02d:%02d", (int)[minutes integerValue], (int)[seconds integerValue]];
-    }else if([clockName isEqual: @"preJamClock" ]){
+    }else if([clockName isEqual: @"preJamClock"]){
         self.preJamClockLabel.text = [NSString stringWithFormat:@"%02d", (int)[seconds integerValue]];
         if([seconds integerValue] < 6){
             self.preJamClockLabel.textColor = [UIColor redColor];
@@ -381,13 +394,13 @@ UIColor * labelGreyColor;
 -(void) clockReachedZero:(NSString *)clockName{
     if([clockName isEqual: @"GameClock"]){
         NSLog(@"Game clock end");
-    }else if ([clockName isEqual: @"JamClock" ]){
+    }else if ([clockName isEqual: @"JamClock"]){
         NSLog(@"Jam clock end");
         [self.preJamClock resetClock];
         [self.preJamClock startClock];
         [self calculateJamTotals];
         [self resetLeadJammerStatus];
-    }else if([clockName isEqual: @"preJamClock" ]){
+    }else if([clockName isEqual: @"preJamClock"]){
         NSLog(@"Pre jam clock end");
         [self.jamClock stopClock];
         [self.jamClock startClock];
