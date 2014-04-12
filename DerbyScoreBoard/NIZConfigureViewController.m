@@ -17,6 +17,10 @@
 @property (weak, nonatomic) NIZDerbyTeam * homeTeam;
 @property (weak, nonatomic) NIZDerbyTeam * visitorTeam;
 
+//@property (weak, nonatomic) UIPopoverController * mirrorResolutionSelector;
+@property (weak, nonatomic) IBOutlet UISwitch *mirrorSwitch;
+
+
 @end
 
 
@@ -44,6 +48,10 @@
         self.inputHomeTeamName.text = self.homeTeam.teamName;
         self.inputVisitorTeamName.text = self.visitorTeam.teamName;
     }
+    
+    
+    //UITableView * availableResolutionSelector
+    //self.mirrorResolutionSelector = [UIPopoverController alloc] initWithContentViewController:<#(UIViewController *)#>;
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,7 +93,6 @@
     return rosterCount;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
     
@@ -93,6 +100,8 @@
     if (cell == nil) {
         //cell = [[UITableViewCell alloc] init];
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        [cell setBackgroundColor: [UIColor colorWithRed:0.36 green:0.36 blue:0.36 alpha:1.0]];
+        cell.textLabel.textColor = [UIColor whiteColor];
     }
 
     // Configure the cell...
@@ -103,6 +112,51 @@
     }
     
     return cell;
+}
+
+
+- (IBAction)mirrorSwitchToched:(id)sender {
+    //if the mirroring is available allow the switch to change
+    if ([sender isOn] == YES) {
+        NSLog(@"  Switch is ON");
+    } else if([sender isOn] == NO) {
+        NSLog(@"  Switch is OFF");
+    }
+    //else, alert user to airplay
+}
+
+-(void) nazExperiment{
+    NSInteger numbScreens = [UIScreen screens].count;
+    NSArray * avilableScreens  = [UIScreen screens];
+    
+    if( numbScreens > 1 ){
+        
+        
+        //There must be screens
+        self.extScreen = [avilableScreens objectAtIndex:1];
+        CGRect extScreenBounds = self.extScreen.bounds;
+        
+        self.scoreBoardSpectatorWindow = [[UIWindow alloc] initWithFrame:extScreenBounds];
+        
+        self.scoreBoardSpectatorWindow.screen = self.extScreen;
+        self.scoreBoardSpectatorWindow.rootViewController = self;
+        
+        
+        CGRect temp = CGRectMake(40, 40, 100, 30);
+        UIButton * testButton = [[UIButton alloc] initWithFrame:temp];
+        [testButton setTitle:@"BLAR" forState:UIControlStateNormal];
+        
+        
+        [self.scoreBoardSpectatorWindow addSubview: testButton];
+        
+        self.scoreBoardSpectatorWindow.backgroundColor = [UIColor redColor];
+        
+        self.scoreBoardSpectatorWindow.hidden = NO;
+        
+        [self logText: [NSString stringWithFormat:@"  screenDescription: %@",[self.extScreen description]]];
+    }else{
+        [self logText:@"Nothing Here"];
+    }
 }
 
 

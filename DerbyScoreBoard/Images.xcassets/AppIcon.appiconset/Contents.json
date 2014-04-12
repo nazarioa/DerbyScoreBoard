@@ -3,30 +3,30 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "7.0 iPad Non-Retina 29x29.png",
+      "filename" : "29x29-1.png",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "7.0 iPad Retian 58x58.png",
+      "filename" : "58x58-1.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "7.0 iPad Non-Retina 40x40.png",
+      "filename" : "40x40-1.png",
       "scale" : "2x"
     },
     {
-      "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "7.0 iPad Retian 58x58-1.png",
+      "size" : "57x57",
       "scale" : "1x"
     },
     {
-      "idiom" : "iphone",
       "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "144x144-1.png",
       "scale" : "2x"
     },
     {
@@ -37,61 +37,61 @@
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "7.0 iPad Non-Retina 29x29-1.png",
+      "filename" : "29x29.png",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "7.0 iPad Retian 58x58-2.png",
+      "filename" : "58x58.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "7.0 iPad Non-Retina 40x40-1.png",
+      "filename" : "40x40.png",
       "scale" : "1x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "7.0 iPad Retina 80x80.png",
+      "filename" : "80x80.png",
       "scale" : "2x"
     },
     {
       "size" : "50x50",
       "idiom" : "ipad",
-      "filename" : "6.1 iPad 6.1 50x50.png",
+      "filename" : "50x50.png",
       "scale" : "1x"
     },
     {
       "size" : "50x50",
       "idiom" : "ipad",
-      "filename" : "6.1 iPad Retina 100x100.png",
+      "filename" : "100x100.png",
       "scale" : "2x"
     },
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "6.1 iPad Non-Retina 72x72.png",
+      "filename" : "72x72.png",
       "scale" : "1x"
     },
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "6.1 iPad Retina 144x144.png",
+      "filename" : "144x144.png",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "7.0 iPad Retina 76x76.png",
+      "filename" : "76x76.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "7.0 iPad Retina 152x152.png",
+      "filename" : "152x152.png",
       "scale" : "2x"
     }
   ],

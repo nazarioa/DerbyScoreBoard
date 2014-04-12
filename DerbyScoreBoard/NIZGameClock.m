@@ -77,14 +77,20 @@
 }
 
 -(void)countdownTimer{
-    //TODO: 7.14 -- aka start painting
+    //START EXPERIMENT
+    dispatch_queue_t concurrentQueue =
+    dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_async(concurrentQueue, ^{
         NSLog(@"countdownTimer");
         self.hours = self.minutes = self.seconds = 0;
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
         self.isRunning = YES;
+    });
 }
 
 - (void)updateCounter:(NSTimer *)theTimer {
+    //NSLog(@"   %@", );
     //TODO: 7.14 -- aka paint
     if(self.secondsLeft > 0 ){
         self.secondsLeft--;

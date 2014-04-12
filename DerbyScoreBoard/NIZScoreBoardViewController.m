@@ -60,6 +60,9 @@ UIColor * labelGreyColor;
 @property (weak, nonatomic) IBOutlet UIPickerView *visitorJammerPicker;
 @property (weak, nonatomic) IBOutlet UIButton *visitorLeadJammerBtn;
 
+@property (strong, nonatomic) UIWindow * scoreBoardSpectatorWindow;
+@property (weak, nonatomic) UIScreen * extScreen;
+
 @property (weak, nonatomic) NIZAppDelegate * appDelegate;
 
 @end

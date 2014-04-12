@@ -16,6 +16,10 @@
 -(void) updateConfiguration;
 -(NIZDerbyTeam *) getTeam: (NSString *) team;
 -(void) resetClocks;
+
+
+-(UIWindow *) scoreBoardSpectatorWindow;
+-(void) setScoreBoardSpectatorWindow: (UIWindow *) theWindow;
 @end
 
 
