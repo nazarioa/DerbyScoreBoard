@@ -77,16 +77,11 @@
 }
 
 -(void)countdownTimer{
-    //START EXPERIMENT
-    dispatch_queue_t concurrentQueue =
-    dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
-    dispatch_async(concurrentQueue, ^{
-        NSLog(@"countdownTimer");
-        self.hours = self.minutes = self.seconds = 0;
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
-        self.isRunning = YES;
-    });
+    NSLog(@"countdownTimer");
+    self.hours = self.minutes = self.seconds = 0;
+    self.timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes]; //magical line here
+    self.isRunning = YES;
 }
 
 - (void)updateCounter:(NSTimer *)theTimer {
@@ -110,6 +105,7 @@
     self.seconds = (self.secondsLeft % 3600) % 60;
     if( [self.delegate respondsToSelector:@selector(timeHasChangedFor:hourNowIs:minuteNowIs:secondNowIs:)] ){
         [self.delegate timeHasChangedFor: self.clockName hourNowIs: [NSNumber numberWithInt: self.hours] minuteNowIs:[NSNumber numberWithInt: self.minutes] secondNowIs: [NSNumber numberWithInt: self.seconds]];
+        NSLog(@"    Self.secondsLeft: %ld", (long)self.secondsLeft);
     }else{
         NSLog(@"DELEGATE NOT FOUND -- Clock: %@ %02d:%02d:%02d", self.clockName, (int)self.hours, (int)self.minutes, (int)self.seconds);
     }
