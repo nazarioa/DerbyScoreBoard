@@ -25,4 +25,5 @@
 
 @interface NIZConfigureViewController : UIViewController
 @property (weak, nonatomic) id <NIZDerbyGameProtocol> delegate;
+-(NSInteger) numExternalDisplays;
 @end

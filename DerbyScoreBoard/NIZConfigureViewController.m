@@ -117,19 +117,28 @@
 
 - (IBAction)mirrorSwitchToched:(id)sender {
     //if the mirroring is available allow the switch to change
-    if ([sender isOn] == YES) {
-        NSLog(@"  Switch is ON");
+    if ([sender isOn] == YES && [self numExternalDisplays] > 1) {
+        NSLog(@"  Switch is OFF, turning it ON");
+        NSLog(@"  Number of external displays: %i",[self numExternalDisplays]);
     } else if([sender isOn] == NO) {
-        NSLog(@"  Switch is OFF");
+        NSLog(@"  Switch is ON, turning it OFF");
+        NSLog(@"  Number of external displays: %i",[self numExternalDisplays]);
+    } else{
+        UIAlertView * noScreenAlert = [[UIAlertView alloc]initWithTitle:@"External Display Not Found" message:@"No external display was found. Make sure your Airplay device is on the same network as your scoreboard." delegate:NULL cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [noScreenAlert show];
+        [sender setOn: NO];
     }
-    //else, alert user to airplay
 }
 
+-(NSInteger) numExternalDisplays{
+    return [UIScreen screens].count;
+}
+
+/*
 -(void) nazExperiment{
-    NSInteger numbScreens = [UIScreen screens].count;
     NSArray * avilableScreens  = [UIScreen screens];
     
-    if( numbScreens > 1 ){
+    if( [self numExternalDisplays]  > 1 ){
         
         
         //There must be screens
@@ -158,6 +167,7 @@
         [self logText:@"Nothing Here"];
     }
 }
+*/
 
 
 @end
