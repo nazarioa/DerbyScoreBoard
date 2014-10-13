@@ -103,8 +103,8 @@
 		EB139F2A17AEFF790017BBFF /* C-Scoreboard */ = {
 			isa = PBXGroup;
 			children = (
-				EBF6759D17ADC8270013010B /* NIZScoreBoardViewController.m */,
 				EBF6759C17ADC8270013010B /* NIZScoreBoardViewController.h */,
+				EBF6759D17ADC8270013010B /* NIZScoreBoardViewController.m */,
 			);
 			name = "C-Scoreboard";
 			sourceTree = "<group>";
