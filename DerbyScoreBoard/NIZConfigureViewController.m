@@ -14,8 +14,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *homeTeamRosterTV;
 @property (weak, nonatomic) IBOutlet UITableView *visitorTeamRosterTV;
 
-@property (weak, nonatomic) NIZDerbyTeam * homeTeam;
-@property (weak, nonatomic) NIZDerbyTeam * visitorTeam;
+@property (strong, nonatomic) NIZDerbyTeam * homeTeam;
+@property (strong, nonatomic) NIZDerbyTeam * visitorTeam;
 
 //@property (weak, nonatomic) UIPopoverController * mirrorResolutionSelector;
 @property (weak, nonatomic) IBOutlet UISwitch *mirrorSwitch;
@@ -41,14 +41,26 @@
 {
     [super viewDidLoad];
     
-    if([self.delegate getTeam:@"Home"] != nil){
+    // Home team exists, bring in the data to manipulate
+    if([self.delegate getTeam:@"Home"] == nil){
+        self.homeTeam = [[NIZDerbyTeam alloc] initWithTeamName:@"Home"];
+        [self.delegate setTeam:@"Home" with: self.homeTeam];
+    }else{
         self.homeTeam = [self.delegate getTeam:@"Home"];
-        self.visitorTeam = [self.delegate getTeam:@"Visitor"];
-        
-        self.inputHomeTeamName.text = self.homeTeam.teamName;
-        self.inputVisitorTeamName.text = self.visitorTeam.teamName;
     }
     
+    // Visitor team exists, bring in the data to manipulate
+    if([self.delegate getTeam:@"Visitor"] == nil){
+        self.visitorTeam = [[NIZDerbyTeam alloc] initWithTeamName:@"Visitor"];
+        [self.delegate setTeam:@"Visitor" with: self.visitorTeam];
+    }else{
+        self.visitorTeam = [self.delegate getTeam: @"Visitor"];
+    }
+    
+    // Display team names
+    self.inputHomeTeamName.text = self.homeTeam.teamName;
+    self.inputVisitorTeamName.text = self.visitorTeam.teamName;
+
     
     //UITableView * availableResolutionSelector
     //self.mirrorResolutionSelector = [UIPopoverController alloc] initWithContentViewController:<#(UIViewController *)#>;

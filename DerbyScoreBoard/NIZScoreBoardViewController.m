@@ -118,21 +118,16 @@ UIColor * labelGreyColor;
     UITapGestureRecognizer *jamBtnTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleJamDoubleTapGesture:)];
     jamBtnTapGesture.numberOfTapsRequired = 2;
     [self.jamTimeOutBtn addGestureRecognizer:jamBtnTapGesture];
-
     
-    //self.inputHomeTeamName.text = self.homeTeam.teamName;
-    //self.inputVisitorTeamName.text = self.visitorTeam.teamName;
-    
-    
+    [self primeClocks];
     [self updateConfiguration];
-    NSLog(@"NIZScoreBoardViewController: %@", self);
+    //NSLog(@"* NIZScoreBoardViewController: %@", self);
     
 }
 
 -(void) viewDidAppear:(BOOL)animated{
     if(self.homeTeam == nil || self.visitorTeam == nil){
         [self performSegueWithIdentifier: @"toConfigureSegue" sender: self];
-        
     }
 }
 
@@ -153,20 +148,13 @@ UIColor * labelGreyColor;
 
 -(void) updateConfiguration{
     NSLog(@"UPDATE CONFIGURATION");
-//    NSLog(@"== Setting Jam Objects ==");
+    // NSLog(@"== Setting Jam Objects ==");
     //TODO: FIX Create a jam object
+    //TODO: Maybe the Jam creation wont happen here.
     self.jam1 = [[NIZDerbyJam alloc] initHomeJammer:@"marsiPanner" visitorJammer:@"bubba-fist"];
     currentJam = self.jam1;
     
-//    NSLog(@"== Setting Clock Objects ==");
-    [self primeClocks];
-    
-    if(self.homeTeam == nil)
-        self.homeTeam = [[NIZDerbyTeam alloc] initWithTeamName:@"Home"];
-    if(self.visitorTeam == nil)
-        self.visitorTeam = [[NIZDerbyTeam alloc] initWithTeamName:@"Visitor"];
-    
-//    NSLog(@"==Other config==");
+    // NSLog(@"==Other config==");
     self.homeTeamLabel.text     = [self.homeTeam teamName];
     self.visitorTeamLabel.text  = [self.visitorTeam teamName];
     
@@ -237,7 +225,7 @@ UIColor * labelGreyColor;
 }
 
 - (void)boutClockPaused {
-//    NSLog(@"Official Clock: Paused Clock");
+    // NSLog(@"Official Clock: Paused Clock");
     [self.officialTimeOutBtn setTitle:@"Start Game Clock" forState: UIControlStateNormal];
     self.officialTimeOutBtn.backgroundColor = btnGreyColor;
     [self.jamClock stopClock];
@@ -246,7 +234,7 @@ UIColor * labelGreyColor;
 }
 
 - (void)boutClockStart {
-//    NSLog(@"Official Clock: Start Clock");
+    // NSLog(@"Official Clock: Start Clock");
     [self.officialTimeOutBtn setTitle:@"Pause Game Clock" forState: UIControlStateNormal];
     self.officialTimeOutBtn.backgroundColor = btnRedColor;
     [self.gameClock countdownTimer];
@@ -509,16 +497,24 @@ UIColor * labelGreyColor;
     }
 }
 
--(NIZDerbyTeam *) getTeam:(NSString *)team{
-    NIZDerbyTeam * resultTeam;
+-(NIZDerbyTeam *) getTeam:(NSString *)type{
+    NIZDerbyTeam * resultTeam = nil;
     
-    if([team isEqualToString:@"Home"]){
+    if([type isEqualToString:@"Home"]){
         resultTeam = self.homeTeam;
-    }else if([team isEqualToString:@"Visitor"]){
+    }else if([type isEqualToString:@"Visitor"]){
         resultTeam =  self.visitorTeam;
     }
     
     return resultTeam;
+}
+
+-(void) setTeam:(NSString *)type with:(NIZDerbyTeam *)team{
+    if( [type isEqualToString:@"Home"] ){
+        self.homeTeam = team;
+    }else if( [type isEqualToString:@"Visitor"]){
+        self.visitorTeam = team;
+    }
 }
 
 

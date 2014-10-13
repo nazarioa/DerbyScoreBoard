@@ -21,7 +21,6 @@
 
 
 -(void) updateConfiguration;
--(NIZDerbyTeam *) getTeam: (NSString *) team;
 -(UIWindow *) scoreBoardSpectatorWindow;
 -(void) setScoreBoardSpectatorWindow: (UIWindow *) theWindow;
 

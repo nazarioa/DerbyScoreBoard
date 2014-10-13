@@ -14,7 +14,8 @@
 
 @protocol NIZDerbyGameProtocol <NSObject>
 -(void) updateConfiguration;
--(NIZDerbyTeam *) getTeam: (NSString *) team;
+-(NIZDerbyTeam *) getTeam: (NSString *) type;
+-(void) setTeam: (NSString *) type with: (NIZDerbyTeam *) team;
 -(void) resetClocks;
 
 
