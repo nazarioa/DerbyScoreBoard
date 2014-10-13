@@ -127,13 +127,13 @@
 			name = "C-Configure";
 			sourceTree = "<group>";
 		};
-		EB52AC9E18BCFE66009E5C37 /* M-NIZPlayer */ = {
+		EB52AC9E18BCFE66009E5C37 /* M-Player */ = {
 			isa = PBXGroup;
 			children = (
 				EB52AC9F18BCFE8D009E5C37 /* NIZPlayer.h */,
 				EB52ACA018BCFE8D009E5C37 /* NIZPlayer.m */,
 			);
-			name = "M-NIZPlayer";
+			name = "M-Player";
 			sourceTree = "<group>";
 		};
 		EBAF912B17AE3D0300D76CBA /* Images */ = {
@@ -201,9 +201,9 @@
 				EB139F2A17AEFF790017BBFF /* C-Scoreboard */,
 				EB139F2917AEFF5D0017BBFF /* M-Derby */,
 				EB0A806117BC46900078CD28 /* M-Clock */,
-				EBAF913B17AE4AB800D76CBA /* M-Team */,
 				EBAF913717AE464700D76CBA /* M-Jam */,
-				EB52AC9E18BCFE66009E5C37 /* M-NIZPlayer */,
+				EBAF913B17AE4AB800D76CBA /* M-Team */,
+				EB52AC9E18BCFE66009E5C37 /* M-Player */,
 				EBCC4EF91822257B00099B74 /* Images.xcassets */,
 				EBF6758817ADC8260013010B /* Supporting Files */,
 			);
