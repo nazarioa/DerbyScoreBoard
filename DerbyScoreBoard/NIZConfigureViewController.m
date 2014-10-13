@@ -72,6 +72,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"AddHomePlayerSegue" ]){
+        NIZAddEditPlayerViewController *addEditPlayer = (NIZAddEditPlayerViewController *) segue.destinationViewController;
+        [addEditPlayer setDelegate:self];
+        addEditPlayer.teamType = @"Home";
+        addEditPlayer.teamLabel.text = self.homeTeam.teamName;
+    }else if([[segue identifier] isEqualToString:@"AddVisitorPlayerSegue" ]){
+        NIZAddEditPlayerViewController *addEditPlayer = (NIZAddEditPlayerViewController *) segue.destinationViewController;
+        [addEditPlayer setDelegate:self];
+        addEditPlayer.teamType = @"Visitor";
+        addEditPlayer.teamLabel.text = self.visitorTeam.teamName;
+    }
+}
+
 - (IBAction)configureDoneBtnTouched:(id)sender {
     [self.delegate updateConfiguration];
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -79,10 +93,16 @@
 
 - (IBAction)homeTeamNameDidEndEditing:(id)sender {
     self.homeTeam.teamName = [sender text];
+    NSLog(@"config homeTeamNameDidEndEditing");
 }
 
 - (IBAction)visitorTeamNameDidEndEditing:(id)sender {
     self.visitorTeam.teamName = [sender text];
+    NSLog(@"config visitorTeamNameDidEndEditing");
+}
+
+- (IBAction)resetClocks:(id)sender {
+    [self.delegate resetClocks];
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
@@ -90,9 +110,6 @@
         return 1;
     }
     return 0;
-}
-- (IBAction)resetClocks:(id)sender {
-    [self.delegate resetClocks];
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -103,6 +120,16 @@
         rosterCount =  (int)[self.visitorTeam rosterCount];
     }
     return rosterCount;
+}
+
+-(void) forTeam: (NSString *) type savePlayer: (NIZPlayer *) player{
+    if( (player != nil) & ([type isEqualToString:@"Home"]) ){
+        NSLog(@"Attempting to add a new player to Home");
+        [self.homeTeam addPlayer:player];
+    }else if( (player != nil) & ([type isEqualToString:@"Visitor"]) ){
+        NSLog(@"Attempting to add a new player to Visitor");
+        [self.visitorTeam addPlayer:player];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

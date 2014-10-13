@@ -14,7 +14,8 @@
 @property (nonatomic, strong) NSString * firstName;
 @property (nonatomic, strong) NSString * lastName;
 @property (nonatomic, strong) UIImage * mugShot;
+@property (nonatomic) BOOL isJammer;
 
 
--(id) initWithDerbyName: (NSString *) name derbyNumber: (NSString *) number firstName: (NSString *) first lastName: (NSString *) last;
+-(id) initWithDerbyName: (NSString *) name derbyNumber: (NSString *) number firstName: (NSString *) first lastName: (NSString *) last isJammer: (BOOL) isJammer;
 @end

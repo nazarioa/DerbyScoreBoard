@@ -17,10 +17,10 @@
 @synthesize mugShot = _mugShot;
 
 -(id) init{
-    return [self initWithDerbyName:@"NO NAME" derbyNumber:@"NO NUMBER" firstName:@"NO NAME" lastName:@"NO LASTNAME"];
+    return [self initWithDerbyName:@"NO NAME" derbyNumber:@"NO NUMBER" firstName:@"NO NAME" lastName:@"NO LASTNAME" isJammer:FALSE];
 }
 
--(id) initWithDerbyName: (NSString *) name derbyNumber: (NSString *) number firstName: (NSString *) first lastName: (NSString *) last{
+-(id) initWithDerbyName: (NSString *) name derbyNumber: (NSString *) number firstName: (NSString *) first lastName: (NSString *) last isJammer:(BOOL)isJammer{
     self = [super init];
     if(self){
         _derbyName = name;
@@ -28,6 +28,7 @@
         _firstName = first;
         _lastName = last;
         _mugShot = nil;
+        _isJammer = isJammer;
     }
     
     return self;

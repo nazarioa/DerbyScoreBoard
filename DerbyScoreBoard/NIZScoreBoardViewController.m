@@ -24,7 +24,7 @@ UIColor * labelGreyColor;
 
 @interface NIZScoreBoardViewController ()
 
-@property (strong, nonatomic) NIZDerbyBout *game;
+//@property (strong, nonatomic) NIZDerbyBout *game;
 @property (strong, nonatomic) NIZGameClock *gameClock;
 @property (strong, nonatomic) NIZGameClock *jamClock;
 @property (strong, nonatomic) NIZGameClock *preJamClock;
@@ -70,7 +70,7 @@ UIColor * labelGreyColor;
 
 @implementation NIZScoreBoardViewController
 
-@synthesize game;
+//@synthesize game;
 @synthesize gameClock;
 @synthesize jamClock;
 @synthesize preJamClock;
@@ -163,28 +163,6 @@ UIColor * labelGreyColor;
     self.homeTotalScoreTextField.text   = @"0";
     self.visitorTotalScoreTextField.text= @"0";
     
-    ////SCRATCH PAPER
-    //TODO: Eventually these objects will be part of a collection that will be created in another view.
-    //For now they shall hang here.
-    NIZPlayer * homeP1 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa1" derbyNumber:@"no1" firstName:nil lastName:nil];
-    NIZPlayer * homeP2 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa2" derbyNumber:@"no2" firstName:nil lastName:nil];
-    NIZPlayer * homeP3 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa3" derbyNumber:@"no3" firstName:nil lastName:nil];
-    NIZPlayer * homeP4 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa4" derbyNumber:@"no4" firstName:nil lastName:nil];
-    NIZPlayer * homeP5 = [[NIZPlayer alloc] initWithDerbyName:@"H Playa5" derbyNumber:@"no5" firstName:nil lastName:nil];
-    
-    NIZPlayer * visitorP1 = [[NIZPlayer alloc] initWithDerbyName:@"V Playa1" derbyNumber:@"no1" firstName:nil lastName:nil];
-    NIZPlayer * visitorP2 = [[NIZPlayer alloc] initWithDerbyName:@"V Playa2" derbyNumber:@"no2" firstName:nil lastName:nil];
-    NIZPlayer * visitorP3 = [[NIZPlayer alloc] initWithDerbyName:@"V Playa3" derbyNumber:@"no3" firstName:nil lastName:nil];
-    
-    [self.homeTeam addPlayer:homeP1];
-    [self.homeTeam addPlayer:homeP2];
-    [self.homeTeam addPlayer:homeP3];
-    [self.homeTeam addPlayer:homeP4];
-    [self.homeTeam addPlayer:homeP5];
-    
-    [self.visitorTeam addPlayer:visitorP1];
-    [self.visitorTeam addPlayer:visitorP2];
-    [self.visitorTeam addPlayer:visitorP3];
 }
 
 - (void)primeClocks
@@ -398,24 +376,6 @@ UIColor * labelGreyColor;
     }
 }
 
-#pragma mark - NIZDerbyJamDelegate
--(void) homeTeamScoreDidChange:(NSInteger)newScore{
-    
-}
-
--(void) visitorTeamScoreDidChange:(NSInteger)newScore{
-    
-}
-
--(void) homeTeamJamScoreDidChange:(NSInteger)newScore{
-    
-}
-
--(void) visitorTeamJamScoreDidChange:(NSInteger)newScore{
-    
-}
-
-
 #pragma mark - Tap gestures
 - (void)handleJamDoubleTapGesture:(UITapGestureRecognizer *)sender
 {
@@ -479,15 +439,19 @@ UIColor * labelGreyColor;
     }
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    [self textInputTotalScores:textField];
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    //TODO: may want to make sure that the above code behavior matches the intended text
+    NSLog(@"textFieldShouldReturn");
     [self textInputTotalScores:textField];
     
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    //TODO: may want to make sure that the above code behavior matches the intended text
+    NSLog(@"textFieldDidEndEditing");
+    [self textInputTotalScores:textField];
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

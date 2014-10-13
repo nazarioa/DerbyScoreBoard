@@ -11,6 +11,7 @@
 		EB139F2817AEFE880017BBFF /* NIZDerbyBout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB139F2717AEFE880017BBFF /* NIZDerbyBout.m */; };
 		EB52ACA118BCFE8D009E5C37 /* NIZPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52ACA018BCFE8D009E5C37 /* NIZPlayer.m */; };
 		EB8CFA7F17BDD6330054BF4F /* NIZGameClock.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8CFA7E17BDD6330054BF4F /* NIZGameClock.m */; };
+		EBA14FBA19EBA7C2007A15DC /* NIZAddEditPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA14FB919EBA7C2007A15DC /* NIZAddEditPlayerViewController.m */; };
 		EBAF913017AE3D2200D76CBA /* -1.png in Resources */ = {isa = PBXBuildFile; fileRef = EBAF912C17AE3D2200D76CBA /* -1.png */; };
 		EBAF913117AE3D2200D76CBA /* -1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBAF912D17AE3D2200D76CBA /* -1@2x.png */; };
 		EBAF913217AE3D2200D76CBA /* +1.png in Resources */ = {isa = PBXBuildFile; fileRef = EBAF912E17AE3D2200D76CBA /* +1.png */; };
@@ -41,6 +42,8 @@
 		EB52ACA018BCFE8D009E5C37 /* NIZPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZPlayer.m; sourceTree = "<group>"; };
 		EB8CFA7D17BDD6330054BF4F /* NIZGameClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZGameClock.h; sourceTree = "<group>"; };
 		EB8CFA7E17BDD6330054BF4F /* NIZGameClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZGameClock.m; sourceTree = "<group>"; };
+		EBA14FB819EBA7C2007A15DC /* NIZAddEditPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZAddEditPlayerViewController.h; sourceTree = "<group>"; };
+		EBA14FB919EBA7C2007A15DC /* NIZAddEditPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZAddEditPlayerViewController.m; sourceTree = "<group>"; };
 		EBAF912C17AE3D2200D76CBA /* -1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "-1.png"; sourceTree = "<group>"; };
 		EBAF912D17AE3D2200D76CBA /* -1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "-1@2x.png"; sourceTree = "<group>"; };
 		EBAF912E17AE3D2200D76CBA /* +1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+1.png"; sourceTree = "<group>"; };
@@ -136,6 +139,15 @@
 			name = "M-Player";
 			sourceTree = "<group>";
 		};
+		EBA14FB719EBA780007A15DC /* C-AddEdit Player */ = {
+			isa = PBXGroup;
+			children = (
+				EBA14FB819EBA7C2007A15DC /* NIZAddEditPlayerViewController.h */,
+				EBA14FB919EBA7C2007A15DC /* NIZAddEditPlayerViewController.m */,
+			);
+			name = "C-AddEdit Player";
+			sourceTree = "<group>";
+		};
 		EBAF912B17AE3D0300D76CBA /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,8 +209,9 @@
 			children = (
 				EBF6759917ADC8260013010B /* MainStoryboard.storyboard */,
 				EB139F2B17AEFF920017BBFF /* C-App Delegate */,
-				EB415DAB18CEC6D4002F7E28 /* C-Configure */,
 				EB139F2A17AEFF790017BBFF /* C-Scoreboard */,
+				EB415DAB18CEC6D4002F7E28 /* C-Configure */,
+				EBA14FB719EBA780007A15DC /* C-AddEdit Player */,
 				EB139F2917AEFF5D0017BBFF /* M-Derby */,
 				EB0A806117BC46900078CD28 /* M-Clock */,
 				EBAF913717AE464700D76CBA /* M-Jam */,
@@ -309,6 +322,7 @@
 				EBAF913617AE410400D76CBA /* NIZDerbyJam.m in Sources */,
 				EB09426C18CEC73A00372C47 /* NIZConfigureViewController.m in Sources */,
 				EBAF913A17AE4AB200D76CBA /* NIZDerbyTeam.m in Sources */,
+				EBA14FBA19EBA7C2007A15DC /* NIZAddEditPlayerViewController.m in Sources */,
 				EB139F2817AEFE880017BBFF /* NIZDerbyBout.m in Sources */,
 				EB52ACA118BCFE8D009E5C37 /* NIZPlayer.m in Sources */,
 				EB8CFA7F17BDD6330054BF4F /* NIZGameClock.m in Sources */,

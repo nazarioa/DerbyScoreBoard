@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NIZDerbyTeam.h"
+#import "NIZAddEditPlayerViewController.h"
 //#import "NIZScoreBoardViewController.h"
 
 @class NIZScoreBoardViewController;
@@ -24,7 +25,7 @@
 @end
 
 
-@interface NIZConfigureViewController : UIViewController
+@interface NIZConfigureViewController : UIViewController <addEditPlayerProtocol>
 @property (weak, nonatomic) id <NIZDerbyGameProtocol> delegate;
 -(NSInteger) numExternalDisplays;
 @end
