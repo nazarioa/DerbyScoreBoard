@@ -20,6 +20,10 @@
 
 -(void) addPlayer: (NIZPlayer *) player;
 -(void) removePlayer: (NIZPlayer *) player;
+
+-(NIZPlayer *) getPlayerAtPosition: (NSInteger) position;
+-(NIZPlayer *) getPlayerAtPosition: (NSInteger) position isAJammer: (BOOL) isAJammer;
+
 -(NSInteger) rosterCount;
 -(NSString *) playerDerbyNameAtPosition: (NSInteger) position;
 -(NSString *) playerDerbyNumberAtPosition: (NSInteger) position;

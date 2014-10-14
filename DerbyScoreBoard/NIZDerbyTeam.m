@@ -52,8 +52,25 @@
 
 -(void) removePlayer:(NIZPlayer *) player{
     if(player){
-        [self.teamRoster addObject:player];
+        [self.teamRoster removeObject:player];
     }
+}
+
+-(NIZPlayer *) getPlayerAtPosition: (NSInteger) position{
+    if(-1 < position  &&  position < self.teamRoster.count){
+        NIZPlayer * temp = [self.teamRoster objectAtIndex:position];
+        return temp;
+    }
+    return nil;
+}
+
+-(NIZPlayer *) getPlayerAtPosition: (NSInteger) position isAJammer: (BOOL) isAJammer{
+    if(-1 < position  &&  position < self.teamRoster.count){
+        NIZPlayer * temp = [self.teamRoster objectAtIndex:position];
+        if(temp.isJammer == isAJammer)
+            return temp;
+    }
+    return nil;
 }
 
 -(BOOL) isOnRoster:(NIZPlayer *) player{

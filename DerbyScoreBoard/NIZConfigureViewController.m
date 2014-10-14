@@ -86,25 +86,6 @@
     }
 }
 
-- (IBAction)configureDoneBtnTouched:(id)sender {
-    [self.delegate updateConfiguration];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)homeTeamNameDidEndEditing:(id)sender {
-    self.homeTeam.teamName = [sender text];
-    NSLog(@"config homeTeamNameDidEndEditing");
-}
-
-- (IBAction)visitorTeamNameDidEndEditing:(id)sender {
-    self.visitorTeam.teamName = [sender text];
-    NSLog(@"config visitorTeamNameDidEndEditing");
-}
-
-- (IBAction)resetClocks:(id)sender {
-    [self.delegate resetClocks];
-}
-
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
     if([self.homeTeamRosterTV isEqual:tableView] || [self.visitorTeamRosterTV isEqual:tableView]){
         return 1;
@@ -120,16 +101,6 @@
         rosterCount =  (int)[self.visitorTeam rosterCount];
     }
     return rosterCount;
-}
-
--(void) forTeam: (NSString *) type savePlayer: (NIZPlayer *) player{
-    if( (player != nil) & ([type isEqualToString:@"Home"]) ){
-        NSLog(@"Attempting to add a new player to Home");
-        [self.homeTeam addPlayer:player];
-    }else if( (player != nil) & ([type isEqualToString:@"Visitor"]) ){
-        NSLog(@"Attempting to add a new player to Visitor");
-        [self.visitorTeam addPlayer:player];
-    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -153,6 +124,44 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        if([tableView isEqual: self.homeTeamRosterTV]){
+            [self.homeTeam removePlayer: [self.homeTeam getPlayerAtPosition: indexPath.row]];
+            NSLog(@"trying to remove homeTeam at row: %i", indexPath.row);
+        }else if([tableView isEqual: self.visitorTeamRosterTV]){
+            [self.visitorTeam removePlayer: [self.visitorTeam getPlayerAtPosition: indexPath.row]];
+            NSLog(@"trying to remove visitorTeam at row: %i", indexPath.row);
+        }
+    }
+    [tableView reloadData];
+}
+
+#pragma mark IB Actions
+
+- (IBAction)btnTouchedConfigureDone:(id)sender {
+    if(self.homeTeam.rosterCount < 1 || self.visitorTeam.rosterCount < 1 ){
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Not Enough Players" message:@"Please add at least one player to each team by touching the \"Add Player\" button." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alert show];
+    }else{
+        [self.delegate updateConfiguration];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (IBAction)homeTeamNameDidEndEditing:(id)sender {
+    self.homeTeam.teamName = [sender text];
+    NSLog(@"config homeTeamNameDidEndEditing");
+}
+
+- (IBAction)visitorTeamNameDidEndEditing:(id)sender {
+    self.visitorTeam.teamName = [sender text];
+    NSLog(@"config visitorTeamNameDidEndEditing");
+}
+
+- (IBAction)resetClocks:(id)sender {
+    [self.delegate resetClocks];
+}
 
 - (IBAction)mirrorSwitchToched:(id)sender {
     //if the mirroring is available allow the switch to change
@@ -169,44 +178,58 @@
     }
 }
 
+#pragma mark My Functions
+
+-(void) refreshPlayerRoster{
+    [self.homeTeamRosterTV reloadData];
+    [self.visitorTeamRosterTV reloadData];
+}
+
+-(void) forTeam: (NSString *) type savePlayer: (NIZPlayer *) player{
+    if( (player != nil) & ([type isEqualToString:@"Home"]) ){
+        [self.homeTeam addPlayer:player];
+    }else if( (player != nil) & ([type isEqualToString:@"Visitor"]) ){
+        [self.visitorTeam addPlayer:player];
+    }
+}
+
 -(NSInteger) numExternalDisplays{
     return [UIScreen screens].count;
 }
 
 /*
--(void) nazExperiment{
-    NSArray * avilableScreens  = [UIScreen screens];
-    
-    if( [self numExternalDisplays]  > 1 ){
-        
-        
-        //There must be screens
-        self.extScreen = [avilableScreens objectAtIndex:1];
-        CGRect extScreenBounds = self.extScreen.bounds;
-        
-        self.scoreBoardSpectatorWindow = [[UIWindow alloc] initWithFrame:extScreenBounds];
-        
-        self.scoreBoardSpectatorWindow.screen = self.extScreen;
-        self.scoreBoardSpectatorWindow.rootViewController = self;
-        
-        
-        CGRect temp = CGRectMake(40, 40, 100, 30);
-        UIButton * testButton = [[UIButton alloc] initWithFrame:temp];
-        [testButton setTitle:@"BLAR" forState:UIControlStateNormal];
-        
-        
-        [self.scoreBoardSpectatorWindow addSubview: testButton];
-        
-        self.scoreBoardSpectatorWindow.backgroundColor = [UIColor redColor];
-        
-        self.scoreBoardSpectatorWindow.hidden = NO;
-        
-        [self logText: [NSString stringWithFormat:@"  screenDescription: %@",[self.extScreen description]]];
-    }else{
-        [self logText:@"Nothing Here"];
-    }
-}
-*/
-
+ -(void) nazExperiment{
+ NSArray * avilableScreens  = [UIScreen screens];
+ 
+ if( [self numExternalDisplays]  > 1 ){
+ 
+ 
+ //There must be screens
+ self.extScreen = [avilableScreens objectAtIndex:1];
+ CGRect extScreenBounds = self.extScreen.bounds;
+ 
+ self.scoreBoardSpectatorWindow = [[UIWindow alloc] initWithFrame:extScreenBounds];
+ 
+ self.scoreBoardSpectatorWindow.screen = self.extScreen;
+ self.scoreBoardSpectatorWindow.rootViewController = self;
+ 
+ 
+ CGRect temp = CGRectMake(40, 40, 100, 30);
+ UIButton * testButton = [[UIButton alloc] initWithFrame:temp];
+ [testButton setTitle:@"BLAR" forState:UIControlStateNormal];
+ 
+ 
+ [self.scoreBoardSpectatorWindow addSubview: testButton];
+ 
+ self.scoreBoardSpectatorWindow.backgroundColor = [UIColor redColor];
+ 
+ self.scoreBoardSpectatorWindow.hidden = NO;
+ 
+ [self logText: [NSString stringWithFormat:@"  screenDescription: %@",[self.extScreen description]]];
+ }else{
+ [self logText:@"Nothing Here"];
+ }
+ }
+ */
 
 @end

@@ -33,22 +33,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark IB Actions
+
 - (IBAction)btnTouchedFinishedEditingPlayer:(id)sender {
-    
-    NIZPlayer * aPlayer = [[NIZPlayer alloc] initWithDerbyName: self.playerDerbyName.text derbyNumber:self.playerDerbyNumber.text firstName:self.playerFirstName.text lastName:self.playerLastName.text isJammer:self.playerIsJammer.enabled];
-    [self.delegate forTeam:self.teamType savePlayer:aPlayer];
+    if([self.playerDerbyName.text isEqualToString:@""] || [self.playerDerbyNumber.text isEqualToString:@""]){
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Cannot Add Player" message:@"Your Player must have a Derby Name and a Derby Number in order to be added to the roster" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+    }else{
+        NIZPlayer * aPlayer = [[NIZPlayer alloc] initWithDerbyName: self.playerDerbyName.text derbyNumber:self.playerDerbyNumber.text firstName:self.playerFirstName.text lastName:self.playerLastName.text isJammer:self.playerIsJammer.enabled];
+        [self.delegate forTeam:self.teamType savePlayer:aPlayer];
+        [self.delegate refreshPlayerRoster];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (IBAction)btnTouchedCancelEditingPlayer:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+#pragma mark my Functions
 
 @end

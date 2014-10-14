@@ -11,6 +11,7 @@
 @class NIZPlayer;
 @protocol addEditPlayerProtocol <NSObject>
 -(void) forTeam: (NSString *) type savePlayer: (NIZPlayer *) player;
+-(void) refreshPlayerRoster;
 @end
 
 @interface NIZAddEditPlayerViewController : UIViewController

@@ -384,7 +384,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="configureDoneBtnTouched:" destination="1ut-hq-t66" eventType="touchUpInside" id="YXm-jF-ss4"/>
+                                    <action selector="btnTouchedConfigureDone:" destination="1ut-hq-t66" eventType="touchUpInside" id="VLO-EG-heN"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" placeholder="Home Team Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="b8L-m1-zOj">
@@ -525,7 +525,7 @@
             <objects>
                 <viewController modalPresentationStyle="formSheet" id="Bpl-fb-fUZ" customClass="NIZAddEditPlayerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8gg-Md-KKm">
-                        <rect key="frame" x="0.0" y="0.0" width="700" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="664" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="odq-6s-pgm">
@@ -599,19 +599,6 @@
                                 <rect key="frame" x="489" y="111" width="159" height="182"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pLd-Mz-Lel">
-                                <rect key="frame" x="489" y="20" width="159" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Done">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnTouchedFinishedEditingPlayer:" destination="Bpl-fb-fUZ" eventType="touchUpInside" id="5AA-nM-wzK"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WM0-uJ-5F9">
                                 <rect key="frame" x="16" y="20" width="232" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -624,11 +611,37 @@
                                 <rect key="frame" x="186" y="271" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pLd-Mz-Lel">
+                                <rect key="frame" x="489" y="26" width="159" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnTouchedFinishedEditingPlayer:" destination="Bpl-fb-fUZ" eventType="touchUpInside" id="5AA-nM-wzK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fmH-8D-Coq">
+                                <rect key="frame" x="381" y="26" width="100" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnTouchedCancelEditingPlayer:" destination="Bpl-fb-fUZ" eventType="touchUpInside" id="abb-VB-6zD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="700" height="400"/>
+                    <size key="freeformSize" width="664" height="400"/>
                     <connections>
                         <outlet property="playerDerbyName" destination="Y28-bf-MVF" id="4cZ-Lb-uF1"/>
                         <outlet property="playerDerbyNumber" destination="0Mi-Jh-Qfm" id="8Ls-f5-vxs"/>

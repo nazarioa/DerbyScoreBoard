@@ -145,7 +145,6 @@ UIColor * labelGreyColor;
     // Dispose of any resources that can be recreated.
 }
 
-
 -(void) updateConfiguration{
     NSLog(@"UPDATE CONFIGURATION");
     // NSLog(@"== Setting Jam Objects ==");
@@ -162,7 +161,6 @@ UIColor * labelGreyColor;
     self.visitorJamScoreTextField.text  = @"0";
     self.homeTotalScoreTextField.text   = @"0";
     self.visitorTotalScoreTextField.text= @"0";
-    
 }
 
 - (void)primeClocks
@@ -277,19 +275,19 @@ UIColor * labelGreyColor;
 #pragma mark -  Main inputs
 // the following functions may not be needed since the delegate to the textfield handels tapping and stuff.
 - (IBAction)visitorJamScoreInput:(id)sender {
-    NSLog(@"  Visitor Jam Score Input");
+    NSLog(@"  ƒVisitor Jam Score Input");
 }
 
 - (IBAction)visitorTotalScoreInput:(id)sender {
-    NSLog(@"  Visitor Total Score Input");
+    NSLog(@"  ƒVisitor Total Score Input");
 }
 
 - (IBAction)homeJamScoreInput:(id)sender {
-    NSLog(@"  Home Jam Score Input");
+    NSLog(@"  ƒHome Jam Score Input");
 }
 
 - (IBAction)homeTotalScoreInput:(id)sender {
-    NSLog(@"  Home Total Score Input");
+    NSLog(@"  ƒHome Total Score Input");
 }
 
 - (IBAction)visitorScoreDownButton:(UIButton *)sender {
@@ -393,7 +391,7 @@ UIColor * labelGreyColor;
 
 #pragma mark - UI Picker Deleagte Functions
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    if([self.homeJammerPicker isEqual:pickerView]){
+    if([pickerView isEqual:self.homeJammerPicker]){
         return 1;
     }else if([pickerView isEqual:self.visitorJammerPicker]){
         return 1;
@@ -403,7 +401,7 @@ UIColor * labelGreyColor;
 }
 
 - (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    if([self.homeJammerPicker isEqual:pickerView]){
+    if([pickerView isEqual:self.homeJammerPicker]){
         return [self.homeTeam rosterCount];
     }else if([pickerView isEqual:self.visitorJammerPicker]){
         return [self.visitorTeam rosterCount];
@@ -413,13 +411,17 @@ UIColor * labelGreyColor;
 }
 
 - (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    if([self.homeJammerPicker isEqual:pickerView]){
-        return [NSString stringWithFormat:@"%@ - %@", [self.homeTeam playerDerbyNumberAtPosition:row], [self.homeTeam playerDerbyNameAtPosition:row]];
+    NIZPlayer *aTempPlayer;
+    if([pickerView isEqual: self.homeJammerPicker]){
+        aTempPlayer = [self.homeTeam getPlayerAtPosition:row isAJammer:TRUE];
     }else if([pickerView isEqual:self.visitorJammerPicker]){
-        return [NSString stringWithFormat:@"%@ - %@", [self.visitorTeam playerDerbyNumberAtPosition:row], [self.visitorTeam playerDerbyNameAtPosition:row]];
-    }else{
-        return @"Null";
+        aTempPlayer = [self.visitorTeam  getPlayerAtPosition:row isAJammer:TRUE];
     }
+    
+    if(aTempPlayer != nil){
+        return [NSString stringWithFormat:@"%@ : %@", aTempPlayer.derbyNumber , aTempPlayer.derbyName];
+    }
+    return nil;
 }
 
 #pragma mark - UITextFieldDelegate
