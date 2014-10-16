@@ -128,10 +128,8 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         if([tableView isEqual: self.homeTeamRosterTV]){
             [self.homeTeam removePlayer: [self.homeTeam getPlayerAtPosition: indexPath.row]];
-            NSLog(@"trying to remove homeTeam at row: %i", indexPath.row);
         }else if([tableView isEqual: self.visitorTeamRosterTV]){
             [self.visitorTeam removePlayer: [self.visitorTeam getPlayerAtPosition: indexPath.row]];
-            NSLog(@"trying to remove visitorTeam at row: %i", indexPath.row);
         }
     }
     [tableView reloadData];
