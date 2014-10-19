@@ -13,19 +13,19 @@
 
 @class NIZScoreBoardViewController;
 
-@protocol NIZDerbyGameProtocol <NSObject>
+@protocol NIZConfigureScreenProtocol <NSObject>
 -(void) updateConfiguration;
 -(NIZDerbyTeam *) getTeam: (NSString *) type;
 -(void) setTeam: (NSString *) type with: (NIZDerbyTeam *) team;
 -(void) resetClocks;
+-(void) setupSpectatorScreen:(NSArray *) avilableScreens;
 
 
--(UIWindow *) scoreBoardSpectatorWindow;
--(void) setScoreBoardSpectatorWindow: (UIWindow *) theWindow;
+//-(UIWindow *) scoreBoardSpectatorWindow;
+//-(void) setScoreBoardSpectatorWindow: (UIWindow *) theWindow;
 @end
 
 
 @interface NIZConfigureViewController : UIViewController <addEditPlayerProtocol>
-@property (weak, nonatomic) id <NIZDerbyGameProtocol> delegate;
--(NSInteger) numExternalDisplays;
+@property (weak, nonatomic) id <NIZConfigureScreenProtocol> delegate;
 @end

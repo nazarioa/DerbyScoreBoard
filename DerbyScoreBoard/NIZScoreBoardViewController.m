@@ -100,6 +100,7 @@ UIColor * labelGreyColor;
 @synthesize visitorJamScoreTextField;
 @synthesize visitorTotalScoreTextField;
 
+@synthesize scoreBoardSpectatorWindow;
 @synthesize appDelegate;
 
 
@@ -480,6 +481,44 @@ UIColor * labelGreyColor;
         self.homeTeam = team;
     }else if( [type isEqualToString:@"Visitor"]){
         self.visitorTeam = team;
+    }
+}
+
+-(void) setupSpectatorScreen:(NSArray *) avilableScreens{
+    NSLog(@"  setupSpectatorScreen:");
+    //There must be screens
+    
+    self.extScreen = [avilableScreens objectAtIndex:1];
+
+    if( self.extScreen != nil){
+        NSLog(@"  setupSpectatorScreen - 3");
+    
+        CGRect extScreenBounds = self.extScreen.bounds;
+        
+        self.scoreBoardSpectatorWindow = [[UIWindow alloc] initWithFrame:extScreenBounds];
+        self.scoreBoardSpectatorWindow.screen = self.extScreen;
+        
+        NSLog(@"  setupSpectatorScreen - 4");
+        
+        //self.scoreBoardSpectatorWindow.rootViewController = self;
+        self.scoreBoardSpectatorWindow.rootViewController = [[UIViewController alloc] initWithNibName:@"SpectatorWindow" bundle:nil];
+        NSLog(@"  setupSpectatorScreen - 5");
+        
+        
+        CGRect temp = CGRectMake(40, 40, 100, 30);
+        UIButton * testButton = [[UIButton alloc] initWithFrame:temp];
+        [testButton setTitle:@"BLAR" forState:UIControlStateNormal];
+        
+        
+        [self.scoreBoardSpectatorWindow addSubview: testButton];
+        
+        self.scoreBoardSpectatorWindow.backgroundColor = [UIColor redColor];
+        
+        self.scoreBoardSpectatorWindow.hidden = NO;
+        
+        //[self logText: [NSString stringWithFormat:@"  screenDescription: %@",[self.extScreen description]]];
+    }else{
+        NSLog(@"  setupSpectatorScreen. Only here during dev");
     }
 }
 

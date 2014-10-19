@@ -166,6 +166,7 @@
     if ([sender isOn] == YES && [self numExternalDisplays] > 1) {
         NSLog(@"  Switch is OFF, turning it ON");
         NSLog(@"  Number of external displays: %i",[self numExternalDisplays]);
+        [self connectExternalScreen];
     } else if([sender isOn] == NO) {
         NSLog(@"  Switch is ON, turning it OFF");
         NSLog(@"  Number of external displays: %i",[self numExternalDisplays]);
@@ -191,43 +192,21 @@
     }
 }
 
--(NSInteger) numExternalDisplays{
+ -(NSInteger) numExternalDisplays{
     return [UIScreen screens].count;
 }
 
-/*
- -(void) nazExperiment{
- NSArray * avilableScreens  = [UIScreen screens];
- 
- if( [self numExternalDisplays]  > 1 ){
- 
- 
- //There must be screens
- self.extScreen = [avilableScreens objectAtIndex:1];
- CGRect extScreenBounds = self.extScreen.bounds;
- 
- self.scoreBoardSpectatorWindow = [[UIWindow alloc] initWithFrame:extScreenBounds];
- 
- self.scoreBoardSpectatorWindow.screen = self.extScreen;
- self.scoreBoardSpectatorWindow.rootViewController = self;
- 
- 
- CGRect temp = CGRectMake(40, 40, 100, 30);
- UIButton * testButton = [[UIButton alloc] initWithFrame:temp];
- [testButton setTitle:@"BLAR" forState:UIControlStateNormal];
- 
- 
- [self.scoreBoardSpectatorWindow addSubview: testButton];
- 
- self.scoreBoardSpectatorWindow.backgroundColor = [UIColor redColor];
- 
- self.scoreBoardSpectatorWindow.hidden = NO;
- 
- [self logText: [NSString stringWithFormat:@"  screenDescription: %@",[self.extScreen description]]];
- }else{
- [self logText:@"Nothing Here"];
+ -(void) connectExternalScreen{
+     NSLog(@"  connectExternalScreen");
+     NSArray * avilableScreens  = [UIScreen screens];
+     
+     if( avilableScreens.count  > 1 ){
+         [self.delegate setupSpectatorScreen: avilableScreens];
+         NSLog(@"Yes Screens");
+     }else{
+         NSLog(@"No Screens");
+     }
  }
- }
- */
+
 
 @end

@@ -11,7 +11,7 @@
 #import "NIZDerbyJam.h"
 #import "NIZConfigureViewController.h"
 
-@interface NIZScoreBoardViewController : UIViewController <NIZClockDelegate, NIZJamDelegate, NIZDerbyGameProtocol>
+@interface NIZScoreBoardViewController : UIViewController <NIZClockDelegate, NIZJamDelegate, NIZConfigureScreenProtocol>
 
 {
     NIZGameClock *gameClock;
@@ -21,7 +21,7 @@
 
 
 -(void) updateConfiguration;
--(UIWindow *) scoreBoardSpectatorWindow;
--(void) setScoreBoardSpectatorWindow: (UIWindow *) theWindow;
+//-(UIWindow *) scoreBoardSpectatorWindow;
+//-(void) setScoreBoardSpectatorWindow: (UIWindow *) theWindow;
 
 @end

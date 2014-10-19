@@ -22,6 +22,8 @@
 		EBAF913317AE3D2200D76CBA /* +1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBAF912F17AE3D2200D76CBA /* +1@2x.png */; };
 		EBAF913617AE410400D76CBA /* NIZDerbyJam.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF913517AE410400D76CBA /* NIZDerbyJam.m */; };
 		EBAF913A17AE4AB200D76CBA /* NIZDerbyTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF913917AE4AB200D76CBA /* NIZDerbyTeam.m */; };
+		EBC8C5F319F2411D00563DBF /* SpectatorWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBC8C5F219F2411D00563DBF /* SpectatorWindow.xib */; };
+		EBC8C5F719F2424700563DBF /* NIZSpectatorScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC8C5F619F2424700563DBF /* NIZSpectatorScreenViewController.m */; };
 		EBCC4EFA1822257B00099B74 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBCC4EF91822257B00099B74 /* Images.xcassets */; };
 		EBF6758217ADC8250013010B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF6758117ADC8250013010B /* UIKit.framework */; };
 		EBF6758417ADC8250013010B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF6758317ADC8250013010B /* Foundation.framework */; };
@@ -46,7 +48,6 @@
 		EB0EA0F619EE47E500BF3071 /* NIZLaunchScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZLaunchScreenViewController.m; sourceTree = "<group>"; };
 		EB139F2617AEFE880017BBFF /* NIZDerbyBout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZDerbyBout.h; sourceTree = "<group>"; };
 		EB139F2717AEFE880017BBFF /* NIZDerbyBout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZDerbyBout.m; sourceTree = "<group>"; };
-		EB14344A184B43AF00240412 /* NIZConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZConstants.h; sourceTree = "<group>"; };
 		EB52AC9F18BCFE8D009E5C37 /* NIZPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZPlayer.h; sourceTree = "<group>"; };
 		EB52ACA018BCFE8D009E5C37 /* NIZPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZPlayer.m; sourceTree = "<group>"; };
 		EB8CFA7D17BDD6330054BF4F /* NIZGameClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZGameClock.h; sourceTree = "<group>"; };
@@ -61,6 +62,9 @@
 		EBAF913517AE410400D76CBA /* NIZDerbyJam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZDerbyJam.m; sourceTree = "<group>"; };
 		EBAF913817AE4AB200D76CBA /* NIZDerbyTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZDerbyTeam.h; sourceTree = "<group>"; };
 		EBAF913917AE4AB200D76CBA /* NIZDerbyTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZDerbyTeam.m; sourceTree = "<group>"; };
+		EBC8C5F219F2411D00563DBF /* SpectatorWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpectatorWindow.xib; sourceTree = "<group>"; };
+		EBC8C5F519F2424700563DBF /* NIZSpectatorScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZSpectatorScreenViewController.h; sourceTree = "<group>"; };
+		EBC8C5F619F2424700563DBF /* NIZSpectatorScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZSpectatorScreenViewController.m; sourceTree = "<group>"; };
 		EBCC4EF91822257B00099B74 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EBF6757E17ADC8250013010B /* Derby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Derby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF6758117ADC8250013010B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -197,6 +201,15 @@
 			name = "M-Team";
 			sourceTree = "<group>";
 		};
+		EBC8C5F419F241EC00563DBF /* C-SpectatorScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EBC8C5F519F2424700563DBF /* NIZSpectatorScreenViewController.h */,
+				EBC8C5F619F2424700563DBF /* NIZSpectatorScreenViewController.m */,
+			);
+			name = "C-SpectatorScreen";
+			sourceTree = "<group>";
+		};
 		EBF6757517ADC8250013010B = {
 			isa = PBXGroup;
 			children = (
@@ -229,11 +242,13 @@
 			children = (
 				EB0EA0EE19EE45D700BF3071 /* Launch Screen.xib */,
 				EBF6759917ADC8260013010B /* MainStoryboard.storyboard */,
+				EBC8C5F219F2411D00563DBF /* SpectatorWindow.xib */,
 				EB0EA0F819EE47F800BF3071 /* C-LaunchScreen */,
 				EB139F2B17AEFF920017BBFF /* C-App Delegate */,
 				EB139F2A17AEFF790017BBFF /* C-Scoreboard */,
 				EB415DAB18CEC6D4002F7E28 /* C-Configure */,
 				EBA14FB719EBA780007A15DC /* C-AddEdit Player */,
+				EBC8C5F419F241EC00563DBF /* C-SpectatorScreen */,
 				EB139F2917AEFF5D0017BBFF /* M-Derby */,
 				EB0A806117BC46900078CD28 /* M-Clock */,
 				EBAF913717AE464700D76CBA /* M-Jam */,
@@ -256,7 +271,6 @@
 				EBF6759317ADC8260013010B /* Default.png */,
 				EBF6759517ADC8260013010B /* Default@2x.png */,
 				EBF6759717ADC8260013010B /* Default-568h@2x.png */,
-				EB14344A184B43AF00240412 /* NIZConstants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -331,6 +345,7 @@
 				EBAF913217AE3D2200D76CBA /* +1.png in Resources */,
 				EBAF913317AE3D2200D76CBA /* +1@2x.png in Resources */,
 				EB0EA0ED19EE42B500BF3071 /* metal.png in Resources */,
+				EBC8C5F319F2411D00563DBF /* SpectatorWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +366,7 @@
 				EB139F2817AEFE880017BBFF /* NIZDerbyBout.m in Sources */,
 				EB52ACA118BCFE8D009E5C37 /* NIZPlayer.m in Sources */,
 				EB8CFA7F17BDD6330054BF4F /* NIZGameClock.m in Sources */,
+				EBC8C5F719F2424700563DBF /* NIZSpectatorScreenViewController.m in Sources */,
 				EB0EA0F719EE47E500BF3071 /* NIZLaunchScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,7 +461,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DerbyScoreBoard/Derby-Prefix.pch";
 				INFOPLIST_FILE = "DerbyScoreBoard/Derby-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = Derby;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -462,7 +478,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DerbyScoreBoard/Derby-Prefix.pch";
 				INFOPLIST_FILE = "DerbyScoreBoard/Derby-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = Derby;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
