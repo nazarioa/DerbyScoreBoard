@@ -41,6 +41,12 @@
 {
     [super viewDidLoad];
     
+    // CoreData Stuff
+    NIZAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate]; // gives us a way to have the appDelegate so that we can call CoreData functions defined there.
+    NSManagedObjectContext *context = [appDelegate managedObjectContext]; // Now we have a hold of the CoreData context.
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Team" inManagedObjectContext:context]; //We are gathering things in in the Team
+    
+    
     // Home team exists, bring in the data to manipulate
     if([self.delegate getTeam:@"Home"] == nil){
         self.homeTeam = [[NIZDerbyTeam alloc] initWithTeamName:@"Home"];

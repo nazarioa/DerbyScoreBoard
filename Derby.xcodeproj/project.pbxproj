@@ -14,6 +14,8 @@
 		EB0EA0F719EE47E500BF3071 /* NIZLaunchScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0EA0F619EE47E500BF3071 /* NIZLaunchScreenViewController.m */; };
 		EB139F2817AEFE880017BBFF /* NIZDerbyBout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB139F2717AEFE880017BBFF /* NIZDerbyBout.m */; };
 		EB52ACA118BCFE8D009E5C37 /* NIZPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52ACA018BCFE8D009E5C37 /* NIZPlayer.m */; };
+		EB86FA0319FC8D4B0042B149 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB86FA0219FC8D4B0042B149 /* CoreData.framework */; };
+		EB86FA0619FC9E350042B149 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB86FA0419FC9E350042B149 /* Model.xcdatamodeld */; };
 		EB8CFA7F17BDD6330054BF4F /* NIZGameClock.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8CFA7E17BDD6330054BF4F /* NIZGameClock.m */; };
 		EBA14FBA19EBA7C2007A15DC /* NIZAddEditPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA14FB919EBA7C2007A15DC /* NIZAddEditPlayerViewController.m */; };
 		EBAF913017AE3D2200D76CBA /* -1.png in Resources */ = {isa = PBXBuildFile; fileRef = EBAF912C17AE3D2200D76CBA /* -1.png */; };
@@ -50,6 +52,8 @@
 		EB139F2717AEFE880017BBFF /* NIZDerbyBout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZDerbyBout.m; sourceTree = "<group>"; };
 		EB52AC9F18BCFE8D009E5C37 /* NIZPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZPlayer.h; sourceTree = "<group>"; };
 		EB52ACA018BCFE8D009E5C37 /* NIZPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZPlayer.m; sourceTree = "<group>"; };
+		EB86FA0219FC8D4B0042B149 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		EB86FA0519FC9E350042B149 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		EB8CFA7D17BDD6330054BF4F /* NIZGameClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZGameClock.h; sourceTree = "<group>"; };
 		EB8CFA7E17BDD6330054BF4F /* NIZGameClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZGameClock.m; sourceTree = "<group>"; };
 		EBA14FB819EBA7C2007A15DC /* NIZAddEditPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZAddEditPlayerViewController.h; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB86FA0319FC8D4B0042B149 /* CoreData.framework in Frameworks */,
 				EBF6758217ADC8250013010B /* UIKit.framework in Frameworks */,
 				EBF6758417ADC8250013010B /* Foundation.framework in Frameworks */,
 				EBF6758617ADC8250013010B /* CoreGraphics.framework in Frameworks */,
@@ -230,6 +235,7 @@
 		EBF6758017ADC8250013010B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EB86FA0219FC8D4B0042B149 /* CoreData.framework */,
 				EBF6758117ADC8250013010B /* UIKit.framework */,
 				EBF6758317ADC8250013010B /* Foundation.framework */,
 				EBF6758517ADC8250013010B /* CoreGraphics.framework */,
@@ -271,6 +277,7 @@
 				EBF6759317ADC8260013010B /* Default.png */,
 				EBF6759517ADC8260013010B /* Default@2x.png */,
 				EBF6759717ADC8260013010B /* Default-568h@2x.png */,
+				EB86FA0419FC9E350042B149 /* Model.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -367,6 +374,7 @@
 				EB52ACA118BCFE8D009E5C37 /* NIZPlayer.m in Sources */,
 				EB8CFA7F17BDD6330054BF4F /* NIZGameClock.m in Sources */,
 				EBC8C5F719F2424700563DBF /* NIZSpectatorScreenViewController.m in Sources */,
+				EB86FA0619FC9E350042B149 /* Model.xcdatamodeld in Sources */,
 				EB0EA0F719EE47E500BF3071 /* NIZLaunchScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +515,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EB86FA0419FC9E350042B149 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EB86FA0519FC9E350042B149 /* Model.xcdatamodel */,
+			);
+			currentVersion = EB86FA0519FC9E350042B149 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EBF6757617ADC8250013010B /* Project object */;
 }

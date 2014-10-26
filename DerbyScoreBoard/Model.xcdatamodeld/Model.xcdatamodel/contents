@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Game" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="gameId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="gameLocation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="homeTeamId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="visitorTeamId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="gameToJams" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Jam" inverseName="jamToGames" inverseEntity="Jam" syncable="YES"/>
+    </entity>
+    <entity name="Jam" syncable="YES">
+        <attribute name="gameId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="homeTeamJamScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="jamEndTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="jamIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="jamStartTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="visitorTeamJamScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="jamToGames" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="gameToJams" inverseEntity="Game" syncable="YES"/>
+        <relationship name="jamToTeams" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="teamToJams" inverseEntity="Team" syncable="YES"/>
+    </entity>
+    <entity name="Player" syncable="YES">
+        <attribute name="derbyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="derbyNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isJammer" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mugshot" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="teamId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="playerToTeam" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="teamToPlayers" inverseEntity="Team" syncable="YES"/>
+    </entity>
+    <entity name="Team" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="logo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="teamToJams" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Jam" inverseName="jamToTeams" inverseEntity="Jam" syncable="YES"/>
+        <relationship name="teamToPlayers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="playerToTeam" inverseEntity="Player" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Team" positionX="-171" positionY="-378" width="128" height="118"/>
+        <element name="Player" positionX="-405" positionY="-423" width="128" height="163"/>
+        <element name="Game" positionX="-83" positionY="-171" width="128" height="133"/>
+        <element name="Jam" positionX="-333" positionY="-180" width="128" height="163"/>
+    </elements>
+</model>

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NIZAppDelegate.h"
 #import "NIZDerbyTeam.h"
 #import "NIZAddEditPlayerViewController.h"
 //#import "NIZScoreBoardViewController.h"
