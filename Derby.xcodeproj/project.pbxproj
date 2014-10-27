@@ -8,18 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		EB09426C18CEC73A00372C47 /* NIZConfigureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB09426B18CEC73A00372C47 /* NIZConfigureViewController.m */; };
-		EB0EA0ED19EE42B500BF3071 /* metal.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0EA0EC19EE42B500BF3071 /* metal.png */; };
 		EB0EA0EF19EE45D700BF3071 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB0EA0EE19EE45D700BF3071 /* Launch Screen.xib */; };
-		EB0EA0F119EE474E00BF3071 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0EA0F019EE474E00BF3071 /* splash.png */; };
 		EB0EA0F719EE47E500BF3071 /* NIZLaunchScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0EA0F619EE47E500BF3071 /* NIZLaunchScreenViewController.m */; };
 		EB139F2817AEFE880017BBFF /* NIZDerbyBout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB139F2717AEFE880017BBFF /* NIZDerbyBout.m */; };
 		EB52ACA118BCFE8D009E5C37 /* NIZPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52ACA018BCFE8D009E5C37 /* NIZPlayer.m */; };
+		EB5FF85E19FDC33B004B8FFB /* clock_start.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF84E19FDC33B004B8FFB /* clock_start.png */; };
+		EB5FF85F19FDC33B004B8FFB /* clock_start@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF84F19FDC33B004B8FFB /* clock_start@2x.png */; };
+		EB5FF86019FDC33B004B8FFB /* clock_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF85019FDC33B004B8FFB /* clock_stop.png */; };
+		EB5FF86119FDC33B004B8FFB /* clock_stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF85119FDC33B004B8FFB /* clock_stop@2x.png */; };
+		EB5FF86219FDC33B004B8FFB /* config.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF85219FDC33B004B8FFB /* config.png */; };
+		EB5FF86319FDC33B004B8FFB /* config@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF85319FDC33B004B8FFB /* config@2x.png */; };
+		EB5FF86419FDC33B004B8FFB /* jam_start_a.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF85419FDC33B004B8FFB /* jam_start_a.png */; };
+		EB5FF86519FDC33B004B8FFB /* jam_start_a@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF85519FDC33B004B8FFB /* jam_start_a@2x.png */; };
+		EB5FF86619FDC33B004B8FFB /* jam_start_b.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF85619FDC33B004B8FFB /* jam_start_b.png */; };
+		EB5FF86719FDC33B004B8FFB /* jam_start_b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF85719FDC33B004B8FFB /* jam_start_b@2x.png */; };
+		EB5FF86819FDC33B004B8FFB /* jam_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF85819FDC33B004B8FFB /* jam_stop.png */; };
+		EB5FF86919FDC33B004B8FFB /* jam_stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF85919FDC33B004B8FFB /* jam_stop@2x.png */; };
+		EB5FF86A19FDC33B004B8FFB /* score_add.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF85A19FDC33B004B8FFB /* score_add.png */; };
+		EB5FF86B19FDC33B004B8FFB /* score_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF85B19FDC33B004B8FFB /* score_add@2x.png */; };
+		EB5FF86C19FDC33B004B8FFB /* score_minus.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF85C19FDC33B004B8FFB /* score_minus.png */; };
+		EB5FF86D19FDC33B004B8FFB /* score_minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF85D19FDC33B004B8FFB /* score_minus@2x.png */; };
+		EB5FF87219FDC349004B8FFB /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF86E19FDC349004B8FFB /* background.png */; };
+		EB5FF87319FDC349004B8FFB /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF86F19FDC349004B8FFB /* background@2x.png */; };
+		EB5FF87419FDC349004B8FFB /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF87019FDC349004B8FFB /* splash.png */; };
+		EB5FF87519FDC349004B8FFB /* splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF87119FDC349004B8FFB /* splash@2x.png */; };
 		EB8CFA7F17BDD6330054BF4F /* NIZGameClock.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8CFA7E17BDD6330054BF4F /* NIZGameClock.m */; };
 		EBA14FBA19EBA7C2007A15DC /* NIZAddEditPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA14FB919EBA7C2007A15DC /* NIZAddEditPlayerViewController.m */; };
-		EBAF913017AE3D2200D76CBA /* -1.png in Resources */ = {isa = PBXBuildFile; fileRef = EBAF912C17AE3D2200D76CBA /* -1.png */; };
-		EBAF913117AE3D2200D76CBA /* -1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBAF912D17AE3D2200D76CBA /* -1@2x.png */; };
-		EBAF913217AE3D2200D76CBA /* +1.png in Resources */ = {isa = PBXBuildFile; fileRef = EBAF912E17AE3D2200D76CBA /* +1.png */; };
-		EBAF913317AE3D2200D76CBA /* +1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBAF912F17AE3D2200D76CBA /* +1@2x.png */; };
 		EBAF913617AE410400D76CBA /* NIZDerbyJam.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF913517AE410400D76CBA /* NIZDerbyJam.m */; };
 		EBAF913A17AE4AB200D76CBA /* NIZDerbyTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF913917AE4AB200D76CBA /* NIZDerbyTeam.m */; };
 		EBC8C5F319F2411D00563DBF /* SpectatorWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBC8C5F219F2411D00563DBF /* SpectatorWindow.xib */; };
@@ -41,23 +55,37 @@
 /* Begin PBXFileReference section */
 		EB09426A18CEC73A00372C47 /* NIZConfigureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZConfigureViewController.h; sourceTree = "<group>"; };
 		EB09426B18CEC73A00372C47 /* NIZConfigureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZConfigureViewController.m; sourceTree = "<group>"; };
-		EB0EA0EC19EE42B500BF3071 /* metal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metal.png; sourceTree = "<group>"; };
 		EB0EA0EE19EE45D700BF3071 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "../Launch Screen.xib"; sourceTree = "<group>"; };
-		EB0EA0F019EE474E00BF3071 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		EB0EA0F519EE47E500BF3071 /* NIZLaunchScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZLaunchScreenViewController.h; sourceTree = "<group>"; };
 		EB0EA0F619EE47E500BF3071 /* NIZLaunchScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZLaunchScreenViewController.m; sourceTree = "<group>"; };
 		EB139F2617AEFE880017BBFF /* NIZDerbyBout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZDerbyBout.h; sourceTree = "<group>"; };
 		EB139F2717AEFE880017BBFF /* NIZDerbyBout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZDerbyBout.m; sourceTree = "<group>"; };
 		EB52AC9F18BCFE8D009E5C37 /* NIZPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZPlayer.h; sourceTree = "<group>"; };
 		EB52ACA018BCFE8D009E5C37 /* NIZPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZPlayer.m; sourceTree = "<group>"; };
+		EB5FF84E19FDC33B004B8FFB /* clock_start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_start.png; sourceTree = "<group>"; };
+		EB5FF84F19FDC33B004B8FFB /* clock_start@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock_start@2x.png"; sourceTree = "<group>"; };
+		EB5FF85019FDC33B004B8FFB /* clock_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock_stop.png; sourceTree = "<group>"; };
+		EB5FF85119FDC33B004B8FFB /* clock_stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock_stop@2x.png"; sourceTree = "<group>"; };
+		EB5FF85219FDC33B004B8FFB /* config.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = config.png; sourceTree = "<group>"; };
+		EB5FF85319FDC33B004B8FFB /* config@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "config@2x.png"; sourceTree = "<group>"; };
+		EB5FF85419FDC33B004B8FFB /* jam_start_a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jam_start_a.png; sourceTree = "<group>"; };
+		EB5FF85519FDC33B004B8FFB /* jam_start_a@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jam_start_a@2x.png"; sourceTree = "<group>"; };
+		EB5FF85619FDC33B004B8FFB /* jam_start_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jam_start_b.png; sourceTree = "<group>"; };
+		EB5FF85719FDC33B004B8FFB /* jam_start_b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jam_start_b@2x.png"; sourceTree = "<group>"; };
+		EB5FF85819FDC33B004B8FFB /* jam_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jam_stop.png; sourceTree = "<group>"; };
+		EB5FF85919FDC33B004B8FFB /* jam_stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jam_stop@2x.png"; sourceTree = "<group>"; };
+		EB5FF85A19FDC33B004B8FFB /* score_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score_add.png; sourceTree = "<group>"; };
+		EB5FF85B19FDC33B004B8FFB /* score_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "score_add@2x.png"; sourceTree = "<group>"; };
+		EB5FF85C19FDC33B004B8FFB /* score_minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score_minus.png; sourceTree = "<group>"; };
+		EB5FF85D19FDC33B004B8FFB /* score_minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "score_minus@2x.png"; sourceTree = "<group>"; };
+		EB5FF86E19FDC349004B8FFB /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		EB5FF86F19FDC349004B8FFB /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		EB5FF87019FDC349004B8FFB /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
+		EB5FF87119FDC349004B8FFB /* splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash@2x.png"; sourceTree = "<group>"; };
 		EB8CFA7D17BDD6330054BF4F /* NIZGameClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZGameClock.h; sourceTree = "<group>"; };
 		EB8CFA7E17BDD6330054BF4F /* NIZGameClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZGameClock.m; sourceTree = "<group>"; };
 		EBA14FB819EBA7C2007A15DC /* NIZAddEditPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZAddEditPlayerViewController.h; sourceTree = "<group>"; };
 		EBA14FB919EBA7C2007A15DC /* NIZAddEditPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZAddEditPlayerViewController.m; sourceTree = "<group>"; };
-		EBAF912C17AE3D2200D76CBA /* -1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "-1.png"; sourceTree = "<group>"; };
-		EBAF912D17AE3D2200D76CBA /* -1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "-1@2x.png"; sourceTree = "<group>"; };
-		EBAF912E17AE3D2200D76CBA /* +1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+1.png"; sourceTree = "<group>"; };
-		EBAF912F17AE3D2200D76CBA /* +1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+1@2x.png"; sourceTree = "<group>"; };
 		EBAF913417AE410400D76CBA /* NIZDerbyJam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZDerbyJam.h; sourceTree = "<group>"; };
 		EBAF913517AE410400D76CBA /* NIZDerbyJam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZDerbyJam.m; sourceTree = "<group>"; };
 		EBAF913817AE4AB200D76CBA /* NIZDerbyTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZDerbyTeam.h; sourceTree = "<group>"; };
@@ -161,6 +189,29 @@
 			name = "M-Player";
 			sourceTree = "<group>";
 		};
+		EB86FA0719FDBF530042B149 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				EB5FF84E19FDC33B004B8FFB /* clock_start.png */,
+				EB5FF84F19FDC33B004B8FFB /* clock_start@2x.png */,
+				EB5FF85019FDC33B004B8FFB /* clock_stop.png */,
+				EB5FF85119FDC33B004B8FFB /* clock_stop@2x.png */,
+				EB5FF85219FDC33B004B8FFB /* config.png */,
+				EB5FF85319FDC33B004B8FFB /* config@2x.png */,
+				EB5FF85419FDC33B004B8FFB /* jam_start_a.png */,
+				EB5FF85519FDC33B004B8FFB /* jam_start_a@2x.png */,
+				EB5FF85619FDC33B004B8FFB /* jam_start_b.png */,
+				EB5FF85719FDC33B004B8FFB /* jam_start_b@2x.png */,
+				EB5FF85819FDC33B004B8FFB /* jam_stop.png */,
+				EB5FF85919FDC33B004B8FFB /* jam_stop@2x.png */,
+				EB5FF85A19FDC33B004B8FFB /* score_add.png */,
+				EB5FF85B19FDC33B004B8FFB /* score_add@2x.png */,
+				EB5FF85C19FDC33B004B8FFB /* score_minus.png */,
+				EB5FF85D19FDC33B004B8FFB /* score_minus@2x.png */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
 		EBA14FB719EBA780007A15DC /* C-AddEdit Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,12 +224,10 @@
 		EBAF912B17AE3D0300D76CBA /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				EB0EA0F019EE474E00BF3071 /* splash.png */,
-				EB0EA0EC19EE42B500BF3071 /* metal.png */,
-				EBAF912C17AE3D2200D76CBA /* -1.png */,
-				EBAF912D17AE3D2200D76CBA /* -1@2x.png */,
-				EBAF912E17AE3D2200D76CBA /* +1.png */,
-				EBAF912F17AE3D2200D76CBA /* +1@2x.png */,
+				EB5FF86E19FDC349004B8FFB /* background.png */,
+				EB5FF86F19FDC349004B8FFB /* background@2x.png */,
+				EB5FF87019FDC349004B8FFB /* splash.png */,
+				EB5FF87119FDC349004B8FFB /* splash@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -263,6 +312,7 @@
 		EBF6758817ADC8260013010B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EB86FA0719FDBF530042B149 /* Buttons */,
 				EBAF912B17AE3D0300D76CBA /* Images */,
 				EBF6758917ADC8260013010B /* Derby-Info.plist */,
 				EBF6758A17ADC8260013010B /* InfoPlist.strings */,
@@ -333,18 +383,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBF6758C17ADC8260013010B /* InfoPlist.strings in Resources */,
+				EB5FF86B19FDC33B004B8FFB /* score_add@2x.png in Resources */,
+				EB5FF86619FDC33B004B8FFB /* jam_start_b.png in Resources */,
+				EB5FF86019FDC33B004B8FFB /* clock_stop.png in Resources */,
 				EBCC4EFA1822257B00099B74 /* Images.xcassets in Resources */,
+				EB5FF86119FDC33B004B8FFB /* clock_stop@2x.png in Resources */,
+				EB5FF87319FDC349004B8FFB /* background@2x.png in Resources */,
+				EB5FF87219FDC349004B8FFB /* background.png in Resources */,
+				EB5FF86519FDC33B004B8FFB /* jam_start_a@2x.png in Resources */,
+				EB5FF86219FDC33B004B8FFB /* config.png in Resources */,
 				EBF6759417ADC8260013010B /* Default.png in Resources */,
+				EB5FF86C19FDC33B004B8FFB /* score_minus.png in Resources */,
+				EB5FF86319FDC33B004B8FFB /* config@2x.png in Resources */,
+				EB5FF86719FDC33B004B8FFB /* jam_start_b@2x.png in Resources */,
 				EBF6759617ADC8260013010B /* Default@2x.png in Resources */,
+				EB5FF85E19FDC33B004B8FFB /* clock_start.png in Resources */,
+				EB5FF86D19FDC33B004B8FFB /* score_minus@2x.png in Resources */,
+				EB5FF86819FDC33B004B8FFB /* jam_stop.png in Resources */,
 				EBF6759817ADC8260013010B /* Default-568h@2x.png in Resources */,
+				EB5FF86419FDC33B004B8FFB /* jam_start_a.png in Resources */,
+				EB5FF86A19FDC33B004B8FFB /* score_add.png in Resources */,
 				EB0EA0EF19EE45D700BF3071 /* Launch Screen.xib in Resources */,
 				EBF6759B17ADC8260013010B /* MainStoryboard.storyboard in Resources */,
-				EBAF913017AE3D2200D76CBA /* -1.png in Resources */,
-				EB0EA0F119EE474E00BF3071 /* splash.png in Resources */,
-				EBAF913117AE3D2200D76CBA /* -1@2x.png in Resources */,
-				EBAF913217AE3D2200D76CBA /* +1.png in Resources */,
-				EBAF913317AE3D2200D76CBA /* +1@2x.png in Resources */,
-				EB0EA0ED19EE42B500BF3071 /* metal.png in Resources */,
+				EB5FF86919FDC33B004B8FFB /* jam_stop@2x.png in Resources */,
+				EB5FF85F19FDC33B004B8FFB /* clock_start@2x.png in Resources */,
+				EB5FF87519FDC349004B8FFB /* splash@2x.png in Resources */,
+				EB5FF87419FDC349004B8FFB /* splash.png in Resources */,
 				EBC8C5F319F2411D00563DBF /* SpectatorWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

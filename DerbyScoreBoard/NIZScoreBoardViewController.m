@@ -17,9 +17,9 @@
 NIZDerbyJam *currentJam; //? Why is this outside? // I feel as though this is a Class level?
 UIColor * blueColor;
 UIColor * btnGreyColor;
-UIColor * btnGreenColor;
-UIColor * btnRedColor;
-UIColor * btnYellowColor;
+//UIColor * btnGreenColor;
+//UIColor * btnRedColor;
+//UIColor * btnYellowColor;
 UIColor * labelGreyColor;
 
 @interface NIZScoreBoardViewController ()
@@ -134,10 +134,12 @@ UIColor * labelGreyColor;
 
 -(void) setupColors{
     blueColor     = [[UIColor alloc] initWithRed:8/255.0f green:107/255.0f blue:255/255.0f alpha:1.0f]; //blue
+    /*
     btnGreyColor  = [[UIColor alloc] initWithRed:0.36 green:0.36 blue:0.36 alpha:1.0]; //grey
     btnGreenColor = [[UIColor alloc] initWithRed:92/255.0f green:188/255.0f blue:97/255.0f alpha:1.0f]; //green
     btnRedColor   = [[UIColor alloc] initWithRed:188/255.0f green:94/255.0f blue:94/255.0f alpha:1.0f]; //red
     btnYellowColor= [[UIColor alloc] initWithRed:188/255.0f green:179/255.0f blue:94/255.0f alpha:1.0f]; //yeleow
+     */
 }
 
 - (void)didReceiveMemoryWarning
@@ -180,9 +182,15 @@ UIColor * labelGreyColor;
         [self.preJamClock resetClock];
     }
     
-    [self.officialTimeOutBtn setTitle:@"Start Game Clock" forState: UIControlStateNormal];
-    [self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
-    self.jamTimeOutBtn.backgroundColor = btnGreenColor;
+    // TODO: replace code below with appropriate UIImage code
+    UIImage * gameClockImage = [UIImage imageNamed:@"clock_start"];
+    [self.officialTimeOutBtn setImage:gameClockImage forState: UIControlStateNormal];
+    //[self.officialTimeOutBtn setTitle:@"Start Game Clock" forState: UIControlStateNormal];
+    
+    UIImage * jamClockImage = [UIImage imageNamed:@"jam_start_a"];
+    [self.jamTimeOutBtn setImage:jamClockImage forState: UIControlStateNormal];
+    //[self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
+    //self.jamTimeOutBtn.backgroundColor = btnGreenColor;
 }
 
 -(void)resetClocks{
@@ -203,8 +211,9 @@ UIColor * labelGreyColor;
 
 - (void)boutClockPaused {
     // NSLog(@"Official Clock: Paused Clock");
-    [self.officialTimeOutBtn setTitle:@"Start Game Clock" forState: UIControlStateNormal];
-    self.officialTimeOutBtn.backgroundColor = btnGreyColor;
+    UIImage * image = [UIImage imageNamed:@"clock_start"];
+    [self.officialTimeOutBtn setImage:image forState: UIControlStateNormal];
+    
     [self.jamClock stopClock];
     [self.preJamClock stopClock];
     [self.gameClock pauseClock];
@@ -212,16 +221,16 @@ UIColor * labelGreyColor;
 
 - (void)boutClockStart {
     // NSLog(@"Official Clock: Start Clock");
-    [self.officialTimeOutBtn setTitle:@"Pause Game Clock" forState: UIControlStateNormal];
-    self.officialTimeOutBtn.backgroundColor = btnRedColor;
+    UIImage * image = [UIImage imageNamed:@"clock_stop"];
+    [self.officialTimeOutBtn setImage:image forState: UIControlStateNormal];
     [self.gameClock countdownTimer];
 }
 
 
 #pragma mark - jamClock
 - (void)jamClockStart {
-    [self.jamTimeOutBtn setTitle:@"Stop Jam" forState: UIControlStateNormal];
-    self.jamTimeOutBtn.backgroundColor = btnGreyColor;
+    UIImage * image = [UIImage imageNamed:@"jam_stop"];
+    [self.jamTimeOutBtn setImage:image forState: UIControlStateNormal];
     [self.preJamClock stopClock];
     [self.jamClock countdownTimer];
     if([self.gameClock isRunning] == NO){
@@ -246,8 +255,8 @@ UIColor * labelGreyColor;
 }
 
 - (void)jamClockStop {
-    [self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
-    self.jamTimeOutBtn.backgroundColor = btnGreenColor; //GREEN
+    UIImage * image = [UIImage imageNamed:@"jam_start_a"];
+    [self.jamTimeOutBtn setImage:image forState: UIControlStateNormal];
     [self.jamClock stopClock];
     [self.preJamClock countdownTimer];
     
@@ -256,8 +265,8 @@ UIColor * labelGreyColor;
 
 - (void)jamClockPause {
     NSLog(@"jamClockButton: Stopped Jam");
-    [self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
-    self.jamTimeOutBtn.backgroundColor = btnYellowColor; //YELOW
+    UIImage * image = [UIImage imageNamed:@"jam_start_a"];
+    [self.jamTimeOutBtn setImage:image forState: UIControlStateNormal];
     [self.jamClock pauseClock];
 }
 

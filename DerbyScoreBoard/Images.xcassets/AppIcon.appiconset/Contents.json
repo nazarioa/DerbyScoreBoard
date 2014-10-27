@@ -59,20 +59,6 @@
       "idiom" : "ipad",
       "filename" : "152x152.png",
       "scale" : "2x"
-    },
-    {
-      "size" : "40x40",
-      "idiom" : "iphone",
-      "filename" : "40x40-1.png",
-      "unassigned" : true,
-      "scale" : "2x"
-    },
-    {
-      "size" : "57x57",
-      "idiom" : "iphone",
-      "filename" : "144x144-1.png",
-      "unassigned" : true,
-      "scale" : "2x"
     }
   ],
   "info" : {
