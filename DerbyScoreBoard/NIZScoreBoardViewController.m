@@ -183,11 +183,11 @@ UIColor * labelGreyColor;
     }
     
     // TODO: replace code below with appropriate UIImage code
-    UIImage * gameClockImage = [UIImage imageNamed:@"clock_start"];
+    UIImage * gameClockImage = [UIImage imageNamed:@"gameClock_start"];
     [self.officialTimeOutBtn setImage:gameClockImage forState: UIControlStateNormal];
     //[self.officialTimeOutBtn setTitle:@"Start Game Clock" forState: UIControlStateNormal];
     
-    UIImage * jamClockImage = [UIImage imageNamed:@"jam_start_a"];
+    UIImage * jamClockImage = [UIImage imageNamed:@"jamClock_start_a"];
     [self.jamTimeOutBtn setImage:jamClockImage forState: UIControlStateNormal];
     //[self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
     //self.jamTimeOutBtn.backgroundColor = btnGreenColor;
@@ -211,7 +211,7 @@ UIColor * labelGreyColor;
 
 - (void)boutClockPaused {
     // NSLog(@"Official Clock: Paused Clock");
-    UIImage * image = [UIImage imageNamed:@"clock_start"];
+    UIImage * image = [UIImage imageNamed:@"gameClock_start"];
     [self.officialTimeOutBtn setImage:image forState: UIControlStateNormal];
     
     [self.jamClock stopClock];
@@ -221,7 +221,7 @@ UIColor * labelGreyColor;
 
 - (void)boutClockStart {
     // NSLog(@"Official Clock: Start Clock");
-    UIImage * image = [UIImage imageNamed:@"clock_stop"];
+    UIImage * image = [UIImage imageNamed:@"gameClock_stop"];
     [self.officialTimeOutBtn setImage:image forState: UIControlStateNormal];
     [self.gameClock countdownTimer];
 }
@@ -229,7 +229,7 @@ UIColor * labelGreyColor;
 
 #pragma mark - jamClock
 - (void)jamClockStart {
-    UIImage * image = [UIImage imageNamed:@"jam_stop"];
+    UIImage * image = [UIImage imageNamed:@"jamClock_stop"];
     [self.jamTimeOutBtn setImage:image forState: UIControlStateNormal];
     [self.preJamClock stopClock];
     [self.jamClock countdownTimer];
@@ -255,7 +255,7 @@ UIColor * labelGreyColor;
 }
 
 - (void)jamClockStop {
-    UIImage * image = [UIImage imageNamed:@"jam_start_a"];
+    UIImage * image = [UIImage imageNamed:@"jamClock_start_a"];
     [self.jamTimeOutBtn setImage:image forState: UIControlStateNormal];
     [self.jamClock stopClock];
     [self.preJamClock countdownTimer];
@@ -265,7 +265,7 @@ UIColor * labelGreyColor;
 
 - (void)jamClockPause {
     NSLog(@"jamClockButton: Stopped Jam");
-    UIImage * image = [UIImage imageNamed:@"jam_start_a"];
+    UIImage * image = [UIImage imageNamed:@"jamClock_start_a"];
     [self.jamTimeOutBtn setImage:image forState: UIControlStateNormal];
     [self.jamClock pauseClock];
 }
