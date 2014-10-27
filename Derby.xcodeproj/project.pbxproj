@@ -32,6 +32,8 @@
 		EB5FF87319FDC349004B8FFB /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF86F19FDC349004B8FFB /* background@2x.png */; };
 		EB5FF87419FDC349004B8FFB /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF87019FDC349004B8FFB /* splash.png */; };
 		EB5FF87519FDC349004B8FFB /* splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF87119FDC349004B8FFB /* splash@2x.png */; };
+		EB879FC219FDFC3800289B96 /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB879FC019FDFC3800289B96 /* Gotham-Black.otf */; };
+		EB879FC319FDFC3800289B96 /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB879FC119FDFC3800289B96 /* Gotham-Medium.otf */; };
 		EB8CFA7F17BDD6330054BF4F /* NIZGameClock.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8CFA7E17BDD6330054BF4F /* NIZGameClock.m */; };
 		EBA14FBA19EBA7C2007A15DC /* NIZAddEditPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA14FB919EBA7C2007A15DC /* NIZAddEditPlayerViewController.m */; };
 		EBAF913617AE410400D76CBA /* NIZDerbyJam.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF913517AE410400D76CBA /* NIZDerbyJam.m */; };
@@ -82,6 +84,8 @@
 		EB5FF86F19FDC349004B8FFB /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		EB5FF87019FDC349004B8FFB /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		EB5FF87119FDC349004B8FFB /* splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash@2x.png"; sourceTree = "<group>"; };
+		EB879FC019FDFC3800289B96 /* Gotham-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Black.otf"; sourceTree = "<group>"; };
+		EB879FC119FDFC3800289B96 /* Gotham-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Medium.otf"; sourceTree = "<group>"; };
 		EB8CFA7D17BDD6330054BF4F /* NIZGameClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZGameClock.h; sourceTree = "<group>"; };
 		EB8CFA7E17BDD6330054BF4F /* NIZGameClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZGameClock.m; sourceTree = "<group>"; };
 		EBA14FB819EBA7C2007A15DC /* NIZAddEditPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZAddEditPlayerViewController.h; sourceTree = "<group>"; };
@@ -212,6 +216,15 @@
 			name = Buttons;
 			sourceTree = "<group>";
 		};
+		EB879FBB19FDFA2B00289B96 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EB879FC019FDFC3800289B96 /* Gotham-Black.otf */,
+				EB879FC119FDFC3800289B96 /* Gotham-Medium.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		EBA14FB719EBA780007A15DC /* C-AddEdit Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +325,7 @@
 		EBF6758817ADC8260013010B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EB879FBB19FDFA2B00289B96 /* Fonts */,
 				EB86FA0719FDBF530042B149 /* Buttons */,
 				EBAF912B17AE3D0300D76CBA /* Images */,
 				EBF6758917ADC8260013010B /* Derby-Info.plist */,
@@ -389,6 +403,7 @@
 				EBCC4EFA1822257B00099B74 /* Images.xcassets in Resources */,
 				EB5FF86119FDC33B004B8FFB /* gameClock_stop@2x.png in Resources */,
 				EB5FF87319FDC349004B8FFB /* background@2x.png in Resources */,
+				EB879FC219FDFC3800289B96 /* Gotham-Black.otf in Resources */,
 				EB5FF87219FDC349004B8FFB /* background.png in Resources */,
 				EB5FF86519FDC33B004B8FFB /* jamClock_start_a@2x.png in Resources */,
 				EB5FF86219FDC33B004B8FFB /* config.png in Resources */,
@@ -405,6 +420,7 @@
 				EB5FF86A19FDC33B004B8FFB /* score_add.png in Resources */,
 				EB0EA0EF19EE45D700BF3071 /* Launch Screen.xib in Resources */,
 				EBF6759B17ADC8260013010B /* MainStoryboard.storyboard in Resources */,
+				EB879FC319FDFC3800289B96 /* Gotham-Medium.otf in Resources */,
 				EB5FF86919FDC33B004B8FFB /* jamClock_stop@2x.png in Resources */,
 				EB5FF85F19FDC33B004B8FFB /* gameClock_start@2x.png in Resources */,
 				EB5FF87519FDC349004B8FFB /* splash@2x.png in Resources */,

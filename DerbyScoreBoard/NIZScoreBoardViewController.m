@@ -21,6 +21,8 @@ UIColor * btnGreyColor;
 //UIColor * btnRedColor;
 //UIColor * btnYellowColor;
 UIColor * labelGreyColor;
+UIFont * gothamMedium50;
+UIFont * gothamMedium30;
 
 @interface NIZScoreBoardViewController ()
 
@@ -109,6 +111,7 @@ UIColor * labelGreyColor;
 {
     [super viewDidLoad];
     [self setupColors];
+    [self setupFonts];
     
     //UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
     //tapGesture.numberOfTapsRequired = 2;
@@ -130,6 +133,14 @@ UIColor * labelGreyColor;
     if(self.homeTeam == nil || self.visitorTeam == nil){
         [self performSegueWithIdentifier: @"toConfigureSegue" sender: self];
     }
+}
+
+-(void) setupFonts{
+    gothamMedium50 = [UIFont fontWithName:@"Gotham-Black" size:50.0];
+    gothamMedium30 = [UIFont fontWithName:@"Gotham-Black" size:30.0];
+    
+    [self.jamClockLabel setFont:gothamMedium50];
+    [self.boutClockLabel setFont:gothamMedium30];
 }
 
 -(void) setupColors{
