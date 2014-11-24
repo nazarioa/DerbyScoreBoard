@@ -16,11 +16,8 @@ typedef enum{
 
 
 @protocol NIZJamDelegate <NSObject>
-@optional
--(void) homeTeamJamScoreDidChange: (NSInteger) newScore;
--(void) homeTeamScoreDidChange: (NSInteger) newScore;
--(void) visitorTeamJamScoreDidChange: (NSInteger) newScore;
--(void) visitorTeamScoreDidChange: (NSInteger) newScore;
+-(void) setDelegate;
+-(id) delegate;
 @end
 
 @interface NIZDerbyJam : NSObject
