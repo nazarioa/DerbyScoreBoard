@@ -193,15 +193,11 @@ UIFont * gothamMedium30;
         [self.preJamClock resetClock];
     }
     
-    // TODO: replace code below with appropriate UIImage code
     UIImage * gameClockImage = [UIImage imageNamed:@"gameClock_start"];
     [self.officialTimeOutBtn setImage:gameClockImage forState: UIControlStateNormal];
-    //[self.officialTimeOutBtn setTitle:@"Start Game Clock" forState: UIControlStateNormal];
     
     UIImage * jamClockImage = [UIImage imageNamed:@"jamClock_start_a"];
     [self.jamTimeOutBtn setImage:jamClockImage forState: UIControlStateNormal];
-    //[self.jamTimeOutBtn setTitle:@"Start Jam" forState: UIControlStateNormal];
-    //self.jamTimeOutBtn.backgroundColor = btnGreenColor;
 }
 
 -(void)resetClocks{

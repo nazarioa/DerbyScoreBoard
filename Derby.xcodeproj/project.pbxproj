@@ -257,8 +257,8 @@
 		EBAF913B17AE4AB800D76CBA /* M-Team */ = {
 			isa = PBXGroup;
 			children = (
-				EBAF913917AE4AB200D76CBA /* NIZDerbyTeam.m */,
 				EBAF913817AE4AB200D76CBA /* NIZDerbyTeam.h */,
+				EBAF913917AE4AB200D76CBA /* NIZDerbyTeam.m */,
 			);
 			name = "M-Team";
 			sourceTree = "<group>";
