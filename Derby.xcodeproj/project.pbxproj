@@ -35,6 +35,7 @@
 		EB879FC219FDFC3800289B96 /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB879FC019FDFC3800289B96 /* Gotham-Black.otf */; };
 		EB879FC319FDFC3800289B96 /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB879FC119FDFC3800289B96 /* Gotham-Medium.otf */; };
 		EB8CFA7F17BDD6330054BF4F /* NIZGameClock.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8CFA7E17BDD6330054BF4F /* NIZGameClock.m */; };
+		EB97FD9F1A4D569E00EB3D80 /* NIZPlayerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB97FD9E1A4D569E00EB3D80 /* NIZPlayerTableViewCell.m */; };
 		EBA14FBA19EBA7C2007A15DC /* NIZAddEditPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA14FB919EBA7C2007A15DC /* NIZAddEditPlayerViewController.m */; };
 		EBAF913617AE410400D76CBA /* NIZDerbyJam.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF913517AE410400D76CBA /* NIZDerbyJam.m */; };
 		EBAF913A17AE4AB200D76CBA /* NIZDerbyTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF913917AE4AB200D76CBA /* NIZDerbyTeam.m */; };
@@ -88,6 +89,8 @@
 		EB879FC119FDFC3800289B96 /* Gotham-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Medium.otf"; sourceTree = "<group>"; };
 		EB8CFA7D17BDD6330054BF4F /* NIZGameClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZGameClock.h; sourceTree = "<group>"; };
 		EB8CFA7E17BDD6330054BF4F /* NIZGameClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZGameClock.m; sourceTree = "<group>"; };
+		EB97FD9D1A4D569E00EB3D80 /* NIZPlayerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZPlayerTableViewCell.h; sourceTree = "<group>"; };
+		EB97FD9E1A4D569E00EB3D80 /* NIZPlayerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZPlayerTableViewCell.m; sourceTree = "<group>"; };
 		EBA14FB819EBA7C2007A15DC /* NIZAddEditPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZAddEditPlayerViewController.h; sourceTree = "<group>"; };
 		EBA14FB919EBA7C2007A15DC /* NIZAddEditPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZAddEditPlayerViewController.m; sourceTree = "<group>"; };
 		EBAF913417AE410400D76CBA /* NIZDerbyJam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZDerbyJam.h; sourceTree = "<group>"; };
@@ -225,6 +228,15 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		EB97FD9C1A4D566B00EB3D80 /* V-PlayerCell */ = {
+			isa = PBXGroup;
+			children = (
+				EB97FD9D1A4D569E00EB3D80 /* NIZPlayerTableViewCell.h */,
+				EB97FD9E1A4D569E00EB3D80 /* NIZPlayerTableViewCell.m */,
+			);
+			name = "V-PlayerCell";
+			sourceTree = "<group>";
+		};
 		EBA14FB719EBA780007A15DC /* C-AddEdit Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +328,7 @@
 				EBAF913717AE464700D76CBA /* M-Jam */,
 				EBAF913B17AE4AB800D76CBA /* M-Team */,
 				EB52AC9E18BCFE66009E5C37 /* M-Player */,
+				EB97FD9C1A4D566B00EB3D80 /* V-PlayerCell */,
 				EBCC4EF91822257B00099B74 /* Images.xcassets */,
 				EBF6758817ADC8260013010B /* Supporting Files */,
 			);
@@ -439,6 +452,7 @@
 				EBF6758E17ADC8260013010B /* main.m in Sources */,
 				EBF6759217ADC8260013010B /* NIZAppDelegate.m in Sources */,
 				EBF6759E17ADC8270013010B /* NIZScoreBoardViewController.m in Sources */,
+				EB97FD9F1A4D569E00EB3D80 /* NIZPlayerTableViewCell.m in Sources */,
 				EBAF913617AE410400D76CBA /* NIZDerbyJam.m in Sources */,
 				EB09426C18CEC73A00372C47 /* NIZConfigureViewController.m in Sources */,
 				EBAF913A17AE4AB200D76CBA /* NIZDerbyTeam.m in Sources */,

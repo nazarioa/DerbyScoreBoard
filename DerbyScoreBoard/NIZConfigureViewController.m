@@ -7,6 +7,7 @@
 //
 
 #import "NIZConfigureViewController.h"
+#import "NIZPlayerTableViewCell.h"
 
 @interface NIZConfigureViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *inputHomeTeamName;
@@ -17,23 +18,10 @@
 @property (strong, nonatomic) NIZDerbyTeam * homeTeam;
 @property (strong, nonatomic) NIZDerbyTeam * visitorTeam;
 
-//@property (weak, nonatomic) UIPopoverController * mirrorResolutionSelector;
-@property (weak, nonatomic) IBOutlet UISwitch *mirrorSwitch;
-
-
 @end
 
 
 @implementation NIZConfigureViewController
-
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-//{
-//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    if (self) {
-//        // Custom initialization
-//    }
-//    return self;
-//}
 
 @synthesize delegate;
 
@@ -60,10 +48,6 @@
     // Display team names
     self.inputHomeTeamName.text = self.homeTeam.teamName;
     self.inputVisitorTeamName.text = self.visitorTeam.teamName;
-
-    
-    //UITableView * availableResolutionSelector
-    //self.mirrorResolutionSelector = [UIPopoverController alloc] initWithContentViewController:<#(UIViewController *)#>;
 }
 
 - (void)didReceiveMemoryWarning
@@ -104,23 +88,31 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        //cell = [[UITableViewCell alloc] init];
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        [cell setBackgroundColor: [UIColor colorWithRed:0.36 green:0.36 blue:0.36 alpha:1.0]];
-        cell.textLabel.textColor = [UIColor whiteColor];
-    }
+    NIZPlayerTableViewCell *cell;
 
     // Configure the cell...
     if([self.homeTeamRosterTV isEqual: tableView]){
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", [self.homeTeam playerDerbyNumberAtPosition:(int)indexPath.row], [self.homeTeam playerDerbyNameAtPosition:(int)indexPath.row]];
-    }else if([self.visitorTeamRosterTV isEqual: tableView]){
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", [self.visitorTeam playerDerbyNumberAtPosition:(int)indexPath.row], [self.visitorTeam playerDerbyNameAtPosition:(int)indexPath.row]];
-    }
+        static NSString *CellIdentifier = @"HomePlayerCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) cell = [[NIZPlayerTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        cell.playerName.text = [NSString stringWithString: [self.homeTeam playerDerbyNameAtPosition:(int)indexPath.row]];
+        cell.playerNumber.text = [NSString stringWithString: [self.homeTeam playerDerbyNumberAtPosition:(int)indexPath.row]];
     
+    }else if([self.visitorTeamRosterTV isEqual: tableView]){
+        static NSString *CellIdentifier = @"VistorPlayerCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) cell = [[NIZPlayerTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        cell.playerName.text = [NSString stringWithString: [self.visitorTeam playerDerbyNameAtPosition:(int)indexPath.row]];
+        cell.playerNumber.text = [NSString stringWithString: [self.visitorTeam playerDerbyNumberAtPosition:(int)indexPath.row]];
+        
+    }
+    // [cell setBackgroundColor: [UIColor colorWithRed:0.36 green:0.36 blue:0.36 alpha:1.0]];
+//    cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 
@@ -161,21 +153,16 @@
     [self.delegate resetClocks];
 }
 
-- (IBAction)mirrorSwitchToched:(id)sender {
-    //if the mirroring is available allow the switch to change
-    if ([sender isOn] == YES && [self numExternalDisplays] > 1) {
-        NSLog(@"  Switch is OFF, turning it ON");
-        NSLog(@"  Number of available displays: %li",(long)[self numExternalDisplays]);
+- (IBAction)enableSpectatorBtnTouched:(id)sender {
+    if( [self numExternalDisplays] > 1 ){
+        NSLog(@" Number of available displays: %li",(long)[self numExternalDisplays]);
         [self connectExternalScreen];
-    } else if([sender isOn] == NO) {
-        NSLog(@"  Switch is ON, turning it OFF");
-        NSLog(@"  Number of available displays: %li",(long)[self numExternalDisplays]);
-    } else{
-        UIAlertView * noScreenAlert = [[UIAlertView alloc]initWithTitle:@"External Display Not Found" message:@"No external display was found. Make sure your Airplay device is on the same network as your scoreboard." delegate:NULL cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-        [noScreenAlert show];
-        [sender setOn: NO];
+    }else{
+        NSLog(@" No extrnal displays found. Displaying modal error screen");
+        
     }
 }
+
 
 #pragma mark My Functions
 

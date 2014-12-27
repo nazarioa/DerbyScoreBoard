@@ -26,19 +26,16 @@ UIFont * gothamMedium30;
 
 @interface NIZScoreBoardViewController ()
 
-//@property (strong, nonatomic) NIZDerbyBout *game;
 @property (strong, nonatomic) NIZGameClock *gameClock;
 @property (strong, nonatomic) NIZGameClock *jamClock;
-@property (strong, nonatomic) NIZGameClock *preJamClock;
+@property (strong, nonatomic) NIZGameClock *periodClock;
 
 @property (weak, nonatomic) NSMutableArray *jamLog;
-@property (strong, nonatomic) NIZDerbyJam *jam1;
-//@property (strong, nonatomic) NIZDerbyJam *jam2;
-//@property (strong, nonatomic) NIZDerbyJam *jam3; //eventaully I need to make this into some kind of storage for this data type
+@property (strong, nonatomic) NIZDerbyJam *jam1; //eventaully I need to make this into some kind of storage for this data type
 
 @property (weak, nonatomic) IBOutlet UILabel *jamClockLabel;
 @property (weak, nonatomic) IBOutlet UILabel *boutClockLabel;
-@property (weak, nonatomic) IBOutlet UILabel *preJamClockLabel;
+@property (weak, nonatomic) IBOutlet UILabel *periodClockLabel;
 @property (weak, nonatomic) IBOutlet UIButton *officialTimeOutBtn;
 @property (weak, nonatomic) IBOutlet UIButton *jamTimeOutBtn;
 
@@ -62,7 +59,8 @@ UIFont * gothamMedium30;
 @property (weak, nonatomic) IBOutlet UIPickerView *visitorJammerPicker;
 @property (weak, nonatomic) IBOutlet UIButton *visitorLeadJammerBtn;
 
-@property (strong, nonatomic) UIWindow * scoreBoardSpectatorWindow;
+@property (strong, nonatomic) UIWindow * spectatorWindow;
+
 @property (weak, nonatomic) UIScreen * extScreen;
 
 @property (weak, nonatomic) NIZAppDelegate * appDelegate;
@@ -73,37 +71,23 @@ UIFont * gothamMedium30;
 @implementation NIZScoreBoardViewController
 
 //@synthesize game;
-@synthesize gameClock;
-@synthesize jamClock;
-@synthesize preJamClock;
+@synthesize gameClock = _gameClock;
+@synthesize jamClock = _jameClock;
+@synthesize periodClock = _periodClock;
 
-@synthesize jam1;
-//@property (strong, nonatomic) NIZDerbyJam *jam2;
-//@property (strong, nonatomic) NIZDerbyJam *jam3;
+@synthesize jam1 = _jam1;
 
-@synthesize jamClockLabel;
-@synthesize boutClockLabel;
-
-
-@synthesize homeTeam;
-@synthesize homeTeamTotalScore;
-@synthesize homeJammerPicker;
-@synthesize homeTeamLabel;
-@synthesize homeTOCountLabel;
-@synthesize homeJamScoreTextField;
-@synthesize homeTotalScoreTextField;
+@synthesize homeTeam = _homeTeam;
+@synthesize homeTeamTotalScore = _homeTeamTotalScore; //this is tequnically a model and should not be here
+@synthesize homeTotalScoreTextField = _homeTotalScoreTextField; //not sure why this cannot be removed
 
 
-@synthesize visitorTeam;
-@synthesize visitorTeamTotalScore;
-@synthesize visitorJammerPicker;
-@synthesize visitorTeamLabel;
-@synthesize visitorTOCountLabel;
-@synthesize visitorJamScoreTextField;
-@synthesize visitorTotalScoreTextField;
+@synthesize visitorTeam = _visitorTeam;
+@synthesize visitorTeamTotalScore = _visitorTeamTotalScore; //this is tequnically a model and should not be here
+@synthesize visitorTotalScoreTextField = _visitorTotalScoreTextField; //not sure why this cannot be removed
 
-@synthesize scoreBoardSpectatorWindow;
-@synthesize appDelegate;
+@synthesize spectatorWindow = _spectatorWindow;
+@synthesize appDelegate = _appDelegate;
 
 
 #pragma mark -
@@ -161,13 +145,11 @@ UIFont * gothamMedium30;
 
 -(void) updateConfiguration{
     NSLog(@"UPDATE CONFIGURATION");
-    // NSLog(@"== Setting Jam Objects ==");
     //TODO: FIX Create a jam object
     //TODO: Maybe the Jam creation wont happen here.
     self.jam1 = [[NIZDerbyJam alloc] initHomeJammer:@"marsiPanner" visitorJammer:@"bubba-fist"];
     currentJam = self.jam1;
     
-    // NSLog(@"==Other config==");
     self.homeTeamLabel.text     = [self.homeTeam teamName];
     self.visitorTeamLabel.text  = [self.visitorTeam teamName];
     
@@ -182,15 +164,15 @@ UIFont * gothamMedium30;
     if(self.gameClock == nil){
         self.gameClock    = [[NIZGameClock alloc] initWithCounterLimitTo:1800 named:@"GameClock" delegateIs:self];
         self.jamClock     = [[NIZGameClock alloc] initWithCounterLimitTo:120 named:@"JamClock" delegateIs:self];
-        self.preJamClock  = [[NIZGameClock alloc] initWithCounterLimitTo:20 named:@"preJamClock" delegateIs:self];
+        self.periodClock  = [[NIZGameClock alloc] initWithCounterLimitTo:20 named:@"preJamClock" delegateIs:self];
     }else{
         [self.gameClock pauseClock];
         [self.jamClock pauseClock];
-        [self.preJamClock pauseClock];
+        [self.periodClock pauseClock];
         
         [self.gameClock resetClock];
         [self.jamClock resetClock];
-        [self.preJamClock resetClock];
+        [self.periodClock resetClock];
     }
     
     UIImage * gameClockImage = [UIImage imageNamed:@"gameClock_start"];
@@ -217,20 +199,18 @@ UIFont * gothamMedium30;
 }
 
 - (void)boutClockPaused {
-    // NSLog(@"Official Clock: Paused Clock");
     UIImage * image = [UIImage imageNamed:@"gameClock_start"];
     [self.officialTimeOutBtn setImage:image forState: UIControlStateNormal];
     
     [self.jamClock stopClock];
-    [self.preJamClock stopClock];
+    [self.periodClock stopClock];
     [self.gameClock pauseClock];
 }
 
 - (void)boutClockStart {
-    // NSLog(@"Official Clock: Start Clock");
     UIImage * image = [UIImage imageNamed:@"gameClock_stop"];
     [self.officialTimeOutBtn setImage:image forState: UIControlStateNormal];
-    [self.gameClock countdownTimer];
+    [self.gameClock startClock];
 }
 
 
@@ -238,8 +218,8 @@ UIFont * gothamMedium30;
 - (void)jamClockStart {
     UIImage * image = [UIImage imageNamed:@"jamClock_stop"];
     [self.jamTimeOutBtn setImage:image forState: UIControlStateNormal];
-    [self.preJamClock stopClock];
-    [self.jamClock countdownTimer];
+    [self.periodClock stopClock];
+    [self.jamClock startClock];
     if([self.gameClock isRunning] == NO){
         [self boutClockStart];
     }
@@ -265,8 +245,7 @@ UIFont * gothamMedium30;
     UIImage * image = [UIImage imageNamed:@"jamClock_start_a"];
     [self.jamTimeOutBtn setImage:image forState: UIControlStateNormal];
     [self.jamClock stopClock];
-    [self.preJamClock countdownTimer];
-    
+    [self.periodClock startClock];
     [self calculateJamTotals];
 }
 
@@ -280,12 +259,12 @@ UIFont * gothamMedium30;
 #pragma mark - PreJamClock
 - (void)preJamClockStop {
     NSLog(@"PreJam Clock: Stop Clock");
-    [self.preJamClock stopClock];
+    [self.periodClock stopClock];
 }
 
 - (void)preJamClockStart {
     NSLog(@"PreJam Clock: Stop Clock");
-    [self.preJamClock startClock];
+    [self.periodClock startClock];
 }
 
 
@@ -360,17 +339,29 @@ UIFont * gothamMedium30;
 }
 
 #pragma mark - NIZClockDelegate:Game Clock Delegate functions
--(void) timeHasChangedFor:(NSString *)clockName hourNowIs:(NSNumber *)hours minuteNowIs:(NSNumber *)minutes secondNowIs:(NSNumber *)seconds{
+- (void) timeHasChangedFor: (NSString *) clockName timeInSecondsIs: (NSInteger) secondsLeft{
+
     if([clockName isEqual: @"GameClock"]){
-        self.boutClockLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d", (int)[hours integerValue], (int)[minutes integerValue], (int)[seconds integerValue]];
+        self.boutClockLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",
+                                    [NIZGameClock getHoursFromTimeInSeconds:secondsLeft],
+                                    [NIZGameClock getMinutesFromTimeInSeconds:secondsLeft],
+                                    [NIZGameClock getSecondsFromTimeInSeconds:secondsLeft]];
+        [self.spectatorViewController boutClockTime:secondsLeft];
+        
     }else if ([clockName isEqual: @"JamClock" ]){
-        self.jamClockLabel.text = [NSString stringWithFormat:@"%02d:%02d", (int)[minutes integerValue], (int)[seconds integerValue]];
+        self.jamClockLabel.text = [NSString stringWithFormat:@"%02d:%02d",
+                                   [NIZGameClock getMinutesFromTimeInSeconds:secondsLeft],
+                                   [NIZGameClock getSecondsFromTimeInSeconds:secondsLeft]];
+        
     }else if([clockName isEqual: @"preJamClock"]){
-        self.preJamClockLabel.text = [NSString stringWithFormat:@"%02d", (int)[seconds integerValue]];
-        if([seconds integerValue] < 6){
-            self.preJamClockLabel.textColor = [UIColor redColor];
+        self.periodClockLabel.text = [NSString stringWithFormat:@"%02d",
+                                      [NIZGameClock getSecondsFromTimeInSeconds:secondsLeft]];
+        [self.spectatorViewController periodClockTime: secondsLeft];
+        
+        if(secondsLeft < 6){
+            self.periodClockLabel.textColor = [UIColor redColor];
         }else{
-            self.preJamClockLabel.textColor = [UIColor whiteColor];
+            self.periodClockLabel.textColor = [UIColor whiteColor];
         }
     }
 }
@@ -378,12 +369,14 @@ UIFont * gothamMedium30;
 -(void) clockReachedZero:(NSString *)clockName{
     if([clockName isEqual: @"GameClock"]){
         NSLog(@"Game clock end");
+        
     }else if ([clockName isEqual: @"JamClock"]){
         NSLog(@"Jam clock end");
-        [self.preJamClock resetClock];
-        [self.preJamClock startClock];
+        [self.periodClock resetClock];
+        [self.periodClock startClock];
         [self calculateJamTotals];
         [self resetLeadJammerStatus];
+        
     }else if([clockName isEqual: @"preJamClock"]){
         NSLog(@"Pre jam clock end");
         [self.jamClock stopClock];
@@ -448,11 +441,11 @@ UIFont * gothamMedium30;
     [f setNumberStyle: NSNumberFormatterNoStyle];
     NSNumber * tempScore = [f numberFromString: textField.text];
     
-    if ([textField isEqual:homeTotalScoreTextField]){
+    if ([textField isEqual:self.homeTotalScoreTextField]){
         NSLog(@"    homeTotalScoreTextField : textFieldDidEndEditing %@", textField);
         self.homeTeamTotalScore = [tempScore integerValue];
         
-    }else if ([textField isEqual:visitorTotalScoreTextField]){
+    }else if ([textField isEqual:self.visitorTotalScoreTextField]){
         NSLog(@"    visitorTotalScoreTextField : textFieldDidEndEditing %@", textField);
         self.visitorTeamTotalScore = [tempScore integerValue];
     }
@@ -510,27 +503,34 @@ UIFont * gothamMedium30;
         NSLog(@"  setupSpectatorScreen - 3");
     
         CGRect extScreenBounds = self.extScreen.bounds;
+        NSLog(@"extScreenBounds  origin.x: %f and origin.y: %f", extScreenBounds.origin.x, extScreenBounds.origin.y);
+        NSLog(@"extScreenBounds  size.width: %f and size.height: %f", extScreenBounds.size.width,  extScreenBounds.size.height);
         
-        self.scoreBoardSpectatorWindow = [[UIWindow alloc] initWithFrame:extScreenBounds];
-        self.scoreBoardSpectatorWindow.screen = self.extScreen;
+        self.spectatorWindow = [[UIWindow alloc] initWithFrame:extScreenBounds];
+        self.spectatorWindow.screen = self.extScreen;
         
         NSLog(@"  setupSpectatorScreen - 4");
+        self.spectatorViewController  = [[NIZSpectatorScreenViewController alloc] initWithNibName:@"SpectatorWindow" bundle:nil];
+        self.spectatorWindow.rootViewController = self.spectatorViewController;
         
-        //self.scoreBoardSpectatorWindow.rootViewController = self;
-        self.scoreBoardSpectatorWindow.rootViewController = [[UIViewController alloc] initWithNibName:@"SpectatorWindow" bundle:nil];
         NSLog(@"  setupSpectatorScreen - 5");
+        self.spectatorWindow.hidden = NO;
         
         
-        CGRect temp = CGRectMake(40, 40, 100, 30);
-        UIButton * testButton = [[UIButton alloc] initWithFrame:temp];
-        [testButton setTitle:@"BLAR" forState:UIControlStateNormal];
+        
+        //UIView * spectatorView = [[UIView alloc] initWithFrame:extScreenBounds];
+        //spectatorView.backgroundColor = [UIColor purpleColor];
+        //[self.scoreBoardSpectatorWindow addSubview: spectatorView];
+        
+        //CGRect temp = CGRectMake(40, 300, 400, 30);
+        //UILabel * testLabel = [[UILabel alloc] initWithFrame:temp];
+        //testLabel.text = @"smary monkey";
         
         
-        [self.scoreBoardSpectatorWindow addSubview: testButton];
+        //[self.scoreBoardSpectatorWindow.rootViewController.view addSubview: testLabel];
         
-        self.scoreBoardSpectatorWindow.backgroundColor = [UIColor redColor];
+        //self.scoreBoardSpectatorWindow.backgroundColor = [UIColor redColor];
         
-        self.scoreBoardSpectatorWindow.hidden = NO;
         
         //[self logText: [NSString stringWithFormat:@"  screenDescription: %@",[self.extScreen description]]];
     }else{

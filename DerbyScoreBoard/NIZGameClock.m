@@ -8,21 +8,8 @@
 
 #import "NIZGameClock.h"
 
-
 @interface NIZGameClock()
 
-//    {
-//        //QUESTION: Instance variables go here?
-//        //NSString *clockName;
-//        //NSTimer *timer;
-//        //int secondsLeft;
-//        //int hours, minutes, seconds;
-//        //BOOL isRunning;
-//    }
-
-// @properties go here.
-// QUESTION. Where are these variables defined?
-// They just declare the _existance_ of methods for variables.
 @property (strong, nonatomic) NSString * clockName;
 @property (strong, nonatomic) NSTimer * timer;
 @property NSInteger timerDuration;
@@ -85,8 +72,6 @@
 }
 
 - (void)updateCounter:(NSTimer *)theTimer {
-    //NSLog(@"   %@", );
-    //TODO: 7.14 -- aka paint
     if(self.secondsLeft > 0 ){
         self.secondsLeft--;
         [self updateDisplay];
@@ -100,14 +85,8 @@
 }
 
 - (void)updateDisplay{
-    self.hours = self.secondsLeft / 3600;
-    self.minutes = (self.secondsLeft % 3600) / 60;
-    self.seconds = (self.secondsLeft % 3600) % 60;
-    if( [self.delegate respondsToSelector:@selector(timeHasChangedFor:hourNowIs:minuteNowIs:secondNowIs:)] ){
-        [self.delegate timeHasChangedFor: self.clockName hourNowIs: [NSNumber numberWithInt: self.hours] minuteNowIs:[NSNumber numberWithInt: self.minutes] secondNowIs: [NSNumber numberWithInt: self.seconds]];
-        NSLog(@"    Self.secondsLeft: %ld", (long)self.secondsLeft);
-    }else{
-        NSLog(@"DELEGATE NOT FOUND -- Clock: %@ %02d:%02d:%02d", self.clockName, (int)self.hours, (int)self.minutes, (int)self.seconds);
+    if([self.delegate respondsToSelector:@selector(timeHasChangedFor:timeInSecondsIs:)]){
+        [self.delegate timeHasChangedFor:self.clockName timeInSecondsIs: self.secondsLeft];
     }
 }
 
@@ -119,7 +98,6 @@
 }
 
 -(void) pauseClock{
-    //TODO: 7.14 -- stop painting
     if( [self isRunning] == YES ){
         [self.timer invalidate];
         self.timer = nil;
@@ -144,6 +122,18 @@
 
 -(bool) isExpired{
     return self.isRunning;
+}
+
++(NSInteger) getHoursFromTimeInSeconds:(NSInteger) timeInSeconds{
+    return timeInSeconds / 3600;
+}
+
++(NSInteger) getMinutesFromTimeInSeconds:(NSInteger) timeInSeconds{
+    return (timeInSeconds % 3600) / 60;
+}
+
++(NSInteger) getSecondsFromTimeInSeconds:(NSInteger) timeInSeconds{
+    return (timeInSeconds % 3600) % 60;
 }
 
 @end

@@ -8,40 +8,33 @@
 
 #import <Foundation/Foundation.h>
 
-//@class NIZGameClock;
-//This line baiscly says that this class exists at compline if I were to pass itself in but since in timeDidChange: I am suing NS String. I dont need it.
-
-
 @protocol NIZClockDelegate <NSObject>
 @required
-- (void) timeHasChangedFor: (NSString *) clockName hourNowIs: (NSNumber *) hours minuteNowIs:(NSNumber *) minutes secondNowIs: (NSNumber *) seconds;
+- (void) timeHasChangedFor: (NSString *) clockName timeInSecondsIs: (NSInteger) seconds;
+
 @optional
 - (void) clockReachedZero: (NSString *) clockName;
+
 @end
 
 
-@interface NIZGameClock : NSObject{}
+@interface NIZGameClock : NSObject
 
 @property (weak, nonatomic) id <NIZClockDelegate> delegate;
-
 
 -(id) initWithCounterLimitTo: (NSInteger)count named:(NSString *) name delegateIs:(id) delegateName;
 -(id) initWithCounterLimitTo: (NSInteger) count named:(NSString *) clockName;
 -(id) init;
 
-//Functions from the working sample may ot may not need to be here.
--(void) updateCounter:(NSTimer *) theTimer;
--(void) countdownTimer;
-
-//Functions I may need others to have access to
+//Functions I may need VC to be able to call to control the clock
 -(BOOL) isRunning;
 -(void) startClock;
 -(void) pauseClock;
 -(void) stopClock;
 -(void) resetClock;
 
-//test line
-//-(NSInteger) secondsLeft;
-
++(NSInteger) getHoursFromTimeInSeconds:(NSInteger) timeInSeconds;
++(NSInteger) getMinutesFromTimeInSeconds:(NSInteger) timeInSeconds;
++(NSInteger) getSecondsFromTimeInSeconds:(NSInteger) timeInSeconds;
 
 @end

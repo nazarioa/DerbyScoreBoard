@@ -10,4 +10,12 @@
 
 @interface NIZSpectatorScreenViewController : UIViewController
 
+@property (nonatomic) NSInteger jamClockTime;
+@property (nonatomic) NSInteger boutClockTime;
+@property (nonatomic) NSInteger periodClockTime;
+
+-(void) boutClockTime:(NSInteger) seconds;
+-(void) jamClockTime:(NSInteger) seconds;
+-(void) periodClockTime:(NSInteger) seconds;
+
 @end

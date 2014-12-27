@@ -16,12 +16,10 @@ typedef enum{
 
 
 @protocol NIZJamDelegate <NSObject>
--(void) setDelegate;
--(id) delegate;
+
 @end
 
 @interface NIZDerbyJam : NSObject
-
 @property (weak, nonatomic) id <NIZJamDelegate> delegate;
 @property NSInteger homeJamScore;
 @property NSInteger visitorJamScore;
