@@ -230,6 +230,7 @@ UIFont * gothamMedium30;
     NSInteger newHomeScore = [currentJam homeJamScore ] + self.homeTeamTotalScore;
     self.homeTeamTotalScore = newHomeScore;
     self.homeTotalScoreTextField.text = [[NSString alloc] initWithFormat:@"%li", (long)newHomeScore];
+    self.spectatorViewController.specHomeTeamTotalScore.text = [[NSString alloc] initWithFormat:@"%li", (long)newHomeScore];
     currentJam.homeJamScore = 0;
     self.homeJamScoreTextField.text = @"0";
     
@@ -237,6 +238,7 @@ UIFont * gothamMedium30;
     NSInteger newVisitorScore = [currentJam visitorJamScore] + self.visitorTeamTotalScore;
     self.visitorTeamTotalScore = newVisitorScore;
     self.visitorTotalScoreTextField.text = [[NSString alloc] initWithFormat:@"%li", (long)newVisitorScore];
+    self.spectatorViewController.specVistorTeamJamScore.text = [[NSString alloc] initWithFormat:@"%li", (long)newVisitorScore];
     currentJam.visitorJamScore = 0;
     self.visitorJamScoreTextField.text = @"0";
 }
@@ -290,24 +292,28 @@ UIFont * gothamMedium30;
     NSLog(@"  Visitor Score Down");
     [currentJam subtractOneFrom:@"Visitor"];
     self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%li", (long)[currentJam visitorJamScore]];
+    self.spectatorViewController.specVistorTeamJamScore.text = [NSString stringWithFormat:@"%li", (long)[currentJam visitorJamScore]];
 }
 
 - (IBAction)visitorScoreUpButton:(UIButton *)sender {
     NSLog(@"  Visitor Score Up");
     [currentJam addOneTo:@"Visitor"];
     self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%li", (long)[currentJam visitorJamScore]];
+    self.spectatorViewController.specVistorTeamJamScore.text = [NSString stringWithFormat:@"%li", (long)[currentJam visitorJamScore]];
 }
 
 - (IBAction)homeScoreDownButton:(UIButton *)sender {
     NSLog(@"  Home Score Down");
     [currentJam subtractOneFrom:@"Home"];
     self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%li", (long)[currentJam homeJamScore]];
+    self.spectatorViewController.specHomeTeamJamScore.text = [NSString stringWithFormat:@"%li", (long)[currentJam homeJamScore]];
 }
 
 - (IBAction)homeScoreUpButton:(UIButton *)sender {
     NSLog(@"  Home Score Up");
     [currentJam addOneTo:@"Home"];
     self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%li", (long)[currentJam homeJamScore]];
+    self.spectatorViewController.specHomeTeamJamScore.text = [NSString stringWithFormat:@"%li", (long)[currentJam homeJamScore]];
 }
 
 - (IBAction)homeLeadJammerBtnTouched:(id)sender {
@@ -343,19 +349,20 @@ UIFont * gothamMedium30;
 
     if([clockName isEqual: @"GameClock"]){
         self.boutClockLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",
-                                    [NIZGameClock getHoursFromTimeInSeconds:secondsLeft],
-                                    [NIZGameClock getMinutesFromTimeInSeconds:secondsLeft],
-                                    [NIZGameClock getSecondsFromTimeInSeconds:secondsLeft]];
+                                    (int) [NIZGameClock getHoursFromTimeInSeconds:secondsLeft],
+                                    (int) [NIZGameClock getMinutesFromTimeInSeconds:secondsLeft],
+                                    (int) [NIZGameClock getSecondsFromTimeInSeconds:secondsLeft]];
         [self.spectatorViewController boutClockTime:secondsLeft];
         
     }else if ([clockName isEqual: @"JamClock" ]){
         self.jamClockLabel.text = [NSString stringWithFormat:@"%02d:%02d",
-                                   [NIZGameClock getMinutesFromTimeInSeconds:secondsLeft],
-                                   [NIZGameClock getSecondsFromTimeInSeconds:secondsLeft]];
+                                   (int) [NIZGameClock getMinutesFromTimeInSeconds:secondsLeft],
+                                   (int) [NIZGameClock getSecondsFromTimeInSeconds:secondsLeft]];
+        [self.spectatorViewController jamClockTime: secondsLeft];
         
     }else if([clockName isEqual: @"preJamClock"]){
         self.periodClockLabel.text = [NSString stringWithFormat:@"%02d",
-                                      [NIZGameClock getSecondsFromTimeInSeconds:secondsLeft]];
+                                      (int) [NIZGameClock getSecondsFromTimeInSeconds:secondsLeft]];
         [self.spectatorViewController periodClockTime: secondsLeft];
         
         if(secondsLeft < 6){
@@ -399,7 +406,7 @@ UIFont * gothamMedium30;
     }
 }
 
-#pragma mark - UI Picker Deleagte Functions
+#pragma mark - UIPicker Deleagte Functions
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     if([pickerView isEqual:self.homeJammerPicker]){
         return 1;
@@ -494,49 +501,48 @@ UIFont * gothamMedium30;
 }
 
 -(void) setupSpectatorScreen:(NSArray *) avilableScreens{
-    NSLog(@"  setupSpectatorScreen:");
     //There must be screens
     
     self.extScreen = [avilableScreens objectAtIndex:1];
 
     if( self.extScreen != nil){
-        NSLog(@"  setupSpectatorScreen - 3");
+        NSLog(@" ");
+        NSLog(@"\n========================");
+        NSLog(@"NIZScoreBoardViewController setupSpectatorScreen");
+        NSLog(@"   setupSpectatorScreen - 3");
     
         CGRect extScreenBounds = self.extScreen.bounds;
-        NSLog(@"extScreenBounds  origin.x: %f and origin.y: %f", extScreenBounds.origin.x, extScreenBounds.origin.y);
-        NSLog(@"extScreenBounds  size.width: %f and size.height: %f", extScreenBounds.size.width,  extScreenBounds.size.height);
-        
         self.spectatorWindow = [[UIWindow alloc] initWithFrame:extScreenBounds];
         self.spectatorWindow.screen = self.extScreen;
+        self.spectatorWindow.backgroundColor = [UIColor greenColor];
+        
+        NSLog(@"     extScreenBounds  origin.x: %f and origin.y: %f", extScreenBounds.origin.x, extScreenBounds.origin.y);
+        NSLog(@"     extScreenBounds  size.width: %f and size.height: %f", extScreenBounds.size.width,  extScreenBounds.size.height);
         
         NSLog(@"  setupSpectatorScreen - 4");
-        self.spectatorViewController  = [[NIZSpectatorScreenViewController alloc] initWithNibName:@"SpectatorWindow" bundle:nil];
+//        self.spectatorViewController  = [[NIZSpectatorScreenViewController alloc] initWithNibName:@"SpectatorWindow" bundle:nil];
+        self.spectatorViewController = [[NIZSpectatorScreenViewController alloc] init];
         self.spectatorWindow.rootViewController = self.spectatorViewController;
+        [self.spectatorWindow.rootViewController.view setBounds:extScreenBounds];
+        
+        NSLog(@"     self.spectatorWindow.rootViewController.view.bounds  origin.x: %f and origin.y: %f", self.spectatorWindow.rootViewController.view.bounds.origin.x, self.spectatorWindow.rootViewController.view.bounds.origin.y);
+        NSLog(@"     self.spectatorWindow.rootViewController.view.bounds  size.width: %f and size.height: %f", self.spectatorWindow.rootViewController.view.bounds.size.width,  self.spectatorWindow.rootViewController.view.bounds.size.height);
         
         NSLog(@"  setupSpectatorScreen - 5");
         self.spectatorWindow.hidden = NO;
-        
-        
-        
-        //UIView * spectatorView = [[UIView alloc] initWithFrame:extScreenBounds];
-        //spectatorView.backgroundColor = [UIColor purpleColor];
-        //[self.scoreBoardSpectatorWindow addSubview: spectatorView];
-        
-        //CGRect temp = CGRectMake(40, 300, 400, 30);
-        //UILabel * testLabel = [[UILabel alloc] initWithFrame:temp];
-        //testLabel.text = @"smary monkey";
-        
-        
-        //[self.scoreBoardSpectatorWindow.rootViewController.view addSubview: testLabel];
-        
-        //self.scoreBoardSpectatorWindow.backgroundColor = [UIColor redColor];
-        
-        
-        //[self logText: [NSString stringWithFormat:@"  screenDescription: %@",[self.extScreen description]]];
     }else{
         NSLog(@"  setupSpectatorScreen. Only here during dev");
     }
 }
 
+//#pragma mark - Setter Getter Overrides
+//
+//-(void) setHomeJamScoreTextField:(UITextField *)homeJamScoreTextField{
+//    _homeJamScoreTextField = homeJamScoreTextField;
+//    NSInteger grandSlamTimes = floor([homeJamScoreTextField.text doubleValue] / 5);
+//    if( grandSlamTimes > 1){
+//        [self.spectatorViewController grandSlamFor:@"home" times:grandSlamTimes];
+//    }
+//}
 
 @end

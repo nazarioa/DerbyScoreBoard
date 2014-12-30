@@ -39,7 +39,6 @@
 		EBA14FBA19EBA7C2007A15DC /* NIZAddEditPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA14FB919EBA7C2007A15DC /* NIZAddEditPlayerViewController.m */; };
 		EBAF913617AE410400D76CBA /* NIZDerbyJam.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF913517AE410400D76CBA /* NIZDerbyJam.m */; };
 		EBAF913A17AE4AB200D76CBA /* NIZDerbyTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF913917AE4AB200D76CBA /* NIZDerbyTeam.m */; };
-		EBC8C5F319F2411D00563DBF /* SpectatorWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBC8C5F219F2411D00563DBF /* SpectatorWindow.xib */; };
 		EBC8C5F719F2424700563DBF /* NIZSpectatorScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC8C5F619F2424700563DBF /* NIZSpectatorScreenViewController.m */; };
 		EBCC4EFA1822257B00099B74 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBCC4EF91822257B00099B74 /* Images.xcassets */; };
 		EBF6758217ADC8250013010B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF6758117ADC8250013010B /* UIKit.framework */; };
@@ -97,7 +96,6 @@
 		EBAF913517AE410400D76CBA /* NIZDerbyJam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZDerbyJam.m; sourceTree = "<group>"; };
 		EBAF913817AE4AB200D76CBA /* NIZDerbyTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZDerbyTeam.h; sourceTree = "<group>"; };
 		EBAF913917AE4AB200D76CBA /* NIZDerbyTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZDerbyTeam.m; sourceTree = "<group>"; };
-		EBC8C5F219F2411D00563DBF /* SpectatorWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpectatorWindow.xib; sourceTree = "<group>"; };
 		EBC8C5F519F2424700563DBF /* NIZSpectatorScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZSpectatorScreenViewController.h; sourceTree = "<group>"; };
 		EBC8C5F619F2424700563DBF /* NIZSpectatorScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZSpectatorScreenViewController.m; sourceTree = "<group>"; };
 		EBCC4EF91822257B00099B74 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -316,7 +314,6 @@
 			children = (
 				EB0EA0EE19EE45D700BF3071 /* Launch Screen.xib */,
 				EBF6759917ADC8260013010B /* MainStoryboard.storyboard */,
-				EBC8C5F219F2411D00563DBF /* SpectatorWindow.xib */,
 				EB0EA0F819EE47F800BF3071 /* C-LaunchScreen */,
 				EB139F2B17AEFF920017BBFF /* C-App Delegate */,
 				EB139F2A17AEFF790017BBFF /* C-Scoreboard */,
@@ -438,7 +435,6 @@
 				EB5FF85F19FDC33B004B8FFB /* gameClock_start@2x.png in Resources */,
 				EB5FF87519FDC349004B8FFB /* splash@2x.png in Resources */,
 				EB5FF87419FDC349004B8FFB /* splash.png in Resources */,
-				EBC8C5F319F2411D00563DBF /* SpectatorWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

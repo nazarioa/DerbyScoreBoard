@@ -14,8 +14,22 @@
 @property (nonatomic) NSInteger boutClockTime;
 @property (nonatomic) NSInteger periodClockTime;
 
+@property (strong, nonatomic) UILabel *specHomeTeamJamScore;
+@property (strong, nonatomic) UILabel *specVistorTeamJamScore;
+
+@property (strong, nonatomic) UILabel *specHomeTeamTotalScore;
+@property (strong, nonatomic) UILabel *specVistorTeamTotalScore;
+
+@property (strong, nonatomic) UILabel *specHomeTeamJammerNameNumber;
+@property (strong, nonatomic) UILabel *specVistorTeamJammerNameNumber;
+
+@property (strong, nonatomic) UILabel *specHomeTeamName;
+@property (strong, nonatomic) UILabel *specVistorTeamName;
+
 -(void) boutClockTime:(NSInteger) seconds;
 -(void) jamClockTime:(NSInteger) seconds;
 -(void) periodClockTime:(NSInteger) seconds;
+
+-(void) grandSlamFor:(NSString *) team times:(NSInteger) number;
 
 @end
