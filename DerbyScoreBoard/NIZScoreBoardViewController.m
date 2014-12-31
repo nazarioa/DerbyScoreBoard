@@ -233,14 +233,16 @@ UIFont * gothamMedium30;
     self.spectatorViewController.specHomeTeamTotalScore.text = [[NSString alloc] initWithFormat:@"%li", (long)newHomeScore];
     currentJam.homeJamScore = 0;
     self.homeJamScoreTextField.text = @"0";
+    self.spectatorViewController.specHomeTeamJamScore.text = @"0";
     
     //add score to running total for visitor team
     NSInteger newVisitorScore = [currentJam visitorJamScore] + self.visitorTeamTotalScore;
     self.visitorTeamTotalScore = newVisitorScore;
     self.visitorTotalScoreTextField.text = [[NSString alloc] initWithFormat:@"%li", (long)newVisitorScore];
-    self.spectatorViewController.specVistorTeamJamScore.text = [[NSString alloc] initWithFormat:@"%li", (long)newVisitorScore];
+    self.spectatorViewController.specVistorTeamTotalScore.text = [[NSString alloc] initWithFormat:@"%li", (long)newVisitorScore];
     currentJam.visitorJamScore = 0;
     self.visitorJamScoreTextField.text = @"0";
+    self.spectatorViewController.specVistorTeamJamScore.text = @"0";
 }
 
 - (void)jamClockStop {

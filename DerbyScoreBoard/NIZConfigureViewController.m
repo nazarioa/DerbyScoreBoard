@@ -23,7 +23,7 @@
 
 @implementation NIZConfigureViewController
 
-@synthesize delegate;
+@synthesize delegate = _delegate;
 
 - (void)viewDidLoad
 {
@@ -111,8 +111,6 @@
         cell.playerNumber.text = [NSString stringWithString: [self.visitorTeam playerDerbyNumberAtPosition:(int)indexPath.row]];
         
     }
-    // [cell setBackgroundColor: [UIColor colorWithRed:0.36 green:0.36 blue:0.36 alpha:1.0]];
-//    cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 
@@ -159,7 +157,6 @@
         [self connectExternalScreen];
     }else{
         NSLog(@" No extrnal displays found. Displaying modal error screen");
-        
     }
 }
 

@@ -16,6 +16,8 @@
 @property (strong, nonatomic) UILabel *specBoutClockLabel;
 @property (strong, nonatomic) UILabel *specPeriodClockLabel;
 
+@property (strong, nonatomic) NSNumber *teamNameFontSize;
+
 @end
 
 
@@ -49,7 +51,6 @@
     self.specBoutClockLabel.adjustsFontSizeToFitWidth = YES;
     self.specJamClockLabel.adjustsFontSizeToFitWidth = YES;
     self.view.backgroundColor = [UIColor yellowColor];
-
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -69,17 +70,8 @@
     [self setupClockView];
     [self setupScoreViews:@"home"];
     [self setupScoreViews:@"visitor"];
-    
-//    CGPoint DAPOINT = CGPointMake(self.view.center.x - (590/2), self.view.center.y - (512/2));
-//    [self.specClockView setCenter:DAPOINT];
-//    NSLog(@"self.specClockView.bounds.size.width: %f", self.specClockView.bounds.size.width);
-//    NSLog(@"self.specClockView.bounds.size.height: %f", self.specClockView.bounds.size.height);
-//    
-//    CGRect TESTRECT = CGRectMake(self.view.center.x - (590/2), self.view.center.y - (256/2), 590, 256);
-//    UIView *TESTVIEW = [[UIView alloc] initWithFrame:TESTRECT];
-//    TESTVIEW.backgroundColor = [UIColor greenColor];
-//    [self.view addSubview:TESTVIEW];
-
+    [self setupTeamNames:@"home"];
+    [self setupTeamNames:@"visitor"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,11 +102,6 @@
     UIFont * jamClockLabelFont= [UIFont fontWithName:@"Courier" size:130];
     UIFont * boutClockLabelFont= [UIFont fontWithName:@"Courier" size:85];
     
-    /*
-     UIFont * jamClockLabelFont= [UIFont fontWithName:@"Gotham" size:130];
-     UIFont * boutClockLabelFont= [UIFont fontWithName:@"Gotham" size:85];
-     */
-    
     // We are making the bound.size of the view 1/3 the width of the rootview (IE window)
     CGFloat clocksViewWidth = self.view.bounds.size.width/3;
     CGFloat clocksViewHeight = self.view.bounds.size.height/3;
@@ -123,7 +110,6 @@
                                            self.view.center.y - (clocksViewHeight/2),
                                            clocksViewWidth, clocksViewHeight);
     self.specClocksView = [[UIView alloc] initWithFrame:clocksViewPosition];
-//    self.specClocksView.backgroundColor = [UIColor purpleColor];
     
     
     //jamClockView will be 2/3 the height of specClocksView
@@ -133,6 +119,7 @@
     self.specJamClockLabel.backgroundColor = [UIColor greenColor];
     self.specJamClockLabel.textAlignment = NSTextAlignmentCenter;
     self.specJamClockLabel.font = jamClockLabelFont;
+    
     
     //boutClockView will be 1/3 the height of the specClocksView and it's y will be 2/3 the way down.
     CGRect boutClockViewPosition = CGRectMake(0,2*clocksViewHeight/3, clocksViewWidth, clocksViewHeight/3);
@@ -197,6 +184,32 @@
         [self.view addSubview: self.specVistorTeamJamScore];
         [self.view addSubview: self.specVistorTeamTotalScore];
     }
+}
+
+-(void) setupTeamNames:(NSString *) team{
+    //TODO: Figure out a way to control the the offset of the names where the font used for the names is taken into account.
+    
+    CGRect teamNamePosition = CGRectMake(0, 100, 300, 75);
+    //CGFloat offestX = 20;
+    UIFont * teamNameFont = [UIFont fontWithName:@"Gotham" size:80];
+    
+    if([team isEqualToString:@"home"]){
+        teamNamePosition.origin.x = (self.view.center.x * .5)-(teamNamePosition.size.width/2);
+        self.specHomeTeamName = [[UILabel alloc] initWithFrame:teamNamePosition];
+        self.specHomeTeamName.textAlignment = NSTextAlignmentCenter;
+        self.specHomeTeamName.backgroundColor = [UIColor greenColor];
+        self.specHomeTeamName.font = teamNameFont;
+        [self.view addSubview: self.specHomeTeamName];
+        
+    }else if([team isEqualToString:@"visitor"]){
+        teamNamePosition.origin.x = (self.view.center.x * 1.5)-(teamNamePosition.size.width/2);
+        self.specVistorTeamName = [[UILabel alloc] initWithFrame:teamNamePosition];
+        self.specVistorTeamName.textAlignment = NSTextAlignmentCenter;
+        self.specVistorTeamName.backgroundColor = [UIColor greenColor];
+        self.specVistorTeamName.font = teamNameFont;
+        [self.view addSubview: self.specVistorTeamName];
+    }
+    
 }
 
 
