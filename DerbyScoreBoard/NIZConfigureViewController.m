@@ -97,9 +97,10 @@
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) cell = [[NIZPlayerTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-        cell.playerName.text = [NSString stringWithString: [self.homeTeam playerDerbyNameAtPosition:(int)indexPath.row]];
-        cell.playerNumber.text = [NSString stringWithString: [self.homeTeam playerDerbyNumberAtPosition:(int)indexPath.row]];
+    
+        cell.playerName.text = [self.homeTeam playerDerbyNameAtPosition:(int)indexPath.row];
+        cell.playerNumber.text = [self.homeTeam playerDerbyNumberAtPosition:(int)indexPath.row];
+        cell.playerMug.image = [self.homeTeam playerDerbyMugAtPosition:(int)indexPath.row];
     
     }else if([self.visitorTeamRosterTV isEqual: tableView]){
         static NSString *CellIdentifier = @"VistorPlayerCell";
@@ -107,10 +108,17 @@
         
         if (cell == nil) cell = [[NIZPlayerTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
-        cell.playerName.text = [NSString stringWithString: [self.visitorTeam playerDerbyNameAtPosition:(int)indexPath.row]];
-        cell.playerNumber.text = [NSString stringWithString: [self.visitorTeam playerDerbyNumberAtPosition:(int)indexPath.row]];
+        cell.playerName.text = [self.visitorTeam playerDerbyNameAtPosition:(int)indexPath.row];
+        cell.playerNumber.text = [self.visitorTeam playerDerbyNumberAtPosition:(int)indexPath.row];
+        cell.playerMug.image = [self.visitorTeam playerDerbyMugAtPosition:(int)indexPath.row];
         
     }
+    
+    CALayer * layer = [cell.playerMug layer];
+    [layer setMasksToBounds:YES];
+    [layer setCornerRadius:cell.playerMug.bounds.size.width/2.0];
+    [layer setBorderWidth:2.0];
+    [layer setBorderColor:[[UIColor whiteColor] CGColor]];
     return cell;
 }
 

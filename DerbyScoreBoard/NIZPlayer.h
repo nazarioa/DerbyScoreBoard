@@ -17,5 +17,5 @@
 @property (nonatomic) BOOL isJammer;
 
 
--(id) initWithDerbyName: (NSString *) name derbyNumber: (NSString *) number firstName: (NSString *) first lastName: (NSString *) last isJammer: (BOOL) isJammer;
+-(id) initWithDerbyName: (NSString *) name derbyNumber: (NSString *) number firstName: (NSString *) first lastName: (NSString *) last mugShot: (UIImage *) picture isJammer: (BOOL) isJammer;
 @end

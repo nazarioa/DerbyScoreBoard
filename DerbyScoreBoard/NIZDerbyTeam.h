@@ -12,11 +12,12 @@
 @interface NIZDerbyTeam : NSObject
 
 @property (strong, nonatomic) NSString * teamName;
-@property (strong, nonatomic) NSURL * teamLogo;
+@property (strong, nonatomic) UIImage * teamLogo;
+//@property (strong, nonatomic) NSString * teamT
 
 
 -(id) initWithTeamName: (NSString *) name;
--(id) initWithTeamName: (NSString *) name andTeamLogo:(NSURL *) teamLogo;
+-(id) initWithTeamName: (NSString *) name andTeamLogo:(UIImage *) teamLogo;
 
 -(void) addPlayer: (NIZPlayer *) player;
 -(void) removePlayer: (NIZPlayer *) player;
@@ -27,5 +28,6 @@
 -(NSInteger) rosterCount;
 -(NSString *) playerDerbyNameAtPosition: (NSInteger) position;
 -(NSString *) playerDerbyNumberAtPosition: (NSInteger) position;
+-(UIImage *) playerDerbyMugAtPosition: (NSInteger) position;
 
 @end

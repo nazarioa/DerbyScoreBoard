@@ -10,6 +10,10 @@
 
 @implementation NIZPlayerTableViewCell
 
+@synthesize playerMug = _playerMug;
+@synthesize playerName = _playerName;
+@synthesize playerNumber = _playerNumber;
+
 
 - (void)awakeFromNib {
     // Initialization code

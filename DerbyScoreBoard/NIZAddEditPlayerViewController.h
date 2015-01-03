@@ -14,7 +14,7 @@
 -(void) refreshPlayerRoster;
 @end
 
-@interface NIZAddEditPlayerViewController : UIViewController
+@interface NIZAddEditPlayerViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) id <addEditPlayerProtocol> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *teamLabel;
 @property (weak, nonatomic) NSString * teamType;
