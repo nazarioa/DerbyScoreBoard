@@ -104,7 +104,7 @@
     CGRect boutClockViewPosition = CGRectMake(0,2*clocksViewHeight/3, clocksViewWidth, clocksViewHeight/3);
     self.specBoutClockLabel = [[UILabel alloc] initWithFrame:boutClockViewPosition];
     self.specBoutClockLabel.text = @"00:00:00";
-    self.specBoutClockLabel.backgroundColor = [UIColor orangeColor];
+    self.specBoutClockLabel.backgroundColor = [UIColor colorWithRed:180.0 green:40.0 blue:140.0 alpha:1];
     self.specBoutClockLabel.textAlignment = NSTextAlignmentCenter;
     self.specBoutClockLabel.font = boutClockLabelFont;
 
