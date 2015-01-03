@@ -10,11 +10,9 @@
 
 @interface NIZGameClock()
 
-@property (strong, nonatomic) NSString * clockName;
 @property (strong, nonatomic) NSTimer * timer;
-@property NSInteger timerDuration;
-@property NSInteger secondsLeft;
-@property NSInteger hours, minutes, seconds;
+@property (nonatomic) NSInteger timerDuration;
+@property (nonatomic) NSInteger hours, minutes, seconds;
 @property BOOL isRunning;
 
 @end
@@ -30,6 +28,8 @@
 @synthesize isRunning = _isRunning;
 @synthesize timerDuration = _timerDuration;
 
+
+//init
 -(id)init{
     NSLog(@"init");
     self = [self initWithCounterLimitTo: 10 named: nil];
@@ -51,11 +51,20 @@
 -(id)initWithCounterLimitTo:(NSInteger)count named:(NSString *) name delegateIs:(id) delegateName{
     self = [self initWithCounterLimitTo:count named:name];
     [self setDelegate:delegateName];
-    [self updateDisplay];
+//    [self notifyOfTimeChange];
     return self;
 }
 
 
+//properties getters/setters
+-(void) setSecondsLeft:(NSInteger)secondsLeft{
+    _secondsLeft = secondsLeft;
+    NSDictionary * data = @{@"ClockName" : self.clockName, @"SecondsLeft" : [NSNumber numberWithInteger:secondsLeft] };
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"clockTimeHasChangedFor" object: self userInfo:data];
+}
+
+
+//other
 -(void)startClock{
     if([self isRunning] == NO){
         NSLog(@"startClock");
@@ -66,27 +75,20 @@
 -(void)countdownTimer{
     NSLog(@"countdownTimer");
     self.hours = self.minutes = self.seconds = 0;
-    self.timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
+    self.timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(updateCounter) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes]; //magical line here
     self.isRunning = YES;
 }
 
-- (void)updateCounter:(NSTimer *)theTimer {
+- (void)updateCounter {
     if(self.secondsLeft > 0 ){
         self.secondsLeft--;
-        [self updateDisplay];
         
     }else{
         [self stopClock];
         if( [self.delegate respondsToSelector:@selector(clockReachedZero:)]){
             [self.delegate clockReachedZero:self.clockName];
         }
-    }
-}
-
-- (void)updateDisplay{
-    if([self.delegate respondsToSelector:@selector(timeHasChangedFor:timeInSecondsIs:)]){
-        [self.delegate timeHasChangedFor:self.clockName timeInSecondsIs: self.secondsLeft];
     }
 }
 
@@ -112,7 +114,6 @@
 -(void) resetClockTo: (NSInteger) newSecondsLeft{
     NSLog(@"resetClockTo: %i ", (int)newSecondsLeft);
     self.secondsLeft = newSecondsLeft;
-    [self updateDisplay];
 }
 
 -(void) expired{
@@ -124,6 +125,8 @@
     return self.isRunning;
 }
 
+
+//class
 +(NSInteger) getHoursFromTimeInSeconds:(NSInteger) timeInSeconds{
     return timeInSeconds / 3600;
 }

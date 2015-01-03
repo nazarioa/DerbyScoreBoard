@@ -22,10 +22,6 @@
 
 
 @implementation NIZSpectatorScreenViewController
-//CLOCKS
-@synthesize boutClockTime = _boutClockTime;
-@synthesize jamClockTime = _jamClockTime;
-@synthesize periodClockTime = _periodClockTime;
 
 //LABELS
 @synthesize specClocksView = _specClocksView;
@@ -48,6 +44,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupNotification];
     self.specBoutClockLabel.adjustsFontSizeToFitWidth = YES;
     self.specJamClockLabel.adjustsFontSizeToFitWidth = YES;
     self.view.backgroundColor = [UIColor yellowColor];
@@ -77,24 +74,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void) jamClockTime:(NSInteger) timeInSeconds{
-    self.specJamClockLabel.text = [NSString stringWithFormat:@"%02d:%02d",
-                                    (int)[NIZGameClock getMinutesFromTimeInSeconds:timeInSeconds],
-                                    (int)[NIZGameClock getSecondsFromTimeInSeconds:timeInSeconds]];
-}
-
--(void) boutClockTime:(NSInteger) seconds{
-    self.specBoutClockLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",
-                                    (int)[NIZGameClock getHoursFromTimeInSeconds:seconds],
-                                    (int)[NIZGameClock getMinutesFromTimeInSeconds:seconds],
-                                    (int)[NIZGameClock getSecondsFromTimeInSeconds:seconds]];
-}
-
--(void) periodClockTime:(NSInteger) timeInSeconds{
-    self.specPeriodClockLabel.text = [NSString stringWithFormat:@"%02d",
-                                    (int)[NIZGameClock getSecondsFromTimeInSeconds:timeInSeconds]];
 }
 
 -(void) setupClockView{
@@ -221,6 +200,40 @@
     }
 }
 
+-(void) handleClockTimeHasChangedFor: (NSNotification *) notification{
+    NIZGameClock * clock = notification.object;
+    
+    if([[clock clockName] isEqual: @"BoutClock"]){
+        self.specBoutClockLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",
+                                        (int)[NIZGameClock getHoursFromTimeInSeconds: [clock secondsLeft]],
+                                        (int)[NIZGameClock getMinutesFromTimeInSeconds: [clock secondsLeft]],
+                                        (int)[NIZGameClock getSecondsFromTimeInSeconds: [clock secondsLeft]]];
+        
+    }else if ([[clock clockName] isEqual: @"JamClock" ]){
+        
+        self.specJamClockLabel.text = [NSString stringWithFormat:@"%02d:%02d",
+                                       (int)[NIZGameClock getMinutesFromTimeInSeconds: [clock secondsLeft]],
+                                       (int)[NIZGameClock getSecondsFromTimeInSeconds: [clock secondsLeft]]];
+        
+    }else if([[clock clockName] isEqual: @"PeriodClock"]){
+        self.specPeriodClockLabel.text = [NSString stringWithFormat:@"%02d",
+                                          (int)[NIZGameClock getSecondsFromTimeInSeconds: [clock secondsLeft]]];
+    }
+}
+
+-(void) setupNotification{
+    NSLog(@"  NIZScoreBoardViewController: Setup Notification");
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleTeamNameHasChanged:)
+                                                 name:@"teamNameHasChanged"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleClockTimeHasChangedFor:)
+                                                 name:@"clockTimeHasChangedFor"
+                                               object:nil];
+}
 
 -(void) setupRulers{
     CGRect ruler1280 =  CGRectMake(0, 0, 1280, 10);

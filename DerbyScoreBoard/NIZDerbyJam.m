@@ -25,6 +25,7 @@
 @synthesize leadJammerStatus = _leadJammerStatus;
 
 
+//init
 - (id)initHomeJammer: (NSString *) home visitorJammer: (NSString *) visitor{
     self = [super init];
     if (self) {
@@ -36,8 +37,23 @@
     return self;
 }
 
+//property set/get
+-(void) setVisitorJamScore:(NSInteger)visitorJamScore{
+    _visitorJamScore = visitorJamScore;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"VisitorJamScore has changed" object: self userInfo:nil];
+}
 
-//TODO: these could be more concise.
+-(void) setHomeJamScore:(NSInteger)homeJamScore{
+    _homeJamScore = homeJamScore;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HomeJamScore has changed" object: self userInfo:nil];
+}
+
+-(void) setLeadJammerStatus:(TEAM_DESIGNATION)leadJammerStatus{
+    _leadJammerStatus = leadJammerStatus;
+    
+}
+
+//other
 -(void) addOneTo:(NSString *) team{
     if([team isEqualToString:@"Visitor"]){
         self.visitorJamScore = self.visitorJamScore+1;

@@ -41,6 +41,7 @@
 		EBAF913A17AE4AB200D76CBA /* NIZDerbyTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = EBAF913917AE4AB200D76CBA /* NIZDerbyTeam.m */; };
 		EBC8C5F719F2424700563DBF /* NIZSpectatorScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC8C5F619F2424700563DBF /* NIZSpectatorScreenViewController.m */; };
 		EBCC4EFA1822257B00099B74 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBCC4EF91822257B00099B74 /* Images.xcassets */; };
+		EBEB0B951A564586002CAC5C /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = EBEB0B941A564586002CAC5C /* person.png */; };
 		EBF6758217ADC8250013010B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF6758117ADC8250013010B /* UIKit.framework */; };
 		EBF6758417ADC8250013010B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF6758317ADC8250013010B /* Foundation.framework */; };
 		EBF6758617ADC8250013010B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF6758517ADC8250013010B /* CoreGraphics.framework */; };
@@ -99,6 +100,7 @@
 		EBC8C5F519F2424700563DBF /* NIZSpectatorScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZSpectatorScreenViewController.h; sourceTree = "<group>"; };
 		EBC8C5F619F2424700563DBF /* NIZSpectatorScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZSpectatorScreenViewController.m; sourceTree = "<group>"; };
 		EBCC4EF91822257B00099B74 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EBEB0B941A564586002CAC5C /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
 		EBF6757E17ADC8250013010B /* Derby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Derby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF6758117ADC8250013010B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EBF6758317ADC8250013010B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -247,6 +249,7 @@
 		EBAF912B17AE3D0300D76CBA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				EBEB0B941A564586002CAC5C /* person.png */,
 				EB5FF86E19FDC349004B8FFB /* background.png */,
 				EB5FF86F19FDC349004B8FFB /* background@2x.png */,
 				EB5FF87019FDC349004B8FFB /* splash.png */,
@@ -430,6 +433,7 @@
 				EB5FF86A19FDC33B004B8FFB /* score_add.png in Resources */,
 				EB0EA0EF19EE45D700BF3071 /* Launch Screen.xib in Resources */,
 				EBF6759B17ADC8260013010B /* MainStoryboard.storyboard in Resources */,
+				EBEB0B951A564586002CAC5C /* person.png in Resources */,
 				EB879FC319FDFC3800289B96 /* Gotham-Medium.otf in Resources */,
 				EB5FF86919FDC33B004B8FFB /* jamClock_stop@2x.png in Resources */,
 				EB5FF85F19FDC33B004B8FFB /* gameClock_start@2x.png in Resources */,

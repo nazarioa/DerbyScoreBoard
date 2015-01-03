@@ -21,7 +21,7 @@
 
 @implementation NIZAddEditPlayerViewController
 
-@synthesize delegate;
+@synthesize delegate = _delegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

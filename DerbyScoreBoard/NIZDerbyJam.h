@@ -12,8 +12,7 @@ typedef enum{
     NONE,
     HOME,
     VISITOR
-}leadJammer;
-
+}TEAM_DESIGNATION;
 
 @protocol NIZJamDelegate <NSObject>
 
@@ -21,9 +20,9 @@ typedef enum{
 
 @interface NIZDerbyJam : NSObject
 @property (weak, nonatomic) id <NIZJamDelegate> delegate;
-@property NSInteger homeJamScore;
-@property NSInteger visitorJamScore;
-@property (nonatomic) leadJammer leadJammerStatus;
+@property (nonatomic) NSInteger homeJamScore;
+@property (nonatomic) NSInteger visitorJamScore;
+@property (nonatomic) TEAM_DESIGNATION leadJammerStatus;
 
 -(id) initHomeJammer: (NSString *) home visitorJammer: (NSString *) visitor;
 

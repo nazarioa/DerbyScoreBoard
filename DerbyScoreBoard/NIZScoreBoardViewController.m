@@ -26,7 +26,7 @@ UIFont * gothamMedium30;
 
 @interface NIZScoreBoardViewController ()
 
-@property (strong, nonatomic) NIZGameClock *gameClock;
+@property (strong, nonatomic) NIZGameClock *boutClock;
 @property (strong, nonatomic) NIZGameClock *jamClock;
 @property (strong, nonatomic) NIZGameClock *periodClock;
 
@@ -71,8 +71,8 @@ UIFont * gothamMedium30;
 @implementation NIZScoreBoardViewController
 
 //@synthesize game;
-@synthesize gameClock = _gameClock;
-@synthesize jamClock = _jameClock;
+@synthesize boutClock = _boutClock;
+@synthesize jamClock = _jamClock;
 @synthesize periodClock = _periodClock;
 
 @synthesize jam1 = _jam1;
@@ -96,6 +96,7 @@ UIFont * gothamMedium30;
     [super viewDidLoad];
     [self setupColors];
     [self setupFonts];
+    [self setupNotification];
     
     //UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
     //tapGesture.numberOfTapsRequired = 2;
@@ -147,7 +148,9 @@ UIFont * gothamMedium30;
     NSLog(@"UPDATE CONFIGURATION");
     //TODO: FIX Create a jam object
     //TODO: Maybe the Jam creation wont happen here.
-    self.jam1 = [[NIZDerbyJam alloc] initHomeJammer:@"marsiPanner" visitorJammer:@"bubba-fist"];
+    if(self.jam1 == nil){
+        self.jam1 = [[NIZDerbyJam alloc] initHomeJammer:@"marsiPanner" visitorJammer:@"bubba-fist"];
+    }
     currentJam = self.jam1;
     
     self.homeTeamLabel.text     = [self.homeTeam teamName];
@@ -161,16 +164,16 @@ UIFont * gothamMedium30;
 
 - (void)primeClocks
 {
-    if(self.gameClock == nil){
-        self.gameClock    = [[NIZGameClock alloc] initWithCounterLimitTo:1800 named:@"GameClock" delegateIs:self];
+    if(self.boutClock == nil){
+        self.boutClock    = [[NIZGameClock alloc] initWithCounterLimitTo:1800 named:@"BoutClock" delegateIs:self];
         self.jamClock     = [[NIZGameClock alloc] initWithCounterLimitTo:120 named:@"JamClock" delegateIs:self];
-        self.periodClock  = [[NIZGameClock alloc] initWithCounterLimitTo:20 named:@"preJamClock" delegateIs:self];
+        self.periodClock  = [[NIZGameClock alloc] initWithCounterLimitTo:20 named:@"PeriodClock" delegateIs:self];
     }else{
-        [self.gameClock pauseClock];
+        [self.boutClock pauseClock];
         [self.jamClock pauseClock];
         [self.periodClock pauseClock];
         
-        [self.gameClock resetClock];
+        [self.boutClock resetClock];
         [self.jamClock resetClock];
         [self.periodClock resetClock];
     }
@@ -189,10 +192,10 @@ UIFont * gothamMedium30;
 
 #pragma mark - boutClock
 - (IBAction)boutClockBtnTouched:(UIButton *)sender {
-    if([self.gameClock isRunning] == YES){
+    if([self.boutClock isRunning] == YES){
         [self boutClockPaused];
         [self jamClockStop];
-        [self preJamClockStop];
+        [self periodClockStop];
     }else{
         [self boutClockStart];
     }
@@ -204,13 +207,13 @@ UIFont * gothamMedium30;
     
     [self.jamClock stopClock];
     [self.periodClock stopClock];
-    [self.gameClock pauseClock];
+    [self.boutClock pauseClock];
 }
 
 - (void)boutClockStart {
     UIImage * image = [UIImage imageNamed:@"gameClock_stop"];
     [self.officialTimeOutBtn setImage:image forState: UIControlStateNormal];
-    [self.gameClock startClock];
+    [self.boutClock startClock];
 }
 
 
@@ -220,7 +223,7 @@ UIFont * gothamMedium30;
     [self.jamTimeOutBtn setImage:image forState: UIControlStateNormal];
     [self.periodClock stopClock];
     [self.jamClock startClock];
-    if([self.gameClock isRunning] == NO){
+    if([self.boutClock isRunning] == NO){
         [self boutClockStart];
     }
 }
@@ -260,14 +263,14 @@ UIFont * gothamMedium30;
     [self.jamClock pauseClock];
 }
 
-#pragma mark - PreJamClock
-- (void)preJamClockStop {
-    NSLog(@"PreJam Clock: Stop Clock");
+#pragma mark - PeriodClock
+- (void)periodClockStop {
+    NSLog(@"PeriodClock Clock: Stop Clock");
     [self.periodClock stopClock];
 }
 
-- (void)preJamClockStart {
-    NSLog(@"PreJam Clock: Stop Clock");
+- (void)periodClockStart {
+    NSLog(@"PeriodClock Clock: Stop Clock");
     [self.periodClock startClock];
 }
 
@@ -291,28 +294,24 @@ UIFont * gothamMedium30;
 }
 
 - (IBAction)visitorScoreDownButton:(UIButton *)sender {
-    NSLog(@"  Visitor Score Down");
     [currentJam subtractOneFrom:@"Visitor"];
     self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%li", (long)[currentJam visitorJamScore]];
     self.spectatorViewController.specVistorTeamJamScore.text = [NSString stringWithFormat:@"%li", (long)[currentJam visitorJamScore]];
 }
 
 - (IBAction)visitorScoreUpButton:(UIButton *)sender {
-    NSLog(@"  Visitor Score Up");
     [currentJam addOneTo:@"Visitor"];
     self.visitorJamScoreTextField.text = [NSString stringWithFormat:@"%li", (long)[currentJam visitorJamScore]];
     self.spectatorViewController.specVistorTeamJamScore.text = [NSString stringWithFormat:@"%li", (long)[currentJam visitorJamScore]];
 }
 
 - (IBAction)homeScoreDownButton:(UIButton *)sender {
-    NSLog(@"  Home Score Down");
     [currentJam subtractOneFrom:@"Home"];
     self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%li", (long)[currentJam homeJamScore]];
     self.spectatorViewController.specHomeTeamJamScore.text = [NSString stringWithFormat:@"%li", (long)[currentJam homeJamScore]];
 }
 
 - (IBAction)homeScoreUpButton:(UIButton *)sender {
-    NSLog(@"  Home Score Up");
     [currentJam addOneTo:@"Home"];
     self.homeJamScoreTextField.text = [NSString stringWithFormat:@"%li", (long)[currentJam homeJamScore]];
     self.spectatorViewController.specHomeTeamJamScore.text = [NSString stringWithFormat:@"%li", (long)[currentJam homeJamScore]];
@@ -347,36 +346,9 @@ UIFont * gothamMedium30;
 }
 
 #pragma mark - NIZClockDelegate:Game Clock Delegate functions
-- (void) timeHasChangedFor: (NSString *) clockName timeInSecondsIs: (NSInteger) secondsLeft{
-
-    if([clockName isEqual: @"GameClock"]){
-        self.boutClockLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",
-                                    (int) [NIZGameClock getHoursFromTimeInSeconds:secondsLeft],
-                                    (int) [NIZGameClock getMinutesFromTimeInSeconds:secondsLeft],
-                                    (int) [NIZGameClock getSecondsFromTimeInSeconds:secondsLeft]];
-        [self.spectatorViewController boutClockTime:secondsLeft];
-        
-    }else if ([clockName isEqual: @"JamClock" ]){
-        self.jamClockLabel.text = [NSString stringWithFormat:@"%02d:%02d",
-                                   (int) [NIZGameClock getMinutesFromTimeInSeconds:secondsLeft],
-                                   (int) [NIZGameClock getSecondsFromTimeInSeconds:secondsLeft]];
-        [self.spectatorViewController jamClockTime: secondsLeft];
-        
-    }else if([clockName isEqual: @"preJamClock"]){
-        self.periodClockLabel.text = [NSString stringWithFormat:@"%02d",
-                                      (int) [NIZGameClock getSecondsFromTimeInSeconds:secondsLeft]];
-        [self.spectatorViewController periodClockTime: secondsLeft];
-        
-        if(secondsLeft < 6){
-            self.periodClockLabel.textColor = [UIColor redColor];
-        }else{
-            self.periodClockLabel.textColor = [UIColor whiteColor];
-        }
-    }
-}
 
 -(void) clockReachedZero:(NSString *)clockName{
-    if([clockName isEqual: @"GameClock"]){
+    if([clockName isEqual: @"BoutClock"]){
         NSLog(@"Game clock end");
         
     }else if ([clockName isEqual: @"JamClock"]){
@@ -386,7 +358,7 @@ UIFont * gothamMedium30;
         [self calculateJamTotals];
         [self resetLeadJammerStatus];
         
-    }else if([clockName isEqual: @"preJamClock"]){
+    }else if([clockName isEqual: @"PeriodClock"]){
         NSLog(@"Pre jam clock end");
         [self.jamClock stopClock];
         [self.jamClock startClock];
@@ -399,11 +371,11 @@ UIFont * gothamMedium30;
     if (sender.state == UIGestureRecognizerStateEnded){
         if([self.jamClock isRunning] == YES){
             [self jamClockStop];
-            [self preJamClockStart];
+            [self periodClockStart];
             [self resetLeadJammerStatus];
         }else{
             [self jamClockStart];
-            [self preJamClockStop];
+            [self periodClockStop];
         }
     }
 }
@@ -522,7 +494,6 @@ UIFont * gothamMedium30;
         NSLog(@"     extScreenBounds  size.width: %f and size.height: %f", extScreenBounds.size.width,  extScreenBounds.size.height);
         
         NSLog(@"  setupSpectatorScreen - 4");
-//        self.spectatorViewController  = [[NIZSpectatorScreenViewController alloc] initWithNibName:@"SpectatorWindow" bundle:nil];
         self.spectatorViewController = [[NIZSpectatorScreenViewController alloc] init];
         self.spectatorWindow.rootViewController = self.spectatorViewController;
         [self.spectatorWindow.rootViewController.view setBounds:extScreenBounds];
@@ -537,14 +508,68 @@ UIFont * gothamMedium30;
     }
 }
 
-//#pragma mark - Setter Getter Overrides
-//
-//-(void) setHomeJamScoreTextField:(UITextField *)homeJamScoreTextField{
-//    _homeJamScoreTextField = homeJamScoreTextField;
-//    NSInteger grandSlamTimes = floor([homeJamScoreTextField.text doubleValue] / 5);
-//    if( grandSlamTimes > 1){
-//        [self.spectatorViewController grandSlamFor:@"home" times:grandSlamTimes];
-//    }
-//}
+
+#pragma mark - Notification Stuff
+
+-(void) setupNotification{
+    NSLog(@"  NIZScoreBoardViewController: Setup Notification");
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleTeamNameHasChanged:)
+                                                 name:@"teamNameHasChanged"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handlePlayerHasBeenAdded:)
+                                                 name:@"playerHasBeenAdded"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handlePlayerHasBeenRemoved:)
+                                                 name:@"playerHasBeenRemoved"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleClockTimeHasChangedFor:)
+                                                 name:@"clockTimeHasChangedFor"
+                                               object:nil];
+}
+
+-(void) handleTeamNameHasChanged: (NSNotification *) notification{
+//    NSLog(@"  handleTeamNameHasChanged: someParam: %@", notification);
+}
+
+-(void) handlePlayerHasBeenAdded: (NSNotification *) notification{
+//    NSLog(@"  handlePlayerHasBeenAdded: %@", notification);
+}
+
+-(void) handlePlayerHasBeenRemoved: (NSNotification *) notification{
+//    NSLog(@"  handlePlayerHasBeenRemoved: %@", notification);
+}
+
+-(void) handleClockTimeHasChangedFor: (NSNotification *) notification{
+    NIZGameClock * clock = notification.object;
+    
+    if([[clock clockName] isEqual: @"BoutClock"]){
+        self.boutClockLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",
+                                    (int) [NIZGameClock getHoursFromTimeInSeconds: [clock secondsLeft]],
+                                    (int) [NIZGameClock getMinutesFromTimeInSeconds: [clock secondsLeft]],
+                                    (int) [NIZGameClock getSecondsFromTimeInSeconds: [clock secondsLeft]]];
+        
+    }else if ([[clock clockName] isEqual: @"JamClock" ]){
+        self.jamClockLabel.text = [NSString stringWithFormat:@"%02d:%02d",
+                                   (int) [NIZGameClock getMinutesFromTimeInSeconds: [clock secondsLeft]],
+                                   (int) [NIZGameClock getSecondsFromTimeInSeconds: [clock secondsLeft]]];
+        
+    }else if([[clock clockName] isEqual: @"PeriodClock"]){
+        self.periodClockLabel.text = [NSString stringWithFormat:@"%02d",
+                                      (int) [NIZGameClock getSecondsFromTimeInSeconds: [clock secondsLeft]]];
+        if([clock secondsLeft] < 6){
+            self.periodClockLabel.textColor = [UIColor redColor];
+        }else{
+            self.periodClockLabel.textColor = [UIColor whiteColor];
+        }
+    }
+}
 
 @end

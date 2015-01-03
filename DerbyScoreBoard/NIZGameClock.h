@@ -10,10 +10,11 @@
 
 @protocol NIZClockDelegate <NSObject>
 @required
-- (void) timeHasChangedFor: (NSString *) clockName timeInSecondsIs: (NSInteger) seconds;
+//TODO: place notification functions here.
 
 @optional
 - (void) clockReachedZero: (NSString *) clockName;
+- (void) timeHasChangedFor: (NSString *) clockName timeInSecondsIs: (NSInteger) seconds;
 
 @end
 
@@ -21,6 +22,9 @@
 @interface NIZGameClock : NSObject
 
 @property (weak, nonatomic) id <NIZClockDelegate> delegate;
+@property (strong, nonatomic) NSString * clockName;
+@property (nonatomic) NSInteger secondsLeft;
+
 
 -(id) initWithCounterLimitTo: (NSInteger)count named:(NSString *) name delegateIs:(id) delegateName;
 -(id) initWithCounterLimitTo: (NSInteger) count named:(NSString *) clockName;
