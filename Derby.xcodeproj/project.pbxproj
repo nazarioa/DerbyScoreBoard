@@ -11,6 +11,7 @@
 		EB0EA0EF19EE45D700BF3071 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB0EA0EE19EE45D700BF3071 /* Launch Screen.xib */; };
 		EB0EA0F719EE47E500BF3071 /* NIZLaunchScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0EA0F619EE47E500BF3071 /* NIZLaunchScreenViewController.m */; };
 		EB139F2817AEFE880017BBFF /* NIZDerbyBout.m in Sources */ = {isa = PBXBuildFile; fileRef = EB139F2717AEFE880017BBFF /* NIZDerbyBout.m */; };
+		EB2FBB491A589C8D00089FDB /* London-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB2FBB481A589C8D00089FDB /* London-Font.ttf */; };
 		EB52ACA118BCFE8D009E5C37 /* NIZPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EB52ACA018BCFE8D009E5C37 /* NIZPlayer.m */; };
 		EB5FF85E19FDC33B004B8FFB /* gameClock_start.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF84E19FDC33B004B8FFB /* gameClock_start.png */; };
 		EB5FF85F19FDC33B004B8FFB /* gameClock_start@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5FF84F19FDC33B004B8FFB /* gameClock_start@2x.png */; };
@@ -63,6 +64,7 @@
 		EB0EA0F619EE47E500BF3071 /* NIZLaunchScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZLaunchScreenViewController.m; sourceTree = "<group>"; };
 		EB139F2617AEFE880017BBFF /* NIZDerbyBout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZDerbyBout.h; sourceTree = "<group>"; };
 		EB139F2717AEFE880017BBFF /* NIZDerbyBout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZDerbyBout.m; sourceTree = "<group>"; };
+		EB2FBB481A589C8D00089FDB /* London-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "London-Font.ttf"; sourceTree = "<group>"; };
 		EB52AC9F18BCFE8D009E5C37 /* NIZPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZPlayer.h; sourceTree = "<group>"; };
 		EB52ACA018BCFE8D009E5C37 /* NIZPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZPlayer.m; sourceTree = "<group>"; };
 		EB5FF84E19FDC33B004B8FFB /* gameClock_start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameClock_start.png; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		EB879FBB19FDFA2B00289B96 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				EB2FBB481A589C8D00089FDB /* London-Font.ttf */,
 				EB879FC019FDFC3800289B96 /* Gotham-Black.otf */,
 				EB879FC119FDFC3800289B96 /* Gotham-Medium.otf */,
 			);
@@ -417,6 +420,7 @@
 				EB5FF86019FDC33B004B8FFB /* gameClock_stop.png in Resources */,
 				EBCC4EFA1822257B00099B74 /* Images.xcassets in Resources */,
 				EB5FF86119FDC33B004B8FFB /* gameClock_stop@2x.png in Resources */,
+				EB2FBB491A589C8D00089FDB /* London-Font.ttf in Resources */,
 				EB5FF87319FDC349004B8FFB /* background@2x.png in Resources */,
 				EB879FC219FDFC3800289B96 /* Gotham-Black.otf in Resources */,
 				EB5FF87219FDC349004B8FFB /* background.png in Resources */,
