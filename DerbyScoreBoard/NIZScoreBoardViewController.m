@@ -121,8 +121,8 @@ UIFont * gothamMedium30;
 }
 
 -(void) setupFonts{
-    gothamMedium50 = [UIFont fontWithName:@"Gotham-Black" size:50.0];
-    gothamMedium30 = [UIFont fontWithName:@"Gotham-Black" size:30.0];
+    gothamMedium50 = [UIFont fontWithName:@"London Font" size:70.0];
+    gothamMedium30 = [UIFont fontWithName:@"London Font" size:45.0];
     
     [self.jamClockLabel setFont:gothamMedium50];
     [self.boutClockLabel setFont:gothamMedium30];
@@ -380,6 +380,10 @@ UIFont * gothamMedium30;
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"   ---- 0: %@ : %@", tableView, indexPath);
+}
+
 #pragma mark - UIPicker Deleagte Functions
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     if([pickerView isEqual:self.homeJammerPicker]){
@@ -449,7 +453,7 @@ UIFont * gothamMedium30;
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"toConfigureSegue" ]){
-        NIZConfigureViewController *configureScoreBoard = (NIZConfigureViewController *) segue.destinationViewController;
+        NIZConfigureViewController * configureScoreBoard = (NIZConfigureViewController *) segue.destinationViewController;
         [configureScoreBoard setDelegate:self];
     }
 }
