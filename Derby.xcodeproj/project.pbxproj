@@ -100,6 +100,7 @@
 		EBC8C5F519F2424700563DBF /* NIZSpectatorScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZSpectatorScreenViewController.h; sourceTree = "<group>"; };
 		EBC8C5F619F2424700563DBF /* NIZSpectatorScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZSpectatorScreenViewController.m; sourceTree = "<group>"; };
 		EBCC4EF91822257B00099B74 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EBE0F9661A58F81F00692D44 /* NIZConstants.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZConstants.pch; sourceTree = "<group>"; };
 		EBEB0B941A564586002CAC5C /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
 		EBF6757E17ADC8250013010B /* Derby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Derby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF6758117ADC8250013010B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -348,6 +349,7 @@
 				EBF6759317ADC8260013010B /* Default.png */,
 				EBF6759517ADC8260013010B /* Default@2x.png */,
 				EBF6759717ADC8260013010B /* Default-568h@2x.png */,
+				EBE0F9661A58F81F00692D44 /* NIZConstants.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

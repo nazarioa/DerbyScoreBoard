@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NIZConstants.pch"
 
 @class NIZPlayer;
 @protocol addEditPlayerProtocol <NSObject>

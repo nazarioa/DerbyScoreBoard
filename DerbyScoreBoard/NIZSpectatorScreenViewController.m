@@ -15,7 +15,6 @@
 @property (strong, nonatomic) UILabel *specJamClockLabel;
 @property (strong, nonatomic) UILabel *specBoutClockLabel;
 @property (strong, nonatomic) UILabel *specPeriodClockLabel;
-
 @property (strong, nonatomic) NSNumber *teamNameFontSize;
 
 @end
@@ -65,10 +64,10 @@
     
     [self setupRulers];
     [self setupClockView];
-    [self setupScoreViews:@"home"];
-    [self setupScoreViews:@"visitor"];
-    [self setupTeamNames:@"home"];
-    [self setupTeamNames:@"visitor"];
+    [self setupScoreViews: HOME_TEAM];
+    [self setupScoreViews: VISITOR_TEAM];
+    [self setupTeamNames: HOME_TEAM];
+    [self setupTeamNames: VISITOR_TEAM];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -125,7 +124,7 @@
     CGRect teamTotalScoreViewPosition = CGRectMake(0, self.view.center.y, teamJamScoreViewWidth, teamJamScoreViewHeight);
     CGRect jamScoreViewPosition = CGRectMake(0, self.view.center.y - teamJamScoreViewHeight, teamJamScoreViewWidth, teamJamScoreViewHeight);
     
-    if([team isEqualToString:@"home"]){
+    if([team isEqualToString: HOME_TEAM]){
         jamScoreViewPosition.origin.x = (self.view.center.x * .4) - (teamJamScoreViewWidth/2);
         teamTotalScoreViewPosition.origin.x = jamScoreViewPosition.origin.x;
         
@@ -144,7 +143,7 @@
         [self.view addSubview: self.specHomeTeamJamScore];
         [self.view addSubview: self.specHomeTeamTotalScore];
         
-    }else if([team isEqualToString:@"visitor"]){
+    }else if([team isEqualToString: VISITOR_TEAM]){
         jamScoreViewPosition.origin.x = (self.view.center.x * 1.6 ) - (teamJamScoreViewWidth/2);
         teamTotalScoreViewPosition.origin.x = jamScoreViewPosition.origin.x;
         
@@ -172,7 +171,7 @@
     //CGFloat offestX = 20;
     UIFont * teamNameFont = [UIFont fontWithName:@"Gotham" size:80];
     
-    if([team isEqualToString:@"home"]){
+    if([team isEqualToString: HOME_TEAM]){
         teamNamePosition.origin.x = (self.view.center.x * .5)-(teamNamePosition.size.width/2);
         self.specHomeTeamName = [[UILabel alloc] initWithFrame:teamNamePosition];
         self.specHomeTeamName.textAlignment = NSTextAlignmentCenter;
@@ -180,7 +179,7 @@
         self.specHomeTeamName.font = teamNameFont;
         [self.view addSubview: self.specHomeTeamName];
         
-    }else if([team isEqualToString:@"visitor"]){
+    }else if([team isEqualToString: VISITOR_TEAM]){
         teamNamePosition.origin.x = (self.view.center.x * 1.5)-(teamNamePosition.size.width/2);
         self.specVistorTeamName = [[UILabel alloc] initWithFrame:teamNamePosition];
         self.specVistorTeamName.textAlignment = NSTextAlignmentCenter;
@@ -193,9 +192,9 @@
 
 
 -(void) grandSlamFor:(NSString *) team times:(NSInteger) number{
-    if([team isEqualToString:@"home"]){
+    if([team isEqualToString: HOME_TEAM]){
         NSLog(@"home team got GRANDSLAM: %d", (int) number);
-    }else if([team isEqualToString:@"visitor"]){
+    }else if([team isEqualToString: VISITOR_TEAM]){
         NSLog(@"home vistor got GRANDSLAM: %d", (int) number);
     }
 }
@@ -203,19 +202,19 @@
 -(void) handleClockTimeHasChangedFor: (NSNotification *) notification{
     NIZGameClock * clock = notification.object;
     
-    if([[clock clockName] isEqual: @"BoutClock"]){
+    if([[clock clockName] isEqual: BOUT_CLOCK]){
         self.specBoutClockLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",
                                         (int)[NIZGameClock getHoursFromTimeInSeconds: [clock secondsLeft]],
                                         (int)[NIZGameClock getMinutesFromTimeInSeconds: [clock secondsLeft]],
                                         (int)[NIZGameClock getSecondsFromTimeInSeconds: [clock secondsLeft]]];
         
-    }else if ([[clock clockName] isEqual: @"JamClock" ]){
+    }else if ([[clock clockName] isEqual: JAM_CLOCK ]){
         
         self.specJamClockLabel.text = [NSString stringWithFormat:@"%02d:%02d",
                                        (int)[NIZGameClock getMinutesFromTimeInSeconds: [clock secondsLeft]],
                                        (int)[NIZGameClock getSecondsFromTimeInSeconds: [clock secondsLeft]]];
         
-    }else if([[clock clockName] isEqual: @"PeriodClock"]){
+    }else if([[clock clockName] isEqual: PERIOD_CLOCK]){
         self.specPeriodClockLabel.text = [NSString stringWithFormat:@"%02d",
                                           (int)[NIZGameClock getSecondsFromTimeInSeconds: [clock secondsLeft]]];
     }

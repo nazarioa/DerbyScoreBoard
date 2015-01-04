@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NIZConstants.pch"
 #import "NIZDerbyTeam.h"
 #import "NIZAddEditPlayerViewController.h"
 

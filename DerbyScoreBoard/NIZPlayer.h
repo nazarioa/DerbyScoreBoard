@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NIZConstants.pch"
 
 @interface NIZPlayer : NSObject
 @property (nonatomic, strong) NSString * derbyName;

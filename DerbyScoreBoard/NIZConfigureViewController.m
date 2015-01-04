@@ -30,19 +30,19 @@
     [super viewDidLoad];
     
     // Home team exists, bring in the data to manipulate
-    if([self.delegate getTeam:@"Home"] == nil){
-        self.homeTeam = [[NIZDerbyTeam alloc] initWithTeamName:@"Home"];
-        [self.delegate setTeam:@"Home" with: self.homeTeam];
+    if([self.delegate getTeam: HOME_TEAM] == nil){
+        self.homeTeam = [[NIZDerbyTeam alloc] initWithTeamName: HOME_TEAM];
+        [self.delegate setTeam: HOME_TEAM with: self.homeTeam];
     }else{
-        self.homeTeam = [self.delegate getTeam:@"Home"];
+        self.homeTeam = [self.delegate getTeam: HOME_TEAM];
     }
     
     // Visitor team exists, bring in the data to manipulate
-    if([self.delegate getTeam:@"Visitor"] == nil){
-        self.visitorTeam = [[NIZDerbyTeam alloc] initWithTeamName:@"Visitor"];
-        [self.delegate setTeam:@"Visitor" with: self.visitorTeam];
+    if([self.delegate getTeam: VISITOR_TEAM] == nil){
+        self.visitorTeam = [[NIZDerbyTeam alloc] initWithTeamName: VISITOR_TEAM];
+        [self.delegate setTeam: VISITOR_TEAM with: self.visitorTeam];
     }else{
-        self.visitorTeam = [self.delegate getTeam: @"Visitor"];
+        self.visitorTeam = [self.delegate getTeam: VISITOR_TEAM];
     }
     
     // Display team names
@@ -177,9 +177,9 @@
 }
 
 -(void) forTeam: (NSString *) type savePlayer: (NIZPlayer *) player{
-    if( (player != nil) & ([type isEqualToString:@"Home"]) ){
+    if( (player != nil) & ([type isEqualToString: HOME_TEAM]) ){
         [self.homeTeam addPlayer:player];
-    }else if( (player != nil) & ([type isEqualToString:@"Visitor"]) ){
+    }else if( (player != nil) & ([type isEqualToString: VISITOR_TEAM]) ){
         [self.visitorTeam addPlayer:player];
     }
 }

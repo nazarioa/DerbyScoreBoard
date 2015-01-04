@@ -48,26 +48,26 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"HomeJamScore has changed" object: self userInfo:nil];
 }
 
--(void) setLeadJammerStatus:(TEAM_DESIGNATION)leadJammerStatus{
+-(void) setLeadJammerStatus:(NSString *)leadJammerStatus{
     _leadJammerStatus = leadJammerStatus;
     
 }
 
 //other
 -(void) addOneTo:(NSString *) team{
-    if([team isEqualToString:@"Visitor"]){
+    if([team isEqualToString: VISITOR_TEAM]){
         self.visitorJamScore = self.visitorJamScore+1;
-    }else if([team isEqualToString:@"Home"]){
+    }else if([team isEqualToString: HOME_TEAM]){
         self.homeJamScore = self.homeJamScore+1;
     }
 }
 
 -(void) subtractOneFrom:(NSString *) team{
-    if([team isEqualToString:@"Visitor"]){
+    if([team isEqualToString: VISITOR_TEAM]){
         if(self.visitorJamScore > 0){
             self.visitorJamScore = self.visitorJamScore-1;
         }
-    }else if([team isEqualToString:@"Home"]){
+    }else if([team isEqualToString: HOME_TEAM]){
         if(self.homeJamScore > 0){
             self.homeJamScore = self.homeJamScore-1;
         }

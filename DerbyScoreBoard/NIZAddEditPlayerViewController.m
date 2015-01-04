@@ -23,6 +23,7 @@
 @implementation NIZAddEditPlayerViewController
 
 @synthesize delegate = _delegate;
+@synthesize mode = _mode;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +33,7 @@
     [layer setBorderWidth:4.0];
     [layer setBorderColor:[[UIColor whiteColor] CGColor]];
     // Do any additional setup after loading the view.
+    NSLog(@" -- mode: %@", self.mode);
 }
 
 - (void)didReceiveMemoryWarning {
