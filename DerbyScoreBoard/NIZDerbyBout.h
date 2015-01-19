@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "NIZConstants.pch"
+#import "NIZDerbyJam.h"
 
 @interface NIZDerbyBout : NSObject
 
+@property (strong, nonatomic) NSDate * boutEventDate;
+
+-(void) addJam: (NIZDerbyJam *) jam;
 
 @end

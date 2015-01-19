@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *inputVisitorTeamName;
 @property (weak, nonatomic) IBOutlet UITableView *homeTeamRosterTV;
 @property (weak, nonatomic) IBOutlet UITableView *visitorTeamRosterTV;
+@property (weak, nonatomic) IBOutlet UIImageView *homeTeamLogo;
+@property (weak, nonatomic) IBOutlet UIImageView *visitorTeamLogo;
 
 @property (strong, nonatomic) NIZDerbyTeam * homeTeam;
 @property (strong, nonatomic) NIZDerbyTeam * visitorTeam;
@@ -28,26 +30,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self makePretty];
     
     // Home team exists, bring in the data to manipulate
     if([self.delegate getTeam: HOME_TEAM] == nil){
-        self.homeTeam = [[NIZDerbyTeam alloc] initWithTeamName: HOME_TEAM];
-        [self.delegate setTeam: HOME_TEAM with: self.homeTeam];
+        self.homeTeam = [[NIZDerbyTeam alloc] initWithTeamName: nil];
+        [self.delegate setHomeOrVisitor: HOME_TEAM asTeam: self.homeTeam];
     }else{
         self.homeTeam = [self.delegate getTeam: HOME_TEAM];
+        self.inputHomeTeamName.text = self.homeTeam.teamName;
     }
     
     // Visitor team exists, bring in the data to manipulate
     if([self.delegate getTeam: VISITOR_TEAM] == nil){
-        self.visitorTeam = [[NIZDerbyTeam alloc] initWithTeamName: VISITOR_TEAM];
-        [self.delegate setTeam: VISITOR_TEAM with: self.visitorTeam];
+        self.visitorTeam = [[NIZDerbyTeam alloc] initWithTeamName: nil];
+        [self.delegate setHomeOrVisitor: VISITOR_TEAM asTeam: self.visitorTeam];
     }else{
         self.visitorTeam = [self.delegate getTeam: VISITOR_TEAM];
+        self.inputVisitorTeamName.text = self.visitorTeam.teamName;
     }
-    
-    // Display team names
-    self.inputHomeTeamName.text = self.homeTeam.teamName;
-    self.inputVisitorTeamName.text = self.visitorTeam.teamName;
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,17 +57,39 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) performSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    NSLog(@"\n\n   performSegueWithIdentifier:%@ \nsender: %@\n\n", identifier, sender);
+}
+
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([[segue identifier] isEqualToString:@"AddHomePlayerSegue" ]){
-        NIZAddEditPlayerViewController *addEditPlayer = (NIZAddEditPlayerViewController *) segue.destinationViewController;
-        [addEditPlayer setDelegate:self];
-        addEditPlayer.teamType = @"Home";
-        addEditPlayer.teamLabel.text = self.homeTeam.teamName;
-    }else if([[segue identifier] isEqualToString:@"AddVisitorPlayerSegue" ]){
-        NIZAddEditPlayerViewController *addEditPlayer = (NIZAddEditPlayerViewController *) segue.destinationViewController;
-        [addEditPlayer setDelegate:self];
-        addEditPlayer.teamType = @"Visitor";
-        addEditPlayer.teamLabel.text = self.visitorTeam.teamName;
+    NSLog(@"\n\n   prepareForSegue:withIdentifier: %@", sender);
+    
+    if([segue.identifier isEqualToString:@"AddVisitorPlayerSegue" ]){
+        NIZAddEditPlayerViewController * addVisitor = (NIZAddEditPlayerViewController *) segue.destinationViewController;
+        [addVisitor setDelegate:self];
+        addVisitor.teamType = VISITOR_TEAM;
+        addVisitor.mode = ADD_MODE;
+        
+    }else if([segue.identifier isEqualToString:@"AddHomePlayerSegue" ]){
+        NIZAddEditPlayerViewController * addHome = (NIZAddEditPlayerViewController *) segue.destinationViewController;
+        [addHome setDelegate:self];
+        addHome.teamType = HOME_TEAM;
+        addHome.mode = ADD_MODE;
+        
+    }else if([segue.identifier isEqualToString:@"EditVisitorPlayerSegue" ]){
+        NIZAddEditPlayerViewController * editVisitor = (NIZAddEditPlayerViewController *) segue.destinationViewController;
+        [editVisitor setDelegate:self];
+        editVisitor.teamType = VISITOR_TEAM;
+        editVisitor.mode = EDIT_MODE;
+        UITableViewCell * cell = sender;
+        NSLog(@"  THE CELL: %@", cell);
+//        editVisitor.playerToBeEdited = 
+        
+    }else if([segue.identifier isEqualToString:@"EditHomePlayerSegue" ]){
+        NIZAddEditPlayerViewController * editHome = (NIZAddEditPlayerViewController *) segue.destinationViewController;
+        [editHome setDelegate:self];
+        editHome.teamType = HOME_TEAM;
+        editHome.mode = EDIT_MODE;
     }
 }
 
@@ -101,6 +124,10 @@
         cell.playerName.text = [self.homeTeam playerDerbyNameAtPosition:(int)indexPath.row];
         cell.playerNumber.text = [self.homeTeam playerDerbyNumberAtPosition:(int)indexPath.row];
         cell.playerMug.image = [self.homeTeam playerDerbyMugAtPosition:(int)indexPath.row];
+        
+        /*UITableViewCell *test = [[UITableViewCell alloc] init];
+        test.textLabel.text = [self.homeTeam playerDerbyNameAtPosition: (int) indexPath.row];
+        return test;*/
     
     }else if([self.visitorTeamRosterTV isEqual: tableView]){
         static NSString *CellIdentifier = @"VistorPlayerCell";
@@ -111,7 +138,7 @@
         cell.playerName.text = [self.visitorTeam playerDerbyNameAtPosition:(int)indexPath.row];
         cell.playerNumber.text = [self.visitorTeam playerDerbyNumberAtPosition:(int)indexPath.row];
         cell.playerMug.image = [self.visitorTeam playerDerbyMugAtPosition:(int)indexPath.row];
-        
+
     }
     
     CALayer * layer = [cell.playerMug layer];
@@ -133,14 +160,31 @@
     [tableView reloadData];
 }
 
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"   didSelectRowAtIndexPath: %@", indexPath);
+//}
+
+
 #pragma mark IB Actions
 
 - (IBAction)btnTouchedConfigureDone:(id)sender {
-    if(self.homeTeam.rosterCount < 1 || self.visitorTeam.rosterCount < 1 ){
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Not Enough Players" message:@"Please add at least one player to each team by touching the \"Add Player\" button." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    if([self.inputHomeTeamName.text isEqualToString: @""] || [self.inputVisitorTeamName.text isEqualToString:@""] ){
+        UIAlertView * alert = [[UIAlertView alloc]
+                               initWithTitle:@"Team Names are Missing"
+                               message:@"Please give your team names by touching the \"Home Team Name\" or \"Visitor Team Name\" text input fields."
+                               delegate:self
+                               cancelButtonTitle:@"Ok"
+                               otherButtonTitles: nil];
+        [alert show];
+    }else if(self.homeTeam.rosterCount < 1 || self.visitorTeam.rosterCount < 1 ){
+        UIAlertView * alert = [[UIAlertView alloc]
+                               initWithTitle:@"Not Enough Players"
+                               message:@"Please add at least one player to each team by touching the \"Add Player\" button."
+                               delegate:self
+                               cancelButtonTitle:@"Ok"
+                               otherButtonTitles: nil];
         [alert show];
     }else{
-        [self.delegate updateConfiguration];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
@@ -160,11 +204,27 @@
 }
 
 - (IBAction)enableSpectatorBtnTouched:(id)sender {
-    if( [self numExternalDisplays] > 1 ){
-        NSLog(@" Number of available displays: %li",(long)[self numExternalDisplays]);
+    if( [UIScreen screens].count > 1 ){
+        NSLog(@" Number of available displays: %li",(long)[UIScreen screens].count);
         [self connectExternalScreen];
     }else{
         NSLog(@" No extrnal displays found. Displaying modal error screen");
+    }
+}
+
+- (IBAction)teamLogoTouched:(UIButton *)sender {
+    if( [[sender restorationIdentifier] isEqual: @"homeTeamLogoBtn"] ){
+        UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+        picker.modalPresentationStyle = UIModalPresentationPageSheet;
+        picker.delegate = self;
+        picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        [self presentViewController:picker animated:YES completion:nil];
+    }else if( [[sender restorationIdentifier] isEqual: @"visitorTeamLogoBtn"] ){
+        UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+        picker.modalPresentationStyle = UIModalPresentationPageSheet;
+        picker.delegate = self;
+        picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        [self presentViewController:picker animated:YES completion:nil];
     }
 }
 
@@ -184,11 +244,7 @@
     }
 }
 
- -(NSInteger) numExternalDisplays{
-    return [UIScreen screens].count;
-}
-
- -(void) connectExternalScreen{
+-(void) connectExternalScreen{
      NSLog(@"  connectExternalScreen");
      NSArray * avilableScreens  = [UIScreen screens];
      
@@ -200,5 +256,25 @@
      }
  }
 
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    //TODO: not sure how to tell the button to put the image back in here.
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@" --> -> > : %@ ", info);
+    //self.playerMug.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+}
+
+-(void) makePretty{
+    CALayer * layer = [self.visitorTeamLogo layer];
+    [layer setMasksToBounds:YES];
+    [layer setCornerRadius: self.visitorTeamLogo.bounds.size.width/2.0];
+    [layer setBorderWidth:4.0];
+    [layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    layer = nil;
+    layer = [self.homeTeamLogo layer];
+    [layer setMasksToBounds:YES];
+    [layer setCornerRadius: self.homeTeamLogo.bounds.size.width/2.0];
+    [layer setBorderWidth:4.0];
+    [layer setBorderColor:[[UIColor whiteColor] CGColor]];
+}
 
 @end

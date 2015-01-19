@@ -48,16 +48,20 @@
 
 //property set/get
 -(void) setTeamName:(NSString *)teamName{
-    _teamName = teamName;
-    NSDictionary * data = @{@"TeamName" : teamName};
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"teamNameHasChanged" object: self userInfo:data];
+    if(teamName){
+        _teamName = teamName;
+        NSDictionary * data = @{@"TeamName" : teamName};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"teamNameHasChanged" object: self userInfo:data];
+    }
 }
 
 -(void) addPlayer:(NIZPlayer *) player{
     if(player){
-        [self.teamRoster addObject:player];
-        NSDictionary * data = @{@"NewPlayer" : player};
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"playerHasBeenAdded" object: self userInfo:data];
+        if(player){
+            [self.teamRoster addObject:player];
+            NSDictionary * data = @{@"NewPlayer" : player};
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"playerHasBeenAdded" object: self userInfo:data];
+        }
     }
 }
 
@@ -71,7 +75,7 @@
 
 -(void) setTeamLogo:(UIImage *)teamLogo{
     if(teamLogo){
-    _teamLogo = teamLogo;
+        _teamLogo = teamLogo;
         NSDictionary * data = @{@"teamLogo" : teamLogo};
         [[NSNotificationCenter defaultCenter] postNotificationName:@"teamLogoHasBeenSet" object: self userInfo:data];
     }

@@ -221,7 +221,7 @@
 }
 
 -(void) setupNotification{
-    NSLog(@"  NIZScoreBoardViewController: Setup Notification");
+    //NSLog(@"  NIZScoreBoardViewController: Setup Notification");
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleTeamNameHasChanged:)

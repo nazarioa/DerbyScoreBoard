@@ -26,6 +26,15 @@
 
 
 //init
+- (id)init{
+    self = [super init];
+    if (self) {
+        _visitorJamScore = 0;
+        _homeJamScore = 0;
+    }
+    return self;
+}
+
 - (id)initHomeJammer: (NSString *) home visitorJammer: (NSString *) visitor{
     self = [super init];
     if (self) {
@@ -34,23 +43,31 @@
         _visitorJamScore = 0;
         _homeJamScore = 0;
     }
+    
+    NSDictionary * score = @{@"TEAM" : VISITOR_TEAM, @"SCORE" : [NSString stringWithFormat: @"%d", self.visitorJamScore] };
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"JamScoreHasChanged" object: self userInfo:score];
+    
+    score = @{@"TEAM" : HOME_TEAM, @"SCORE" : [NSString stringWithFormat: @"%d", self.homeJamScore] };
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"JamScoreHasChanged" object: self userInfo:score];
     return self;
 }
 
 //property set/get
 -(void) setVisitorJamScore:(NSInteger)visitorJamScore{
     _visitorJamScore = visitorJamScore;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"VisitorJamScore has changed" object: self userInfo:nil];
+    NSDictionary * score = @{@"TEAM" : VISITOR_TEAM, @"SCORE" : [NSString stringWithFormat: @"%d", self.visitorJamScore] };
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"JamScoreHasChanged" object: self userInfo:score];
 }
 
 -(void) setHomeJamScore:(NSInteger)homeJamScore{
     _homeJamScore = homeJamScore;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"HomeJamScore has changed" object: self userInfo:nil];
+    NSDictionary * score = @{@"TEAM" : HOME_TEAM, @"SCORE" : [NSString stringWithFormat: @"%d", self.homeJamScore] };
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"JamScoreHasChanged" object: self userInfo:score];
 }
 
 -(void) setLeadJammerStatus:(NSString *)leadJammerStatus{
     _leadJammerStatus = leadJammerStatus;
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"LeadJammerStatusHasChanged" object: self userInfo:nil];
 }
 
 //other

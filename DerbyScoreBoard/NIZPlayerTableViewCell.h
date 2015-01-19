@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *playerNumber;
 @property (weak, nonatomic) IBOutlet UILabel *playerName;
 @property (weak, nonatomic) IBOutlet UIImageView *playerMug;
+//@property (weak, nonatomic) id <UITableViewDelegate> delegate;
 
 @end

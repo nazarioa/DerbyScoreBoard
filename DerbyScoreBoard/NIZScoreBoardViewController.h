@@ -17,7 +17,4 @@
 
 @property (strong, nonatomic) NIZSpectatorScreenViewController * spectatorViewController;
 
--(void) updateConfiguration;
-
-
 @end

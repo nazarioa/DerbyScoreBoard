@@ -14,16 +14,15 @@
 @class NIZScoreBoardViewController;
 
 @protocol NIZConfigureScreenProtocol <NSObject>
--(void) updateConfiguration;
 -(NIZDerbyTeam *) getTeam: (NSString *) type;
--(void) setTeam: (NSString *) type with: (NIZDerbyTeam *) team;
+-(void) setHomeOrVisitor: (NSString *) type asTeam: (NIZDerbyTeam *) team;
 -(void) resetClocks;
 -(void) setupSpectatorScreen:(NSArray *) avilableScreens;
 -(id) spectatorViewController;
 @end
 
 
-@interface NIZConfigureViewController : UIViewController <addEditPlayerProtocol>
+@interface NIZConfigureViewController : UIViewController <addEditPlayerProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate>
 @property (weak, nonatomic) id <NIZConfigureScreenProtocol> delegate;
 
 @end

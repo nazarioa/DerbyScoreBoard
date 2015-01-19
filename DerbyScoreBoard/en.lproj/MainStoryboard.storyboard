@@ -82,7 +82,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                 <connections>
-                                    <action selector="homeJamScoreInput:" destination="2" eventType="editingDidEnd" id="kWb-TK-shK"/>
                                     <outlet property="delegate" destination="2" id="tid-IG-0yk"/>
                                 </connections>
                             </textField>
@@ -95,7 +94,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                 <connections>
-                                    <action selector="homeTotalScoreInput:" destination="2" eventType="editingDidEnd" id="1qd-VA-etg"/>
                                     <outlet property="delegate" destination="2" id="pcz-WZ-M7P"/>
                                 </connections>
                             </textField>
@@ -151,7 +149,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                 <connections>
-                                    <action selector="visitorJamScoreInput:" destination="2" eventType="editingDidEnd" id="ylt-NL-4qF"/>
                                     <outlet property="delegate" destination="2" id="d9u-0T-AL4"/>
                                 </connections>
                             </textField>
@@ -164,7 +161,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                 <connections>
-                                    <action selector="visitorTotalScoreInput:" destination="2" eventType="editingDidEnd" id="210-P8-IER"/>
                                     <outlet property="delegate" destination="2" id="xpu-oe-23N"/>
                                 </connections>
                             </textField>
@@ -365,9 +361,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1826" y="-1005"/>
+            <point key="canvasLocation" x="1826" y="-995"/>
         </scene>
-        <!--Configure-->
+        <!--Configure View Controller-->
         <scene sceneID="VK4-2P-NZ9">
             <objects>
                 <viewController storyboardIdentifier="configureScreen" id="1ut-hq-t66" customClass="NIZConfigureViewController" sceneMemberID="viewController">
@@ -416,53 +412,6 @@
                                     <action selector="visitorTeamNameDidEndEditing:" destination="1ut-hq-t66" eventType="editingDidEnd" id="YSR-xQ-bSu"/>
                                 </connections>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="22" sectionFooterHeight="22" id="mxK-5X-N8p">
-                                <rect key="frame" x="20" y="205" width="480" height="268"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="HomePlayerCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomePlayerCell" rowHeight="86" id="Dz7-Mo-cpA" customClass="NIZPlayerTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dz7-Mo-cpA" id="2LX-ht-sqd">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K9P-W1-v3m">
-                                                    <rect key="frame" x="85" y="8" width="387" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.png" id="9Lx-ZV-HCf">
-                                                    <rect key="frame" x="8" y="8" width="69" height="69"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nwE-fv-9gW">
-                                                    <rect key="frame" x="85" y="37" width="387" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="deviceRGB"/>
-                                        <connections>
-                                            <outlet property="playerMug" destination="9Lx-ZV-HCf" id="1ZA-8C-5zE"/>
-                                            <outlet property="playerName" destination="nwE-fv-9gW" id="PtK-9j-eXP"/>
-                                            <outlet property="playerNumber" destination="K9P-W1-v3m" id="6j9-OX-f3e"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="1ut-hq-t66" id="QrV-M9-mGo"/>
-                                    <outlet property="delegate" destination="1ut-hq-t66" id="qC7-Sj-zzg"/>
-                                </connections>
-                            </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="22" sectionFooterHeight="22" id="wpX-Cb-533">
                                 <rect key="frame" x="524" y="205" width="480" height="268"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -470,7 +419,7 @@
                                 <color key="separatorColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="PlayerCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="VistorPlayerCell" rowHeight="86" id="RqG-WM-aBE" customClass="NIZPlayerTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="VisitorPlayerCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="VistorPlayerCell" rowHeight="86" id="RqG-WM-aBE" userLabel="VisitorPlayerCell" customClass="NIZPlayerTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RqG-WM-aBE" id="57N-9O-JYh">
@@ -502,6 +451,7 @@
                                             <outlet property="playerMug" destination="K1A-uF-Ct9" id="87r-u3-wmu"/>
                                             <outlet property="playerName" destination="DXP-ob-kW1" id="07n-Pd-h8C"/>
                                             <outlet property="playerNumber" destination="Uci-GP-rkm" id="EbD-HY-nxD"/>
+                                            <segue destination="Bpl-fb-fUZ" kind="modal" identifier="EditVisitorPlayerSegue" id="lim-Qk-XHB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -578,17 +528,94 @@
                                     <action selector="enableSpectatorBtnTouched:" destination="1ut-hq-t66" eventType="touchUpInside" id="YSb-sf-7Ps"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="homeTeamLogoBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uuW-8I-76y" userLabel="Home Team Library Button">
+                                <rect key="frame" x="160" y="488" width="201" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <state key="normal" title="Home Team Logo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="teamLogoTouched:" destination="1ut-hq-t66" eventType="touchUpInside" id="VlD-Kz-sgp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="visitorTeamLogoBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HZm-Zh-0Sx" userLabel="Visitor Team Library">
+                                <rect key="frame" x="664" y="488" width="201" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <state key="normal" title="Visitor Team Logo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="teamLogoTouched:" destination="1ut-hq-t66" eventType="touchUpInside" id="WZf-TB-L81"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="j7I-c1-zub" userLabel="Home Team Logo">
+                                <rect key="frame" x="160" y="542" width="201" height="201"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Zt3-LE-AMf" userLabel="Visitor Team Logo">
+                                <rect key="frame" x="664" y="542" width="201" height="201"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="22" sectionFooterHeight="22" id="eKT-Hg-7KL">
+                                <rect key="frame" x="20" y="205" width="480" height="268"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="HomePlayerCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="HomePlayerCell" rowHeight="86" id="mH7-5r-lyl" userLabel="HomePlayerCell" customClass="NIZPlayerTableViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mH7-5r-lyl" id="7d8-aD-HlY">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TSn-Dh-QkB">
+                                                    <rect key="frame" x="85" y="8" width="387" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.png" id="ihx-Xv-JHg">
+                                                    <rect key="frame" x="8" y="8" width="69" height="69"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="P2r-e9-raW">
+                                                    <rect key="frame" x="85" y="37" width="387" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <connections>
+                                            <outlet property="playerMug" destination="ihx-Xv-JHg" id="TZe-ee-f1N"/>
+                                            <outlet property="playerName" destination="P2r-e9-raW" id="a6Y-bG-1fY"/>
+                                            <outlet property="playerNumber" destination="TSn-Dh-QkB" id="pCs-L4-ORe"/>
+                                            <segue destination="Bpl-fb-fUZ" kind="modal" identifier="EditHomePlayerSegue" id="m3s-Ff-bex"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="1ut-hq-t66" id="a63-WF-pKs"/>
+                                    <outlet property="delegate" destination="1ut-hq-t66" id="ePj-Nj-TdX"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Configure" id="o6J-Pu-SPu">
-                        <barButtonItem key="backBarButtonItem" title="Done" id="0g4-Nn-FG1"/>
-                    </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="homeTeamRosterTV" destination="mxK-5X-N8p" id="KlW-A1-Lyy"/>
+                        <outlet property="homeTeamLogo" destination="j7I-c1-zub" id="mtV-gd-HTt"/>
+                        <outlet property="homeTeamRosterTV" destination="eKT-Hg-7KL" id="X7n-Ua-jDm"/>
                         <outlet property="inputHomeTeamName" destination="b8L-m1-zOj" id="2ST-XK-Dt5"/>
                         <outlet property="inputVisitorTeamName" destination="3PE-rw-86Y" id="wPu-iE-SBd"/>
+                        <outlet property="visitorTeamLogo" destination="Zt3-LE-AMf" id="pV8-2v-mtY"/>
                         <outlet property="visitorTeamRosterTV" destination="wpX-Cb-533" id="UkD-a8-A8Y"/>
                     </connections>
                 </viewController>
@@ -601,18 +628,11 @@
             <objects>
                 <viewController modalPresentationStyle="formSheet" id="Qho-K7-ukO" customClass="NIZConfigureViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Se-Ih-jDd">
-                        <rect key="frame" x="0.0" y="0.0" width="664" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="447"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dXr-6Q-FMP">
-                                <rect key="frame" x="16" y="93" width="632" height="241"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spectator Board" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Bg-WX-QYo">
-                                <rect key="frame" x="41" y="31" width="281" height="54"/>
+                                <rect key="frame" x="16" y="20" width="281" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="39"/>
@@ -623,11 +643,11 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="664" height="400"/>
+                    <size key="freeformSize" width="600" height="447"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fD7-MC-yQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4173" y="-1507"/>
+            <point key="canvasLocation" x="4173" y="-1560.5"/>
         </scene>
         <!--Add Edit Player View Controller-->
         <scene sceneID="QMZ-Wb-sfa">
@@ -637,14 +657,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="447"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WM0-uJ-5F9">
-                                <rect key="frame" x="16" y="20" width="151" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pLd-Mz-Lel">
                                 <rect key="frame" x="425" y="28" width="159" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -671,34 +683,34 @@
                                     <action selector="btnTouchedCancelEditingPlayer:" destination="Bpl-fb-fUZ" eventType="touchUpInside" id="abb-VB-6zD"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Last Name" borderStyle="roundedRect" minimumFontSize="17" id="sw3-nu-30v">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" id="sw3-nu-30v">
                                 <rect key="frame" x="16" y="217" width="271" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Derby Player Name" borderStyle="roundedRect" minimumFontSize="17" id="Y28-bf-MVF">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Derby Player Name" minimumFontSize="17" id="Y28-bf-MVF">
                                 <rect key="frame" x="16" y="103" width="271" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Number" borderStyle="roundedRect" minimumFontSize="17" id="0Mi-Jh-Qfm">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Derby Player Number" minimumFontSize="17" id="0Mi-Jh-Qfm">
                                 <rect key="frame" x="16" y="141" width="271" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.png" id="aWt-Bg-XiC">
                                 <rect key="frame" x="307" y="97" width="277" height="277"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="First Name" borderStyle="roundedRect" minimumFontSize="17" id="X4i-Xl-wmI">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" id="X4i-Xl-wmI">
                                 <rect key="frame" x="16" y="179" width="271" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5gX-0P-jHN">
                                 <rect key="frame" x="307" y="390" width="134" height="42"/>
@@ -726,23 +738,32 @@
                                     <action selector="btnTouchedMug:" destination="Bpl-fb-fUZ" eventType="touchUpInside" id="Ciu-Va-Epg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jammer:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QIT-KE-sa4">
-                                <rect key="frame" x="16" y="260" width="67" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is A Jammer:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QIT-KE-sa4">
+                                <rect key="frame" x="16" y="260" width="101" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="240-eo-9di">
-                                <rect key="frame" x="96" y="255" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="240-eo-9di">
+                                <rect key="frame" x="127" y="255" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add/Edit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WM0-uJ-5F9">
+                                <rect key="frame" x="16" y="20" width="151" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="447"/>
                     <connections>
+                        <outlet property="addEditViewModeLabel" destination="WM0-uJ-5F9" id="B22-F2-Vue"/>
                         <outlet property="mugBtn" destination="5gX-0P-jHN" id="dpH-hI-T6l"/>
                         <outlet property="playerDerbyName" destination="Y28-bf-MVF" id="4cZ-Lb-uF1"/>
                         <outlet property="playerDerbyNumber" destination="0Mi-Jh-Qfm" id="8Ls-f5-vxs"/>
@@ -754,7 +775,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53a-jh-UMJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4173" y="-1032"/>
+            <point key="canvasLocation" x="4173" y="-995.5"/>
         </scene>
     </scenes>
     <resources>
@@ -772,6 +793,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9dJ-8U-jyv"/>
+        <segue reference="lim-Qk-XHB"/>
     </inferredMetricsTieBreakers>
 </document>

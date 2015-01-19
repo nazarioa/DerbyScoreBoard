@@ -10,13 +10,14 @@
 #import "NIZPlayer.h"
 
 @interface NIZAddEditPlayerViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *playerFirstName;
-@property (weak, nonatomic) IBOutlet UITextField *playerLastName;
-@property (weak, nonatomic) IBOutlet UITextField *playerDerbyName;
-@property (weak, nonatomic) IBOutlet UITextField *playerDerbyNumber;
-@property (weak, nonatomic) IBOutlet UISwitch *playerIsJammer;
-@property (weak, nonatomic) IBOutlet UIImageView *playerMug;
-@property (weak, nonatomic) IBOutlet UIButton *mugBtn;
+@property (strong, nonatomic) IBOutlet UITextField *playerFirstName;
+@property (strong, nonatomic) IBOutlet UITextField *playerLastName;
+@property (strong, nonatomic) IBOutlet UITextField *playerDerbyName;
+@property (strong, nonatomic) IBOutlet UITextField *playerDerbyNumber;
+@property (strong, nonatomic) IBOutlet UISwitch *playerIsJammer;
+@property (strong, nonatomic) IBOutlet UIImageView *playerMug;
+@property (strong, nonatomic) IBOutlet UIButton *mugBtn;
+@property (strong, nonatomic) IBOutlet UILabel * addEditViewModeLabel;
 
 @end
 
@@ -24,6 +25,8 @@
 
 @synthesize delegate = _delegate;
 @synthesize mode = _mode;
+@synthesize addEditViewModeLabel = _addEditViewModeLabel;
+@synthesize playerToBeEdited = _playerToBeEdited;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,8 +35,15 @@
     [layer setCornerRadius:self.playerMug.bounds.size.width/2.0];
     [layer setBorderWidth:4.0];
     [layer setBorderColor:[[UIColor whiteColor] CGColor]];
-    // Do any additional setup after loading the view.
-    NSLog(@" -- mode: %@", self.mode);
+    
+    [self setupView];
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    NSLog(@"viewWillAppear");
+}
+-(void) viewDidAppear:(BOOL)animated{
+    NSLog(@"vieDidAppear");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,16 +55,21 @@
 
 - (IBAction)btnTouchedFinishedEditingPlayer:(id)sender {
     if([self.playerDerbyName.text isEqualToString:@""] || [self.playerDerbyNumber.text isEqualToString:@""]){
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Cannot Add Player" message:@"Your Player must have a Derby Name and a Derby Number in order to be added to the roster" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Cannot Add Player" message:@"Players must have a \n\"Derby Name\"\n and \"Derby Number\"\n in order to be added to the roster." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }else{
-        NIZPlayer * aPlayer = [[NIZPlayer alloc] initWithDerbyName: self.playerDerbyName.text
-                                                       derbyNumber: self.playerDerbyNumber.text
-                                                         firstName: self.playerFirstName.text
-                                                          lastName: self.playerLastName.text
-                                                           mugShot: self.playerMug.image
-                                                          isJammer: self.playerIsJammer.enabled];
-        [self.delegate forTeam:self.teamType savePlayer:aPlayer];
+        if( [self.mode isEqual: ADD_MODE]){
+            NIZPlayer * aPlayer = [[NIZPlayer alloc] initWithDerbyName: self.playerDerbyName.text
+                                                           derbyNumber: self.playerDerbyNumber.text
+                                                             firstName: self.playerFirstName.text
+                                                              lastName: self.playerLastName.text
+                                                               mugShot: self.playerMug.image
+                                                              isJammer: self.playerIsJammer.enabled];
+            [self.delegate forTeam:self.teamType savePlayer:aPlayer];
+            
+        }else if( [self.mode isEqual: EDIT_MODE]){
+        
+        }
         [self.delegate refreshPlayerRoster];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -88,6 +103,14 @@
     [layer setCornerRadius:self.playerMug.bounds.size.width/2.0];
     [layer setBorderWidth:4.0];
     [layer setBorderColor:[[UIColor whiteColor] CGColor]];
+}
+
+-(void) setupView{
+    if([self.mode isEqual: EDIT_MODE]){
+        self.addEditViewModeLabel.text  = @"Edit";
+    }else if([self.mode isEqual: ADD_MODE]){
+        self.addEditViewModeLabel.text  = @"Add";
+    }
 }
 
 @end

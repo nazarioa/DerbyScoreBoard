@@ -37,6 +37,7 @@
 -(void) pauseClock;
 -(void) stopClock;
 -(void) resetClock;
+-(NSInteger) timerDuration;
 
 +(NSInteger) getHoursFromTimeInSeconds:(NSInteger) timeInSeconds;
 +(NSInteger) getMinutesFromTimeInSeconds:(NSInteger) timeInSeconds;
