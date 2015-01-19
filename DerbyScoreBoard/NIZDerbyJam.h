@@ -7,12 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef enum{
-    NONE,
-    HOME,
-    VISITOR
-}TEAM_DESIGNATION;
+#import "NIZConstants.pch"
 
 @protocol NIZJamDelegate <NSObject>
 
@@ -22,7 +17,7 @@ typedef enum{
 @property (weak, nonatomic) id <NIZJamDelegate> delegate;
 @property (nonatomic) NSInteger homeJamScore;
 @property (nonatomic) NSInteger visitorJamScore;
-@property (nonatomic) TEAM_DESIGNATION leadJammerStatus;
+@property (strong, nonatomic) NSString * leadJammerStatus;
 
 -(id) initHomeJammer: (NSString *) home visitorJammer: (NSString *) visitor;
 

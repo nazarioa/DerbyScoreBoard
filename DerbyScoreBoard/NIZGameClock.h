@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NIZConstants.pch"
 
 @protocol NIZClockDelegate <NSObject>
 @required
@@ -36,6 +37,7 @@
 -(void) pauseClock;
 -(void) stopClock;
 -(void) resetClock;
+-(NSInteger) timerDuration;
 
 +(NSInteger) getHoursFromTimeInSeconds:(NSInteger) timeInSeconds;
 +(NSInteger) getMinutesFromTimeInSeconds:(NSInteger) timeInSeconds;

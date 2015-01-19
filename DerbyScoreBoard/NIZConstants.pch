@@ -1,0 +1,32 @@
+//
+//  NIZConstants.h
+//  Derby
+//
+//  Created by Nazario A. Ayala on 1/3/15.
+//  Copyright (c) 2015 Nazario A. Ayala. All rights reserved.
+//
+
+#ifndef Derby_NIZConstants_pch
+#define Derby_NIZConstants_pch
+
+static NSString * const EDIT_MODE = @"edit";
+static NSString * const ADD_MODE = @"add";
+
+static NSString * const HOME_TEAM = @"home";
+static NSString * const VISITOR_TEAM = @"visitor";
+static NSString * const NO_TEAM = @"noTeam";
+
+static NSString * const BOUT_CLOCK = @"boutClock";
+static NSString * const JAM_CLOCK = @"jamClock";
+static NSString * const PERIOD_CLOCK = @"periodClock";
+
+
+/*
+ typedef enum{
+ NONE,
+ HOME,
+ VISITOR
+ }TEAM_DESIGNATION;
+ */
+
+#endif

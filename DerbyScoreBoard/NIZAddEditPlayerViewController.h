@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NIZConstants.pch"
 
 @class NIZPlayer;
 @protocol addEditPlayerProtocol <NSObject>
@@ -16,6 +17,7 @@
 
 @interface NIZAddEditPlayerViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) id <addEditPlayerProtocol> delegate;
-@property (weak, nonatomic) IBOutlet UILabel *teamLabel;
-@property (weak, nonatomic) NSString * teamType;
+@property (strong, nonatomic) NSString * teamType;
+@property (strong, nonatomic) NSString * mode;
+@property (weak, nonatomic) NIZPlayer * playerToBeEdited;
 @end

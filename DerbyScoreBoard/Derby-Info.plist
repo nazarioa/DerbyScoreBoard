@@ -6,6 +6,7 @@
 	<array>
 		<string>Gotham-Black.otf</string>
 		<string>Gotham-Medium.otf</string>
+		<string>London-Font.ttf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

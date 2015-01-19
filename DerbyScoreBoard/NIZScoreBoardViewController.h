@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NIZConstants.pch"
 #import "NIZGameClock.h"
 #import "NIZDerbyJam.h"
 #import "NIZConfigureViewController.h"
@@ -15,8 +16,5 @@
 @interface NIZScoreBoardViewController : UIViewController <NIZClockDelegate, NIZJamDelegate, NIZConfigureScreenProtocol>
 
 @property (strong, nonatomic) NIZSpectatorScreenViewController * spectatorViewController;
-
--(void) updateConfiguration;
-
 
 @end

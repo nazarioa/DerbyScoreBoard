@@ -13,6 +13,7 @@
 @synthesize playerMug = _playerMug;
 @synthesize playerName = _playerName;
 @synthesize playerNumber = _playerNumber;
+//@synthesize delegate = _delegate;
 
 
 - (void)awakeFromNib {
