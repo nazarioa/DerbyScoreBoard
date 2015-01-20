@@ -169,7 +169,7 @@
     
     CGRect teamNamePosition = CGRectMake(0, 100, 300, 75);
     //CGFloat offestX = 20;
-    UIFont * teamNameFont = [UIFont fontWithName:@"Gotham" size:80];
+    UIFont * teamNameFont = [UIFont fontWithName:@"Gotham" size:40];
     
     if([team isEqualToString: HOME_TEAM]){
         teamNamePosition.origin.x = (self.view.center.x * .5)-(teamNamePosition.size.width/2);
@@ -221,17 +221,19 @@
 }
 
 -(void) setupNotification{
-    //NSLog(@"  NIZScoreBoardViewController: Setup Notification");
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleTeamNameHasChanged:)
-                                                 name:@"teamNameHasChanged"
-                                               object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleClockTimeHasChangedFor:)
                                                  name:@"clockTimeHasChangedFor"
                                                object:nil];
+}
+
+-(void) handleTeamNameHasChanged: (NSNotification *) notification{
+    NSLog(@"  handleTeamNameHasChanged: %@", notification);
+//    if([tempTeam isEqual: self.homeTeam]){
+//        self.homeTeamLabel.text = tempTeam.teamName;
+//    }else if([notification.object isEqual: self.visitorTeam]){
+//        self.visitorTeamLabel.text = tempTeam.teamName;
+//    }
 }
 
 -(void) setupRulers{

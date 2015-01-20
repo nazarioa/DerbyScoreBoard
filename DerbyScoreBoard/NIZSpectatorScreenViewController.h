@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NIZConstants.pch"
+#import "NIZDerbyTeam.h"
 
 @interface NIZSpectatorScreenViewController : UIViewController
 

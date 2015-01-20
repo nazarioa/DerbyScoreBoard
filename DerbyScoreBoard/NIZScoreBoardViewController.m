@@ -482,16 +482,22 @@ UIFont * gothamMedium30;
         self.spectatorWindow.screen = self.extScreen;
         self.spectatorWindow.backgroundColor = [UIColor greenColor];
         
-        NSLog(@"     extScreenBounds  origin.x: %f and origin.y: %f", extScreenBounds.origin.x, extScreenBounds.origin.y);
-        NSLog(@"     extScreenBounds  size.width: %f and size.height: %f", extScreenBounds.size.width,  extScreenBounds.size.height);
-        
         self.spectatorViewController = [[NIZSpectatorScreenViewController alloc] init];
         self.spectatorWindow.rootViewController = self.spectatorViewController;
         [self.spectatorWindow.rootViewController.view setBounds:extScreenBounds];
         
+        /*
+        NSLog(@"     extScreenBounds  origin.x: %f and origin.y: %f", extScreenBounds.origin.x, extScreenBounds.origin.y);
+        NSLog(@"     extScreenBounds  size.width: %f and size.height: %f", extScreenBounds.size.width,  extScreenBounds.size.height);
         NSLog(@"     self.spectatorWindow.rootViewController.view.bounds  origin.x: %f and origin.y: %f", self.spectatorWindow.rootViewController.view.bounds.origin.x, self.spectatorWindow.rootViewController.view.bounds.origin.y);
         NSLog(@"     self.spectatorWindow.rootViewController.view.bounds  size.width: %f and size.height: %f", self.spectatorWindow.rootViewController.view.bounds.size.width,  self.spectatorWindow.rootViewController.view.bounds.size.height);
+         */
         
+        //Initial Dispaly Info
+        self.spectatorViewController.specHomeTeamName.text = self.homeTeam.teamName;
+        self.spectatorViewController.specVistorTeamName.text = self.visitorTeam.teamName;
+        self.spectatorViewController.specHomeTeamTotalScore.text = [NSString stringWithFormat:@"%d", self.homeTeamTotalScore];
+        self.spectatorViewController.specVistorTeamTotalScore.text = [NSString stringWithFormat:@"%d", self.visitorTeamTotalScore];
         self.spectatorWindow.hidden = NO;
     }else{
         NSLog(@"  setupSpectatorScreen. Only here during dev");
@@ -534,8 +540,10 @@ UIFont * gothamMedium30;
     NSLog(@"  handleTeamNameHasChanged: someParam: %@", notification.object);
     if([tempTeam isEqual: self.homeTeam]){
         self.homeTeamLabel.text = tempTeam.teamName;
+        self.spectatorViewController.specHomeTeamName.text = tempTeam.teamName;
     }else if([notification.object isEqual: self.visitorTeam]){
         self.visitorTeamLabel.text = tempTeam.teamName;
+        self.spectatorViewController.specVistorTeamName.text = tempTeam.teamName;
     }
 }
 
@@ -575,9 +583,11 @@ UIFont * gothamMedium30;
 -(void)handleJamScoreHasChanged: (NSNotification *) notification{
     if( [[notification.userInfo objectForKey:@"TEAM"] isEqual: HOME_TEAM]){
         self.homeJamScoreTextField.text = [notification.userInfo objectForKey:@"SCORE"];
+        self.spectatorViewController.specHomeTeamJamScore.text = [notification.userInfo objectForKey:@"SCORE"];
     }
     if( [[notification.userInfo objectForKey:@"TEAM"] isEqual: VISITOR_TEAM]){
         self.visitorJamScoreTextField.text = [notification.userInfo objectForKey:@"SCORE"];
+        self.spectatorViewController.specVistorTeamJamScore.text = [notification.userInfo objectForKey:@"SCORE"];
     }
 }
 

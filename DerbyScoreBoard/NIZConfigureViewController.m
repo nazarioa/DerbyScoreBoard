@@ -219,6 +219,7 @@
         picker.delegate = self;
         picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
         [self presentViewController:picker animated:YES completion:nil];
+        
     }else if( [[sender restorationIdentifier] isEqual: @"visitorTeamLogoBtn"] ){
         UIImagePickerController * picker = [[UIImagePickerController alloc] init];
         picker.modalPresentationStyle = UIModalPresentationPageSheet;
