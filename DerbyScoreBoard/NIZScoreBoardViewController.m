@@ -38,8 +38,14 @@ UIFont * gothamMedium30;
 @property (weak, nonatomic) IBOutlet UILabel *jamClockLabel;
 @property (weak, nonatomic) IBOutlet UILabel *boutClockLabel;
 @property (weak, nonatomic) IBOutlet UILabel *periodClockLabel;
-@property (weak, nonatomic) IBOutlet UIButton *officialTimeOutBtn;
-@property (weak, nonatomic) IBOutlet UIButton *jamTimeOutBtn;
+@property (weak, nonatomic) IBOutlet UIButton *boutClockBtn;
+@property (weak, nonatomic) IBOutlet UIButton *jamClockBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *homeJamScoreUpBtn;
+@property (weak, nonatomic) IBOutlet UIButton *homeJamScoreDownBtn;
+@property (weak, nonatomic) IBOutlet UIButton *visitorJamScoreUpBtn;
+@property (weak, nonatomic) IBOutlet UIButton *visitorJamScoreDownBtn;
+
 
 
 @property (strong, nonatomic) NIZDerbyTeam *homeTeam;
@@ -93,6 +99,7 @@ UIFont * gothamMedium30;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self enableDisableTouchForMainItems:NO];
     [self setupColors];
     [self setupFonts];
     [self setupNotification];
@@ -115,7 +122,7 @@ UIFont * gothamMedium30;
     
     UITapGestureRecognizer *jamBtnTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleJamDoubleTapGesture:)];
     jamBtnTapGesture.numberOfTapsRequired = 2;
-    [self.jamTimeOutBtn addGestureRecognizer:jamBtnTapGesture];
+    [self.jamClockBtn addGestureRecognizer:jamBtnTapGesture];
     
     [self primeClocks];
 }
@@ -181,10 +188,10 @@ UIFont * gothamMedium30;
                                   (int) [NIZGameClock getSecondsFromTimeInSeconds: [self.periodClock timerDuration]]];
 
     UIImage * gameClockImage = [UIImage imageNamed:@"gameClock_start"];
-    [self.officialTimeOutBtn setImage:gameClockImage forState: UIControlStateNormal];
+    [self.boutClockBtn setImage:gameClockImage forState: UIControlStateNormal];
     
     UIImage * jamClockImage = [UIImage imageNamed:@"jamClock_start_a"];
-    [self.jamTimeOutBtn setImage:jamClockImage forState: UIControlStateNormal];
+    [self.jamClockBtn setImage:jamClockImage forState: UIControlStateNormal];
 }
 
 -(void)resetClocks{
@@ -205,7 +212,7 @@ UIFont * gothamMedium30;
 
 - (void)boutClockPaused {
     UIImage * image = [UIImage imageNamed:@"gameClock_start"];
-    [self.officialTimeOutBtn setImage:image forState: UIControlStateNormal];
+    [self.boutClockBtn setImage:image forState: UIControlStateNormal];
     
     [self.jamClock stopClock];
     [self.periodClock stopClock];
@@ -214,7 +221,7 @@ UIFont * gothamMedium30;
 
 - (void)boutClockStart {
     UIImage * image = [UIImage imageNamed:@"gameClock_stop"];
-    [self.officialTimeOutBtn setImage:image forState: UIControlStateNormal];
+    [self.boutClockBtn setImage:image forState: UIControlStateNormal];
     [self.boutClock startClock];
 }
 
@@ -222,7 +229,7 @@ UIFont * gothamMedium30;
 #pragma mark - jamClock
 - (void)jamClockStart {
     UIImage * image = [UIImage imageNamed:@"jamClock_stop"];
-    [self.jamTimeOutBtn setImage:image forState: UIControlStateNormal];
+    [self.jamClockBtn setImage:image forState: UIControlStateNormal];
     [self.periodClock stopClock];
     [self.jamClock startClock];
     
@@ -249,7 +256,7 @@ UIFont * gothamMedium30;
 
 - (void)jamClockStop {
     UIImage * image = [UIImage imageNamed:@"jamClock_start_a"];
-    [self.jamTimeOutBtn setImage:image forState: UIControlStateNormal];
+    [self.jamClockBtn setImage:image forState: UIControlStateNormal];
     [self.jamClock stopClock];
     [self.periodClock startClock];
     [self calculateJamTotals];
@@ -258,7 +265,7 @@ UIFont * gothamMedium30;
 - (void)jamClockPause {
     NSLog(@"jamClockButton: Stopped Jam");
     UIImage * image = [UIImage imageNamed:@"jamClock_start_a"];
-    [self.jamTimeOutBtn setImage:image forState: UIControlStateNormal];
+    [self.jamClockBtn setImage:image forState: UIControlStateNormal];
     [self.jamClock pauseClock];
 }
 
@@ -357,6 +364,8 @@ UIFont * gothamMedium30;
             [self periodClockStop];
         }
     }
+    
+    [self enableDisableTouchForMainItems:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -394,7 +403,7 @@ UIFont * gothamMedium30;
     }
     
     if(aTempPlayer != nil){
-        return [NSString stringWithFormat:@"%@ : %@", aTempPlayer.derbyNumber , aTempPlayer.derbyName];
+        return [NSString stringWithFormat:@"%@ : %@", aTempPlayer.derbyNumber, aTempPlayer.derbyName];
     }
     return nil;
 }
@@ -466,9 +475,8 @@ UIFont * gothamMedium30;
     if( self.extScreen != nil){
         NSLog(@" ");
         NSLog(@"\n========================");
-        NSLog(@"NIZScoreBoardViewController setupSpectatorScreen");
-        NSLog(@"   setupSpectatorScreen - 3");
-    
+        NSLog(@"   NIZScoreBoardViewController setupSpectatorScreen");
+        
         CGRect extScreenBounds = self.extScreen.bounds;
         self.spectatorWindow = [[UIWindow alloc] initWithFrame:extScreenBounds];
         self.spectatorWindow.screen = self.extScreen;
@@ -477,7 +485,6 @@ UIFont * gothamMedium30;
         NSLog(@"     extScreenBounds  origin.x: %f and origin.y: %f", extScreenBounds.origin.x, extScreenBounds.origin.y);
         NSLog(@"     extScreenBounds  size.width: %f and size.height: %f", extScreenBounds.size.width,  extScreenBounds.size.height);
         
-        NSLog(@"  setupSpectatorScreen - 4");
         self.spectatorViewController = [[NIZSpectatorScreenViewController alloc] init];
         self.spectatorWindow.rootViewController = self.spectatorViewController;
         [self.spectatorWindow.rootViewController.view setBounds:extScreenBounds];
@@ -485,7 +492,6 @@ UIFont * gothamMedium30;
         NSLog(@"     self.spectatorWindow.rootViewController.view.bounds  origin.x: %f and origin.y: %f", self.spectatorWindow.rootViewController.view.bounds.origin.x, self.spectatorWindow.rootViewController.view.bounds.origin.y);
         NSLog(@"     self.spectatorWindow.rootViewController.view.bounds  size.width: %f and size.height: %f", self.spectatorWindow.rootViewController.view.bounds.size.width,  self.spectatorWindow.rootViewController.view.bounds.size.height);
         
-        NSLog(@"  setupSpectatorScreen - 5");
         self.spectatorWindow.hidden = NO;
     }else{
         NSLog(@"  setupSpectatorScreen. Only here during dev");
@@ -572,6 +578,26 @@ UIFont * gothamMedium30;
     }
     if( [[notification.userInfo objectForKey:@"TEAM"] isEqual: VISITOR_TEAM]){
         self.visitorJamScoreTextField.text = [notification.userInfo objectForKey:@"SCORE"];
+    }
+}
+
+-(void) enableDisableTouchForMainItems: (BOOL) result{
+    self.homeLeadJammerBtn.userInteractionEnabled = result;
+    self.homeJammerPicker.userInteractionEnabled = result;
+    self.visitorLeadJammerBtn.userInteractionEnabled = result;
+    self.visitorJammerPicker.userInteractionEnabled = result;
+    
+    self.boutClockBtn.userInteractionEnabled = result;
+    
+    self.homeJamScoreUpBtn.userInteractionEnabled = result;
+    self.homeJamScoreDownBtn.userInteractionEnabled = result;
+    self.visitorJamScoreUpBtn.userInteractionEnabled = result;
+    self.visitorJamScoreDownBtn.userInteractionEnabled = result;
+    
+    if(result == YES){
+        //TODO: set the color or image of the above mentioned items to grey or transparent
+    }else if(result == NO){
+    
     }
 }
 

@@ -13,6 +13,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSLog(@"Fonts: %@",[UIFont familyNames]);
+    application.idleTimerDisabled = YES;
     // Override point for customization after application launch.
     return YES;
 }

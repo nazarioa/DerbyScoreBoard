@@ -68,7 +68,12 @@
             [self.delegate forTeam:self.teamType savePlayer:aPlayer];
             
         }else if( [self.mode isEqual: EDIT_MODE]){
-        
+            self.playerToBeEdited.derbyName = self.playerDerbyName.text;
+            self.playerToBeEdited.derbyNumber = self.playerDerbyNumber.text;
+            self.playerToBeEdited.firstName = self.playerFirstName.text;
+            self.playerToBeEdited.lastName = self.playerLastName.text;
+            self.playerToBeEdited.mugShot = self.playerMug.image;
+            self.playerToBeEdited.isJammer = self.playerIsJammer.enabled;
         }
         [self.delegate refreshPlayerRoster];
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -108,6 +113,15 @@
 -(void) setupView{
     if([self.mode isEqual: EDIT_MODE]){
         self.addEditViewModeLabel.text  = @"Edit";
+        if(self.playerToBeEdited){
+            self.playerDerbyName.text   = self.playerToBeEdited.derbyName;
+            self.playerDerbyNumber.text = self.playerToBeEdited.derbyNumber;
+            self.playerFirstName.text   = self.playerToBeEdited.firstName;
+            self.playerLastName.text    = self.playerToBeEdited.lastName;
+            self.playerMug.image        = self.playerToBeEdited.mugShot;
+            [self.playerIsJammer setOn: self.playerToBeEdited.isJammer animated:NO];
+        }
+        
     }else if([self.mode isEqual: ADD_MODE]){
         self.addEditViewModeLabel.text  = @"Add";
     }

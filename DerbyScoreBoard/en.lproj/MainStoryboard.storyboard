@@ -340,18 +340,22 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="boutClockBtn" destination="vbm-XF-Dnf" id="6kM-fZ-kbt"/>
                         <outlet property="boutClockLabel" destination="sLf-ol-Mgr" id="yhn-VO-NOl"/>
+                        <outlet property="homeJamScoreDownBtn" destination="lgg-if-Koh" id="IFC-Wl-Saz"/>
                         <outlet property="homeJamScoreTextField" destination="i4u-Gv-3VM" id="YXh-xf-csj"/>
+                        <outlet property="homeJamScoreUpBtn" destination="Fxm-LX-c0r" id="m36-im-mE7"/>
                         <outlet property="homeJammerPicker" destination="Gut-Ji-ndX" id="Osc-EE-Mt3"/>
                         <outlet property="homeLeadJammerBtn" destination="pFS-74-N3q" id="GqG-kU-ciq"/>
                         <outlet property="homeTOCountLabel" destination="nPU-6h-LHX" id="PE0-r1-GUX"/>
                         <outlet property="homeTeamLabel" destination="yFf-f1-LTr" id="D7T-11-qIA"/>
                         <outlet property="homeTotalScoreTextField" destination="07W-IC-7os" id="AOG-CE-4u0"/>
+                        <outlet property="jamClockBtn" destination="liN-S0-v0l" id="sgB-FZ-FEo"/>
                         <outlet property="jamClockLabel" destination="10o-Wj-neH" id="tiw-LE-AEC"/>
-                        <outlet property="jamTimeOutBtn" destination="liN-S0-v0l" id="oQs-7t-nTm"/>
-                        <outlet property="officialTimeOutBtn" destination="vbm-XF-Dnf" id="8XB-xX-jXS"/>
                         <outlet property="periodClockLabel" destination="UDW-Wz-SJs" id="Bz5-8g-DDT"/>
+                        <outlet property="visitorJamScoreDownBtn" destination="nto-yq-tLp" id="v0w-3z-Xym"/>
                         <outlet property="visitorJamScoreTextField" destination="9iF-Vh-k0U" id="1f8-9N-GL5"/>
+                        <outlet property="visitorJamScoreUpBtn" destination="UIn-wh-z86" id="3sP-pf-TuG"/>
                         <outlet property="visitorJammerPicker" destination="Hn5-GP-HJ1" id="bk3-cF-7jD"/>
                         <outlet property="visitorLeadJammerBtn" destination="gAb-ik-paJ" id="Vdl-Pa-vmD"/>
                         <outlet property="visitorTOCountLabel" destination="Pyn-ur-Fft" id="Jvf-ym-jGN"/>
@@ -412,7 +416,7 @@
                                     <action selector="visitorTeamNameDidEndEditing:" destination="1ut-hq-t66" eventType="editingDidEnd" id="YSR-xQ-bSu"/>
                                 </connections>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="22" sectionFooterHeight="22" id="wpX-Cb-533">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="visitorTeamTableViewRoster" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="22" sectionFooterHeight="22" id="wpX-Cb-533">
                                 <rect key="frame" x="524" y="205" width="480" height="268"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -451,7 +455,6 @@
                                             <outlet property="playerMug" destination="K1A-uF-Ct9" id="87r-u3-wmu"/>
                                             <outlet property="playerName" destination="DXP-ob-kW1" id="07n-Pd-h8C"/>
                                             <outlet property="playerNumber" destination="Uci-GP-rkm" id="EbD-HY-nxD"/>
-                                            <segue destination="Bpl-fb-fUZ" kind="modal" identifier="EditVisitorPlayerSegue" id="lim-Qk-XHB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -597,7 +600,6 @@
                                             <outlet property="playerMug" destination="ihx-Xv-JHg" id="TZe-ee-f1N"/>
                                             <outlet property="playerName" destination="P2r-e9-raW" id="a6Y-bG-1fY"/>
                                             <outlet property="playerNumber" destination="TSn-Dh-QkB" id="pCs-L4-ORe"/>
-                                            <segue destination="Bpl-fb-fUZ" kind="modal" identifier="EditHomePlayerSegue" id="m3s-Ff-bex"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -617,6 +619,7 @@
                         <outlet property="inputVisitorTeamName" destination="3PE-rw-86Y" id="wPu-iE-SBd"/>
                         <outlet property="visitorTeamLogo" destination="Zt3-LE-AMf" id="pV8-2v-mtY"/>
                         <outlet property="visitorTeamRosterTV" destination="wpX-Cb-533" id="UkD-a8-A8Y"/>
+                        <segue destination="Bpl-fb-fUZ" kind="modal" identifier="EditPlayerSegue" id="n9Q-2e-GYL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zpu-fe-Mma" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -793,6 +796,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="lim-Qk-XHB"/>
+        <segue reference="n9Q-2e-GYL"/>
     </inferredMetricsTieBreakers>
 </document>

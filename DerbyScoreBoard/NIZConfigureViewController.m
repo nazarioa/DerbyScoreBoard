@@ -57,9 +57,9 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void) performSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    NSLog(@"\n\n   performSegueWithIdentifier:%@ \nsender: %@\n\n", identifier, sender);
-}
+//-(void) performSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+//    NSLog(@"\n\n   performSegueWithIdentifier:%@ \nsender: %@\n\n", identifier, sender);
+//}
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     NSLog(@"\n\n   prepareForSegue:withIdentifier: %@", sender);
@@ -67,29 +67,22 @@
     if([segue.identifier isEqualToString:@"AddVisitorPlayerSegue" ]){
         NIZAddEditPlayerViewController * addVisitor = (NIZAddEditPlayerViewController *) segue.destinationViewController;
         [addVisitor setDelegate:self];
-        addVisitor.teamType = VISITOR_TEAM;
         addVisitor.mode = ADD_MODE;
+        addVisitor.teamType = VISITOR_TEAM;
         
     }else if([segue.identifier isEqualToString:@"AddHomePlayerSegue" ]){
         NIZAddEditPlayerViewController * addHome = (NIZAddEditPlayerViewController *) segue.destinationViewController;
         [addHome setDelegate:self];
-        addHome.teamType = HOME_TEAM;
         addHome.mode = ADD_MODE;
+        addHome.teamType = HOME_TEAM;
         
-    }else if([segue.identifier isEqualToString:@"EditVisitorPlayerSegue" ]){
-        NIZAddEditPlayerViewController * editVisitor = (NIZAddEditPlayerViewController *) segue.destinationViewController;
-        [editVisitor setDelegate:self];
-        editVisitor.teamType = VISITOR_TEAM;
-        editVisitor.mode = EDIT_MODE;
-        UITableViewCell * cell = sender;
-        NSLog(@"  THE CELL: %@", cell);
-//        editVisitor.playerToBeEdited = 
-        
-    }else if([segue.identifier isEqualToString:@"EditHomePlayerSegue" ]){
-        NIZAddEditPlayerViewController * editHome = (NIZAddEditPlayerViewController *) segue.destinationViewController;
-        [editHome setDelegate:self];
-        editHome.teamType = HOME_TEAM;
-        editHome.mode = EDIT_MODE;
+    }else if([segue.identifier isEqualToString:@"EditPlayerSegue" ]){
+        NIZAddEditPlayerViewController * editPlayer = (NIZAddEditPlayerViewController *) segue.destinationViewController;
+        [editPlayer setDelegate:self];
+        editPlayer.mode = EDIT_MODE;
+        NSLog(@"   the sender: %@", sender);
+        editPlayer.teamType =  [sender objectForKey:@"TEAM"];
+        editPlayer.playerToBeEdited = [sender objectForKey:@"PLAYER"];
     }
 }
 
@@ -160,9 +153,16 @@
     [tableView reloadData];
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"   didSelectRowAtIndexPath: %@", indexPath);
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if( [tableView isEqual: self.homeTeamRosterTV]){
+        NSDictionary * temp = @{@"SENDER" : self, @"PLAYER" : [self.homeTeam getPlayerAtPosition:indexPath.row], @"TEAM" : HOME_TEAM };
+        [self performSegueWithIdentifier: @"EditPlayerSegue" sender: temp];
+        
+    }else if ( [tableView isEqual: self.visitorTeamRosterTV] ){
+        NSDictionary * temp = @{@"SENDER" : self, @"PLAYER" : [self.visitorTeam getPlayerAtPosition:indexPath.row], @"TEAM" : VISITOR_TEAM };
+        [self performSegueWithIdentifier: @"EditPlayerSegue" sender: temp];
+    }
+}
 
 
 #pragma mark IB Actions
