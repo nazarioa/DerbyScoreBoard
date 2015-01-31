@@ -20,6 +20,8 @@ static NSString * const BOUT_CLOCK = @"boutClock";
 static NSString * const JAM_CLOCK = @"jamClock";
 static NSString * const PERIOD_CLOCK = @"periodClock";
 
+static NSString * const CONFIGURE = @"configure";
+
 
 /*
  typedef enum{

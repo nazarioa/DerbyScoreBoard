@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "NIZConstants.pch"
 
-@protocol NIZJamDelegate <NSObject>
-
-@end
+//@protocol NIZJamDelegate <NSObject>
+//
+//@end
 
 @interface NIZDerbyJam : NSObject
-@property (weak, nonatomic) id <NIZJamDelegate> delegate;
+//@property (weak, nonatomic) id <NIZJamDelegate> delegate;
 @property (nonatomic) NSInteger homeJamScore;
 @property (nonatomic) NSInteger visitorJamScore;
 @property (strong, nonatomic) NSString * leadJammerStatus;

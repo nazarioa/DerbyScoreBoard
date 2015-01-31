@@ -10,10 +10,10 @@
 #import "NIZConstants.pch"
 #import "NIZGameClock.h"
 #import "NIZDerbyJam.h"
-#import "NIZConfigureViewController.h"
+#import "NIZConfigurePageViewController.h"
 #import "NIZSpectatorScreenViewController.h"
 
-@interface NIZScoreBoardViewController : UIViewController <NIZClockDelegate, NIZJamDelegate, NIZConfigureScreenProtocol>
+@interface NIZScoreBoardViewController : UIViewController <NIZClockDelegate, /*NIZJamDelegate,*/ NIZConfigureScreenProtocol, NIZConfigureTeamScreenProtocol, NSFileManagerDelegate>
 
 @property (strong, nonatomic) NIZSpectatorScreenViewController * spectatorViewController;
 

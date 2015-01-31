@@ -28,6 +28,9 @@
 @synthesize addEditViewModeLabel = _addEditViewModeLabel;
 @synthesize playerToBeEdited = _playerToBeEdited;
 
+
+#pragma mark - UIViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     CALayer * layer = [self.playerMug layer];
@@ -51,7 +54,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark IB Actions
+#pragma mark - IB Actions
 
 - (IBAction)btnTouchedFinishedEditingPlayer:(id)sender {
     if([self.playerDerbyName.text isEqualToString:@""] || [self.playerDerbyNumber.text isEqualToString:@""]){
@@ -98,7 +101,9 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
-#pragma mark UIImagePickerControllerDelegate
+
+#pragma mark - UIImagePickerControllerDelegate
+
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     [picker dismissViewControllerAnimated:YES completion:nil];
     self.playerMug.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
@@ -109,6 +114,9 @@
     [layer setBorderWidth:4.0];
     [layer setBorderColor:[[UIColor whiteColor] CGColor]];
 }
+
+
+#pragma mark - My Functions
 
 -(void) setupView{
     if([self.mode isEqual: EDIT_MODE]){

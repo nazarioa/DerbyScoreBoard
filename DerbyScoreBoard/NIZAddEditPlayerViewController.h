@@ -10,13 +10,13 @@
 #import "NIZConstants.pch"
 
 @class NIZPlayer;
-@protocol addEditPlayerProtocol <NSObject>
+@protocol AddEditPlayerProtocol <NSObject>
 -(void) forTeam: (NSString *) type savePlayer: (NIZPlayer *) player;
 -(void) refreshPlayerRoster;
 @end
 
 @interface NIZAddEditPlayerViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-@property (weak, nonatomic) id <addEditPlayerProtocol> delegate;
+@property (weak, nonatomic) id <AddEditPlayerProtocol> delegate;
 @property (strong, nonatomic) NSString * teamType;
 @property (strong, nonatomic) NSString * mode;
 @property (weak, nonatomic) NIZPlayer * playerToBeEdited;

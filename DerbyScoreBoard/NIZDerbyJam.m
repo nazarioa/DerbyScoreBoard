@@ -17,7 +17,7 @@
 
 @implementation NIZDerbyJam
 
-@synthesize delegate = _delegate;
+//@synthesize delegate = _delegate;
 @synthesize homeJammerName = _homeJammerName;
 @synthesize visitorJammerName = _visitorJammerName;
 @synthesize homeJamScore = _homeJamScore;
@@ -32,16 +32,16 @@
         _visitorJamScore = 0;
         _homeJamScore = 0;
     }
+    
+    NSLog(@" New Jam: %@", self);
     return self;
 }
 
 - (id)initHomeJammer: (NSString *) home visitorJammer: (NSString *) visitor{
-    self = [super init];
+    self = [self init];
     if (self) {
         _homeJammerName = home;
         _visitorJammerName = visitor;
-        _visitorJamScore = 0;
-        _homeJamScore = 0;
     }
     
     NSDictionary * score = @{@"TEAM" : VISITOR_TEAM, @"SCORE" : [NSString stringWithFormat: @"%d", self.visitorJamScore] };
@@ -49,6 +49,7 @@
     
     score = @{@"TEAM" : HOME_TEAM, @"SCORE" : [NSString stringWithFormat: @"%d", self.homeJamScore] };
     [[NSNotificationCenter defaultCenter] postNotificationName:@"JamScoreHasChanged" object: self userInfo:score];
+    
     return self;
 }
 
@@ -73,9 +74,9 @@
 //other
 -(void) addOneTo:(NSString *) team{
     if([team isEqualToString: VISITOR_TEAM]){
-        self.visitorJamScore = self.visitorJamScore+1;
+        self.visitorJamScore = self.visitorJamScore + 1;
     }else if([team isEqualToString: HOME_TEAM]){
-        self.homeJamScore = self.homeJamScore+1;
+        self.homeJamScore = self.homeJamScore + 1;
     }
 }
 

@@ -43,6 +43,8 @@
 		EBC8C5F719F2424700563DBF /* NIZSpectatorScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC8C5F619F2424700563DBF /* NIZSpectatorScreenViewController.m */; };
 		EBCC4EFA1822257B00099B74 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBCC4EF91822257B00099B74 /* Images.xcassets */; };
 		EBEB0B951A564586002CAC5C /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = EBEB0B941A564586002CAC5C /* person.png */; };
+		EBF562381A72147000085BAB /* NIZTeamConfigureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF562371A72147000085BAB /* NIZTeamConfigureViewController.m */; };
+		EBF5623C1A7385ED00085BAB /* NIZConfigurePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF5623B1A7385ED00085BAB /* NIZConfigurePageViewController.m */; };
 		EBF6758217ADC8250013010B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF6758117ADC8250013010B /* UIKit.framework */; };
 		EBF6758417ADC8250013010B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF6758317ADC8250013010B /* Foundation.framework */; };
 		EBF6758617ADC8250013010B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF6758517ADC8250013010B /* CoreGraphics.framework */; };
@@ -104,6 +106,10 @@
 		EBCC4EF91822257B00099B74 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EBE0F9661A58F81F00692D44 /* NIZConstants.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZConstants.pch; sourceTree = "<group>"; };
 		EBEB0B941A564586002CAC5C /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
+		EBF562361A72147000085BAB /* NIZTeamConfigureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZTeamConfigureViewController.h; sourceTree = "<group>"; };
+		EBF562371A72147000085BAB /* NIZTeamConfigureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZTeamConfigureViewController.m; sourceTree = "<group>"; };
+		EBF5623A1A7385ED00085BAB /* NIZConfigurePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZConfigurePageViewController.h; sourceTree = "<group>"; };
+		EBF5623B1A7385ED00085BAB /* NIZConfigurePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZConfigurePageViewController.m; sourceTree = "<group>"; };
 		EBF6757E17ADC8250013010B /* Derby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Derby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF6758117ADC8250013010B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EBF6758317ADC8250013010B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -181,13 +187,13 @@
 			name = "C-App Delegate";
 			sourceTree = "<group>";
 		};
-		EB415DAB18CEC6D4002F7E28 /* C-Configure */ = {
+		EB415DAB18CEC6D4002F7E28 /* C-ConfigureScreen */ = {
 			isa = PBXGroup;
 			children = (
 				EB09426A18CEC73A00372C47 /* NIZConfigureViewController.h */,
 				EB09426B18CEC73A00372C47 /* NIZConfigureViewController.m */,
 			);
-			name = "C-Configure";
+			name = "C-ConfigureScreen";
 			sourceTree = "<group>";
 		};
 		EB52AC9E18BCFE66009E5C37 /* M-Player */ = {
@@ -289,6 +295,24 @@
 			name = "C-SpectatorScreen";
 			sourceTree = "<group>";
 		};
+		EBF562351A72144300085BAB /* C-TeamConfigureScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EBF562361A72147000085BAB /* NIZTeamConfigureViewController.h */,
+				EBF562371A72147000085BAB /* NIZTeamConfigureViewController.m */,
+			);
+			name = "C-TeamConfigureScreen";
+			sourceTree = "<group>";
+		};
+		EBF562391A73859200085BAB /* C-ConfigurePageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EBF5623A1A7385ED00085BAB /* NIZConfigurePageViewController.h */,
+				EBF5623B1A7385ED00085BAB /* NIZConfigurePageViewController.m */,
+			);
+			name = "C-ConfigurePageViewController";
+			sourceTree = "<group>";
+		};
 		EBF6757517ADC8250013010B = {
 			isa = PBXGroup;
 			children = (
@@ -324,7 +348,9 @@
 				EB0EA0F819EE47F800BF3071 /* C-LaunchScreen */,
 				EB139F2B17AEFF920017BBFF /* C-App Delegate */,
 				EB139F2A17AEFF790017BBFF /* C-Scoreboard */,
-				EB415DAB18CEC6D4002F7E28 /* C-Configure */,
+				EBF562391A73859200085BAB /* C-ConfigurePageViewController */,
+				EB415DAB18CEC6D4002F7E28 /* C-ConfigureScreen */,
+				EBF562351A72144300085BAB /* C-TeamConfigureScreen */,
 				EBA14FB719EBA780007A15DC /* C-AddEdit Player */,
 				EBC8C5F419F241EC00563DBF /* C-SpectatorScreen */,
 				EB139F2917AEFF5D0017BBFF /* M-Derby */,
@@ -455,6 +481,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF5623C1A7385ED00085BAB /* NIZConfigurePageViewController.m in Sources */,
+				EBF562381A72147000085BAB /* NIZTeamConfigureViewController.m in Sources */,
 				EBF6758E17ADC8260013010B /* main.m in Sources */,
 				EBF6759217ADC8260013010B /* NIZAppDelegate.m in Sources */,
 				EBF6759E17ADC8270013010B /* NIZScoreBoardViewController.m in Sources */,

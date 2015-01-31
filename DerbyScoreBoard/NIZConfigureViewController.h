@@ -9,20 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "NIZConstants.pch"
 #import "NIZDerbyTeam.h"
-#import "NIZAddEditPlayerViewController.h"
 
 @class NIZScoreBoardViewController;
 
 @protocol NIZConfigureScreenProtocol <NSObject>
--(NIZDerbyTeam *) getTeam: (NSString *) type;
--(void) setHomeOrVisitor: (NSString *) type asTeam: (NIZDerbyTeam *) team;
 -(void) resetClocks;
 -(void) setupSpectatorScreen:(NSArray *) avilableScreens;
 -(id) spectatorViewController;
 @end
 
 
-@interface NIZConfigureViewController : UIViewController <addEditPlayerProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate>
+@interface NIZConfigureViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate>
 @property (weak, nonatomic) id <NIZConfigureScreenProtocol> delegate;
-
 @end
