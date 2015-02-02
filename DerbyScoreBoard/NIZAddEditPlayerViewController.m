@@ -67,7 +67,7 @@
                                                              firstName: self.playerFirstName.text
                                                               lastName: self.playerLastName.text
                                                                mugShot: self.playerMug.image
-                                                              isJammer: self.playerIsJammer.enabled];
+                                                              isJammer: self.playerIsJammer.on];
             [self.delegate forTeam:self.teamType savePlayer:aPlayer];
             
         }else if( [self.mode isEqual: EDIT_MODE]){
@@ -76,7 +76,7 @@
             self.playerToBeEdited.firstName = self.playerFirstName.text;
             self.playerToBeEdited.lastName = self.playerLastName.text;
             self.playerToBeEdited.mugShot = self.playerMug.image;
-            self.playerToBeEdited.isJammer = self.playerIsJammer.enabled;
+            self.playerToBeEdited.isJammer =  self.playerIsJammer.on;
         }
         [self.delegate refreshPlayerRoster];
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -127,7 +127,7 @@
             self.playerFirstName.text   = self.playerToBeEdited.firstName;
             self.playerLastName.text    = self.playerToBeEdited.lastName;
             self.playerMug.image        = self.playerToBeEdited.mugShot;
-            [self.playerIsJammer setOn: self.playerToBeEdited.isJammer animated:NO];
+            self.playerIsJammer.on      = self.playerToBeEdited.isJammer;
         }
         
     }else if([self.mode isEqual: ADD_MODE]){
