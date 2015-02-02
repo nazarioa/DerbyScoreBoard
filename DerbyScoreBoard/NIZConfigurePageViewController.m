@@ -52,6 +52,14 @@
     [self.configPageViewController didMoveToParentViewController:self];
 }
 
+//TODO: Make the correct screen load when team and players are missing
+/*
+-(void) viewDidAppear:(BOOL)animated{
+    if( [self.delegate 
+        [self performSegueWithIdentifier: @"toConfigureScreenSegue" sender: self];
+    }
+}*/
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -70,21 +78,23 @@
 
 #pragma mark - My Functions
 
-- (UIViewController *)viewControllerAtIndex:(NSUInteger)index
+
+- (UIViewController *)viewControllerAtKey:(NSString *)index
 {
     UIViewController *temp = nil;
-    if(index == 0){
+    if(index == HOME_TEAM){
         temp = [self.pagesDict objectForKey: HOME_TEAM];
         //set stuff here
-    }else if (index == 1){
+    }else if (index == CONFIGURE){
         temp = [self.pagesDict objectForKey: CONFIGURE];
         //set stuff here
-    }else if(index == 2){
+    }else if(index == VISITOR_TEAM){
         temp = [self.pagesDict objectForKey: VISITOR_TEAM];
         //set stuff here
     }
     return temp;
 }
+
 
 
 #pragma mark - UIPageViewControllerDataSource

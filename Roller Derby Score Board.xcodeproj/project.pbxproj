@@ -110,14 +110,14 @@
 		EBF562371A72147000085BAB /* NIZTeamConfigureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZTeamConfigureViewController.m; sourceTree = "<group>"; };
 		EBF5623A1A7385ED00085BAB /* NIZConfigurePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIZConfigurePageViewController.h; sourceTree = "<group>"; };
 		EBF5623B1A7385ED00085BAB /* NIZConfigurePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIZConfigurePageViewController.m; sourceTree = "<group>"; };
-		EBF6757E17ADC8250013010B /* Derby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Derby.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBF6757E17ADC8250013010B /* Roller Derby Score Board.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Roller Derby Score Board.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF6758117ADC8250013010B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EBF6758317ADC8250013010B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EBF6758517ADC8250013010B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		EBF6758917ADC8260013010B /* Derby-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Derby-Info.plist"; sourceTree = "<group>"; };
+		EBF6758917ADC8260013010B /* Roller Derby Score Board-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Roller Derby Score Board-Info.plist"; sourceTree = "<group>"; };
 		EBF6758B17ADC8260013010B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EBF6758D17ADC8260013010B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		EBF6758F17ADC8260013010B /* Derby-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Derby-Prefix.pch"; sourceTree = "<group>"; };
+		EBF6758F17ADC8260013010B /* Roller Derby Score Board-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Roller Derby Score Board-Prefix.pch"; sourceTree = "<group>"; };
 		EBF6759017ADC8260013010B /* NIZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIZAppDelegate.h; sourceTree = "<group>"; };
 		EBF6759117ADC8260013010B /* NIZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIZAppDelegate.m; sourceTree = "<group>"; };
 		EBF6759317ADC8260013010B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -325,7 +325,7 @@
 		EBF6757F17ADC8250013010B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EBF6757E17ADC8250013010B /* Derby.app */,
+				EBF6757E17ADC8250013010B /* Roller Derby Score Board.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -371,10 +371,10 @@
 				EB879FBB19FDFA2B00289B96 /* Fonts */,
 				EB86FA0719FDBF530042B149 /* Buttons */,
 				EBAF912B17AE3D0300D76CBA /* Images */,
-				EBF6758917ADC8260013010B /* Derby-Info.plist */,
+				EBF6758917ADC8260013010B /* Roller Derby Score Board-Info.plist */,
 				EBF6758A17ADC8260013010B /* InfoPlist.strings */,
 				EBF6758D17ADC8260013010B /* main.m */,
-				EBF6758F17ADC8260013010B /* Derby-Prefix.pch */,
+				EBF6758F17ADC8260013010B /* Roller Derby Score Board-Prefix.pch */,
 				EBF6759317ADC8260013010B /* Default.png */,
 				EBF6759517ADC8260013010B /* Default@2x.png */,
 				EBF6759717ADC8260013010B /* Default-568h@2x.png */,
@@ -386,9 +386,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EBF6757D17ADC8250013010B /* Derby */ = {
+		EBF6757D17ADC8250013010B /* Roller Derby Score Board */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EBF675A117ADC8270013010B /* Build configuration list for PBXNativeTarget "Derby" */;
+			buildConfigurationList = EBF675A117ADC8270013010B /* Build configuration list for PBXNativeTarget "Roller Derby Score Board" */;
 			buildPhases = (
 				EBF6757A17ADC8250013010B /* Sources */,
 				EBF6757B17ADC8250013010B /* Frameworks */,
@@ -398,9 +398,9 @@
 			);
 			dependencies = (
 			);
-			name = Derby;
+			name = "Roller Derby Score Board";
 			productName = DerbyScoreBoard;
-			productReference = EBF6757E17ADC8250013010B /* Derby.app */;
+			productReference = EBF6757E17ADC8250013010B /* Roller Derby Score Board.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -418,7 +418,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EBF6757917ADC8250013010B /* Build configuration list for PBXProject "Derby" */;
+			buildConfigurationList = EBF6757917ADC8250013010B /* Build configuration list for PBXProject "Roller Derby Score Board" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -430,7 +430,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EBF6757D17ADC8250013010B /* Derby */,
+				EBF6757D17ADC8250013010B /* Roller Derby Score Board */,
 			);
 		};
 /* End PBXProject section */
@@ -587,10 +587,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DerbyScoreBoard/Derby-Prefix.pch";
-				INFOPLIST_FILE = "DerbyScoreBoard/Derby-Info.plist";
+				GCC_PREFIX_HEADER = "DerbyScoreBoard/Roller Derby Score Board-Prefix.pch";
+				INFOPLIST_FILE = "DerbyScoreBoard/Roller Derby Score Board-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PRODUCT_NAME = Derby;
+				PRODUCT_NAME = "Roller Derby Score Board";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -604,10 +604,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DerbyScoreBoard/Derby-Prefix.pch";
-				INFOPLIST_FILE = "DerbyScoreBoard/Derby-Info.plist";
+				GCC_PREFIX_HEADER = "DerbyScoreBoard/Roller Derby Score Board-Prefix.pch";
+				INFOPLIST_FILE = "DerbyScoreBoard/Roller Derby Score Board-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PRODUCT_NAME = Derby;
+				PRODUCT_NAME = "Roller Derby Score Board";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -616,7 +616,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EBF6757917ADC8250013010B /* Build configuration list for PBXProject "Derby" */ = {
+		EBF6757917ADC8250013010B /* Build configuration list for PBXProject "Roller Derby Score Board" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EBF6759F17ADC8270013010B /* Debug */,
@@ -625,7 +625,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EBF675A117ADC8270013010B /* Build configuration list for PBXNativeTarget "Derby" */ = {
+		EBF675A117ADC8270013010B /* Build configuration list for PBXNativeTarget "Roller Derby Score Board" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EBF675A217ADC8270013010B /* Debug */,
