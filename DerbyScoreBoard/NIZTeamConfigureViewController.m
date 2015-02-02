@@ -62,13 +62,13 @@
 #pragma mark - UINavigationControllerDelegate
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString: @"AddHomePlayerSegue" ] || [segue.identifier isEqualToString: @"AddVisitorPlayerSegue" ]){
+    if([segue.identifier isEqualToString: @"AddHomePlayerSegue"] || [segue.identifier isEqualToString: @"AddVisitorPlayerSegue"]){
         NIZAddEditPlayerViewController * addPlayer = (NIZAddEditPlayerViewController *) segue.destinationViewController;
         [addPlayer setDelegate:self];
         addPlayer.mode = ADD_MODE;
         addPlayer.teamType = self.teamType;
         
-    }else if([segue.identifier isEqualToString: @"EditPlayerSegue" ]){
+    }else if([segue.identifier isEqualToString: @"EditHomePlayerSegue"] || [segue.identifier isEqualToString: @"EditVisitorPlayerSegue"]){
         NIZAddEditPlayerViewController * editPlayer = (NIZAddEditPlayerViewController *) segue.destinationViewController;
         [editPlayer setDelegate:self];
         editPlayer.mode = EDIT_MODE;
@@ -132,8 +132,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if( [tableView isEqual: self.teamRosterTV]){
-        NSDictionary * temp = @{@"SENDER" : self, @"PLAYER" : [self.team getPlayerAtPosition:indexPath.row], @"TEAM" : HOME_TEAM };
-        [self performSegueWithIdentifier: @"EditPlayerSegue" sender: temp];
+        if(self.teamType == HOME_TEAM){
+            NSDictionary * temp = @{@"SENDER" : self, @"PLAYER" : [self.team getPlayerAtPosition:indexPath.row], @"TEAM" : HOME_TEAM };
+            [self performSegueWithIdentifier: @"EditHomePlayerSegue" sender: temp];
+        }else if(self.teamType == VISITOR_TEAM){
+            NSDictionary * temp = @{@"SENDER" : self, @"PLAYER" : [self.team getPlayerAtPosition:indexPath.row], @"TEAM" : VISITOR_TEAM };
+            [self performSegueWithIdentifier: @"EditVisitorPlayerSegue" sender: temp];
+        }
     }
 }
 
