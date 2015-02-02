@@ -99,7 +99,7 @@
     
     // Configure the cell...
     if([self.teamRosterTV isEqual: tableView]){
-        static NSString *CellIdentifier = @"HomePlayerCell";
+        static NSString *CellIdentifier = @"PlayerCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) cell = [[NIZPlayerTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
