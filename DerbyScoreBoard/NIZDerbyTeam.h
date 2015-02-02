@@ -27,6 +27,7 @@
 -(NIZPlayer *) getPlayerAtPosition: (NSInteger) position isAJammer: (BOOL) isAJammer;
 
 -(NSInteger) rosterCount;
+-(NSInteger) jammerCount;
 -(NSString *) playerDerbyNameAtPosition: (NSInteger) position;
 -(NSString *) playerDerbyNumberAtPosition: (NSInteger) position;
 -(UIImage *) playerDerbyMugAtPosition: (NSInteger) position;

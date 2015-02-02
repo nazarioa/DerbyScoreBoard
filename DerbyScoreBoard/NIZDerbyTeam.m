@@ -112,6 +112,16 @@
     return self.teamRoster.count;
 }
 
+-(NSInteger) jammerCount{
+    NSInteger count = 0;
+    for (int i = 0; i < [self.teamRoster count]; i++) {
+        if([self getPlayerAtPosition: i isAJammer: YES]){
+            count ++;
+        }
+    }
+    return count;
+}
+
 -(NSString *) playerDerbyNameAtPosition: (NSInteger) position{
     NIZPlayer * temp = [self.teamRoster objectAtIndex:position];
     return [temp derbyName];
