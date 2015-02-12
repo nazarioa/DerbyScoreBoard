@@ -13,8 +13,10 @@
 #import "NIZConfigurePageViewController.h"
 #import "NIZSpectatorScreenViewController.h"
 
-@interface NIZScoreBoardViewController : UIViewController <NIZClockDelegate, /*NIZJamDelegate,*/ NIZConfigureScreenProtocol, NIZConfigureTeamScreenProtocol, NSFileManagerDelegate>
+@interface NIZScoreBoardViewController : UIViewController <NIZClockDelegate, /*NIZJamDelegate,*/ NIZConfigureScreenProtocol, NIZConfigureTeamScreenDataSourceProtocol, NSFileManagerDelegate>
 
 @property (strong, nonatomic) NIZSpectatorScreenViewController * spectatorViewController;
+@property (strong, nonatomic) NIZDerbyTeam *homeTeam;
+@property (strong, nonatomic) NIZDerbyTeam *visitorTeam;
 
 @end

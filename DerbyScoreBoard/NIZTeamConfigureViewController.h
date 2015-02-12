@@ -11,13 +11,14 @@
 #import "NIZDerbyTeam.h"
 #import "NIZAddEditPlayerViewController.h"
 
-@protocol NIZConfigureTeamScreenProtocol <NSObject>
+@protocol NIZConfigureTeamScreenDataSourceProtocol <NSObject>
 -(NIZDerbyTeam *) getTeam: (NSString *) type;
 -(void) setHomeOrVisitor: (NSString *) type asTeam: (NIZDerbyTeam *) team;
 @end
 
 @interface NIZTeamConfigureViewController : UIViewController <AddEditPlayerProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-@property (weak, nonatomic) id <NIZConfigureTeamScreenProtocol> delegate;
+@property (weak, nonatomic) id <NIZConfigureTeamScreenDataSourceProtocol> dataSource;
+@property (weak, nonatomic) id delegate;
 @property (nonatomic, strong) NIZDerbyTeam * team;
 @property (nonatomic, strong) NSString * teamType;
 @end

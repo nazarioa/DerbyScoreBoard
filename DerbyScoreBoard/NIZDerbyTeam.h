@@ -23,6 +23,7 @@
 -(void) addPlayer: (NIZPlayer *) player;
 -(void) removePlayer: (NIZPlayer *) player;
 
+-(NIZPlayer *) getNextJammerFromPosition: (NSInteger) position;
 -(NIZPlayer *) getPlayerAtPosition: (NSInteger) position;
 -(NIZPlayer *) getPlayerAtPosition: (NSInteger) position isAJammer: (BOOL) isAJammer;
 

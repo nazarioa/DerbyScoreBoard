@@ -47,7 +47,6 @@ UIFont * gothamMedium30;
 @property (weak, nonatomic) IBOutlet UIButton *visitorJamScoreDownBtn;
 
 
-@property (strong, nonatomic) NIZDerbyTeam *homeTeam;
 @property NSInteger homeTeamTotalScore;
 @property (weak, nonatomic) IBOutlet UILabel *homeTeamLabel;
 @property (weak, nonatomic) IBOutlet UILabel *homeTOCountLabel;
@@ -57,7 +56,6 @@ UIFont * gothamMedium30;
 @property (weak, nonatomic) IBOutlet UIButton *homeLeadJammerBtn;
 
 
-@property (strong, nonatomic) NIZDerbyTeam *visitorTeam;
 @property NSInteger visitorTeamTotalScore;
 @property (weak, nonatomic) IBOutlet UILabel *visitorTeamLabel;
 @property (weak, nonatomic) IBOutlet UILabel *visitorTOCountLabel;
@@ -358,26 +356,36 @@ UIFont * gothamMedium30;
 
 - (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     if([pickerView isEqual:self.homeJammerPicker]){
-        return [self.homeTeam rosterCount];
+        NSLog(@"  home jammerCount: %i", [self.homeTeam jammerCount]);
+        return [self.homeTeam jammerCount];
+        
     }else if([pickerView isEqual:self.visitorJammerPicker]){
+        NSLog(@"  visitor jammerCount: %i", [self.visitorTeam rosterCount]);
         return [self.visitorTeam rosterCount];
+
     }else{
         return 1;
     }
 }
 
 - (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    NIZPlayer *aTempPlayer;
+    NIZPlayer *aTempPlayer = nil;
     if([pickerView isEqual: self.homeJammerPicker]){
         aTempPlayer = [self.homeTeam getPlayerAtPosition:row isAJammer:TRUE];
     }else if([pickerView isEqual:self.visitorJammerPicker]){
         aTempPlayer = [self.visitorTeam  getPlayerAtPosition:row isAJammer:TRUE];
     }
     
+    NSLog(@"  aTempPlayer: %@", aTempPlayer);
+    
     if(aTempPlayer != nil){
         return [NSString stringWithFormat:@"%@ : %@", aTempPlayer.derbyNumber, aTempPlayer.derbyName];
     }
     return nil;
+}
+
+-(void)pickerView: (UIPickerView *) pickerView didSelectRow: (NSInteger) row inComponent: (NSInteger) component{
+    NSLog(@"   PickerView:didSelectRow:inComponenet\n%@\n%i\n%i", pickerView, row, component);
 }
 
 #pragma mark - UITextFieldDelegate
@@ -584,10 +592,14 @@ UIFont * gothamMedium30;
 
 - (void) handlePlayerHasBeenAdded: (NSNotification *) notification{
 //    NSLog(@"  handlePlayerHasBeenAdded: %@", notification);
+    [self.homeJammerPicker reloadAllComponents];
+    [self.visitorJammerPicker reloadAllComponents];
 }
 
 - (void) handlePlayerHasBeenRemoved: (NSNotification *) notification{
 //    NSLog(@"  handlePlayerHasBeenRemoved: %@", notification);
+    [self.homeJammerPicker reloadAllComponents];
+    [self.visitorJammerPicker reloadAllComponents];
 }
 
 - (void) handleClockTimeHasChangedFor: (NSNotification *) notification{
@@ -607,7 +619,9 @@ UIFont * gothamMedium30;
     }else if([[clock clockName] isEqual: PERIOD_CLOCK]){
         self.periodClockLabel.text = [NSString stringWithFormat:@"%02d",
                                     (int) [NIZGameClock getSecondsFromTimeInSeconds: [clock secondsLeft]]];
-        if([clock secondsLeft] < 6){
+        if([clock secondsLeft] > 5 && [clock secondsLeft] < 11){
+            self.periodClockLabel.textColor = [UIColor yellowColor];
+        }else if([clock secondsLeft] < 6){
             self.periodClockLabel.textColor = [UIColor redColor];
         }else{
             self.periodClockLabel.textColor = [UIColor whiteColor];

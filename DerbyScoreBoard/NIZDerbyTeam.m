@@ -100,6 +100,20 @@
     return nil;
 }
 
+-(NIZPlayer *) getNextJammerFromPosition: (NSInteger) position{
+    NIZPlayer * player = nil;
+    if(-1 < position  &&  position < self.teamRoster.count){
+        
+        for(NSInteger i = position; i < self.teamRoster.count; i++){
+            player = [self.teamRoster objectAtIndex:position];
+            if(player.isJammer == YES){
+                return player;
+            }
+        }
+    }
+    return nil;
+}
+
 -(BOOL) isOnRoster:(NIZPlayer *) player{
     if([self.teamRoster indexOfObject:player] > -1 ){
         return YES;

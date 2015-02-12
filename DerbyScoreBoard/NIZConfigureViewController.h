@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "NIZConstants.pch"
 #import "NIZDerbyTeam.h"
+#import "NIZConfigurePageViewController.h"
+#import "NIZTeamConfigureViewController.h"
 
 @class NIZScoreBoardViewController;
 
@@ -18,7 +20,7 @@
 -(id) spectatorViewController;
 @end
 
-
 @interface NIZConfigureViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate>
-@property (weak, nonatomic) id <NIZConfigureScreenProtocol> delegate;
+@property (weak, nonatomic) id <NIZConfigureTeamScreenDataSourceProtocol> dataSource;
+@property (weak, nonatomic) id delegate;
 @end

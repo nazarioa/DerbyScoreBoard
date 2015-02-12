@@ -16,7 +16,8 @@
 
 @implementation NIZConfigureViewController
 
-@synthesize delegate = _delegate;
+@synthesize dataSource = _dataSource;
+@synthesize delegate =_delegate;
 
 
 #pragma mark - UIViewController
@@ -36,31 +37,46 @@
 #pragma mark - IB Actions
 
 - (IBAction)btnTouchedConfigureDone:(id)sender {
-    //TODO: Fix the checks on code completion
-    /*
-    if([ self.delegate isEqualToString: @""] || [self.inputVisitorTeamName.text isEqualToString:@""] ){
-        UIAlertView * alert = [[UIAlertView alloc]
-                               initWithTitle:@"Team Names are Missing"
-                               message:@"Please give your team names by touching the \"Home Team Name\" or \"Visitor Team Name\" text input fields."
-                               delegate:self
-                               cancelButtonTitle:@"Ok"
-                               otherButtonTitles: nil];
+    UIAlertView * alert = NULL;
+    if( [[self.dataSource getTeam: HOME_TEAM].teamName isEqualToString:@""] || [self.dataSource getTeam: HOME_TEAM].teamName == NULL){
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Home Team Name is Missing"
+                 message:@"Please give your team a name by swiping to the left and touching the \"Home Team Name\" text input fields."
+                 delegate:self
+                 cancelButtonTitle:@"Ok"
+                 otherButtonTitles: nil];
+        
+    } else if( [[self.dataSource getTeam:HOME_TEAM] jammerCount]  < 1){
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Not Enough Players"
+                 message:@"Please add at least one jammer player to each team by touching the \"Add Player\" button."
+                 delegate:self
+                 cancelButtonTitle:@"Ok"
+                 otherButtonTitles: nil];
+        
+    } else if([[self.dataSource getTeam: VISITOR_TEAM].teamName isEqualToString:@""] || [self.dataSource getTeam: VISITOR_TEAM].teamName == NULL){
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Visitor Team Name is Missing"
+                 message:@"Please give your team a name by swiping to the right and touching the \"Visitor Team Name\" text input fields."
+                 delegate:self
+                 cancelButtonTitle:@"Ok"
+                 otherButtonTitles: nil];
+        
+    }else if( [[self.dataSource getTeam:VISITOR_TEAM] jammerCount]  < 1){
+        alert = [[UIAlertView alloc]
+                 initWithTitle:@"Not Enough Players"
+                 message:@"Please add at least one jammer player to each team by touching the \"Add Player\" button."
+                 delegate:self
+                 cancelButtonTitle:@"Ok"
+                 otherButtonTitles: nil];
+    }
+    
+    if(alert ==  NULL){
+        [self dismissViewControllerAnimated:YES completion:nil]; //temp
+    }else{
         [alert show];
-    }else if(self.homeTeam.rosterCount < 1 || self.visitorTeam.rosterCount < 1 ){
-        UIAlertView * alert = [[UIAlertView alloc]
-                               initWithTitle:@"Not Enough Players"
-                               message:@"Please add at least one player to each team by touching the \"Add Player\" button."
-                               delegate:self
-                               cancelButtonTitle:@"Ok"
-                               otherButtonTitles: nil];
-        [alert show];
-     
-    }else*/{
-        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
-
-
 
 - (IBAction)enableSpectatorBtnTouched:(id)sender {
     if( [UIScreen screens].count > 1 ){

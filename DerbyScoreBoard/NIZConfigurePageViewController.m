@@ -31,15 +31,18 @@
     
     NIZTeamConfigureViewController * homeTeamScreen = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeTeamConfigureScreen"];
     homeTeamScreen.teamType = HOME_TEAM;
-    homeTeamScreen.delegate = self.delegate;
+    homeTeamScreen.dataSource = self.delegate;
+    homeTeamScreen.delegate = self;
     
     NIZTeamConfigureViewController * visitorTeamScreen = [self.storyboard instantiateViewControllerWithIdentifier:@"VisitorTeamConfigureScreen"];
     visitorTeamScreen.teamType = VISITOR_TEAM;
-    visitorTeamScreen.delegate = self.delegate;
+    visitorTeamScreen.dataSource = self.delegate;
+    visitorTeamScreen.delegate = self;
     
     NIZConfigureViewController * configureScreen = [self.storyboard instantiateViewControllerWithIdentifier:@"ConfigureScreen"];
     self.pagesDict = [NSDictionary dictionaryWithObjectsAndKeys: homeTeamScreen, HOME_TEAM, configureScreen, CONFIGURE, visitorTeamScreen, VISITOR_TEAM, nil];
-    configureScreen.delegate = self.delegate;
+    configureScreen.dataSource = self.delegate;
+    configureScreen.delegate = self;
     
     NSArray *viewControllers = @[configureScreen];
     [self.configPageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];

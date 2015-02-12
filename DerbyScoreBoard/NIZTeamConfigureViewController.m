@@ -22,6 +22,7 @@
 
 @synthesize team = _team;
 @synthesize teamType = _teamType;
+@synthesize dataSource = _dataSource;
 @synthesize delegate = _delegate;
 
 
@@ -33,19 +34,19 @@
     
     [self makePretty];
     
-    if([self.delegate getTeam: self.teamType] == nil){
+    if([self.dataSource getTeam: self.teamType] == nil){
         self.team = [[NIZDerbyTeam alloc] initWithTeamName: nil];
-        [self.delegate setHomeOrVisitor: self.teamType asTeam: self.team];
+        [self.dataSource setHomeOrVisitor: self.teamType asTeam: self.team];
         
     }else{
-        self.team = [self.delegate getTeam: self.teamType];
+        self.team = [self.dataSource getTeam: self.teamType];
         self.inputTeamName.text = self.team.teamName;
         
     }
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    NSLog(@"Team Screen Did Appear");
+    NSLog(@"%@ Team Screen Did Appear: %@", self.teamType, self.team.teamName);
 }
 
 - (void)didReceiveMemoryWarning {
