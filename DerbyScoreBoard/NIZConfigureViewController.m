@@ -38,36 +38,42 @@
 
 - (IBAction)btnTouchedConfigureDone:(id)sender {
     UIAlertView * alert = NULL;
+    NSString * noteEnoughJammersMessage = @"Swipe %@ and touch the \"%@ Team Name\" \nand add at least one jammer player to your %s team.";
+    NSString * missingTeamNameMessage = @"Swipe %@ and touch the\n \"%@ Team Name\" text input fields.";
+    NSString * noteEnoughJammersTitle = @"%@ Team Needs Jammers";
+    NSString * missingTeamNameTitle = @"%@ Team Needs a Name";
+    
+    
     if( [[self.dataSource getTeam: HOME_TEAM].teamName isEqualToString:@""] || [self.dataSource getTeam: HOME_TEAM].teamName == NULL){
         alert = [[UIAlertView alloc]
-                 initWithTitle:@"Home Team Name is Missing"
-                 message:@"Please give your team a name by swiping to the left and touching the \"Home Team Name\" text input fields."
+                 initWithTitle: [NSString stringWithFormat: missingTeamNameTitle, [HOME_TEAM capitalizedString]]
+                 message: [NSString stringWithFormat: missingTeamNameMessage, @"right", [HOME_TEAM capitalizedString]]
                  delegate:self
-                 cancelButtonTitle:@"Ok"
+                 cancelButtonTitle: OK_BUTTON
                  otherButtonTitles: nil];
         
     } else if( [[self.dataSource getTeam:HOME_TEAM] jammerCount]  < 1){
         alert = [[UIAlertView alloc]
-                 initWithTitle:@"Not Enough Players"
-                 message:@"Please add at least one jammer player to each team by touching the \"Add Player\" button."
+                 initWithTitle: [NSString stringWithFormat: noteEnoughJammersTitle, [HOME_TEAM capitalizedString]]
+                 message: [NSString stringWithFormat: noteEnoughJammersMessage, @"right", [HOME_TEAM capitalizedString]]
                  delegate:self
-                 cancelButtonTitle:@"Ok"
+                 cancelButtonTitle: OK_BUTTON
                  otherButtonTitles: nil];
         
     } else if([[self.dataSource getTeam: VISITOR_TEAM].teamName isEqualToString:@""] || [self.dataSource getTeam: VISITOR_TEAM].teamName == NULL){
         alert = [[UIAlertView alloc]
-                 initWithTitle:@"Visitor Team Name is Missing"
-                 message:@"Please give your team a name by swiping to the right and touching the \"Visitor Team Name\" text input fields."
+                 initWithTitle: [NSString stringWithFormat: noteEnoughJammersTitle, [VISITOR_TEAM capitalizedString]]
+                 message: [NSString stringWithFormat: noteEnoughJammersMessage, @"left", [VISITOR_TEAM capitalizedString]]
                  delegate:self
-                 cancelButtonTitle:@"Ok"
+                 cancelButtonTitle: OK_BUTTON
                  otherButtonTitles: nil];
         
     }else if( [[self.dataSource getTeam:VISITOR_TEAM] jammerCount]  < 1){
         alert = [[UIAlertView alloc]
-                 initWithTitle:@"Not Enough Players"
-                 message:@"Please add at least one jammer player to each team by touching the \"Add Player\" button."
+                 initWithTitle: [NSString stringWithFormat: noteEnoughJammersTitle, [VISITOR_TEAM capitalizedString]]
+                 message: [NSString stringWithFormat: noteEnoughJammersMessage, @"left", [VISITOR_TEAM capitalizedString]]
                  delegate:self
-                 cancelButtonTitle:@"Ok"
+                 cancelButtonTitle: OK_BUTTON
                  otherButtonTitles: nil];
     }
     

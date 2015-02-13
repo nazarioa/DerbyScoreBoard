@@ -22,6 +22,9 @@ static NSString * const PERIOD_CLOCK = @"periodClock";
 
 static NSString * const CONFIGURE = @"configure";
 
+// Messages
+static NSString * const OK_BUTTON = @"Skate On";
+
 
 /*
  typedef enum{
