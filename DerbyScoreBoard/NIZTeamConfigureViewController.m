@@ -41,7 +41,7 @@
     }else{
         self.team = [self.dataSource getTeam: self.teamType];
         self.inputTeamName.text = self.team.teamName;
-        
+        self.teamLogo.image = [self.dataSource getTeam: self.teamType].teamLogo;
     }
 }
 
@@ -147,7 +147,8 @@
 #pragma mark - UIImagePickerControllerDelegate
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    self.teamLogo.image =[info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    self.teamLogo.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    self.team.teamLogo = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -156,7 +157,7 @@
 
 - (IBAction) teamNameDidEndEditing:(id)sender {
     self.team.teamName = [sender text];
-    NSLog(@"config homeTeamNameDidEndEditing");
+    NSLog(@"TeamConfigure homeTeamNameDidEndEditing");
 }
 
 - (IBAction) teamLogoTouched:(UIButton *)sender {

@@ -501,7 +501,7 @@
 
 4) Tape the Enable Spectators Button.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="0.88725842929999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -554,18 +554,27 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Bpl-fb-fUZ" id="Ycs-UC-jdU"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Derby Player Name" minimumFontSize="17" id="Y28-bf-MVF">
                                 <rect key="frame" x="16" y="103" width="271" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Bpl-fb-fUZ" id="EtY-fN-bC6"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Derby Player Number" minimumFontSize="17" id="0Mi-Jh-Qfm">
                                 <rect key="frame" x="16" y="141" width="271" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Bpl-fb-fUZ" id="CXA-in-zkg"/>
+                                </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.png" id="aWt-Bg-XiC">
                                 <rect key="frame" x="307" y="97" width="277" height="277"/>
@@ -577,6 +586,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Bpl-fb-fUZ" id="GmN-gg-H0H"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5gX-0P-jHN">
                                 <rect key="frame" x="307" y="390" width="134" height="42"/>
@@ -630,7 +642,8 @@
                     <size key="freeformSize" width="600" height="447"/>
                     <connections>
                         <outlet property="addEditViewModeLabel" destination="WM0-uJ-5F9" id="B22-F2-Vue"/>
-                        <outlet property="mugBtn" destination="5gX-0P-jHN" id="dpH-hI-T6l"/>
+                        <outlet property="mugCameraBtn" destination="SUT-fj-ye3" id="4dv-3Q-Cny"/>
+                        <outlet property="mugLibraryBtn" destination="5gX-0P-jHN" id="dWF-u3-Vno"/>
                         <outlet property="playerDerbyName" destination="Y28-bf-MVF" id="4cZ-Lb-uF1"/>
                         <outlet property="playerDerbyNumber" destination="0Mi-Jh-Qfm" id="8Ls-f5-vxs"/>
                         <outlet property="playerFirstName" destination="X4i-Xl-wmI" id="64G-Xm-574"/>
@@ -667,6 +680,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="teamNameDidEndEditing:" destination="wrh-fO-DZa" eventType="editingDidEnd" id="AYP-Ua-g8t"/>
+                                    <action selector="teamNameDidEndEditing:" destination="wrh-fO-DZa" eventType="editingDidEndOnExit" id="afq-y5-1fQ"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HvH-ZU-sfA">
@@ -792,6 +806,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
+                                    <action selector="teamNameDidEndEditing:" destination="9on-bi-cQy" eventType="editingDidEndOnExit" id="Fk1-17-aJS"/>
                                     <action selector="teamNameDidEndEditing:" destination="9on-bi-cQy" eventType="editingDidEnd" id="QAV-HL-s3N"/>
                                 </connections>
                             </textField>

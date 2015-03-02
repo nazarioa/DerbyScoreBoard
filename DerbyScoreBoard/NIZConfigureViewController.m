@@ -38,10 +38,11 @@
 
 - (IBAction)btnTouchedConfigureDone:(id)sender {
     UIAlertView * alert = NULL;
-    NSString * noteEnoughJammersMessage = @"Swipe %@ and touch the \"%@ Team Name\" \nand add at least one jammer player to your %s team.";
-    NSString * missingTeamNameMessage = @"Swipe %@ and touch the\n \"%@ Team Name\" text input fields.";
     NSString * noteEnoughJammersTitle = @"%@ Team Needs Jammers";
+    NSString * noteEnoughJammersMessage = @"Swipe %@ and touch the \n\"%@ Team Name\" \nand add at least one jammer player to the team.";
+    
     NSString * missingTeamNameTitle = @"%@ Team Needs a Name";
+    NSString * missingTeamNameMessage = @"Swipe %@ and touch the\n \"%@ Team Name\" text input fields.";
     
     
     if( [[self.dataSource getTeam: HOME_TEAM].teamName isEqualToString:@""] || [self.dataSource getTeam: HOME_TEAM].teamName == NULL){

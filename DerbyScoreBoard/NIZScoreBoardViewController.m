@@ -389,6 +389,7 @@ UIFont * gothamMedium30;
 }
 
 #pragma mark - UITextFieldDelegate
+//TODO: The following two functions may be redundant
 - (BOOL) textFieldShouldReturn:(UITextField *)textField{
     //TODO: may want to make sure that the above code behavior matches the intended text
     NSLog(@"textFieldShouldReturn");

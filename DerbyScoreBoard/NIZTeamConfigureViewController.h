@@ -16,7 +16,7 @@
 -(void) setHomeOrVisitor: (NSString *) type asTeam: (NIZDerbyTeam *) team;
 @end
 
-@interface NIZTeamConfigureViewController : UIViewController <AddEditPlayerProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface NIZTeamConfigureViewController : UIViewController <AddEditPlayerProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) id <NIZConfigureTeamScreenDataSourceProtocol> dataSource;
 @property (weak, nonatomic) id delegate;
 @property (nonatomic, strong) NIZDerbyTeam * team;

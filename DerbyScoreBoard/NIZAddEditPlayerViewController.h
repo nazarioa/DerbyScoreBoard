@@ -15,7 +15,7 @@
 -(void) refreshPlayerRoster;
 @end
 
-@interface NIZAddEditPlayerViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface NIZAddEditPlayerViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) id <AddEditPlayerProtocol> delegate;
 @property (strong, nonatomic) NSString * teamType;
 @property (strong, nonatomic) NSString * mode;

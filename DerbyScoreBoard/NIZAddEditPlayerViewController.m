@@ -16,8 +16,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *playerDerbyNumber;
 @property (strong, nonatomic) IBOutlet UISwitch *playerIsJammer;
 @property (strong, nonatomic) IBOutlet UIImageView *playerMug;
-@property (strong, nonatomic) IBOutlet UIButton *mugBtn;
-@property (strong, nonatomic) IBOutlet UILabel * addEditViewModeLabel;
+@property (strong, nonatomic) IBOutlet UIButton *mugLibraryBtn;
+@property (strong, nonatomic) IBOutlet UIButton *mugCameraBtn;
+@property (strong, nonatomic) IBOutlet UILabel *addEditViewModeLabel;
 
 @end
 
@@ -92,10 +93,13 @@
     picker.modalPresentationStyle = UIModalPresentationPageSheet;
     picker.delegate = self;
     
-    if((UIButton *) sender == self.mugBtn) {
+    if((UIButton *) sender == self.mugLibraryBtn) {
         picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    } else {
+    } else if((UIButton *) sender == self.mugCameraBtn) {
+        NSLog(@"    picker: %@", picker);
+        
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//        picker.sourceType = UIImagePickerControllerCameraCaptureModePhoto;
     }
     
     [self presentViewController:picker animated:YES completion:nil];
@@ -133,6 +137,32 @@
     }else if([self.mode isEqual: ADD_MODE]){
         self.addEditViewModeLabel.text  = @"Add";
     }
+}
+
+#pragma mark - Cleanup
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    if (theTextField == self.playerDerbyName) {
+        [theTextField resignFirstResponder];
+        return YES;
+    }
+    
+    else if (theTextField == self.playerDerbyNumber) {
+        [theTextField resignFirstResponder];
+        return YES;
+    }
+    
+    else if (theTextField == self.playerFirstName) {
+        [theTextField resignFirstResponder];
+        return YES;
+    }
+    
+    else if (theTextField == self.playerLastName) {
+        [theTextField resignFirstResponder];
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end
