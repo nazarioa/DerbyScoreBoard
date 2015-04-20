@@ -18,6 +18,6 @@
 @property (strong, nonatomic) IBOutlet UIPageViewController *configPageViewController;
 //I think that this could be connected via Storybaord but is instead connected programaticaly in self.m file -(void) viewDidLoad
 @property (nonatomic, strong) NSDictionary * pagesDict;
-@property (nonatomic, weak) id delegate;
+@property (weak, nonatomic) id delegate;
 
 @end

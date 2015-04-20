@@ -17,7 +17,7 @@
 
 @implementation NIZConfigurePageViewController
 
-@synthesize delegate = _delegate;
+@synthesize delegate =_delegate;
 
 #pragma mark - UIViewController
 
@@ -41,7 +41,7 @@
     
     NIZConfigureViewController * configureScreen = [self.storyboard instantiateViewControllerWithIdentifier:@"ConfigureScreen"];
     self.pagesDict = [NSDictionary dictionaryWithObjectsAndKeys: homeTeamScreen, HOME_TEAM, configureScreen, CONFIGURE, visitorTeamScreen, VISITOR_TEAM, nil];
-    configureScreen.dataSource = self.delegate;
+    configureScreen.scoreBoardDataSource = self.delegate;
     configureScreen.delegate = self;
     
     NSArray *viewControllers = @[configureScreen];

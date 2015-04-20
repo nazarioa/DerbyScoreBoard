@@ -21,6 +21,6 @@
 @end
 
 @interface NIZConfigureViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate>
-@property (weak, nonatomic) id <NIZConfigureTeamScreenDataSourceProtocol> dataSource;
+@property (weak, nonatomic) id <NIZConfigureTeamScreenDataSourceProtocol, NIZConfigureScreenProtocol> scoreBoardDataSource;
 @property (weak, nonatomic) id delegate;
 @end

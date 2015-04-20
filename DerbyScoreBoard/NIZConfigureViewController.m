@@ -16,7 +16,7 @@
 
 @implementation NIZConfigureViewController
 
-@synthesize dataSource = _dataSource;
+@synthesize scoreBoardDataSource = _scoreBoardDataSource;
 @synthesize delegate =_delegate;
 
 
@@ -26,6 +26,20 @@
 {
     [super viewDidLoad];
 }
+
+/*
+ -(void) viewDidAppear:(BOOL)animated{
+    if( [self.scoreBoardDataSource getTeam:HOME_TEAM] == nil ){
+        NSLog(@" What is the scoreBoardDataSource");
+        NSLog(self.scoreBoardDataSource);
+        NSLog(@" What is the delegate");
+        NSLog(self.delegate);
+        [self.delegate viewControllerForKey: HOME_TEAM];
+    }else if( [self.scoreBoardDataSource getTeam:VISITOR_TEAM] == nil ){
+        
+    }
+}
+*/
 
 - (void)didReceiveMemoryWarning
 {
@@ -45,7 +59,7 @@
     NSString * missingTeamNameMessage = @"Swipe %@ and touch the\n \"%@ Team Name\" text input fields.";
     
     
-    if( [[self.dataSource getTeam: HOME_TEAM].teamName isEqualToString:@""] || [self.dataSource getTeam: HOME_TEAM].teamName == NULL){
+    if( [[self.scoreBoardDataSource getTeam: HOME_TEAM].teamName isEqualToString:@""] || [self.scoreBoardDataSource getTeam: HOME_TEAM].teamName == NULL){
         alert = [[UIAlertView alloc]
                  initWithTitle: [NSString stringWithFormat: missingTeamNameTitle, [HOME_TEAM capitalizedString]]
                  message: [NSString stringWithFormat: missingTeamNameMessage, @"right", [HOME_TEAM capitalizedString]]
@@ -53,7 +67,7 @@
                  cancelButtonTitle: OK_BUTTON
                  otherButtonTitles: nil];
         
-    } else if( [[self.dataSource getTeam:HOME_TEAM] jammerCount]  < 1){
+    } else if( [[self.scoreBoardDataSource getTeam:HOME_TEAM] jammerCount]  < 1){
         alert = [[UIAlertView alloc]
                  initWithTitle: [NSString stringWithFormat: noteEnoughJammersTitle, [HOME_TEAM capitalizedString]]
                  message: [NSString stringWithFormat: noteEnoughJammersMessage, @"right", [HOME_TEAM capitalizedString]]
@@ -61,7 +75,7 @@
                  cancelButtonTitle: OK_BUTTON
                  otherButtonTitles: nil];
         
-    } else if([[self.dataSource getTeam: VISITOR_TEAM].teamName isEqualToString:@""] || [self.dataSource getTeam: VISITOR_TEAM].teamName == NULL){
+    } else if([[self.scoreBoardDataSource getTeam: VISITOR_TEAM].teamName isEqualToString:@""] || [self.scoreBoardDataSource getTeam: VISITOR_TEAM].teamName == NULL){
         alert = [[UIAlertView alloc]
                  initWithTitle: [NSString stringWithFormat: noteEnoughJammersTitle, [VISITOR_TEAM capitalizedString]]
                  message: [NSString stringWithFormat: noteEnoughJammersMessage, @"left", [VISITOR_TEAM capitalizedString]]
@@ -69,7 +83,7 @@
                  cancelButtonTitle: OK_BUTTON
                  otherButtonTitles: nil];
         
-    }else if( [[self.dataSource getTeam:VISITOR_TEAM] jammerCount]  < 1){
+    }else if( [[self.scoreBoardDataSource getTeam:VISITOR_TEAM] jammerCount]  < 1){
         alert = [[UIAlertView alloc]
                  initWithTitle: [NSString stringWithFormat: noteEnoughJammersTitle, [VISITOR_TEAM capitalizedString]]
                  message: [NSString stringWithFormat: noteEnoughJammersMessage, @"left", [VISITOR_TEAM capitalizedString]]
@@ -105,7 +119,7 @@
      NSArray * avilableScreens  = [UIScreen screens];
      
      if( avilableScreens.count  > 1 ){
-         [self.delegate setupSpectatorScreen: avilableScreens];
+         [self.scoreBoardDataSource setupSpectatorScreen: avilableScreens];
          NSLog(@"Yes Screens");
      }else{
          NSLog(@"No Screens");
@@ -116,7 +130,7 @@
 #pragma mark - My Functions
 
 - (IBAction)resetClocks:(id)sender {
-    [self.delegate resetClocks];
+    [self.scoreBoardDataSource resetClocks];
 }
 
 @end
